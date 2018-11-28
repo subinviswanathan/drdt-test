@@ -1,8 +1,8 @@
 # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 defaults: &defaults
   docker:
-    - image: ataylorme/docker-php-advanced-wordpress-on-pantheon:latest
-  working_directory: ~/Advanced-WordPress-on-Pantheon
+    - image: fariasf/docker-php-advanced-wordpress-on-pantheon:latest
+  working_directory: ~/drdt
   environment:
     #=========================================================================
     # In addition to the environment variables defined in this file, also
@@ -19,7 +19,7 @@ defaults: &defaults
     # ADMIN_PASSWORD: The admin password to use when installing.
     # ADMIN_EMAIL:    The email address to give the admin when installing.
     #=========================================================================
-    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    TZ: "/usr/share/zoneinfo/America/New_York"
 
     # The variables below usually do not need to be modified.
     
@@ -104,7 +104,7 @@ jobs:
     build:
         <<: *defaults
         docker:
-          - image: ataylorme/docker-node-advanced-wordpress-on-pantheon:js-task-runners
+          - image: fariasf/docker-node-advanced-wordpress-on-pantheon:js-task-runners
         steps:
             - checkout
 
@@ -196,7 +196,7 @@ jobs:
     visual_regression_test:
         <<: *defaults
         docker:
-          - image: ataylorme/docker-node-advanced-wordpress-on-pantheon:backstop-js
+          - image: fariasf/docker-node-advanced-wordpress-on-pantheon:backstop-js
         steps:
             - checkout
             
@@ -215,7 +215,7 @@ jobs:
     lighthouse_performance_test:
         <<: *defaults
         docker:
-          - image: ataylorme/docker-node-advanced-wordpress-on-pantheon:lighthouse
+          - image: fariasf/docker-node-advanced-wordpress-on-pantheon:lighthouse
         steps:
             - checkout
             
