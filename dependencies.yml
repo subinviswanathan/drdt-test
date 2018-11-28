@@ -1,0 +1,17 @@
+version: 2
+dependencies:
+- type: php
+  path: /
+  settings:
+    composer_options: "--no-dev --no-ansi --no-interaction --optimize-autoloader --no-progress"
+    related_pr_behavior: close
+    github_assignees:
+      - ataylorme
+    before_update:
+      - composer prepare-for-pantheon
+    after_update:
+      - ./scripts/composer/cleanup-composer
+- type: js
+  path: web/wp-content/themes/twentyseventeen-child
+  settings:
+    node_env: production
