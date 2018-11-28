@@ -1,40 +1,8 @@
-```
-    .+?:
-     .+??.
-       ??? .
-       +???.
-  +?????????=.
-  .???????????.
-  .????????????.
-
- ########### ########
- ############.#######.
- ####### ####  .......
- ######## #### #######
- #########.####.######
- ######  ...
- #######.??.##########
- #######~+??.#########
- ########.??..
- #########.??.#######.
- #########.+?? ######.
-           .+?.
-     .????????????.
-       +??????????,
-        .????++++++.
-          ????.
-          .???,
-           .~??.
-             .??
-              .?,.
-```
----
-# Advanced WordPress on Pantheon
+# DRDT
 
 ## Purpose
-This repository is an extension of [pantheon-systems/example-wordpress-composer](https://github.com/pantheon-systems/example-wordpress-composer/) 
-showning an example of an advanced WordPress 
-deployment workflow on Pantheon integrating tools such as:
+This repository is an fork of https://github.com/ataylorme/Advanced-WordPress-on-Pantheon
+implementing a deployment workflow on Pantheon integrating tools such as:
 * Local development environment with [Lando](https://docs.devwithlando.io/)
 * Asset compilation with [gulp](https://gulpjs.com/) 4
 * PHP dependency management with [Composer](https://getcomposer.org/)
@@ -44,9 +12,6 @@ deployment workflow on Pantheon integrating tools such as:
 * Enforced [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards) with [PHP code sniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * Performance testing with [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 * Visual regression testing with [BackstopJS](https://github.com/garris/BackstopJS/)
-
-## Deprecated Branch
-The old version of this example used CircleCI 1.0 and did a lot of steps that the [Terminus build tools plugin](https://github.com/pantheon-systems/terminus-build-tools-plugin/) now does manually. This has been deprecated in favor of an example based on CircleCI 2.0 and [Example WordPress Composer](https://github.com/pantheon-systems/example-wordpress-composer/). The [circle-ci-1](https://github.com/ataylorme/Advanced-WordPress-on-Pantheon/tree/circle-ci-1) branch has this version archived for reference only.
 
 ## CircleCI Setup
 You will need to add the following environment variables in the CircleCI UI. See [https://circleci.com/docs/2.0/environment-variables](https://circleci.com/docs/2.0/environment-variables/)/ for details.
