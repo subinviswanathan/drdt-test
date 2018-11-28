@@ -1,6 +1,6 @@
 Feature: Login as an administrator (no-js)
   As a maintainer of the site
-  I want basic login behavior to work
+  I want login behavior to work
   So that I can administer the site
 
 Background:
