@@ -10,16 +10,16 @@ Feature: Change blogname and blogdescription (no-js)
 
   Scenario: Saving blogname
     Given I go to the menu "Settings > General"
-    When I fill in "blogname" with "Awesome WordHat Test Site"
+    When I fill in "blogname" with "CPT"
     And I press "submit"
     And I should see "Settings saved."
     And I am on the homepage
-    Then I should see "Awesome WordHat Test Site" in the "h1 a" element
+    Then I should see "CPT" in the "h1 a" element
 
   Scenario: Saving blogdescription
     Given I go to the menu "Settings > General"
-    When I fill in "blogdescription" with "GitHub + Composer + CircleCi + Pantheon = Win!"
+    When I fill in "blogdescription" with "Testing deployment pipeline on Pantheon"
     And I press "submit"
     And I should see "Settings saved."
     And I am on the homepage
-    Then I should see "GitHub + Composer + CircleCi + Pantheon = Win!" in the ".site-description" element
+    Then I should see "Testing deployment pipeline on Pantheon" in the ".site-description" element
