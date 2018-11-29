@@ -5,7 +5,7 @@ recipe: pantheon
 config:
   framework: wordpress
   site: drdt
-  id: 863c1803-d54a-41ab-a1e7-bc8de77757bb
+  id: 24fd5eae-e272-431c-877b-95c6bbeff62e
   xdebug: true
   webroot: web
   php: '7.2'
