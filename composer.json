@@ -24,6 +24,7 @@
     "wpackagist-plugin/lh-hsts": "^1.24",
     "wpackagist-plugin/pantheon-advanced-page-cache": "*",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
+    "wpackagist-plugin/wp-cfm":"1.5",
     "wpackagist-theme/twentyseventeen": "1.*"
   },
   "require-dev": {
