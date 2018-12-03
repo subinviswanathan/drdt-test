@@ -21,11 +21,7 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
-		?>
+	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
 			$bumblebee_comment_count = get_comments_number();
@@ -50,26 +46,21 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-			) );
+			wp_list_comments(
+				array(
+					'style'      => 'ol',
+					'short_ping' => true,
+				)
+			);
 			?>
 		</ol><!-- .comment-list -->
 
-		<?php
-		the_comments_navigation();
+		<?php the_comments_navigation(); ?>
 
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
+		<?php if ( ! comments_open() ) : ?>
 			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'bumblebee' ); ?></p>
-			<?php
-		endif;
+		<?php endif; ?>
+	<?php endif; ?>
 
-	endif; // Check for have_comments().
-
-	comment_form();
-	?>
-
+	<?php comment_form(); ?>
 </div><!-- #comments -->

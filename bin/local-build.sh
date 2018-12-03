@@ -7,8 +7,8 @@
 ./.circleci/build-gulp-assets.sh
 
 # Test WordPress coding standards
-./vendor/bin/phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs
-./vendor/bin/phpcs --ignore=*/.git*/*,*/node_modules/* --extensions=php ./web/wp-content/themes/twentyseventeen-child
+./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
+./vendor/bin/phpcs --standard=WordPress --ignore=*/.git*/*,*/node_modules/* --extensions=php web/wp-content/themes/bumblebee
 
 # Run unit tests
 composer -n unit-test

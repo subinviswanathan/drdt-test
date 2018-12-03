@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.1",
     "composer/installers": "v1.5.0",
     "pantheon-systems/wordpress-composer": "4.*",
     "roots/wp-password-bcrypt": "^1.0.0",
@@ -86,7 +86,7 @@
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "code-sniff": [
-      "./vendor/bin/phpcs --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/* ./web/wp-content"
+      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/*,web/wp-content/plugins/wp-*,./web/wp-content/plugins/pantheon*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw* ./web/wp-content"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"
