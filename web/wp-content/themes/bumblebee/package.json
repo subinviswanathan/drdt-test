@@ -1,0 +1,16 @@
+{
+  "name": "bumblebee",
+  "version": "1.0.0",
+  "description": "A black and yellow theme",
+  "main": "README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.2"
+  },
+  "scripts": {
+    "test": "cat README.md"
+  },
+  "author": "",
+  "license": "ISC"
+}

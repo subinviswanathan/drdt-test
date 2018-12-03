@@ -39,7 +39,6 @@ web/wp-content/mu-plugins/*
 web/wp-content/plugins/*
 !web/wp-content/themes
 web/wp-content/themes/*
-!web/wp-content/themes/twentyseventeen-child/
 !web/wp-content/themes/bumblebee/
 !web/private/
 web/private/*
