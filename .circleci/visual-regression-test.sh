@@ -84,4 +84,4 @@ fi
 
 # Post the image back to the pull request on GitHub
 echo -e "\nPosting visual regression results back to PR #$PR_NUMBER "
-curl -i -u "$GIT_USERNAME:$GIT_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
+curl -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments

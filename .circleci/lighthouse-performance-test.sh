@@ -130,7 +130,7 @@ if [ $LIGHTHOUSE_SCORE -lt $LIGHTHOUSE_ACCEPTABLE_SCORE ]; then
 
 	# Post the report back to the pull request on GitHub
 	echo -e "\nPosting Lighthouse results back to $LIGHTHOUSE_BRANCH "
-	curl -s -i -u "$GIT_USERNAME:$GIT_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
+	curl -s -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
 
 	exit 1
 else
@@ -142,7 +142,7 @@ else
 
 	# Post the report back to the pull request on GitHub
 	echo -e "\nPosting Lighthouse results back to $LIGHTHOUSE_BRANCH "
-	curl -s -i -u "$GIT_USERNAME:$GIT_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
+	curl -s -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
 
 	exit 0
 fi
