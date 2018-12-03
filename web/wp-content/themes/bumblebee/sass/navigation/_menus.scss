@@ -1,8 +1,15 @@
 .main-navigation {
+	background: $color__black;
 	clear: both;
 	display: block;
 	float: left;
+	position: sticky;
+	top: 0;
 	width: 100%;
+
+	> #primary-menu {
+		@include site-center;
+	}
 
 	ul {
 		display: none;
@@ -51,6 +58,7 @@
 
 	li {
 		float: left;
+		padding: 1em;
 		position: relative;
 
 		&:hover > a,
@@ -59,8 +67,14 @@
 	}
 
 	a {
+		color: $color__accent;
 		display: block;
+		font-weight: bold;
 		text-decoration: none;
+		text-transform: uppercase;
+		&:hover{
+			color: $color__white;
+		}
 	}
 
 	.current_page_item > a,
@@ -68,6 +82,9 @@
 	.current_page_ancestor > a,
 	.current-menu-ancestor > a {
 	}
+}
+.admin-bar .main-navigation {
+	top: 32px;
 }
 
 /* Small menu. */
