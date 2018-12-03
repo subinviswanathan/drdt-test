@@ -30,7 +30,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php if ( is_singular() ): ?>
+	<?php if ( is_singular() ) : ?>
 		<div class="entry-content">
 			<?php
 			the_content(
