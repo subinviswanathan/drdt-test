@@ -138,7 +138,9 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 	the_post_thumbnail(
 		[ 300, 300 ],
 		array(
-			'alt' => the_title_attribute(
+			'role'  => 'presentation',
+			'alt'   => false, // These are decorative images. Alternative text just duplicates the title.
+			'title' => the_title_attribute(
 				array(
 					'echo' => false,
 				)
