@@ -41,5 +41,3 @@
 		);
 		?>
 	</nav><!-- #site-navigation -->
-
-	<div id="content" class="site-content">

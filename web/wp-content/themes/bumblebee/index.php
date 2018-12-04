@@ -11,49 +11,55 @@
  *
  * @package bumblebee
  */
-
-get_header();
 ?>
+<?php get_header(); ?>
+<?php if ( have_posts() ) : ?>
+	<?php if ( is_home() && ! is_front_page() ) : ?>
+		<header>
+			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+		</header>
+	<?php endif; ?>
+	<section class="featured">
+		<?php
+			// @todo: Pick from a custom list of posts
+			// Featured 1;
+			if ( have_posts() ) {
+				the_post();
+				get_template_part( 'template-parts/content', get_post_type() );
+			}
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+			// Featured 2;
+			if ( have_posts() ) {
+				the_post();
+				get_template_part( 'template-parts/content', get_post_type() );
+			}
 
-	<?php
-	if ( have_posts() ) :
+			// Featured 3;
+			if ( have_posts() ) {
+				the_post();
+				get_template_part( 'template-parts/content', get_post_type() );
+			}
+		?>
+	</section>
 
-		if ( is_home() && ! is_front_page() ) :
-			?>
-			<header>
-				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-			</header>
-			<?php
-		endif;
+	<?php while ( have_posts() ) : ?>
+		<section>
+			<div>
+				<?php for ( $i = 0; $i < 6; $i++ ): the_post(); ?>
+					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+				<?php endfor; ?>
+			</div>
+			<aside class="sidebar"></aside>
+		</section>
+		<?php if ( ( $wp_query->current_post + 1 ) != ( $wp_query->post_count ) ): ?>
+			<div class="full-width-ad"></div>
+		<?php endif; ?>
+	<?php endwhile; ?>
 
-		/* Start the Loop */
-		while ( have_posts() ) :
-			the_post();
-
-			/*
-			* Include the Post-Type-specific template for the content.
-			* If you want to override this in a child theme, then include a file
-			* called content-___.php (where ___ is the Post Type name) and that will be used instead.
-			*/
-			get_template_part( 'template-parts/content', get_post_type() );
-
-		endwhile;
-
-		the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-	?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+	<div class="footer-ad"></div>
+	<?php the_posts_navigation(); ?>
+<?php else : ?>
+	<?php get_template_part( 'template-parts/content', 'none' ); ?>
+<?php endif; ?>
+<?php if ( is_single() ) get_sidebar(); ?>
+<?php get_footer();

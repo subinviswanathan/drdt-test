@@ -5,8 +5,14 @@
 ## Posts and pages
 --------------------------------------------------------------*/
 @import "primary/posts-and-pages";
+@import "primary/homepage";
 
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
 @import "primary/comments";
+
+.site-branding {
+	@include site-center;
+	margin: 1em auto;
+}

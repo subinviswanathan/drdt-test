@@ -1,0 +1,42 @@
+.home {
+	section {
+		@include site-center;
+	}
+	section:not(.featured) {
+		> div {
+			width: 70%;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		> aside { width: 30%; display: inline-block; }
+		article {
+			box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
+			margin: 0 1em;
+			width: 29%;
+			header {
+				padding: .25em;
+			}
+		}
+	}
+	article {
+		background: $color__white;
+		display: inline-block;
+		vertical-align: top;
+		a {
+			color: $color__black;
+			text-decoration: none;
+		}
+		.post-thumbnail {
+			display: block;
+			width: 100%;
+			img {
+				width: 100%;
+			}
+		}
+	}
+	.full-width-ad {
+		@include dotted-background;
+		min-height: 600px;
+		margin: -75px auto;
+	}
+}
