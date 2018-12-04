@@ -28,7 +28,7 @@ echo
 set -ex
 
 # Create a backup before running Behat tests
-terminus -n backup:create $TERMINUS_SITE.$TERMINUS_ENV
+terminus -n backup:create $TERMINUS_SITE.$TERMINUS_ENV --element=database
 
 # Clear site cache
 terminus -n env:clear-cache $TERMINUS_SITE.$TERMINUS_ENV
