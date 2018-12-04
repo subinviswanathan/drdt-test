@@ -755,6 +755,45 @@ a {
   max-width: 1260px;
   margin: 0 auto; }
 
+.home section {
+  max-width: 1260px;
+  margin: 0 auto; }
+
+.home section:not(.featured) > div {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap; }
+
+.home section:not(.featured) > aside {
+  width: 30%;
+  display: inline-block; }
+
+.home section:not(.featured) article {
+  box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
+  margin: 0 1em;
+  width: 29%; }
+  .home section:not(.featured) article header {
+    padding: .25em; }
+
+.home article {
+  background: #fff;
+  display: inline-block;
+  vertical-align: top; }
+  .home article a {
+    color: #000;
+    text-decoration: none; }
+  .home article .post-thumbnail {
+    display: block;
+    width: 100%; }
+    .home article .post-thumbnail img {
+      width: 100%; }
+
+.home .full-width-ad {
+  background: linear-gradient(90deg, #fff 6px, transparent 1%) center, linear-gradient(#fff 6px, transparent 1%) center, #ccc;
+  background-size: 8px 8px;
+  min-height: 600px;
+  margin: -75px auto; }
+
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
@@ -763,6 +802,11 @@ a {
 
 .bypostauthor {
   display: block; }
+
+.site-branding {
+  max-width: 1260px;
+  margin: 0 auto;
+  margin: 1em auto; }
 
 /*--------------------------------------------------------------
 # Infinite scroll

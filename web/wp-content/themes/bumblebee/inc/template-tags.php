@@ -136,9 +136,11 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 	<?php
 	the_post_thumbnail(
-		'post-thumbnail',
+		[ 300, 300 ],
 		array(
-			'alt' => the_title_attribute(
+			'role'  => 'presentation',
+			'alt'   => false, // These are decorative images. Alternative text just duplicates the title.
+			'title' => the_title_attribute(
 				array(
 					'echo' => false,
 				)

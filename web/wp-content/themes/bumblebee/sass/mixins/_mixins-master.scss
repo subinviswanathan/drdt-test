@@ -33,3 +33,11 @@
 	max-width: $size__site-max-width;
 	margin: 0 auto;
 }
+
+@mixin dotted-background($bg-color: #fff, $dot-color: #ccc, $dot-size: 2px, $dot-space: 8px) {
+	background:
+		linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+		linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+		$dot-color;
+	background-size: $dot-space $dot-space;
+}
