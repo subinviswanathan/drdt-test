@@ -9,7 +9,8 @@
     "gulp-sass": "^4.0.2"
   },
   "scripts": {
-    "test": "cat README.md"
+    "test": "cat README.md",
+	"gulp": "./node_modules/gulp/bin/gulp.js"
   },
   "author": "",
   "license": "ISC"
