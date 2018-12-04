@@ -799,12 +799,32 @@ a {
   background: #fff;
   margin: 0;
   width: 59%; }
+  .home .featured article:first-of-type h2 {
+    padding: 30px; }
+    .home .featured article:first-of-type h2 a {
+      color: #444;
+      font-family: "Lato", "Arial", sans-serif;
+      font-size: 38px; }
+      .home .featured article:first-of-type h2 a:hover {
+        text-decoration: underline; }
 
 .home .featured article:nth-of-type(2),
 .home .featured article:nth-of-type(3) {
   background: #fff;
   margin: 0 0 0 1%;
   width: 19%; }
+  .home .featured article:nth-of-type(2) h2,
+  .home .featured article:nth-of-type(3) h2 {
+    padding: 10px;
+    word-wrap: break-word; }
+    .home .featured article:nth-of-type(2) h2 a,
+    .home .featured article:nth-of-type(3) h2 a {
+      color: #000;
+      font-family: "Lato", "Arial", sans-serif;
+      font-size: 24px; }
+      .home .featured article:nth-of-type(2) h2 a:hover,
+      .home .featured article:nth-of-type(3) h2 a:hover {
+        text-decoration: underline; }
 
 /*--------------------------------------------------------------
 ## Comments

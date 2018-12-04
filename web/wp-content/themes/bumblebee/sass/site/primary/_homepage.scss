@@ -18,12 +18,13 @@
 			}
 		}
 	}
+
 	article {
 		background: $color__white;
 		box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
 		display: inline-block;
 		vertical-align: top;
-		
+
 		a {
 			color: $color__black;
 			text-decoration: none;
@@ -50,6 +51,22 @@
 			background: #fff;
 			margin: 0;
 			width: 59%;
+
+			h2 {
+				padding: 30px;
+
+				a {
+					color: $color__text-screen;
+
+					font: {
+						family: $font__h1;
+						size: 38px;
+					};
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
 		}
 
 		article:nth-of-type(2),
@@ -57,6 +74,23 @@
 			background: #fff;
 			margin: 0 0 0 1%;
 			width: 19%;
+
+			h2 {
+				padding: 10px;
+				word-wrap: break-word;
+				a {
+					color: $color__black;
+
+					font: {
+						family: $font__h1;
+						size: 24px;
+					};
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
 		}
 	}
 }
