@@ -777,6 +777,7 @@ a {
 
 .home article {
   background: #fff;
+  box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
   display: inline-block;
   vertical-align: top; }
   .home article a {
@@ -793,6 +794,17 @@ a {
   background-size: 8px 8px;
   min-height: 600px;
   margin: -75px auto; }
+
+.home .featured article:first-of-type {
+  background: #fff;
+  margin: 0;
+  width: 59%; }
+
+.home .featured article:nth-of-type(2),
+.home .featured article:nth-of-type(3) {
+  background: #fff;
+  margin: 0 0 0 1%;
+  width: 19%; }
 
 /*--------------------------------------------------------------
 ## Comments
