@@ -1,10 +1,10 @@
 # DRDT
 
 ## Purpose
-This repository is an fork of https://github.com/ataylorme/Advanced-WordPress-on-Pantheon
-implementing a deployment workflow on Pantheon integrating tools such as:
+This repository provides a local WordPress development environment and a CI/CD workflow with the following features:
+* Automatic deployments to [Pantheon](https://pantheon.io) (with one environment per Pull Request using Multidev)
 * Local development environment with [Lando](https://docs.devwithlando.io/)
-* Asset compilation with [gulp](https://gulpjs.com/) 4
+* Asset compilation with [gulp](https://gulpjs.com/)
 * PHP dependency management with [Composer](https://getcomposer.org/)
 * Build and testing processes run on [CircleCI 2.0](https://circleci.com/)
 * Unit tests with [PHP Unit](https://phpunit.de/)
@@ -13,8 +13,43 @@ implementing a deployment workflow on Pantheon integrating tools such as:
 * Performance testing with [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 * Visual regression testing with [BackstopJS](https://github.com/garris/BackstopJS/)
 
-## CircleCI Setup
-You will need to add the following environment variables in the CircleCI UI. See [https://circleci.com/docs/2.0/environment-variables](https://circleci.com/docs/2.0/environment-variables/)/ for details.
+
+## Local Development
+
+Local environment is provided by [Lando](https://docs.devwithlando.io/). Other development environments are not officially supported. 
+
+### First-time setup
+* Install [Lando](https://docs.devwithlando.io/) if not already installed
+* Fork this repository, and clone your fork to your local machine.
+* Use `lando start` and `lando stop` to start and stop the local development environment.
+* Download and install dependencies dependencies. This can be done through Lando with the commands below:
+** `lando composer-install`
+** `lando gulp-build`
+* Get a copy of the database and files from the Pantheon dashboard (or ask for one). Import the DB with `lando db-import` and put the files in `web/wp-content/uploads`.
+* Create a local admin user: `lando wp user create admin your-email@example.com --role=administrator --user_pass=admin`
+* Visit your site at https://drdt.lndo.site
+
+### Directory structure
+The project structure is similar [Bedrock](https://roots.io/bedrock/)'s. You'll find WordPress source files in the `web` directory.
+Main theme directory is in `web/wp-content/themes/bumblebee`.
+Third party plugins should be installed using Composer (and [WordPress Packagist](https://wpackagist.org/)).
+** Note: ** At the moment, all plugins in `wp-content/plugins` will go through PHPCS. See https://github.com/fariasf/contrib-custom-plugins to separate Custom from Contrib (WIP).
+
+### Updates and file changes
+* `lando composer update` will need to be ran after any changes to `composer.json`
+    - Any non-custom PHP code, including to WordPress core, new plugins, etc., should be managed with Composer and updated in this way.
+* `lando npm run gulp` will need to be ran in `web/wp-content/themes/bumblebee` after any changes to the SASS source files
+* `lando npm install` will need to be ran after any changes to `web/wp-content/themes/bumblebee/package.json`
+
+### Tools
+* `lando composer code-sniff` will check themes and plugins against WordPress coding standards.
+* `lando composer unit-test` will run the defined unit tests using PHPUnit.
+* `lando composer local-behat` will run the acceptance tests.
+
+
+## CI/CD pipeline
+CircleCI builds the master branch and every Pull Request to this repository.
+If you want to set up your own deployment pipeline, you will need to add the following environment variables in the CircleCI UI. See [https://circleci.com/docs/2.0/environment-variables](https://circleci.com/docs/2.0/environment-variables/)/ for details.
 
 * `TERMINUS_SITE`:  Name of the Pantheon site to run tests on, e.g. my_site
 * `TERMINUS_TOKEN`: The Pantheon machine token
@@ -24,49 +59,8 @@ You will need to add the following environment variables in the CircleCI UI. See
 * `ADMIN_PASSWORD`: The admin password to use when installing.
 * `ADMIN_EMAIL`:    The email address to give the admin when installing.
 
-## Local Setup
-In order to develop the site locally a few steps need to be completed. 
-These steps only need to be performed once, unless noted. 
-
-* Open a terminal
-* Checkout the Git repository
-* Enter the Git docroot
-
-## Local Development
-
-### Using Lando as a local development environment
-First, take care of the one-time setup steps below:
-* Install [Lando](https://docs.devwithlando.io/) if not already installed
-* Edit `.lando.yml` and update `name`, `site` and `id` to match those of your Pantheon site
+* If you're using your own Pantheon account, edit `.lando.yml` and update `name`, `site` and `id` to match those of your Pantheon site
     - You will also need to edit the node proxy if you wish to access BrowserSync at a different URL
 
-Then, use `lando start` and `lando stop` to start and stop the local development environment.
-
-After cloning this repository you will need to download dependencies. This can be done through Lando with the commands below:
-* `lando composer-install`
-* `lando gulp-build`
-
-Tests can also be run locally on Lando with the commands below:
-* `lando composer local-behat`
-* `lando composer unit-test`
-
-### Using another local development environment
-All of these steps are a one-time step unless noted.
-
-* Install [Composer](https://getcomposer.org) if not already installed
-* Install [NodeJS](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/) if not already installed
-* Copy `sample.env` to `.env` and update the values accordingly
-* Run `./bin/install-composer-dependencies.sh` to install PHP dependencies with Composer
-    - `composer update` will need to be ran if `composer.json` has been changed
-* Run `./.circleci/build-gulp-assets.sh` to compile theme assets
-
-### Updates and file changes
-** Note: ** if you are using Lando for local development prefix all of the commands below with `lando ` to run them on Lando instead of your local system. For example, `npm run dev` would become `lando npm run dev`.
-
-* `composer update` will need to be ran after any changes to `composer.json`
-    - Any non-custom PHP code, including to WordPress core, new plugins, etc., should be managed with Composer and updated in this way.
-* `npm run gulp` will need to be ran in `web/wp-content/themes/twentyseventeen-child` after any changes to `web/wp-content/themes/twentyseventeen-child/source` files
-    - `npm run watch` can be used to build the production CSS and JavaScript files, watch for changes in the source files, and rebuild the production files after a change.
-    - `npm run dev` is the same as above but it also starts a [BrowserSync](https://browsersync.io/) instance for automated reloading. Be sure to update the `url` export in `web/wp-content/themes/twentyseventeen-child/gulp/constants.js` with your local development URL. Unless you are using Lando, in which case leave it set to `https://nginx/`.
-* `npm install` will need to be ran after any changes to `web/wp-content/themes/twentyseventeen-child/package.json`
-    - This is for advanced users who wish to customize their frontend build process.
+## Credits
+This repository is a fork of https://github.com/ataylorme/Advanced-WordPress-on-Pantheon
