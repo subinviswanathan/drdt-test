@@ -11,6 +11,7 @@
  *
  * @package bumblebee
  */
+
 ?>
 <?php get_header(); ?>
 <?php if ( have_posts() ) : ?>
@@ -21,37 +22,38 @@
 	<?php endif; ?>
 	<section class="featured">
 		<?php
-			// @todo: Pick from a custom list of posts
-			// Featured 1;
-			if ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content', get_post_type() );
-			}
+		// @todo: Pick from a custom list of posts.
+		// Featured 1.
+		if ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/content', get_post_type() );
+		}
 
-			// Featured 2;
-			if ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content', get_post_type() );
-			}
+		// Featured 2.
+		if ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/content', get_post_type() );
+		}
 
-			// Featured 3;
-			if ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content', get_post_type() );
-			}
+		// Featured 3.
+		if ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/content', get_post_type() );
+		}
 		?>
 	</section>
 
 	<?php while ( have_posts() ) : ?>
 		<section>
 			<div>
-				<?php for ( $i = 0; $i < 6; $i++ ): the_post(); ?>
+				<?php for ( $i = 0; $i < 6; $i++ ) : ?>
+					<?php the_post(); ?>
 					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
 				<?php endfor; ?>
 			</div>
 			<aside class="sidebar"></aside>
 		</section>
-		<?php if ( ( $wp_query->current_post + 1 ) != ( $wp_query->post_count ) ): ?>
+		<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
 			<div class="full-width-ad"></div>
 		<?php endif; ?>
 	<?php endwhile; ?>
@@ -61,5 +63,7 @@
 <?php else : ?>
 	<?php get_template_part( 'template-parts/content', 'none' ); ?>
 <?php endif; ?>
-<?php if ( is_single() ) get_sidebar(); ?>
-<?php get_footer();
+<?php if ( is_single() ) : ?>
+	<?php get_sidebar(); ?>
+<?php endif; ?>
+<?php get_footer(); ?>
