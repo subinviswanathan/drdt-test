@@ -136,7 +136,7 @@ add_action( 'widgets_init', 'bumblebee_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bumblebee_scripts() {
-	wp_enqueue_style( 'bumblebee-style', get_stylesheet_uri(), [], '1.0.0' );
+	wp_enqueue_style( 'bumblebee-style', get_stylesheet_uri(), [], '1.0.1' );
 
 	wp_enqueue_script( 'bumblebee-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
