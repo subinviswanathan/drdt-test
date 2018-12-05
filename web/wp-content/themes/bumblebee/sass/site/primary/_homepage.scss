@@ -23,6 +23,7 @@
 			width: calc(30% - 20px);
 
 			h2 {
+				margin: 0;
 				padding: 10px;
 				word-wrap: break-word;
 				a {
@@ -31,7 +32,6 @@
 					font: {
 						family: $font__h1;
 						size: 24px;
-						weight: 600;
 					};
 
 					&:hover {
@@ -71,7 +71,7 @@
 
 	.featured {
 		display: flex;
-		margin: 40px auto 20px;
+		margin: 100px auto 20px;
 		width: 100%;
 
 		article:first-of-type {

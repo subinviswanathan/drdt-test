@@ -774,13 +774,13 @@ a {
   margin: 10px;
   width: calc(30% - 20px); }
   .home section:not(.featured) article h2 {
+    margin: 0;
     padding: 10px;
     word-wrap: break-word; }
     .home section:not(.featured) article h2 a {
       color: #000;
       font-family: "Lato", "Arial", sans-serif;
-      font-size: 24px;
-      font-weight: 600; }
+      font-size: 24px; }
       .home section:not(.featured) article h2 a:hover {
         text-decoration: underline; }
 
@@ -806,7 +806,7 @@ a {
 
 .home .featured {
   display: flex;
-  margin: 40px auto 20px;
+  margin: 100px auto 20px;
   width: 100%; }
   .home .featured article:first-of-type {
     display: flex;
