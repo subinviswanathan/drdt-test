@@ -25,7 +25,8 @@
     "wpackagist-plugin/pantheon-advanced-page-cache": "*",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
     "wpackagist-plugin/wp-cfm":"1.5",
-    "wpackagist-plugin/rocket-lazy-load":"1.4.9"
+    "wpackagist-plugin/rocket-lazy-load":"1.4.9",
+    "wpackagist-plugin/wp-redis":"0.7.0"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",
