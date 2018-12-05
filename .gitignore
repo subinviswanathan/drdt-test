@@ -32,6 +32,7 @@ web/*
 !web/wp-config.php
 !web/wp-content/
 web/wp-content/*
+!web/wp-content/config/
 !web/wp-content/mu-plugins/
 web/wp-content/mu-plugins/*
 !web/wp-content/mu-plugins/alter-wpcfm-config-path.php
