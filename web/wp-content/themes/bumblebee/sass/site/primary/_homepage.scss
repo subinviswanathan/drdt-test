@@ -2,19 +2,42 @@
 	section {
 		@include site-center;
 	}
+
 	section:not(.featured) {
+
 		> div {
-			width: 70%;
 			display: flex;
+			flex-basis: calc(100% - 300px);
 			flex-wrap: wrap;
+			max-width: calc(100% - 300px);
 		}
-		> aside { width: 30%; display: inline-block; }
+
+		> aside {
+			display: inline-block;
+			width: 300px;
+		}
+
 		article {
 			box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
-			margin: 0 1em;
-			width: 29%;
-			header {
-				padding: .25em;
+			margin: 10px;
+			width: calc(30% - 20px);
+
+			h2 {
+				padding: 10px;
+				word-wrap: break-word;
+				a {
+					color: $color__black;
+
+					font: {
+						family: $font__h1;
+						size: 24px;
+						weight: 600;
+					};
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
 			}
 		}
 	}
@@ -48,7 +71,7 @@
 
 	.featured {
 		display: flex;
-		margin-bottom: 20px;
+		margin: 40px auto 20px;
 		width: 100%;
 
 		article:first-of-type {
