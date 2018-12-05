@@ -1,0 +1,47 @@
+.single {
+	.site-container {
+		margin: 0 auto;
+		max-width: 1260px;
+
+		#primary {
+			float: left;
+			margin-left: 90px;
+			padding-right: 80px;
+			width: 760px;
+
+			.entry-title {
+				font: {
+					family: $font__h1;
+					size: 46px;
+					weight: 700;
+				};
+				line-height: 56px;
+				margin-bottom: 20px;
+			}
+
+			.entry-meta {
+				.posted-on {
+					display: none;
+				}
+
+				.byline {
+					a {
+						color: #0a4e9b;
+						font: {
+							size: 18px;
+							style: italic;
+						};
+					}
+					
+				}
+			}
+		}
+
+		// Single Post Sidebar
+		#secondary {
+			float: left;
+			width: 330px;
+		}
+	}
+}
+
