@@ -136,8 +136,8 @@ add_action( 'widgets_init', 'bumblebee_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bumblebee_scripts() {
-	wp_enqueue_style( 'pure-css', 'https://unpkg.com/purecss@1.0.0/build/pure-min.css', array(), '1.0.0', true );
-	wp_enqueue_style( 'pure-css-grids', 'https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css', array(), '1.0.0', true );
+	wp_enqueue_style( 'pure-css', 'https://unpkg.com/purecss@1.0.0/build/pure-min.css', [], '1.0.0' );
+	wp_enqueue_style( 'pure-css-grids', 'https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css', [ 'pure-css' ], '1.0.0' );
 
 	wp_enqueue_style( 'bumblebee-style', get_stylesheet_uri(), [], '1.0.2' );
 
