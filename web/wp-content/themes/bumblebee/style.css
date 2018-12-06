@@ -353,7 +353,7 @@ select,
 optgroup,
 textarea {
   color: #404040;
-  font-family: "Open Sans", "Arial", sans-serif;
+  font-family: "Lato", "Arial", sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
@@ -845,27 +845,41 @@ a {
         .home .featured article:nth-of-type(3) h2 a:hover {
           text-decoration: underline; }
 
-.single .site-container {
+.single-post .site-container {
   margin: 0 auto;
-  max-width: 1260px; }
-  .single .site-container #primary {
+  max-width: 1260px;
+  padding-top: 100px; }
+  .single-post .site-container article h3 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px; }
+  .single-post .site-container #primary {
     float: left;
     margin-left: 90px;
     padding-right: 80px;
     width: 760px; }
-    .single .site-container #primary .entry-title {
+    .single-post .site-container #primary .entry-content p a {
+      border-bottom: 1px solid;
+      color: #000;
+      text-decoration: none; }
+    .single-post .site-container #primary .entry-header .dek h2 {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 32px;
+      margin-bottom: 35px; }
+    .single-post .site-container #primary .entry-title {
       font-family: "Lato", "Arial", sans-serif;
       font-size: 46px;
       font-weight: 700;
       line-height: 56px;
       margin-bottom: 20px; }
-    .single .site-container #primary .entry-meta .posted-on {
+    .single-post .site-container #primary .entry-meta .posted-on {
       display: none; }
-    .single .site-container #primary .entry-meta .byline a {
+    .single-post .site-container #primary .entry-meta .byline a {
       color: #0a4e9b;
       font-size: 18px;
       font-style: italic; }
-  .single .site-container #secondary {
+  .single-post .site-container #secondary {
     float: left;
     width: 330px; }
 

@@ -1,13 +1,39 @@
-.single {
+.single-post {
 	.site-container {
 		margin: 0 auto;
 		max-width: 1260px;
+		padding-top: 100px;
+
+		article h3 {
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 40px;
+		}
 
 		#primary {
 			float: left;
 			margin-left: 90px;
 			padding-right: 80px;
 			width: 760px;
+
+			.entry-content {
+				p {
+					a {
+						border-bottom: 1px solid;
+						color: $color__black;
+						text-decoration: none;
+					}
+				}
+			}
+
+			.entry-header {
+				.dek h2 {
+					font-size: 22px;
+					font-weight: 500;
+					line-height: 32px;
+					margin-bottom: 35px;
+				}
+			}
 
 			.entry-title {
 				font: {
@@ -32,7 +58,6 @@
 							style: italic;
 						};
 					}
-					
 				}
 			}
 		}
