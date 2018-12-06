@@ -35,4 +35,5 @@ get_header();
 
 <?php get_sidebar(); ?>
 </div> <!-- .site-container -->
-<?php get_footer();
+<?php
+get_footer();
