@@ -1,0 +1,70 @@
+---
+- name: Install MySQL client, server and related libraries
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - mysql-client-5.7
+      - mysql-server-5.7
+      - python3-mysqldb
+  notify:
+    - restart mysql  
+    
+- name: Setup MySQL root password
+  mysql_user:
+    name: "root"
+    password: password
+    host: "{{ item }}"
+    state: present
+  with_items:
+  - "{{ ansible_hostname }}"
+  - 127.0.0.1
+  - ::1
+  - localhost
+  notify:
+    - restart mysql
+  
+- name: Setup MySQL creds for root user
+  template:
+    src: "root.my.cnf"
+    dest: "/root/.my.cnf"
+    owner: "root"
+    mode: 0600
+    
+- name: Delete blank MySQL users
+  mysql_user:
+    name: ""
+    host: "{{ item }}"
+    state: absent
+  with_items:
+  - "{{ ansible_hostname }}"
+  - 127.0.0.1
+  - ::1
+  - localhost
+
+- name: Drop MySQL test database
+  mysql_db: 
+    name: test
+    state: absent
+
+- name: Install MySQL UTF-8 configuration
+  copy:
+    src: utf8.cnf
+    dest: /etc/mysql/mysql.conf.d/utf8.cnf
+  notify:
+    - restart mysql
+
+#- stat: path=/vagrant/drdt-test/CPT_dump.sql
+#  register: cpt_dump
+
+#- name: Downloading CPT dump database .......
+#  command: "wget http://staging.constructionprotips.com/wp-content/uploads/sites/9/2018/12/CPT_dump.sql"
+#  when: cpt_dump.stat.exists == False
+
+- name: Restore CPT database
+  mysql_db:
+    name: wordpress
+    state: import
+    target: CPT_dump.sql
+

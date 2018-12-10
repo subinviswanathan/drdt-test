@@ -1,0 +1,64 @@
+---
+- name: install php7.1 repository
+  apt_repository: repo="ppa:ondrej/php"
+
+- name: Install PHP and its modules
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - php7.1
+      - libapache2-mod-php7.1
+      - imagemagick
+      - memcached
+      - php7.1-bcmath
+      - php7.1-cli
+      - php7.1-common
+      - php7.1-curl
+      - php7.1-gd
+      - php7.1-intl
+      - php7.1-json
+      - php7.1-fpm
+      - php7.1-mbstring
+      - php7.1-mysql
+      - php7.1-opcache
+      - php7.1-readline
+      - php7.1-tokenizer
+      - php7.1-xml
+      - php7.1-zip
+      - php-amqplib
+      - php-memcached
+      - php-imagick
+      - composer
+      - nodejs
+      - npm
+
+- name: Install PHP config customizations
+  copy:
+    src: "{{ item }}"
+    dest: /etc/php/7.1/mods-available/{{ item }}
+    owner: root
+    group: root
+    force: yes
+  with_items:
+    - virtualpress-php-settings.ini
+    - virtualpress-xdebug-settings.ini
+
+- name: Activate PHP config customizations
+  file:
+    src: /etc/php/7.1/mods-available/{{ item }}
+    path: /etc/php/7.1/fpm/conf.d/999-{{ item }}
+    state: link
+  with_items:
+    - virtualpress-php-settings.ini
+    - virtualpress-xdebug-settings.ini
+  notify:
+    - restart php
+
+- name: Setup FPM pools for named sites
+  template:
+    src: pool.conf
+    dest: /etc/php/7.1/fpm/pool.d/wordpress.conf
+  notify:
+    - restart php

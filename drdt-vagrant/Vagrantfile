@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Verify whether required plugins are installed.
+required_plugins = [ "vagrant-disksize" ]
+required_plugins.each do |plugin|
+  if not Vagrant.has_plugin?(plugin)
+    raise "The vagrant plugin #{plugin} is required. Please run `vagrant plugin install #{plugin}`"
+  end
+end
+
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+Vagrant.configure("2") do |local|
+  local.vm.box = "ubuntu/bionic64"
+  local.disksize.size = '20GB'
+  local.vm.network "private_network", ip: "192.168.205.11"
+  local.vm.provision "ansible_local" do |ansible|
+    ansible.install = "true"
+    ansible.install_mode = "pip"
+    ansible.verbose = "vv"
+    ansible.playbook = "setup.yml"
+    ansible.inventory_path = "virtualpress-inventory"
+    ansible.limit = "all"
+  local.vm.provision :shell, :inline => "
+    cd /vagrant/drdt-test/web/wp
+    wp rewrite structure --allow-root '/%category%/%postname%/'"
+  end
+  #config.vm.provider :virtualbox do |vb|
+  #  vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  #  vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  #  vb.customize ["modifyvm", :id, "--uartmode1", "disconnected" ]
+  #end
+  local.vm.synced_folder ".", "/vagrant", owner:"www-data", group:"www-data", mount_options:["dmode=775", "fmode=775"]
+end
