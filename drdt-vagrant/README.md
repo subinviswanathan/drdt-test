@@ -91,4 +91,8 @@ ___________________
 	Better Redis default configuration.
 
 	Nginx installation.
+	
+
+If you have any questions, request or suggestion, I will be pleased to take a look a them :) just send us a request at :
+devops@tmbi.com
 
