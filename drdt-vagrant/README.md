@@ -44,9 +44,7 @@ __________________
 		*Currently some issue downloading the file, I'm working on finding a good place to store this. Will probably be in one of our s3 storage on AWS.
 
 		you will need to place that file in the drdt-vagrant/ folder
-	
-	6 ) You will need to clone the drdt-test project inside the drdt-vagrant directory.
-	
+		
 	7 ) cd into the folder and do the following command : vagrant up
 
 Access information:
