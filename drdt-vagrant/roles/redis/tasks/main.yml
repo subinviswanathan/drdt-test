@@ -1,0 +1,17 @@
+---
+- name: Install Redis
+  apt: 
+    name: redis-server
+    state: present
+
+- name: Remove redis default configuration
+  file:
+    state: absent
+    path: /etc/redis/redis.conf
+
+- name: Setup our conf for redis
+  template:
+    src: redis.conf
+    dest: /etc/redis/redis.conf
+  notify:
+    - restart redis

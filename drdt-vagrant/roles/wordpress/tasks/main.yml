@@ -1,0 +1,120 @@
+---
+- name: Clone repo on the remote
+  git:
+    repo: https://BenoitRichard1212:b03ee824a8b8351b316ab29e2a74f12eee5dc8dc@github.com/fariasf/drdt-test  
+    version: master
+    dest: /vagrant/drdt-test
+    force: yes
+
+- name: Install Composer's dependencies
+  composer:
+    working_dir: /vagrant/drdt-test
+    no_dev: no
+
+- name: Symlink wp-content in place
+  file:
+    src: /vagrant/drdt-test/web/wp-content  
+    path: /vagrant/drdt-test/web/wp/wp-content
+    state: link
+
+- name: Create database for WordPress
+  mysql_db:
+    name: wordpress
+    state: present
+    encoding: utf8mb4
+    collation: utf8mb4_unicode_ci
+
+- name: Create WordPress MySQL user
+  mysql_user:
+    name: admin
+    password: password
+    state: present
+    priv: "wordpress.*:ALL"
+    update_password: always
+
+- name: Generate wp-config.php
+  shell: wp config create --dbname=wordpress --dbuser=admin --dbpass=password --dbcharset=utf8mb4 --dbcollate=utf8mb4_unicode_ci --locale=en_US --extra-php --force
+  become: true
+  become_method: sudo
+  become_user: www-data
+  args:
+    chdir: /vagrant/drdt-test/web/wp
+    #stdin: |
+      #define( 'WP_DEBUG', true );
+      #define( 'SAVEQUERIES', true );
+
+- name: npm install
+  command: npm install --no-optional --no-bin-links
+  args:
+    chdir: /vagrant/drdt-test/web/wp/wp-content/themes/bumblebee
+  ignore_errors: yes
+  register: npm_install
+
+- name: npm install again
+  command: npm install --no-optional --no-bin-links
+  args:
+    chdir: /vagrant/drdt-test/web/wp/wp-content/themes/bumblebee
+  ignore_errors: yes
+  when: npm_install.failed is defined
+
+  #- name: npm rebuild node-sass
+     #command: npm rebuild node-sass --no-bin-links --no-optional
+    #args:
+    #  chdir: '{{ item }}'
+    #with_items:
+   # - '{{ project_path }}'
+    #- '{{ project_path }}/externals/wp-forms-api'
+   # - '{{ project_path }}/web/app/themes/rdnap'
+
+#- name: Symlink gulp into /usr/local/bin
+  #file:
+    #src: /var/www/wp/wp-content/themes/bumblebee/node_modules/gulp/bin/gulp.js
+    #path: /usr/bin/gulp
+    #state: link
+
+#- name: Set WordPress permissions
+#  file:
+#   path: /vagrant/drdt-test/web/wp
+#    owner: www-data
+#    group: www-data
+#    mode: 0755
+#    recurse: yes
+#    state: directory
+
+- name: Modify the folder permissions
+  become: yes
+  command: find /vagrant/drdt-test/web/wp -type d -exec chmod 755 {} \;
+
+- name: Modify the file permissions
+  become: yes
+  command: find /vagrant/drdt-test/web/wp -type f -exec chmod 644 {} \;
+
+- name: run Gulp tasks
+  command: gulp
+  args:
+    chdir: /vagrant/drdt-test/web/wp/wp-content/themes/bumblebee
+  ignore_errors: yes
+
+- name: Modify the home option
+  become: false
+  command: chdir=/vagrant/drdt-test/web/wp wp option update home 'http://drdt.constructionprotips.com'
+
+- name: Modify the siteurl option
+  become: false
+  command: chdir=/vagrant/drdt-test/web/wp wp option update siteurl 'http://drdt.constructionprotips.com'
+
+- name: Create a WP user for local env.
+  become: false
+  command: chdir=/vagrant/drdt-test/web/wp wp user create local.admin local@test.com --role=administrator
+
+- name: Update local.admin user password to password
+  become: false
+  command: chdir=/vagrant/drdt-test/web/wp wp user update local.admin --user_pass=password
+
+- name: Reloading permalinks for pages proper load
+  become: false
+  command: chdir=/vagrant/drdt-test/web/wp wp rewrite structure '/%category%/'
+
+#- name: Reload permalinks still ...
+#  become: false
+#  command: chdir=/vagrant/drdt-test/web/wp wp rewrite structure '/%category%/%postname%/'
