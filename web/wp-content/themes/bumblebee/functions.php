@@ -178,3 +178,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	include get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Ads.
+ */
+require get_template_directory() . '/inc/ads.php';

@@ -4,6 +4,7 @@
 	}
 
 	section:not(.featured) {
+		display: flex;
 
 		> div {
 			display: flex;
@@ -15,6 +16,7 @@
 		> aside {
 			display: inline-block;
 			width: 300px;
+			> .ad { position: sticky; top: 56px; }
 		}
 
 		article {
@@ -67,6 +69,10 @@
 		@include dotted-background;
 		min-height: 600px;
 		margin: -75px auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
 	}
 
 	.featured {

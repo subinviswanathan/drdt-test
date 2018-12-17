@@ -557,7 +557,8 @@ a {
   float: left;
   position: sticky;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 2; }
   .main-navigation > #primary-menu {
     max-width: 1260px;
     margin: 0 auto; }
@@ -759,30 +760,33 @@ a {
   max-width: 1260px;
   margin: 0 auto; }
 
-.home section:not(.featured) > div {
-  display: flex;
-  flex-basis: calc(100% - 300px);
-  flex-wrap: wrap;
-  max-width: calc(100% - 300px); }
-
-.home section:not(.featured) > aside {
-  display: inline-block;
-  width: 300px; }
-
-.home section:not(.featured) article {
-  box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
-  margin: 10px;
-  width: calc(30% - 20px); }
-  .home section:not(.featured) article h2 {
-    margin: 0;
-    padding: 10px;
-    word-wrap: break-word; }
-    .home section:not(.featured) article h2 a {
-      color: #000;
-      font-family: "Lato", "Arial", sans-serif;
-      font-size: 24px; }
-      .home section:not(.featured) article h2 a:hover {
-        text-decoration: underline; }
+.home section:not(.featured) {
+  display: flex; }
+  .home section:not(.featured) > div {
+    display: flex;
+    flex-basis: calc(100% - 300px);
+    flex-wrap: wrap;
+    max-width: calc(100% - 300px); }
+  .home section:not(.featured) > aside {
+    display: inline-block;
+    width: 300px; }
+    .home section:not(.featured) > aside > .ad {
+      position: sticky;
+      top: 56px; }
+  .home section:not(.featured) article {
+    box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
+    margin: 10px;
+    width: calc(30% - 20px); }
+    .home section:not(.featured) article h2 {
+      margin: 0;
+      padding: 10px;
+      word-wrap: break-word; }
+      .home section:not(.featured) article h2 a {
+        color: #000;
+        font-family: "Lato", "Arial", sans-serif;
+        font-size: 24px; }
+        .home section:not(.featured) article h2 a:hover {
+          text-decoration: underline; }
 
 .home article {
   background: #fff;
@@ -802,7 +806,11 @@ a {
   background: linear-gradient(90deg, #fff 6px, transparent 1%) center, linear-gradient(#fff 6px, transparent 1%) center, #ccc;
   background-size: 8px 8px;
   min-height: 600px;
-  margin: -75px auto; }
+  margin: -75px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
 
 .home .featured {
   display: flex;
