@@ -17,6 +17,11 @@ wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack.js'
  *      string ['targeting'] Custom key-value pairs for targeting.
  */
 function render_ad( $id, $options ) {
+	$ad_class = $options['class'] ?? '';
+	unset( $options['class'] );
+	$classes = [ 'ad', $ad_class ];
+	$class   = implode( ' ', $classes );
+
 	/**
 	 * Filters ad options.
 	 *
@@ -29,7 +34,7 @@ function render_ad( $id, $options ) {
 	 */
 	$ad_options = apply_filters( 'ad_options', $options );
 
-	$markup = '<div id="' . $id . '" class="ad" ' . join( ' ', bumblebee_ad_options_to_attributes( $ad_options ) ) . '></div>';
+	$markup = '<div id="' . $id . '" class="' . $class . '" ' . join( ' ', bumblebee_ad_options_to_attributes( $ad_options ) ) . '></div>';
 
 	// Make sure we load the Ad Stack if we're rendering ads.
 	wp_enqueue_script( 'ad-stack' );
