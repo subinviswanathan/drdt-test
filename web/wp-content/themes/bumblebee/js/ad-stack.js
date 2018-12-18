@@ -2,6 +2,8 @@ var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 function TMBI_Ad_Stack( options ) {
 	var self = this;
+
+	// Add GPT code.
 	(function() {
 		var gads = document.createElement("script");
 		gads.async = true;
@@ -12,8 +14,22 @@ function TMBI_Ad_Stack( options ) {
 		node.parentNode.insertBefore(gads, node);
 	})();
 
+	/**
+	 * Converts a string of sizes to a DFP-suitable array.
+	 *
+	 * @param string sizes_str The string containing sizes. E.g.: 728x90,300x600.
+	 * @return array           The list of sizes in array format. E.g.: [[728,90],[300,600]]
+	 */
+	function sizes_str_to_array( sizes_str ) {
+		// sizes_str.split(',').map((size) => size.split('x').map(parseInt)) returns NULL for height
+		return sizes_str.split(',').map(function(size){
+			sizeParts = size.split('x');
+			return [parseInt(sizeParts[0]),parseInt(sizeParts[1])]
+		});
+	}
+
 	// Initialize the ad stack.
-	this.init = function(){
+	self.init = function(){
 		googletag.cmd.push(function() {
 			// Lazy load when in view
 			// @todo: check with Danny if we want to keep using custom implementation
@@ -22,20 +38,19 @@ function TMBI_Ad_Stack( options ) {
 				renderMarginPercent: 200,  // Render slots within 2 viewports.
 				mobileScaling: 2.0  // Double the above values on mobile.
 			});
+			// SRA
 	    	googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
 		})
 	};
 
 	// Render a single ad.
-	this.fetch_and_render = function( ad_id, options ){
+	self.fetch_and_render = function( ad_id, options ){
 		googletag.cmd.push(function(){
-			sizes = options.adSizes.split(',').map(function(size){
-				sizeParts = size.split('x');
-				return [parseInt(sizeParts[0]),parseInt(sizeParts[1])]
-			});
-			var the_ad = googletag.defineSlot( options.adSlotName, sizes, ad_id);
+			var sizes  = sizes_str_to_array( options.adSizes );
+			var the_ad = googletag.defineSlot( options.adSlotName, sizes, ad_id );
 
+			// @todo: add global targeting parameters
 			var targeting = JSON.parse( options.adTargeting || "{}" );
 			for( var key in targeting ) {
 				if ( targeting.hasOwnProperty(key) ) {
@@ -48,11 +63,11 @@ function TMBI_Ad_Stack( options ) {
 		});
 	};
 
-	// Render a single ad.
-	this.fetch_and_render_batch = function( batch ){};
+	// Render a single batch.
+	self.fetch_and_render_batch = function( batch ){};
 
-	// Fetch and render all
-	this.fetch_and_render_all = function() {
+	// Fetch and render all ads on page.
+	self.fetch_and_render_all = function() {
 		var ads = document.getElementsByClassName("ad");
 		for (var i = 0; i < ads.length; i++) {
 		    self.fetch_and_render( ads[i].id, ads[i].dataset );

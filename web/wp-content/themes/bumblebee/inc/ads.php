@@ -16,7 +16,7 @@ wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack.js'
  *      string ['slot-name'] Ad slot name.
  *      string ['targeting'] Custom key-value pairs for targeting.
  */
-function render_ad( $id, $options ) {
+function bumblebee_render_ad( $id, $options ) {
 	$ad_class = $options['class'] ?? '';
 	unset( $options['class'] );
 	$classes = [ 'ad', $ad_class ];

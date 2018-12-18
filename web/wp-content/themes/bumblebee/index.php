@@ -23,7 +23,7 @@
 	<?php endif; ?>
 	<div class="full-width-ad prearticle">
 		<?php
-			render_ad(
+			bumblebee_render_ad(
 				uniqid( 'ad' ),
 				[
 					'slot-name' => 'prearticle',
@@ -71,7 +71,7 @@
 			</div>
 			<aside class="sidebar">
 				<?php
-					render_ad(
+					bumblebee_render_ad(
 						uniqid( 'ad' ),
 						[
 							'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
@@ -84,7 +84,7 @@
 		<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
 			<div class="full-width-ad">
 				<?php
-					render_ad(
+					bumblebee_render_ad(
 						uniqid( 'ad' ),
 						[
 							'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
