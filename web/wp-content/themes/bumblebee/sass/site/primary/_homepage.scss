@@ -66,13 +66,18 @@
 	}
 
 	.full-width-ad {
-		@include dotted-background;
-		min-height: 600px;
-		margin: -75px auto;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
+		&:not(.prearticle) {
+			@include dotted-background;
+			min-height: 600px;
+			margin: -75px auto;
+		}
+		&.prearticle {
+			min-height: 300px;
+		}
 	}
 
 	.featured {

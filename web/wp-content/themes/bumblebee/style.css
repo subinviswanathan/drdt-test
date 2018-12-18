@@ -803,14 +803,17 @@ a {
       width: 100%; }
 
 .home .full-width-ad {
-  background: linear-gradient(90deg, #fff 6px, transparent 1%) center, linear-gradient(#fff 6px, transparent 1%) center, #ccc;
-  background-size: 8px 8px;
-  min-height: 600px;
-  margin: -75px auto;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%; }
+  .home .full-width-ad:not(.prearticle) {
+    background: linear-gradient(90deg, #fff 6px, transparent 1%) center, linear-gradient(#fff 6px, transparent 1%) center, #ccc;
+    background-size: 8px 8px;
+    min-height: 600px;
+    margin: -75px auto; }
+  .home .full-width-ad.prearticle {
+    min-height: 300px; }
 
 .home .featured {
   display: flex;
