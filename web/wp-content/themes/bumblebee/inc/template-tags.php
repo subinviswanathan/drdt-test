@@ -118,8 +118,10 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
+	 *
+	 * @param string $size The thumbnail size.
 	 */
-	function bumblebee_post_thumbnail() {
+	function bumblebee_post_thumbnail( $size = 'medium' ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -136,7 +138,7 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 	<?php
 	the_post_thumbnail(
-		[ 300, 300 ],
+		$size,
 		array(
 			'role'  => 'presentation',
 			'alt'   => false, // These are decorative images. Alternative text just duplicates the title.

@@ -182,3 +182,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Ads.
  */
 require get_template_directory() . '/inc/ads.php';
+
+add_image_size( 'homepage-featured-big', 385, 385, true );
+add_image_size( 'homepage-featured-small', 165, 165, true );
+add_image_size( 'grid-thumbnail', 273, 273, true );
