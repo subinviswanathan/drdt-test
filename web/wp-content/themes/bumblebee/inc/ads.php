@@ -101,8 +101,8 @@ add_action( 'wp_footer', 'bumblebee_maybe_remove_ad_stack', 1 );
  * @param array $vars List of query variables.
  * @see query_vars
  */
-function bumblebee_ad_variant_query_var( $vars ) {
+function bumblebee_add_variant_query_var( $vars ) {
 	$vars[] .= 'variant';
 	return $vars;
 }
-add_filter( 'query_vars', 'bumblebee_ad_variant_query_var' );
+add_filter( 'query_vars', 'bumblebee_add_variant_query_var' );
