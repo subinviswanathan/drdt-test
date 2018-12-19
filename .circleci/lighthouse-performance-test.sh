@@ -17,7 +17,9 @@ echo -e "\nProcessing pull request #$PR_NUMBER"
 
 # Stash site URLs
 MULTIDEV_SITE_URL="https://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/"
-LIVE_SITE_URL="https://live-$TERMINUS_SITE.pantheonsite.io/"
+# @todo: switch to the current live site once we finish migration
+# LIVE_SITE_URL="https://live-$TERMINUS_SITE.pantheonsite.io/"
+LIVE_SITE_URL="https://www.constructionprotips.com/"
 
 # Make artifacts directory
 CIRCLE_ARTIFACTS='artifacts'

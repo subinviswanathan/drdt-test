@@ -21,6 +21,21 @@
 			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 		</header>
 	<?php endif; ?>
+	<div class="full-width-ad prearticle">
+		<?php
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name' => 'prearticle',
+					'sizes'     => '970x250,970x90,728x90,3x3',
+					'targeting' => [
+						'pos'      => 'prearticle',
+						'location' => 'top',
+					],
+				]
+			);
+		?>
+	</div>
 	<section class="featured">
 		<?php
 		// @todo: Pick from a custom list of posts.
@@ -44,7 +59,9 @@
 		?>
 	</section>
 
+	<?php $section_num = 0; ?>
 	<?php while ( have_posts() ) : ?>
+		<?php $section_num++; ?>
 		<section>
 			<div>
 				<?php for ( $i = 0; $i < 6; $i++ ) : ?>
@@ -52,10 +69,30 @@
 					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
 				<?php endfor; ?>
 			</div>
-			<aside class="sidebar"></aside>
+			<aside class="sidebar">
+				<?php
+					bumblebee_render_ad(
+						uniqid( 'ad' ),
+						[
+							'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+							'sizes'     => '300x250,300x600',
+						]
+					);
+				?>
+			</aside>
 		</section>
 		<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
-			<div class="full-width-ad"></div>
+			<div class="full-width-ad">
+				<?php
+					bumblebee_render_ad(
+						uniqid( 'ad' ),
+						[
+							'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+							'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+						]
+					);
+				?>
+			</div>
 		<?php endif; ?>
 	<?php endwhile; ?>
 
