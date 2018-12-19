@@ -42,19 +42,19 @@
 		// Featured 1.
 		if ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/homepage-featured-big', get_post_type() );
 		}
 
 		// Featured 2.
 		if ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/homepage-featured-small', get_post_type() );
 		}
 
 		// Featured 3.
 		if ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/homepage-featured-small', get_post_type() );
 		}
 		?>
 	</section>

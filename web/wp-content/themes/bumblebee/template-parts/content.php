@@ -10,12 +10,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php bumblebee_post_thumbnail(); ?>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
+			bumblebee_post_thumbnail();
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
+			bumblebee_post_thumbnail( 'grid-thumbnail' );
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 		?>
