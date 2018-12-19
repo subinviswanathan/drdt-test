@@ -1,64 +1,31 @@
 <?php
-/**
- * Template part for displaying posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package bumblebee
- */
-
 ?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php bumblebee_post_thumbnail(); ?>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
-		?>
-
-		<?php if ( is_singular() && 'post' === get_post_type() ) : ?>
-			<div class="entry-meta">
-				<?php
-					bumblebee_posted_on();
-					bumblebee_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php if ( is_singular() ) : ?>
-		<div class="entry-content">
-			<?php
-			the_content(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bumblebee' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-
-			wp_link_pages(
-				array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bumblebee' ),
-					'after'  => '</div>',
-				)
-			);
-			?>
-		</div><!-- .entry-content -->
-
-		<footer class="entry-footer">
-			<?php bumblebee_entry_footer(); ?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+<div class="pure-g opening-content">
+    <div class="pure-u-md-3-24 pure-u-lg-3-24 pure-u-xl-3-24 hide-on-mobile">
+        <div class="social-share">
+            <ul class="pure-menu-list social-menu">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><img class="social-icons" src="<?= get_stylesheet_directory_uri(); ?>/images/envelope-regular.svg" /></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><img class="social-icons" src="<?= get_stylesheet_directory_uri(); ?>/images/facebook-f-brands.svg" /></a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><img class="social-icons" src="<?= get_stylesheet_directory_uri(); ?>/images/pinterest-p-brands.svg" /></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-sm-1 pure-u-md-14-24 pure-u-lg-14-24 pure-u-xl-14-24">
+        <div class="post-content">
+            <h2 class="post-title"> <?= get_the_title();?> </h2>
+            <div class="pure-g social-share-mobile hide-on-desktop">
+                <div class="pure-u-sm-1 social-share-wrapper">
+                    <div class="pure-menu pure-menu-horizontal">
+                        <ul class="pure-menu-list social-menu-mobile">
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link"><img class="social-icons" src="<?= get_stylesheet_directory_uri(); ?>/images/envelope-regular.svg" /></a></li>
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link"><img class="social-icons" src="<?= get_stylesheet_directory_uri(); ?>/images/facebook-f-brands.svg" /></a></li>
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link"><img class="social-icons" src="<?= get_stylesheet_directory_uri(); ?>/images/pinterest-p-brands.svg" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="post-body">
+				<?php the_content(); ?>
+            </div>
+        </div>
+    </div>

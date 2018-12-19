@@ -42,19 +42,19 @@
 		// Featured 1.
 		if ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', 'home' );
 		}
 
 		// Featured 2.
 		if ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', 'home' );
 		}
 
 		// Featured 3.
 		if ( have_posts() ) {
 			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', 'home' );
 		}
 		?>
 	</section>
@@ -66,7 +66,7 @@
 			<div>
 				<?php for ( $i = 0; $i < 6; $i++ ) : ?>
 					<?php the_post(); ?>
-					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+					<?php get_template_part( 'template-parts/content', 'home' ); ?>
 				<?php endfor; ?>
 			</div>
 			<aside class="sidebar">
@@ -97,7 +97,6 @@
 	<?php endwhile; ?>
 
 	<div class="footer-ad"></div>
-	<?php the_posts_navigation(); ?>
 <?php else : ?>
 	<?php get_template_part( 'template-parts/content', 'none' ); ?>
 <?php endif; ?>
