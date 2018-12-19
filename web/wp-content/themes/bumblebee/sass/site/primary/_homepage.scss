@@ -1,146 +1,148 @@
-.home {
-	section {
-		@include site-center;
+.home-page * {
+	font-family: OpenSans,Arial,Helvetica,sans-serif;
+	font-size: 18px;
+	line-height: 29px;
+	color: #444444;
+}
+.home-page {
+	position: relative;
+}
+
+.pure-g {
+	letter-spacing: normal;
+}
+.home-page a {
+	text-decoration: none;
+}
+
+.home-page h3{
+	font-size: 30px;
+	line-height: 40px;
+}
+
+.home-page h5 {
+	font-size: 20px;
+	margin: 10px auto;
+}
+
+.home-page img {
+	max-width: 100%;
+}
+
+.home-page ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.home-page .advertisement, .home-page .newsletter-signup-form {
+	text-align: center;
+	padding: 100px 0;
+	background: aliceblue;
+	box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
+	margin: 10px 0;
+}
+
+.home-page .archive-headings {
+	text-align: center;
+	width: 100%;
+}
+
+.home-page .hero-container {
+	box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
+	margin-bottom: 10px;
+	height: 100%;
+	margin: 5px;
+	margin-left: 15px;
+}
+.home-page .hero-container .pure-g {
+	height: 100%;
+}
+
+.home-page .hero-container img {
+	width: 100%;
+	height: 100%;
+}
+
+.home-page .hero-container .hero-text {
+	padding: 0 30px;
+}
+
+.home-page .hero-container .hero-excerpt {
+	margin-bottom: 11px;
+}
+
+.home-page .hero-container .read-more {
+	padding: 10px 20px;
+	background: #ffc10e;
+}
+
+.home-page .archive-content {
+	margin: 0 auto;
+	max-width: 1260px;
+	position: relative;
+	z-index: 3;
+}
+
+.home-page .recipes, .home-page .sidebar {
+	margin: 10px;
+}
+
+.home-page .single-recipe {
+	margin: 5px;
+	box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
+	height: 100%;
+	background: #ffffff;
+}
+
+.home-page .single-recipe img{
+	width: 100%;
+}
+
+.home-page .recipe-content {
+	padding-left: 10px;
+	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 567px) {
+	.home-page .hero-container  {
+		margin: 5px 15px 10px;
 	}
-
-	section:not(.featured) {
-		display: flex;
-
-		> div {
-			display: flex;
-			flex-basis: calc(100% - 300px);
-			flex-wrap: wrap;
-			max-width: calc(100% - 300px);
-		}
-
-		> aside {
-			display: inline-block;
-			width: 300px;
-			> .ad { position: sticky; top: 56px; }
-		}
-
-		article {
-			box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
-			margin: 10px;
-			width: calc(30% - 20px);
-
-			h2 {
-				margin: 0;
-				padding: 10px;
-				word-wrap: break-word;
-				a {
-					color: $color__black;
-
-					font: {
-						family: $font__h1;
-						size: 24px;
-					};
-
-					&:hover {
-						text-decoration: underline;
-					}
-				}
-			}
-		}
+	.home-page .hero-container .hero-text {
+		padding: 0 10px;
 	}
-
-	article {
-		background: $color__white;
-		box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
-		display: inline-block;
-		vertical-align: top;
-
-		a {
-			color: $color__black;
-			text-decoration: none;
-		}
-
-		.post-thumbnail {
-			display: block;
-			width: 100%;
-
-			img {
-				width: 100%;
-			}
-		}
+	.home-page .single-item.single-recipe {
+		margin: 15px;
 	}
-
-	.full-width-ad {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		&:not(.prearticle) {
-			@include dotted-background;
-			min-height: 600px;
-			margin: -75px auto;
-		}
-		&.prearticle {
-			min-height: 300px;
-		}
+	.home-page .featured-container {
+		flex: 1 0 calc(80% - 10px);
 	}
-
-	.featured {
-		display: flex;
-		margin: 100px auto 20px;
-		width: 100%;
-
-		article:first-of-type {
-			display: flex;
-			flex: 1 0 70%;
-			max-width: 70%;
-			margin: 0 10px 0 0;
-
-			.post-thumbnail {
-				flex: 1 0 45%;
-				max-width: 385px;
-				width: 45%;
-			}
-
-			.entry-header {
-				flex: 1 0 50%;
-				padding: 30px;
-
-				h2 {
-
-					a {
-						color: $color__text-screen;
-
-						font: {
-							family: $font__h1;
-							size: 38px;
-						};
-						&:hover {
-							text-decoration: underline;
-						}
-					}
-				}
-			}
-		}
-
-		article:nth-of-type(2),
-		article:nth-of-type(3) {
-			flex: 1 0 calc(15% - 20px);
-			max-width: calc(15% - 20px);
-			margin: 0 10px;
-			overflow: hidden;
-
-			h2 {
-				padding: 10px;
-				word-wrap: break-word;
-				a {
-					color: $color__black;
-
-					font: {
-						family: $font__h1;
-						size: 24px;
-					};
-
-					&:hover {
-						text-decoration: underline;
-					}
-				}
-			}
-		}
+	.home-page .featured-posts {
+		overflow-x: scroll;
 	}
+	.home-page .sidebar {
+		display: none;
+	}
+}
+
+.full-width-ad {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	&:not(.prearticle) {
+		@include dotted-background;
+		min-height: 600px;
+		margin: -75px auto;
+		z-index: -1;
+	}
+	&.prearticle {
+		min-height: 300px;
+	}
+}
+
+.home-page aside.sidebar {
+	position: sticky;
+	top: 56px;
 }
