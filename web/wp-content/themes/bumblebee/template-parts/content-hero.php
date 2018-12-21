@@ -9,7 +9,7 @@
 	<div class="hero-container ">
 		<div class="pure-g ">
 			<a class="pure-u-sm-2-5 hero-image">
-				<?php echo get_the_post_thumbnail( $post_id, 'large', array( 'class' => 'pure-img' ) ); ?>
+				<?php bumblebee_post_thumbnail( 'homepage-featured-big' ); ?>
 			</a>
 			<div class="pure-u-sm-3-5">
 				<div class="hero-text">
