@@ -16,7 +16,7 @@
 <?php get_header(); ?>
 <main class="home-page">
 
-    <section class="advertisement">
+	<section class="advertisement">
 		<?php
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
@@ -29,11 +29,12 @@
 				],
 			]
 		);
-		?></section>
+		?>
+		</section>
 
 
 	<?php if ( have_posts() ) : ?>
-        <section class="archive-content pure-g">
+		<section class="archive-content pure-g">
 		<?php
 		// @todo: Pick from a custom list of posts.
 		// Featured 1.
@@ -54,26 +55,26 @@
 			get_template_part( 'template-parts/content', 'featured' );
 		}
 		?>
-    </section>
+	</section>
 
 	<?php $section_num = 0; ?>
 	<?php while ( have_posts() ) : ?>
 		<?php $section_num++; ?>
-        <section class="archive-content">
-            <div class="pure-g">
-                <section class="pure-u-1 pure-u-sm-3-4 homepage-article">
-                    <div class="pure-g recipes">
+		<section class="archive-content">
+			<div class="pure-g">
+				<section class="pure-u-1 pure-u-sm-3-4 homepage-article">
+					<div class="pure-g recipes">
 						<?php for ( $i = 0; $i < 6; $i++ ) : ?>
 						<?php the_post(); ?>
 						<?php get_template_part( 'template-parts/content', 'grid' ); ?>
-						<?php if( $i == 2 ) { ?>
-                    </div><div class="pure-g recipes">
-						<?php }?>
+						<?php if ( 2 === $i ) { ?>
+					</div><div class="pure-g recipes">
+						<?php } ?>
 						<?php endfor; ?>
-                    </div>
-                </section>
-                <section class="pure-u-sm-1-4">
-                    <aside class="sidebar">
+					</div>
+				</section>
+				<section class="pure-u-sm-1-4">
+					<aside class="sidebar">
 						<?php
 						bumblebee_render_ad(
 							uniqid( 'ad' ),
@@ -83,12 +84,12 @@
 							]
 						);
 						?>
-                    </aside>
-                </section>
-            </div>
-        </section>
+					</aside>
+				</section>
+			</div>
+		</section>
 			<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
-                <div class="full-width-ad">
+				<div class="full-width-ad">
 					<?php
 					bumblebee_render_ad(
 						uniqid( 'ad' ),
@@ -98,7 +99,7 @@
 						]
 					);
 					?>
-                </div>
+				</div>
 			<?php endif; ?>
 
 	<?php endwhile; ?>

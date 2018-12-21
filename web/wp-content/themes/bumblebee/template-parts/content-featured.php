@@ -1,5 +1,9 @@
 <?php
-//Featured template
+/** Featured template
+
+ * @package bumblebee
+ */
+
 ?>
 <div class="pure-u-1 pure-u-sm-1-5">
 	<div class="single-recipe single-item">

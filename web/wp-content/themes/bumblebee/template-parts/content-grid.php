@@ -1,4 +1,9 @@
 <?php
+/** Content grid template
+
+ * @package bumblebee
+ */
+
 ?>
 <div class="pure-u-1 pure-u-sm-1-3">
 <div class="single-recipe">
