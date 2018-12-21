@@ -104,24 +104,25 @@
 }
 
 @media screen and (max-width: 567px) {
-	.home-page .hero-container  {
-		margin: 5px 15px 10px;
+	.home-page .hero-container {
+		margin : 5px 15px 10px;
 	}
 	.home-page .hero-container .hero-text {
-		padding: 0 10px;
+		padding : 0 10px;
 	}
 	.home-page .single-item.single-recipe {
-		margin: 15px;
+		margin : 15px;
 	}
 	.home-page .featured-container {
-		flex: 1 0 calc(80% - 10px);
+		flex : 1 0 calc(80% - 10px);
 	}
 	.home-page .featured-posts {
-		overflow-x: scroll;
+		overflow-x : scroll;
 	}
 	.home-page .sidebar {
-		display: none;
+		display : none;
 	}
+}
 
 .full-width-ad {
 	display: flex;

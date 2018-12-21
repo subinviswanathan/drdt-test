@@ -1310,6 +1310,100 @@ a {
   .header .desktop-hide {
     display: none; } }
 
+/* archive content */
+.archive-page * {
+  font-family: OpenSans,Arial,Helvetica,sans-serif;
+  font-size: 18px;
+  line-height: 29px;
+  color: #444444; }
+
+.archive-page {
+  position: relative; }
+
+.pure-g {
+  letter-spacing: normal; }
+
+.archive-page a {
+  text-decoration: none; }
+
+.archive-page h3 {
+  font-size: 30px;
+  line-height: 40px; }
+
+.archive-page h5 {
+  font-size: 20px;
+  margin: 10px auto; }
+
+.archive-page img {
+  max-width: 100%; }
+
+.archive-page ul {
+  padding-left: 0;
+  list-style-type: none; }
+
+.archive-page .advertisement {
+  text-align: center; }
+
+.archive-page .breadcrumbs, .archive-page .breadcrumbs a {
+  font-weight: 600;
+  color: #8E6900;
+  text-decoration: none; }
+
+.archive-page .archive-headings {
+  text-align: center;
+  width: 100%; }
+
+.archive-page .hero-container {
+  box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
+  margin: 10px;
+  margin-bottom: 10px; }
+
+.archive-page .hero-container img {
+  width: 100%;
+  height: 100%; }
+
+.archive-page .hero-container .hero-text {
+  padding: 0 30px; }
+
+.archive-page .archive-content {
+  margin: 0 auto;
+  max-width: 1260px;
+  position: relative;
+  z-index: 3; }
+
+.archive-page .featured-posts {
+  display: flex;
+  margin: 0 5px; }
+
+.archive-page .featured-container {
+  box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
+  width: calc(33% - 10px);
+  margin: 0 5px; }
+
+.archive-page .recipes {
+  margin: 10px; }
+
+.archive-page .single-recipe {
+  margin: 5px;
+  box-shadow: 0 2px 7px 0 rgba(145, 145, 145, 0.35);
+  height: 100%;
+  background: #ffffff; }
+
+.archive-page .single-recipe img {
+  width: 100%; }
+
+.archive-page .recipe-content {
+  padding-left: 10px;
+  text-overflow: ellipsis; }
+
+@media screen and (max-width: 567px) {
+  .archive-page .hero-container .hero-text {
+    padding: 0 10px; }
+  .archive-page .featured-container {
+    flex: 1 0 calc(80% - 10px); }
+  .archive-page .featured-posts {
+    overflow-x: scroll; } }
+
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
