@@ -6,7 +6,7 @@
 
 ?>
 <div class="pure-g hero-container">
-	<a class="pure-u-sm-2-5 hero-image">
+	<a href="<?php esc_url( get_permalink() ); ?>" class="pure-u-sm-2-5 hero-image">
 		<?php echo get_the_post_thumbnail( $post_id, 'homepage-featured-big', array( 'class' => 'pure-img' ) ); ?>
 	</a>
 	<div class="pure-u-sm-3-5">
