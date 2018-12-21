@@ -460,31 +460,34 @@ table {
 # Forms
 --------------------------------------------------------------*/
 button,
+.button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-radius: 3px;
-  background: #e6e6e6;
+  border-color: transparent;
+  background: #ffc10e;
   color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
-  font-size: 0.75rem;
   line-height: 1;
-  padding: .6em 1em .4em; }
+  padding: .75em 2em;
+  text-transform: uppercase; }
   button:hover,
+  .button:hover,
   input[type="button"]:hover,
   input[type="reset"]:hover,
   input[type="submit"]:hover {
-    border-color: #ccc #bbb #aaa; }
+    border-color: transparent;
+    background-color: #daa200; }
   button:active, button:focus,
+  .button:active,
+  .button:focus,
   input[type="button"]:active,
   input[type="button"]:focus,
   input[type="reset"]:active,
   input[type="reset"]:focus,
   input[type="submit"]:active,
   input[type="submit"]:focus {
-    border-color: #aaa #bbb #bbb; }
+    border-color: transparent; }
 
 input[type="text"],
 input[type="email"],
