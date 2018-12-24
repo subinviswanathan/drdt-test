@@ -337,3 +337,12 @@ function get_page_type() {
 	}
 	return ( $post_type );
 }
+
+register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );
+register_nav_menu( 'v2-footer-social-links', 'V2 Footer Social Links' );
+register_nav_menu( 'v2-footer-brand-links', 'V2 Footer Brand Links' );
+register_nav_menu( 'v2-footer-global-links', 'V2 Footer Global Links' );
+register_nav_menu( 'desktop-focus-menu', __( 'Desktop Focus Menu', 'tmbi-theme-v3' ) );
+add_image_size( 'homepage-featured-big', 385, 385, true );
+add_image_size( 'homepage-featured-small', 165, 165, true );
+add_image_size( 'grid-thumbnail', 273, 273, true );
