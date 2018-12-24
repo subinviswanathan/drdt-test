@@ -9,31 +9,53 @@
 
 get_header();
 ?>
+
 <div class="site-container">
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
+	<main class="site-content">
+		<div class="pure-g pre-article-ad text-center">
+		<?php
+		bumblebee_render_ad(
+			uniqid( 'ad' ),
+			[
+				'slot-name' => 'prearticle',
+				'sizes'     => '970x250,970x90,728x90,3x3',
+				'targeting' => [
+					'pos'      => 'prearticle',
+					'location' => 'top',
+				],
+			]
+		);
+		?>
+		</div>
+		<div class="pure-g opening-content">
 	<?php
-	while ( have_posts() ) :
-		the_post();
+	if ( have_posts() ) :
+		/* Start the Loop */
+		while ( have_posts() ) :
+			the_post();
+			get_template_part( 'template-parts/content', 'post' );
+		endwhile;
+	endif;
+?>
+	<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile">
+		<div class="sidebar-ad-wrapper text-center">
+			<aside class="sidebar">
+				<?php
+				bumblebee_render_ad(
+					uniqid( 'ad' ),
+					[
+						'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+						'sizes'     => '300x250,300x600',
+					]
+				);
+				?>
+			</aside>
+		</div>
+	</div>
+		</div>
+	</main>
+</div>
+	<?php
 
-		get_template_part( 'template-parts/content', get_post_type() );
-
-		the_post_navigation();
-
-		// If comments are open or we have at least one comment, load up the comment template.
-		if ( comments_open() || get_comments_number() ) :
-			comments_template();
-		endif;
-
-	endwhile; // End of the loop.
+	get_footer();
 	?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
-</div> <!-- .site-container -->
-<?php
-get_footer();
