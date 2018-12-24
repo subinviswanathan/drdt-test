@@ -28,6 +28,31 @@ function TMBI_Ad_Stack( options ) {
 		});
 	}
 
+	/**************
+	* common function to loop through object and add settargeting parameters
+	* */
+	function adSetTargeting(values, _this) {
+		for( var key in values ) {
+			if ( values.hasOwnProperty(key) ) {
+				_this.setTargeting( key, values[key] );
+			}
+		}
+	}
+
+	/*get the current browser width*/
+	function getCurrentBreakPoint() {
+		var viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		if (viewport_width > 1024) {
+			return 'large_screen';
+		} else if (viewport_width < 481) {
+			return 'mobile';
+		} else if (viewport_width > 768) {
+			return 'desktop';
+		} else {
+			return 'tablet';
+		}
+	}
+
 	// Initialize the ad stack.
 	self.init = function(){
 		googletag.cmd.push(function() {
@@ -52,12 +77,7 @@ function TMBI_Ad_Stack( options ) {
 
 			// @todo: add global targeting parameters
 			var targeting = JSON.parse( options.adTargeting || "{}" );
-			for( var key in targeting ) {
-				if ( targeting.hasOwnProperty(key) ) {
-					the_ad.setTargeting( key, targeting[key] );
-				}
-			}
-
+			adSetTargeting(targeting, the_ad);
 			the_ad.addService(googletag.pubads());
 			googletag.display( ad_id );
 		});
