@@ -21,11 +21,17 @@
 			bumblebee_render_ad(
 				uniqid( 'ad' ),
 				[
-					'slot-name' => 'prearticle',
-					'sizes'     => '970x250,970x90,728x90,3x3',
-					'targeting' => [
+					'slot-name'        => 'prearticle',
+					'sizes'            => '970x250,970x90,728x90,3x3',
+					'targeting'        => [
 						'pos'      => 'prearticle',
 						'location' => 'top',
+					],
+					'responsive-sizes' => [
+						'mobile'       => [ [ 320, 50 ] ],
+						'tablet'       => [ [ 728, 90 ] ],
+						'desktop'      => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ] ],
+						'large_screen' => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ] ],
 					],
 				]
 			);
@@ -77,8 +83,12 @@
 								bumblebee_render_ad(
 									uniqid( 'ad' ),
 									[
-										'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-										'sizes'     => '300x250,300x600',
+										'slot-name'        => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+										'sizes'            => '300x250,300x600',
+										'responsive-sizes' => [
+											'desktop'      => [ [ 300, 250 ], [ 300, 600 ] ],
+											'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
+										],
 									]
 								);
 								?>
@@ -92,8 +102,14 @@
 						bumblebee_render_ad(
 							uniqid( 'ad' ),
 							[
-								'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-								'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+								'slot-name'        => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+								'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
+								'responsive-sizes' => [
+									'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+									'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+									'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+									'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+								],
 							]
 						);
 						?>
