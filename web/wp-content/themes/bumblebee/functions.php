@@ -7,7 +7,7 @@
  * @package bumblebee
  */
 
-if ( !function_exists( 'bumblebee_setup' ) ) :
+if ( ! function_exists( 'bumblebee_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -139,7 +139,7 @@ add_action( 'widgets_init', 'bumblebee_widgets_init' );
  */
 function bumblebee_scripts() {
 	wp_enqueue_style( 'pure-css', 'https://unpkg.com/purecss@1.0.0/build/pure-min.css', [], '1.0.0' );
-	wp_enqueue_style( 'pure-css-grids', 'https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css', ['pure-css'], '1.0.0' );
+	wp_enqueue_style( 'pure-css-grids', 'https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css', [ 'pure-css' ], '1.0.0' );
 
 	wp_enqueue_style( 'bumblebee-style', get_stylesheet_uri(), [], '1.0.2' );
 
@@ -219,13 +219,12 @@ function ads_global_targeting_parameters() {
  * Get the keywords/tags associated with the post
  *
  * @return string of tags
- *
  **/
 function get_post_tags() {
 
 	if ( is_singular() ) {
 		$post_tags = get_the_tags( get_the_ID() );
-		if ( !empty( $post_tags ) ) {
+		if ( ! empty( $post_tags ) ) {
 			$tag_names  = array_column( $post_tags, 'name' );
 			$tag_string = implode( ', ', $tag_names );
 		} else {
@@ -239,7 +238,7 @@ function get_post_tags() {
 }
 
 function format_data( $data ) {
-	if ( !is_array( $data ) ) {
+	if ( ! is_array( $data ) ) {
 		$data = explode( ',', $data );
 	}
 	for ( $i = 0; $i < count( $data ); $i++ ) {
@@ -275,13 +274,13 @@ function get_category_data( $adunit = false ) {
 		global $post;
 		$category_tax = 'category';
 		$categories   = get_the_terms( $post->ID, $category_tax );
-		if ( !empty( $categories ) ) {
+		if ( ! empty( $categories ) ) {
 			foreach ( $categories as $term ) {
 				$ancestors = get_ancestors( $term->term_id, $category_tax );
-				if ( !empty( $ancestors ) ) {
+				if ( ! empty( $ancestors ) ) {
 					foreach ( $ancestors as $ancestor ) {
 						$remove[] = "'";
-						if ( !$adunit ) {
+						if ( ! $adunit ) {
 							$remove[] = '-';
 						}
 						$ancestor_term = get_term( $ancestor );
@@ -297,17 +296,17 @@ function get_category_data( $adunit = false ) {
 			$parent_categories          = implode( ', ', $filter_similar_parent_cats );
 			$filter_similar_sub_cats    = array_unique( $sub_categories, SORT_STRING );
 			$sub_categories             = implode( ', ', $filter_similar_sub_cats );
-			if ( !empty( $parent_categories ) ) {
+			if ( ! empty( $parent_categories ) ) {
 				$exposed_values['parent_categories'] = $parent_categories;
 			}
-			if ( !empty( $sub_categories ) ) {
+			if ( ! empty( $sub_categories ) ) {
 				$exposed_values['sub_categories'] = $sub_categories;
 			}
 		}
 	} elseif ( is_category() || is_archive() ) {
 		$q_object = get_queried_object();
 		// WP_Post_Type archives don't have a "slug" property
-		if ( !empty( $q_object->slug ) ) {
+		if ( ! empty( $q_object->slug ) ) {
 			$cat_slug                            = $q_object->slug;
 			$exposed_values['parent_categories'] = $cat_slug;
 			$exposed_values['sub_categories']    = $cat_slug;
