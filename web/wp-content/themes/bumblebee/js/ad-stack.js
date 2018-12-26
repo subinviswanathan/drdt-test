@@ -76,15 +76,17 @@ function TMBI_Ad_Stack( options ) {
 
 	// Render a single ad.
 	self.fetch_and_render = function( ad_id, options ){
-		googletag.cmd.push(function(){
-			var sizes  = sizes_str_to_array( options.adSizes );
-			var the_ad = googletag.defineSlot( options.adSlotName, sizes, ad_id );
-
-			// @todo: add global targeting parameters
-			var targeting = JSON.parse( options.adTargeting || "{}" );
-			adSetTargeting(targeting, the_ad);
-			the_ad.addService(googletag.pubads());
-			googletag.display( ad_id );
+		googletag.cmd.push(function () {
+			var sizes = sizes_str_to_array(options.adSizes),
+				device = getCurrentBreakPoint(),
+				responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
+			if (responsiveSize && responsiveSize[device]) {
+				var the_ad = googletag.defineSlot(options.adSlotName, responsiveSize[device], ad_id);
+				var targeting = JSON.parse(options.adTargeting || "{}");
+				adSetTargeting(targeting, the_ad);
+				the_ad.addService(googletag.pubads());
+				googletag.display(ad_id);
+			}
 		});
 	};
 
