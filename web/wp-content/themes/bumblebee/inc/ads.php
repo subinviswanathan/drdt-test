@@ -42,11 +42,12 @@ function bumblebee_render_ad( $id, $options ) {
 		$markup,
 		[
 			'div' => [
-				'id'                => [],
-				'class'             => [],
-				'data-ad-slot-name' => [],
-				'data-ad-sizes'     => [],
-				'data-ad-targeting' => [],
+				'id'                       => [],
+				'class'                    => [],
+				'data-ad-slot-name'        => [],
+				'data-ad-sizes'            => [],
+				'data-ad-targeting'        => [],
+				'data-ad-responsive-sizes' => [],
 			],
 		]
 	);

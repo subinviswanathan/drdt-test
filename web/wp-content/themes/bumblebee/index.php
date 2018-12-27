@@ -14,94 +14,109 @@
 
 ?>
 <?php get_header(); ?>
-<a name="content" id="content"></a>
-<?php if ( have_posts() ) : ?>
-	<?php if ( is_home() && ! is_front_page() ) : ?>
-		<header>
-			<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-		</header>
-	<?php endif; ?>
-	<div class="full-width-ad prearticle">
-		<?php
+	<main class="home-page">
+
+		<section class="advertisement">
+			<?php
 			bumblebee_render_ad(
 				uniqid( 'ad' ),
 				[
-					'slot-name' => 'prearticle',
-					'sizes'     => '970x250,970x90,728x90,3x3',
-					'targeting' => [
+					'slot-name'        => 'prearticle',
+					'sizes'            => '970x250,970x90,728x90,3x3',
+					'targeting'        => [
 						'pos'      => 'prearticle',
 						'location' => 'top',
 					],
+					'responsive-sizes' => [
+						'mobile'       => [ [ 320, 50 ] ],
+						'tablet'       => [ [ 728, 90 ] ],
+						'desktop'      => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ] ],
+						'large_screen' => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ] ],
+					],
 				]
 			);
-		?>
-	</div>
-	<section class="featured">
-		<?php
-		// @todo: Pick from a custom list of posts.
-		// Featured 1.
-		if ( have_posts() ) {
-			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
-		}
+			?>
+			</section>
 
-		// Featured 2.
-		if ( have_posts() ) {
-			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
-		}
 
-		// Featured 3.
-		if ( have_posts() ) {
-			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
-		}
-		?>
-	</section>
-
-	<?php $section_num = 0; ?>
-	<?php while ( have_posts() ) : ?>
-		<?php $section_num++; ?>
-		<section>
-			<div>
-				<?php for ( $i = 0; $i < 6; $i++ ) : ?>
-					<?php the_post(); ?>
-					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
-				<?php endfor; ?>
-			</div>
-			<aside class="sidebar">
+		<?php if ( have_posts() ) : ?>
+			<section class="archive-content pure-g">
 				<?php
-					bumblebee_render_ad(
-						uniqid( 'ad' ),
-						[
-							'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-							'sizes'     => '300x250,300x600',
-						]
-					);
+				// @todo: Pick from a custom list of posts.
+				// Featured 1.
+				if ( have_posts() ) {
+					the_post();
+					get_template_part( 'template-parts/content', 'hero' );
+				}
+				// Featured 2.
+				if ( have_posts() ) {
+					the_post();
+					get_template_part( 'template-parts/content', 'featured' );
+				}
+				// Featured 3.
+				if ( have_posts() ) {
+					the_post();
+					get_template_part( 'template-parts/content', 'featured' );
+				}
 				?>
-			</aside>
-		</section>
-		<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
-			<div class="full-width-ad">
-				<?php
-					bumblebee_render_ad(
-						uniqid( 'ad' ),
-						[
-							'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-							'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
-						]
-					);
-				?>
-			</div>
+			</section>
+
+			<?php $section_num = 0; ?>
+			<?php while ( have_posts() ) : ?>
+				<?php $section_num++; ?>
+				<section class="archive-content">
+					<div class="pure-g">
+						<section class="pure-u-1 pure-u-sm-3-4 homepage-article">
+							<div class="pure-g recipes">
+								<?php for ( $i = 0; $i < 6; $i++ ) : ?>
+								<?php the_post(); ?>
+								<?php get_template_part( 'template-parts/content', 'grid' ); ?>
+								<?php if ( 2 === $i ) { ?>
+							</div><div class="pure-g recipes">
+								<?php } ?>
+								<?php endfor; ?>
+							</div>
+						</section>
+						<section class="pure-u-sm-1-4">
+							<aside class="sidebar">
+								<?php
+								bumblebee_render_ad(
+									uniqid( 'ad' ),
+									[
+										'slot-name'        => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+										'sizes'            => '300x250,300x600',
+										'responsive-sizes' => [
+											'desktop'      => [ [ 300, 250 ], [ 300, 600 ] ],
+											'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
+										],
+									]
+								);
+								?>
+							</aside>
+						</section>
+					</div>
+				</section>
+				<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
+					<div class="full-width-ad">
+						<?php
+						bumblebee_render_ad(
+							uniqid( 'ad' ),
+							[
+								'slot-name'        => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+								'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
+								'responsive-sizes' => [
+									'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+									'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+									'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+									'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+								],
+							]
+						);
+						?>
+					</div>
+				<?php endif; ?>
+
+			<?php endwhile; ?>
 		<?php endif; ?>
-	<?php endwhile; ?>
-
-	<div class="footer-ad"></div>
-	<?php the_posts_navigation(); ?>
-<?php else : ?>
-	<?php get_template_part( 'template-parts/content', 'none' ); ?>
-<?php endif; ?>
-<?php if ( is_single() ) : ?>
-	<?php get_sidebar(); ?>
-<?php endif; ?>
+	</main>
 <?php get_footer(); ?>
