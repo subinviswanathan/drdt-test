@@ -192,3 +192,145 @@ register_nav_menu( 'desktop-focus-menu', __( 'Desktop Focus Menu', 'tmbi-theme-v
 add_image_size( 'homepage-featured-big', 385, 385, true );
 add_image_size( 'homepage-featured-small', 165, 165, true );
 add_image_size( 'grid-thumbnail', 273, 273, true );
+
+
+/**
+ * Register Custom Post Type.
+ */
+function listicle_post_type() {
+
+	$labels = array(
+		'name'               => _x( 'Listicles', 'Post Type General Name', 'listicle-post-type' ),
+		'singular_name'      => _x( 'Listicle', 'Post Type Singular Name', 'listicle-post-type' ),
+		'menu_name'          => __( 'Listicles', 'listicle-post-type' ),
+		'name_admin_bar'     => __( 'Listicle', 'listicle-post-type' ),
+		'archives'           => __( 'Listicle Archives', 'listicle-post-type' ),
+		'attributes'         => __( 'Listicle Attributes', 'listicle-post-type' ),
+		'parent_item_colon'  => __( 'Parent Item:', 'listicle-post-type' ),
+		'all_items'          => __( 'All Listicles', 'listicle-post-type' ),
+		'add_new_item'       => __( 'Add New Listicle', 'listicle-post-type' ),
+		'add_new'            => __( 'Add New', 'listicle-post-type' ),
+		'new_item'           => __( 'New Listicle', 'listicle-post-type' ),
+		'edit_item'          => __( 'Edit Listicle', 'listicle-post-type' ),
+		'update_item'        => __( 'Update Listicle', 'listicle-post-type' ),
+		'view_item'          => __( 'View Listicle', 'listicle-post-type' ),
+		'view_items'         => __( 'View Listicles', 'listicle-post-type' ),
+		'search_items'       => __( 'Search Listicle', 'listicle-post-type' ),
+		'not_found'          => __( 'Not found', 'listicle-post-type' ),
+		'not_found_in_trash' => __( 'Not found in Trash', 'listicle-post-type' ),
+	);
+
+	$rewrite = array(
+		'slug'       => 'listicle',
+		'with_front' => false,
+		'feeds'      => true,
+	);
+
+	$args = array(
+		'label'               => __( 'Listicle', 'listicle-post-type' ),
+		'description'         => __( 'Listicle post type', 'listicle-post-type' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'thumbnail', 'trackbacks', 'revisions', 'custom-fields', 'post-formats' ),
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => true,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-list-view',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'rewrite'             => $rewrite,
+		'capability_type'     => 'post',
+		'rest_base'           => 'listicle',
+	);
+	register_post_type( 'listicle', $args );
+
+}
+add_action( 'init', 'listicle_post_type', 0 );
+
+
+
+
+/**
+ * Changes the CPT permalink structure to use %category%/%postname%
+ *
+ * @param String $post_link  content.
+ * @param String $post  content.
+ * @param String $leavename  content.
+ * @param String $sample  content.
+ */
+function setup_url_scheme( $post_link, $post, $leavename, $sample ) {
+
+	$cpt = 'listicle';
+
+	if ( ! $post instanceof WP_Post ) {
+		return ( $post_link );
+	}
+
+	if ( $post->post_type !== $cpt ) {
+		return ( $post_link );
+	}
+
+	if ( $post->post_type === $cpt ) {
+		parse_str( wp_parse_url( $post_link, PHP_URL_QUERY ), $parts );
+
+		// Only modify "pretty" permalinks.
+		if ( ! empty( $parts['p'] ) ) {
+			return ( $post_link );
+		}
+
+		$category = get_post_category( $post );
+		if ( $category ) {
+			if ( $sample ) {
+				$post_link = trailingslashit( get_term_link( $category ) ) . '%postname%';
+			} else {
+				$post_link = trailingslashit( get_term_link( $category ) ) . $post->post_name;
+			}
+		}
+
+		$post_link = trailingslashit( $post_link );
+	}
+	return ( $post_link );
+}
+
+
+/**
+ * Changes the CPT permalink structure to use %category%/%postname%.
+ *
+ *  @param String $post  null.
+ */
+function get_post_category( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return;
+	}
+
+	$categories = get_the_terms( $post->ID, 'category' );
+	if ( ! empty( $categories ) ) {
+		return ( $categories[0] );
+	}
+}
+add_action( 'post_type_link', 'setup_url_scheme', 1, 4 );
+
+
+/**
+ * Pre get posts for listicle.
+ *
+ * @param String $query  query.
+ */
+function set_listicle_post_type( $query ) {
+
+	if ( ! $query->is_main_query() ) {
+		return;
+	}
+
+	if ( ! is_admin() && ! $query->get( 'pagename' ) && ( ! $query->get( 'post_type' ) || 'post' === $query->get( 'post_type' ) ) ) {
+		$query->set( 'post_type', array( 'listicle', 'post' ) );
+	}
+}
+add_action( 'pre_get_posts', 'set_listicle_post_type' );
