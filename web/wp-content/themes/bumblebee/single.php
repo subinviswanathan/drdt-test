@@ -17,11 +17,17 @@ get_header();
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
 			[
-				'slot-name' => 'prearticle',
-				'sizes'     => '970x250,970x90,728x90,3x3',
-				'targeting' => [
+				'slot-name'        => 'prearticle',
+				'sizes'            => '970x250,970x90,728x90,3x3',
+				'targeting'        => [
 					'pos'      => 'prearticle',
 					'location' => 'top',
+				],
+				'responsive-sizes' => [
+					'mobile'       => [ [ 320, 50 ] ],
+					'tablet'       => [ [ 728, 90 ] ],
+					'desktop'      => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ] ],
+					'large_screen' => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ] ],
 				],
 			]
 		);
@@ -37,18 +43,72 @@ get_header();
 		endwhile;
 	endif;
 ?>
-	<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile">
+	<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile article-sidebar">
 		<div class="sidebar-ad-wrapper text-center">
 			<aside class="sidebar">
+				<div class="article-sidebar-top-ad">
 				<?php
 				bumblebee_render_ad(
 					uniqid( 'ad' ),
 					[
-						'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-						'sizes'     => '300x250,300x600',
+						'slot-name'        => 'railtop',
+						'sizes'            => '970x250,970x90,728x90,3x3',
+						'targeting'        => [
+							'pos'      => 'railtop',
+							'location' => 'rail',
+						],
+						'responsive-sizes' => [
+							'mobile'       => [],
+							'tablet'       => [],
+							'desktop'      => [ [ 300, 250 ] ],
+							'large_screen' => [ [ 300, 250 ] ],
+						],
 					]
 				);
 				?>
+				</div>
+				<div class="article-sidebar-middle-ad">
+				<?php
+				bumblebee_render_ad(
+					uniqid( 'ad' ),
+					[
+						'slot-name'        => 'railmiddle',
+						'sizes'            => '970x250,970x90,728x90,3x3',
+						'targeting'        => [
+							'pos'      => 'railmiddle',
+							'location' => 'rail',
+						],
+						'responsive-sizes' => [
+							'mobile'       => [],
+							'tablet'       => [],
+							'desktop'      => [],
+							'large_screen' => [ [ 160, 600 ], [ 300, 250 ], [ 300, 600 ] ],
+						],
+					]
+				);
+				?>
+				</div>
+				<div class="article-sidebar-scroll-ad">
+				<?php
+				bumblebee_render_ad(
+					uniqid( 'ad' ),
+					[
+						'slot-name'        => 'railscroll',
+						'sizes'            => '970x250,970x90,728x90,3x3',
+						'targeting'        => [
+							'pos'      => 'railscroll',
+							'location' => 'rail',
+						],
+						'responsive-sizes' => [
+							'mobile'       => [],
+							'tablet'       => [],
+							'desktop'      => [],
+							'large_screen' => [ [ 160, 600 ], [ 300, 250 ], [ 300, 600 ], [ 300, 1050 ] ],
+						],
+					]
+				);
+				?>
+				</div>
 			</aside>
 		</div>
 	</div>
