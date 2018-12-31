@@ -131,3 +131,10 @@
     display: none;
   }
 }
+
+.listicle-page > .content > .sidebar .ad {
+  display: flex;
+  position: sticky;
+  justify-content: center;
+  top: 0;
+}
