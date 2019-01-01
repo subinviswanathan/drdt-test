@@ -80,10 +80,16 @@
 						<section class="pure-u-sm-1-4">
 							<aside class="sidebar">
 								<?php
+								$slot_name = 'scroll';
+								if ( 1 === $section_num ) {
+									$slot_name = 'top';
+								} elseif ( 2 === $section_num ) {
+									$slot_name = 'middle';
+								}
 								bumblebee_render_ad(
 									uniqid( 'ad' ),
 									[
-										'slot-name'        => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+										'slot-name'        => 'rail' . $slot_name,
 										'sizes'            => '300x250,300x600',
 										'responsive-sizes' => [
 											'desktop'      => [ [ 300, 250 ], [ 300, 600 ] ],
@@ -102,7 +108,7 @@
 						bumblebee_render_ad(
 							uniqid( 'ad' ),
 							[
-								'slot-name'        => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+								'slot-name'        => $slot_name,
 								'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
 								'responsive-sizes' => [
 									'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],

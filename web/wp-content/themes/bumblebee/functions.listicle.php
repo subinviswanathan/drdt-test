@@ -19,20 +19,20 @@ add_filter(
 			$section_num++;
 			?>
 			<section class="content pure-g">
-			<section class="social-share-bar-desktop pure-u-lg-2-24"></section>
-			<section class=" pure-u-1 pure-u-lg-14-24">
-				<div class="contentbar">
-					<?php
-					for ( $i = 0; $i < 3; $i++ ) :
-						if ( ( $current_card ) <= ( $total_cards - 1 ) ) :
-							get_the_card_markup( $current_card + 1, $total_cards, $cards[ $current_card + 1 ] );
-							$current_card++;
+				<section class="social-share-bar-desktop pure-u-lg-2-24"></section>
+				<section class=" pure-u-1 pure-u-lg-14-24">
+					<div class="contentbar">
+						<?php
+						for ( $i = 0; $i < 3; $i ++ ) :
+							if ( ( $current_card ) <= ( $total_cards - 1 ) ) :
+								get_the_card_markup( $current_card + 1, $total_cards, $cards[ $current_card + 1 ] );
+								$current_card ++;
 							endif;
 						endfor;
-					?>
+						?>
 					</div>
-					</section>
-					<section class="sidebar pure-u-1 pure-u-lg-8-24">
+				</section>
+				<section class="sidebar pure-u-1 pure-u-lg-8-24">
 					<?php
 					bumblebee_render_ad(
 						uniqid( 'ad' ),
@@ -41,10 +41,10 @@ add_filter(
 							'sizes'     => '300x250,300x600',
 						]
 					);
-				?>
+					?>
 				</section>
 			</section>
-
+			<?php if ( $current_card < $total_cards ) { ?>
 			<section class="full-width-ad">
 				<?php
 				bumblebee_render_ad(
@@ -56,6 +56,7 @@ add_filter(
 				);
 				?>
 			</section>
+			<?php } ?>
 		<?php
 		endfor;
 		return $cards;
