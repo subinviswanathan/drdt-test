@@ -34,13 +34,22 @@ add_filter(
 					</section>
 					<section class="sidebar pure-u-1 pure-u-lg-8-24">
 					<?php
+					$slot_name  = 'scroll';
+					$slot_sizes = [ [ 300, 1050 ], [ 300, 600 ], [ 300, 250 ], [ 160, 600 ] ];
+					if ( 1 === $section_num ) {
+						$slot_name  = 'top';
+						$slot_sizes = [ [ 300, 250 ] ];
+					} elseif ( 2 === $section_num ) {
+						$slot_name  = 'middle';
+						$slot_sizes = [ [ 300, 600 ], [ 300, 250 ] ];
+					}
 					bumblebee_render_ad(
 						uniqid( 'ad' ),
 						[
-							'slot-name'        => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+							'slot-name'        => 'rail' . $slot_name,
 							'sizes'            => '300x250,300x600',
 							'responsive-sizes' => [
-								'large_screen' => ( 1 === $section_num ? [ [ 300, 250 ] ] : 2 === $section_num ? [ [ 300, 600 ], [ 300, 250 ] ] : [ [ 300, 1050 ], [ 300, 600 ], [ 300, 250 ], [ 160, 600 ] ] ),
+								'large_screen' => $slot_sizes,
 							],
 						]
 					);
@@ -53,7 +62,7 @@ add_filter(
 				bumblebee_render_ad(
 					uniqid( 'ad' ),
 					[
-						'slot-name'        => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+						'slot-name'        => $slot_name,
 						'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
 						'responsive-sizes' => [
 							'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
