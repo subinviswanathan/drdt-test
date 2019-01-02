@@ -5,12 +5,14 @@
   "main": "README.md",
   "dependencies": {},
   "devDependencies": {
+    "eslint": "^5.11.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.2"
   },
   "scripts": {
     "test": "cat README.md",
-    "gulp": "./node_modules/gulp/bin/gulp.js"
+    "gulp": "./node_modules/gulp/bin/gulp.js",
+    "es-lint": "./node_modules/.bin/eslint js"
   },
   "author": "",
   "license": "ISC"
