@@ -7,7 +7,10 @@
   "devDependencies": {
     "eslint": "^5.11.1",
     "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.2"
+    "gulp-eslint": "^5.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4"
   },
   "scripts": {
     "test": "cat README.md",

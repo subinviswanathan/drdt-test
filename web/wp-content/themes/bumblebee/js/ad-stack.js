@@ -6,7 +6,7 @@ function TMBI_Ad_Stack( ) {
 
 	// Add GPT code.
 	(function() {
-		var gads = document.createElement('script');
+		var gads = document.createElement("script");
 		gads.async = true;
 		gads.type = 'text/javascript';
 		var useSSL = 'https:' == document.location.protocol;
