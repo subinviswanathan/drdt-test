@@ -37,7 +37,7 @@ $category = $category[0];
 	</section>
 	<section class="content pure-g">
 	<section class="social-menu-desktop pure-u-lg-2-24">
-        <?php get_template_part( 'template-parts/social-share', 'none' ); ?>
+		<?php get_template_part( 'template-parts/social-share', 'none' ); ?>
 	</section>
 	<section class=" pure-u-1 pure-u-lg-14-24">
 		<div class="contentbarheader">
