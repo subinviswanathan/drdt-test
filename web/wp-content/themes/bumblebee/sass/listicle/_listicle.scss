@@ -73,37 +73,23 @@
     }
   }
 
-  .social-share-bar-desktop {
-    ul {
-      margin-top: 20px;
-    }
-  }
-
-  .social-share-bar-mobile {
+  .social-menu-mobile {
     display: none;
   }
 }
 
 @media screen and (max-width:1023px) {
   .listicle-page {
-    .social-share-bar, .sidebar {
+    .social-menu-desktop {
       display: none;
     }
+    .social-menu-mobile {
+      display : block;
 
-    .social-share-bar-mobile {
-      display: block;
-      padding: 20px 0;
-      text-align: center;
-
-      ul {
-        li {
-          display: inline-block;
-        }
+      li {
+        display: inline-block;
+        margin-right : 1.6em;
       }
-    }
-
-    .social-share-bar-desktop {
-      display: none;
     }
   }
 }
