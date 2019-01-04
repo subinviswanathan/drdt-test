@@ -176,3 +176,16 @@
     }
   }
 }
+
+@media screen and (max-width: 376px) {
+  .header {
+    #menu-desktop-focus-menu {
+      li {
+        padding : 8px;
+        a {
+          font-size : 16px;
+        }
+      }
+    }
+  }
+}
