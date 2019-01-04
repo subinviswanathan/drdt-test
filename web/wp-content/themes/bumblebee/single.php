@@ -6,6 +6,7 @@
  *
  * @package bumblebee
  */
+wp_enqueue_style( 'bumblebee-style-article', get_stylesheet_directory_uri() . '/article.css', [], '1.0.2' );
 
 get_header();
 ?>

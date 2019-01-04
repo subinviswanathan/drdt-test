@@ -10,6 +10,8 @@
 /**
  * Include the functions file
  */
+wp_enqueue_style( 'bumblebee-style-listicle', get_stylesheet_directory_uri() . '/listicle.css', [], '1.0.2' );
+
 require_once 'functions.listicle.php';
 
 get_header();

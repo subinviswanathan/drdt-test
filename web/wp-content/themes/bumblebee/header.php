@@ -8,7 +8,7 @@
  *
  * @package bumblebee
  */
-
+wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/header.css', [], '1.0.2' );
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
