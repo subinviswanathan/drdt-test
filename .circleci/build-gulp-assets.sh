@@ -45,6 +45,10 @@ do
 	echo -e "\nRunning 'gulp'"
 	$FOUND
 
+	# Run the js lint
+	echo -e "\nRunning 'npm run es-lint'"
+	npm run es-lint
+
 	# Change back again
 	echo -e "\nchanged directories back into:"
 	cd -

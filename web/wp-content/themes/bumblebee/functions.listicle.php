@@ -7,79 +7,19 @@
  * @package bumblebee
  */
 
-add_filter(
-	'the_content',
-	function( $content ) {
-		$delimiter    = '<div class="tmbi-card">';
-		$cards        = array_filter( explode( $delimiter, $content ) );
-		$total_cards  = count( $cards );
-		$current_card = 0;
-		$section_num  = 0;
-		for ( $j = 0; $j <= $total_cards - 1; $j = $j + 3 ) :
-			$section_num++;
-			?>
-			<section class="content pure-g">
-			<section class="social-share-bar-desktop pure-u-lg-2-24"></section>
-			<section class=" pure-u-1 pure-u-lg-14-24">
-				<div class="contentbar">
-					<?php
-					for ( $i = 0; $i < 3; $i++ ) :
-						if ( ( $current_card ) <= ( $total_cards - 1 ) ) :
-							get_the_card_markup( $current_card + 1, $total_cards, $cards[ $current_card + 1 ] );
-							$current_card++;
-							endif;
-						endfor;
-					?>
-					</div>
-					</section>
-					<section class="sidebar pure-u-1 pure-u-lg-8-24">
-					<?php
-					$slot_name  = 'scroll';
-					$slot_sizes = [ [ 300, 1050 ], [ 300, 600 ], [ 300, 250 ], [ 160, 600 ] ];
-					if ( 1 === $section_num ) {
-						$slot_name  = 'top';
-						$slot_sizes = [ [ 300, 250 ] ];
-					} elseif ( 2 === $section_num ) {
-						$slot_name  = 'middle';
-						$slot_sizes = [ [ 300, 600 ], [ 300, 250 ] ];
-					}
-					bumblebee_render_ad(
-						uniqid( 'ad' ),
-						[
-							'slot-name'        => 'rail' . $slot_name,
-							'sizes'            => '300x250,300x600',
-							'responsive-sizes' => [
-								'large_screen' => $slot_sizes,
-							],
-						]
-					);
-				?>
-				</section>
-			</section>
-
-			<section class="full-width-ad">
-				<?php
-				bumblebee_render_ad(
-					uniqid( 'ad' ),
-					[
-						'slot-name'        => $slot_name,
-						'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
-						'responsive-sizes' => [
-							'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
-							'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
-							'desktop'      => [ [ 728, 90 ], [ 640, 360 ], [ 3, 3 ], [ 300, 250 ] ],
-							'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ], [ 300, 250 ] ],
-						],
-					]
-				);
-				?>
-			</section>
-		<?php
-		endfor;
-		return $cards;
-	},
-	11
-);
+/**
+ * Reading the listicle content.
+ *
+ * @return array of content.
+ */
+function listicle_data() {
+	$content     = get_the_content();
+	$content     = apply_filters( 'the_content', $content );
+	$delimiter   = '<div class="tmbi-card">';
+	$cards       = array_filter( explode( $delimiter, $content ) );
+	$total_cards = count( $cards );
+	return array( $cards, $total_cards );
+}
 
 /**
  * Getting card content.
@@ -87,42 +27,26 @@ add_filter(
  * @param String $current_card  current card.
  * @param String $total_cards  total no of cards.
  * @param String $card  card data.
+ * @return array of card data.
  */
-function get_the_card_markup( $current_card, $total_cards, $card ) {
+function get_the_card_data( $current_card, $total_cards, $card ) {
 	preg_match( '|<h[^>]+>(.*)</h[^>]+>|iU', $card, $headings );
 	preg_match_all( '%(<p[^>]*>.*?</p>)%i', $card, $paragraph );
-	$image = $paragraph[0][0];
-	$dek   = $paragraph[0][1];
-	ob_start();
-	?>
-	<div class="listicle-card">
-		%s
-		<div class="card-number">
-			<span class="current-page-count">%s</span><span class="total-page-count">/%s</span>
-		</div>
-		<div class="card-content">
-			%s
-			<p class="content">%s</p>
-		</div>
-	</div>
+	$image        = $paragraph[0][0];
+	$dek          = $paragraph[0][1];
+	$current_card = intval( $current_card );
+	$total_cards  = intval( $total_cards );
+	$card_heading = wp_kses_post( $headings[0] );
+	$card_excerpt = wp_kses_post( $dek );
 
-	<?php
-	$base_template = ob_get_clean();
-	printf(
-		wp_kses_post( $base_template ),
-		wp_kses_post( $paragraph[0][0] ),
-		intval( $current_card ),
-		intval( $total_cards ),
-		wp_kses_post( $headings[0] ),
-		wp_kses_post( $dek )
-	);
+	return array( $image, $current_card, $total_cards, $card_heading, $card_excerpt );
 }
-
 
 /**
  * Setting up the card content.
  *
  * @param String $content  content.
+ * @return string of content.
  */
 function set_post_content_navigation( $content ) {
 	global $post,$pages;
@@ -142,4 +66,4 @@ function set_post_content_navigation( $content ) {
 
 add_filter( 'the_content', 'set_post_content_navigation' );
 
-?>
+
