@@ -3,9 +3,9 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var eslint = require('gulp-eslint');
-var minify = require('gulp-minify');
+//var minify = require('gulp-minify');
 //var sourcemaps = require('gulp-sourcemaps');
-//var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify');
 var del = require('del');
 var es = require('event-stream');
 
@@ -51,14 +51,14 @@ gulp.task('js:task', ['js:linting', 'clean:scripts'], function () {
 	return es.merge(bundles.map(function (item) {
 		return gulp.src(item)
 			//.pipe(sourcemaps.init())
-			.pipe(minify())
+			.pipe(uglify())
 			//.pipe(sourcemaps.write('.'))
-			.pipe(gulp.dest('./js'));
+			.pipe(gulp.dest('./js/src'));
 	}));
 });
 
 gulp.task('clean:scripts', function () {
-	return del(['./js/*-min.js']);
+	return del(['./js/src/*-min.js']);
 });
 
 //@todo need to add saas:component to the task

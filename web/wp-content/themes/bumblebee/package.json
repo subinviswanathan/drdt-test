@@ -18,7 +18,7 @@
   "scripts": {
     "test": "cat README.md",
     "gulp": "./node_modules/gulp/bin/gulp.js",
-    "es-lint": "./node_modules/.bin/eslint ./js"
+    "es-lint": "./node_modules/.bin/eslint ./js/*.js"
   },
   "author": "",
   "license": "ISC"
