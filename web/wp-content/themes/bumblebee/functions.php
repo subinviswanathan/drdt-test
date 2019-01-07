@@ -110,6 +110,7 @@ function bumblebee_content_width() {
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['content_width'] = apply_filters( 'bumblebee_content_width', 640 );
 }
+
 add_action( 'after_setup_theme', 'bumblebee_content_width', 0 );
 
 /**
@@ -130,6 +131,7 @@ function bumblebee_widgets_init() {
 		)
 	);
 }
+
 add_action( 'widgets_init', 'bumblebee_widgets_init' );
 
 /**
@@ -149,6 +151,7 @@ function bumblebee_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'bumblebee_scripts' );
 
 /**
@@ -182,6 +185,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Ads.
  */
 require get_template_directory() . '/inc/ads.php';
+
+/**
+ * Global Targeting Parameters for DFP Ads.
+ */
+require get_template_directory() . '/inc/ads-global-targeting.php';
 
 
 register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );
