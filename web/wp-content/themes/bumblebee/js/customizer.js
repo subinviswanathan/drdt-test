@@ -5,6 +5,7 @@
  *
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
+/* global jQuery, wp */
 
 ( function ( $ ) {
 
