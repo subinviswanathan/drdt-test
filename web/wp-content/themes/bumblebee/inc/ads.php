@@ -5,7 +5,7 @@
  * @package bumblebee
  */
 
-wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack.js', [], '1.0.0', true );
+wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack-min.js', [], '1.0.0', true );
 
 /**
  * Renders an ad placeholder
