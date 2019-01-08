@@ -67,6 +67,10 @@
 			float: left;
 			width: 330px;
 		}
+		.article-sidebar {
+			display: flex;
+			justify-content: center;
+		}
 	}
 }
 
@@ -192,6 +196,7 @@
     .article-sidebar,
     .sidebar-ad-wrapper {
       display :flex;
+
     }
 	.article-sidebar-scroll-ad {
 		position: sticky;

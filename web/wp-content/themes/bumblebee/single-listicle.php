@@ -22,11 +22,17 @@ $category = $category[0];
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
 			[
-				'slot-name' => 'prearticle',
-				'sizes'     => '970x250,970x90,728x90,3x3',
-				'targeting' => [
+				'slot-name'        => 'prearticle',
+				'sizes'            => '970x250,970x90,728x90,3x3',
+				'targeting'        => [
 					'pos'      => 'prearticle',
 					'location' => 'top',
+				],
+				'responsive-sizes' => [
+					'mobile'       => [ [ 320, 50 ] ],
+					'tablet'       => [ [ 320, 50 ] ],
+					'desktop'      => [ [ 728, 90 ], [ 640, 360 ], [ 3, 3 ] ],
+					'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ] ],
 				],
 			]
 		);
@@ -108,28 +114,64 @@ $category = $category[0];
 		</section>
 		<section class="sidebar pure-u-1 pure-u-lg-8-24">
 			<?php
+			$slot_name  = 'scroll';
+			$slot_sizes = [ [ 300, 1050 ], [ 300, 600 ], [ 300, 250 ], [ 160, 600 ] ];
+			if ( 1 === $section_num ) {
+				$slot_name  = 'top';
+				$slot_sizes = [ [ 300, 250 ] ];
+			} elseif ( 2 === $section_num ) {
+				$slot_name  = 'middle';
+				$slot_sizes = [ [ 300, 600 ], [ 300, 250 ] ];
+			}
 			bumblebee_render_ad(
 				uniqid( 'ad' ),
 				[
-					'slot-name' => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-					'sizes'     => '300x250,300x600',
+					'slot-name'        => 'rail' . $slot_name,
+					'sizes'            => '300x250,300x600',
+					'responsive-sizes' => [
+						'large_screen' => $slot_sizes,
+					],
 				]
 			);
 			?>
 		</section>
 	</section>
+	<?php if ( ( $current_card ) <= ( $total_cards ) ) { ?>
 	<section class="full-width-ad">
 		<?php
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
 			[
-				'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-				'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+				'slot-name'        => $slot_name,
+				'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
+				'responsive-sizes' => [
+					'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+					'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+					'desktop'      => [ [ 728, 90 ], [ 640, 360 ], [ 3, 3 ], [ 300, 250 ] ],
+					'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ], [ 300, 250 ] ],
+				],
 			]
 		);
 		?>
 	</section>
-	<?php $section_num++; } ?>
+	<?php } $section_num++; } ?>
+	<div class="postarticle_ad">
+		<?php
+		bumblebee_render_ad(
+			uniqid( 'ad' ),
+			[
+				'slot-name'        => 'postarticle',
+				'sizes'            => '970x550,970x250,970x90,728x90,3x3,300x250',
+				'responsive-sizes' => [
+					'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+					'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+					'desktop'      => [ [ 728, 90 ], [ 640, 360 ], [ 3, 3 ], [ 300, 250 ] ],
+					'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ], [ 300, 250 ] ],
+				],
+			]
+		);
+		?>
+	</div>
 </main>
 	<?php
 	get_footer();
