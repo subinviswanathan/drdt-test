@@ -5,7 +5,7 @@
  * @package bumblebee
  */
 
-wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack.js', [], '1.0.0', true );
+wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/src/ad-stack.js', [], '1.0.0', true );
 
 /**
  * Renders an ad placeholder
@@ -42,11 +42,12 @@ function bumblebee_render_ad( $id, $options ) {
 		$markup,
 		[
 			'div' => [
-				'id'                => [],
-				'class'             => [],
-				'data-ad-slot-name' => [],
-				'data-ad-sizes'     => [],
-				'data-ad-targeting' => [],
+				'id'                       => [],
+				'class'                    => [],
+				'data-ad-slot-name'        => [],
+				'data-ad-sizes'            => [],
+				'data-ad-targeting'        => [],
+				'data-ad-responsive-sizes' => [],
 			],
 		]
 	);
