@@ -13,7 +13,7 @@
 			'hashchange',
 			function () {
 				var id = location.hash.substring( 1 ),
-				element;
+					element;
 
 				if ( ! ( /^[A-z0-9_-]+$/.test( id ) ) ) {
 					return;

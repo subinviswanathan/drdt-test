@@ -5,12 +5,20 @@
   "main": "README.md",
   "dependencies": {},
   "devDependencies": {
+    "del": "^3.0.0",
+    "eslint": "^5.11.1",
+    "event-stream": "^4.0.1",
     "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.2"
+    "gulp-eslint": "^5.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
   },
   "scripts": {
     "test": "cat README.md",
-    "gulp": "./node_modules/gulp/bin/gulp.js"
+    "gulp": "./node_modules/gulp/bin/gulp.js",
+    "es-lint": "./node_modules/.bin/eslint ./js/*.js"
   },
   "author": "",
   "license": "ISC"
