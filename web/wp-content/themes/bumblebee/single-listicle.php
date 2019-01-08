@@ -136,6 +136,7 @@ $category = $category[0];
 			?>
 		</section>
 	</section>
+	<?php if ( ( $current_card ) <= ( $total_cards ) ) { ?>
 	<section class="full-width-ad">
 		<?php
 		bumblebee_render_ad(
@@ -153,7 +154,7 @@ $category = $category[0];
 		);
 		?>
 	</section>
-	<?php $section_num++; } ?>
+	<?php } $section_num++; } ?>
 	<div class="postarticle_ad">
 		<?php
 		bumblebee_render_ad(
