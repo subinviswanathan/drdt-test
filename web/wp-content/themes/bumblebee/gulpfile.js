@@ -11,13 +11,24 @@ var es = require('event-stream');
 
 sass.compiler = require('node-sass');
 
-var component = ['homepage','listicle','article','header','footer'];
 var bundles = ['./js/ad-stack.js','./js/customizer.js','./js/navigation.js','./js/skip-link-focus-fix.js'];
 
+
 gulp.task('sass', function () {
-	return gulp.src('./sass/**/style.scss')
+	return gulp.src('./sass/**/style_main.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('./'));
+});
+
+var component = ['header', 'homepage', 'listicle', 'article', 'archive', 'footer'];
+
+// create a css per feature
+gulp.task('saas:component', function () {
+	return es.merge(component.map(function (item) {
+		return gulp.src('./sass/' + item + '.scss')
+			.pipe(sass().on('error', sass.logError))
+			.pipe(gulp.dest('./'));
+	}));
 });
 
 gulp.task('sass:watch', function () {

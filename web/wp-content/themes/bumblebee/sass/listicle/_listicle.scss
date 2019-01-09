@@ -1,0 +1,95 @@
+.listicle-page {
+  position: relative;
+
+  .content {
+    max-width: $size__site-max-width;
+    margin: 0 auto;
+  }
+
+  .contentbar, .contentbarheader {
+    margin: 0 20px;
+    background: #ffffff;
+  }
+
+  .post-category-label {
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .contentbarheader {
+    .byline {
+      .author-image {
+        border-radius: 50%;
+        height: 50px;
+        min-height: 0;
+        min-width: 0;
+        width: 50px;
+        float: left;
+      }
+
+      .author-name {
+        color: #0a4e9b;
+        font-style: italic;
+      }
+
+      &:after {
+        clear: both;
+        display: table;
+        content:"";
+      }
+    }
+
+    .dek {
+      padding-bottom: 20px;
+    }
+  }
+
+  .listicle-card  {
+    box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
+    margin: 30px 0;
+    position: relative;
+    margin-top: 0;
+
+    *:first-child {
+      margin-top: 0;
+    }
+
+    .total-page-count {
+      color: #ccc;
+    }
+
+    .card-number {
+      background: #fff;
+      padding: 8px 12px;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+    .card-content {
+      padding: 0 20px 20px;
+    }
+  }
+
+  .social-menu-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width:1023px) {
+  .listicle-page {
+    .social-menu-desktop {
+      display: none;
+    }
+    .social-menu-mobile {
+      display : block;
+
+      li {
+        display: inline-block;
+        margin-right : 1.6em;
+      }
+    }
+  }
+}

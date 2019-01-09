@@ -9,6 +9,8 @@
  * @package bumblebee
  */
 
+wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/footer.css', [], '1.0.2' );
+
 ?>
 <footer class="footer">
 	<div class="container">
