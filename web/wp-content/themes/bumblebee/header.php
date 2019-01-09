@@ -31,23 +31,25 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
 			</div>
-            <div class="hamburger-close hide-ham-sign">
+			<div class="hamburger-close hide-ham-sign">
 
-            </div>
-            <ul class="pure-menu-list ">
-                <li class="pure-menu-item pure-menu-has-children">
-                    <div class="menu-wrapper">
+			</div>
+			<ul class="pure-menu-list ">
+				<li class="pure-menu-item pure-menu-has-children">
+					<div class="menu-wrapper">
 					<?php
 					if ( has_nav_menu( 'hamburger-menu' ) ) {
-						wp_nav_menu( array(
-							             'theme_location' => 'hamburger-menu',
-							             'menu_class'     => 'pure-menu-children hamburger-menu-items',
-						             ) );
+						wp_nav_menu(
+							array(
+								'theme_location' => 'hamburger-menu',
+								'menu_class'     => 'pure-menu-children hamburger-menu-items',
+							)
+						);
 					}
 					?>
-                    </div>
-                </li>
-            </ul>
+					</div>
+				</li>
+			</ul>
 		</div>
 		<a href="/" class="pure-u-1-5 header-logo"></a>
 
@@ -77,10 +79,12 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
 						<?php
 						if ( has_nav_menu( 'hamburger-menu' ) ) {
-							wp_nav_menu( array(
-											 'theme_location' => 'hamburger-menu',
-											 'menu_class'     => 'pure-menu-children hamburger-menu-items',
-										 ) );
+							wp_nav_menu(
+								array(
+									'theme_location' => 'hamburger-menu',
+									'menu_class'     => 'pure-menu-children hamburger-menu-items',
+								)
+							);
 						}
 						?>
 					</li>
