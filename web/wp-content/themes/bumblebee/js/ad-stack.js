@@ -1,16 +1,17 @@
+/* global tmbi_ad_data */
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
-function TMBI_Ad_Stack( options ) {
+function TMBI_Ad_Stack( ) {
 	var self = this;
 
 	// Add GPT code.
 	(function() {
-		var gads = document.createElement("script");
+		var gads = document.createElement('script');
 		gads.async = true;
-		gads.type = "text/javascript";
-		var useSSL = "https:" == document.location.protocol;
-		gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
-		var node =document.getElementsByTagName("script")[0];
+		gads.type = 'text/javascript';
+		var useSSL = 'https:' == document.location.protocol;
+		gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+		var node =document.getElementsByTagName('script')[0];
 		node.parentNode.insertBefore(gads, node);
 	})();
 
@@ -20,13 +21,13 @@ function TMBI_Ad_Stack( options ) {
 	 * @param string sizes_str The string containing sizes. E.g.: 728x90,300x600.
 	 * @return array           The list of sizes in array format. E.g.: [[728,90],[300,600]]
 	 */
-	function sizes_str_to_array( sizes_str ) {
+	/*function sizes_str_to_array( sizes_str ) {
 		// sizes_str.split(',').map((size) => size.split('x').map(parseInt)) returns NULL for height
 		return sizes_str.split(',').map(function(size){
-			sizeParts = size.split('x');
+			var sizeParts = size.split('x');
 			return [parseInt(sizeParts[0]),parseInt(sizeParts[1])]
 		});
-	}
+	} */
 
 	/**************
 	 * common function to loop through object and add settargeting parameters
@@ -69,20 +70,20 @@ function TMBI_Ad_Stack( options ) {
 			var the_ad = googletag.pubads();
 			adSetTargeting(global_targeting, the_ad);
 			// SRA
-	    	googletag.pubads().enableSingleRequest();
+			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
-		})
+		});
 	};
 
 	// Render a single ad.
 	self.fetch_and_render = function( ad_id, options ){
 		googletag.cmd.push(function () {
-			var sizes = sizes_str_to_array(options.adSizes),
-				device = getCurrentBreakPoint(),
+			//var sizes = sizes_str_to_array(options.adSizes),
+			var device = getCurrentBreakPoint(),
 				responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
 			if (responsiveSize && responsiveSize[device]) {
 				var the_ad = googletag.defineSlot(options.adSlotName, responsiveSize[device], ad_id);
-				var targeting = JSON.parse(options.adTargeting || "{}");
+				var targeting = JSON.parse(options.adTargeting || '{}');
 				adSetTargeting(targeting, the_ad);
 				the_ad.addService(googletag.pubads());
 				googletag.display(ad_id);
@@ -90,20 +91,20 @@ function TMBI_Ad_Stack( options ) {
 		});
 	};
 
-	// Render a single batch.
-	self.fetch_and_render_batch = function( batch ){};
+	// @todo Render a single batch.
+	self.fetch_and_render_batch = function( ){};
 
 	// Fetch and render all ads on page.
 	self.fetch_and_render_all = function() {
-		var ads = document.getElementsByClassName("ad");
+		var ads = document.getElementsByClassName('ad');
 		for (var i = 0; i < ads.length; i++) {
-		    self.fetch_and_render( ads[i].id, ads[i].dataset );
+			self.fetch_and_render( ads[i].id, ads[i].dataset );
 		}
 	};
 }
 
 var ad_stack = new TMBI_Ad_Stack();
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener('DOMContentLoaded', function() {
 	ad_stack.init();
 	ad_stack.fetch_and_render_all();
 });

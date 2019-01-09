@@ -78,6 +78,14 @@
   }
 }
 
+
+.listicle-page > .content > .sidebar .ad {
+  display: flex;
+  position: sticky;
+  justify-content: center;
+  top: 0;
+}
+
 @media screen and (max-width:1023px) {
   .listicle-page {
     .social-menu-desktop {

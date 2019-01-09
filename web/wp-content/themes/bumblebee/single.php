@@ -115,6 +115,23 @@ get_header();
 		</div>
 	</div>
 		</div>
+		<div class="postarticle_ad">
+			<?php
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name'        => 'postarticle',
+					'sizes'            => '970x550,970x250,970x90,728x90,3x3,300x250',
+					'responsive-sizes' => [
+						'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+						'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+						'desktop'      => [ [ 728, 90 ], [ 640, 360 ], [ 3, 3 ], [ 300, 250 ] ],
+						'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ], [ 300, 250 ] ],
+					],
+				]
+			);
+			?>
+		</div>
 	</main>
 </div>
 	<?php
