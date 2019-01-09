@@ -25,12 +25,29 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 <a class="skip-link screen-reader-text" href="#content"></a>
 <header class="header">
 	<div class="content-wrapper">
-		<div class="hamburger-mobile desktop-hide">
+		<div class="hamburger-wrapper desktop-hide">
 			<div class="hamburger">
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
 			</div>
+            <div class="hamburger-close hide-ham-sign">
+
+            </div>
+            <ul class="pure-menu-list ">
+                <li class="pure-menu-item pure-menu-has-children">
+                    <div class="menu-wrapper">
+					<?php
+					if ( has_nav_menu( 'hamburger-menu' ) ) {
+						wp_nav_menu( array(
+							             'theme_location' => 'hamburger-menu',
+							             'menu_class'     => 'pure-menu-children hamburger-menu-items',
+						             ) );
+					}
+					?>
+                    </div>
+                </li>
+            </ul>
 		</div>
 		<a href="/" class="pure-u-1-5 header-logo"></a>
 

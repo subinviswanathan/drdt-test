@@ -100,7 +100,7 @@
     position: absolute;
     top: 52px;
     left: -60px;
-    min-width: 300px;
+    min-width: 250px;
   }
 
   .pure-menu-list {
@@ -154,6 +154,8 @@
     color        : #ffc10e;
     padding      : 16px 20px 0 0;
     border-right : 1px solid;
+    vertical-align: middle;
+    height: -webkit-fill-available;
   }
 
   .search-button {
@@ -189,6 +191,7 @@
 .slinky-menu {
   overflow: hidden;
   transform: translateZ(0);
+  z-index: 10;
 
   > ul {
     left: 0;
@@ -212,7 +215,7 @@
 
     span {
       flex: 1;
-      line-height: 1.4;
+      line-height: 29px;
     }
   }
 
@@ -309,11 +312,26 @@
 }
 
 @media screen and (max-width: 567px){
-  .header .main-navigation .menu-desktop-focus-menu-container {
-    ul {
-      li {
-        padding : 13px;
+  .header {
+    .main-navigation .menu-desktop-focus-menu-container {
+      ul {
+        li {
+          padding : 13px;
+        }
       }
+    }
+    .menu-hamburger-menu-container {
+      top: 97px;
+    }
+
+    .hamburger-close {
+      &::after, &::before {
+        background-color: $color__black;
+      }
+    }
+
+    .hamburger-menu {
+      background-color : #000000;
     }
   }
 }
