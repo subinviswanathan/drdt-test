@@ -105,3 +105,26 @@
 		}
 	}( container ) );
 } )();
+var menu = $('.hamburger');
+menu.on('click', function( e ) {
+	$('.pure-menu-children.hamburger-menu-items').css("display", 'block');
+	$('.hamburger').toggleClass("hide-ham-sign");
+	$('.hamburger-close').toggleClass("hide-ham-sign");
+	$(".menu-hamburger-menu-container").slinky({
+		title: true,
+		resize: true,
+		speed: 400,
+	});
+})
+
+var menu = $('.hamburger-close');
+menu.on('click', function( e ) {
+	$('.pure-menu-children.hamburger-menu-items').css("display", 'none');
+	$('.hamburger').toggleClass("hide-ham-sign");
+	$('.hamburger-close').toggleClass("hide-ham-sign");
+})
+if ( typeof Slinky === 'function' && $.fn.slinky !== 'function' ) {
+	$.fn.slinky = function(e) {
+		return new Slinky(this, e)
+	};
+}

@@ -145,6 +145,10 @@ function bumblebee_scripts() {
 
 	wp_enqueue_script( 'bumblebee-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'jQuery', "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" );
+
+	wp_enqueue_script( 'tohv2-child-menu', get_stylesheet_directory_uri() . '/js/slinky.min.js', array(), CHILD_THEME_VERSION, false );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -188,6 +192,7 @@ register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );
 register_nav_menu( 'v2-footer-social-links', 'V2 Footer Social Links' );
 register_nav_menu( 'v2-footer-brand-links', 'V2 Footer Brand Links' );
 register_nav_menu( 'v2-footer-global-links', 'V2 Footer Global Links' );
+register_nav_menu( 'hamburger-menu', 'hamburger menu' );
 register_nav_menu( 'desktop-focus-menu', __( 'Desktop Focus Menu', 'tmbi-theme-v3' ) );
 add_image_size( 'homepage-featured-big', 385, 385, true );
 add_image_size( 'homepage-featured-small', 165, 165, true );
