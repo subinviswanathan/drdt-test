@@ -63,7 +63,7 @@
 			)
 		);
 	}
-			?>
+	?>
 			<div class="search-form mobile-hide">
 				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
 					<fieldset>

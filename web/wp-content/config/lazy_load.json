@@ -1,0 +1,6 @@
+{
+    "a3_lazy_load_clean_on_deletion": "0",
+    "a3_lazy_load_global_settings": "a:21:{s:20:\"a3l_apply_lazyloadxt\";b:1;s:19:\"a3l_apply_to_images\";b:1;s:26:\"a3l_apply_image_to_content\";b:1;s:29:\"a3l_apply_image_to_textwidget\";b:1;s:33:\"a3l_apply_image_to_postthumbnails\";b:1;s:28:\"a3l_apply_image_to_gravatars\";b:1;s:25:\"a3l_skip_image_with_class\";s:0:\"\";s:26:\"a3l_image_include_noscript\";b:1;s:19:\"a3l_apply_to_videos\";b:1;s:26:\"a3l_apply_video_to_content\";b:1;s:29:\"a3l_apply_video_to_textwidget\";b:1;s:25:\"a3l_skip_video_with_class\";s:0:\"\";s:26:\"a3l_video_include_noscript\";b:1;s:16:\"a3l_uris_exclude\";s:0:\"\";s:19:\"a3l_objects_exclude\";i:0;s:16:\"a3l_theme_loader\";s:9:\"wp_footer\";s:27:\"a3l_load_disable_on_wptouch\";b:1;s:31:\"a3l_load_disable_on_mobilepress\";b:1;s:10:\"a3l_effect\";s:7:\"spinner\";s:21:\"a3l_effect_background\";s:7:\"#ffffff\";s:9:\"a3l_edgeY\";i:0;}",
+    "a3_lazy_load_version": "1.9.2",
+    ".label": "Lazy Load"
+}
