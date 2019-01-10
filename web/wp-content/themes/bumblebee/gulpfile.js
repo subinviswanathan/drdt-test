@@ -28,12 +28,16 @@ gulp.task('sass:watch', function () {
 });
 
 // create a css per feature
-gulp.task('saas:component', function () {
+gulp.task('saas:component',['clean:saas'], function () {
 	return es.merge(component.map(function (item) {
 		return gulp.src('./sass/' + item + '.scss')
 			.pipe(sass().on('error', sass.logError))
 			.pipe(gulp.dest('./'));
 	}));
+});
+
+gulp.task('clean:saas', function () {
+	return del(['./*.css','!./rtl.css']);
 });
 
 //This task is to run the es linting
