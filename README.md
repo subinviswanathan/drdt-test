@@ -16,7 +16,7 @@ This repository provides a local WordPress development environment and a CI/CD w
 
 ## Local Development
 
-Local environment is provided by [Lando](https://docs.devwithlando.io/). Other development environments are not officially supported. 
+Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagrant machine is also available.
 
 ### First-time setup
 * Install [Lando](https://docs.devwithlando.io/) if not already installed

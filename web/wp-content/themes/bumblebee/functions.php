@@ -110,6 +110,7 @@ function bumblebee_content_width() {
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$GLOBALS['content_width'] = apply_filters( 'bumblebee_content_width', 640 );
 }
+
 add_action( 'after_setup_theme', 'bumblebee_content_width', 0 );
 
 /**
@@ -130,6 +131,7 @@ function bumblebee_widgets_init() {
 		)
 	);
 }
+
 add_action( 'widgets_init', 'bumblebee_widgets_init' );
 
 /**
@@ -139,11 +141,11 @@ function bumblebee_scripts() {
 	wp_enqueue_style( 'pure-css', 'https://unpkg.com/purecss@1.0.0/build/pure-min.css', [], '1.0.0' );
 	wp_enqueue_style( 'pure-css-grids', 'https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css', [ 'pure-css' ], '1.0.0' );
 
-	wp_enqueue_style( 'bumblebee-style', get_stylesheet_directory_uri() . '/style_main', [], '1.0.2' );
+	wp_enqueue_style( 'bumblebee-style', get_stylesheet_directory_uri() . '/style_main.css', [], '1.0.2' );
 
-	wp_enqueue_script( 'bumblebee-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'bumblebee-navigation', get_template_directory_uri() . '/js/src/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'bumblebee-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'bumblebee-skip-link-focus-fix', get_template_directory_uri() . '/js/src/skip-link-focus-fix.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'jQuery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
 
@@ -153,6 +155,7 @@ function bumblebee_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'bumblebee_scripts' );
 
 /**
@@ -186,6 +189,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Ads.
  */
 require get_template_directory() . '/inc/ads.php';
+
+/**
+ * Global Targeting Parameters for DFP Ads.
+ */
+require get_template_directory() . '/inc/ads-global-targeting.php';
 
 
 register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );

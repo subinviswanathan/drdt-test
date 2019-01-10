@@ -79,7 +79,7 @@
 	 */
 	( function ( container ) {
 		var touchStartFn, i,
-		parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
+			parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
 
 		if ('ontouchstart' in window ) {
 			touchStartFn = function ( e ) {

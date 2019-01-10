@@ -81,10 +81,16 @@ wp_enqueue_style( 'bumblebee-style-homepage', get_stylesheet_directory_uri() . '
 						<section class="pure-u-sm-1-4">
 							<aside class="sidebar">
 								<?php
+								$slot_name = 'scroll';
+								if ( 1 === $section_num ) {
+									$slot_name = 'top';
+								} elseif ( 2 === $section_num ) {
+									$slot_name = 'middle';
+								}
 								bumblebee_render_ad(
 									uniqid( 'ad' ),
 									[
-										'slot-name'        => 'rail' . ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+										'slot-name'        => 'rail' . $slot_name,
 										'sizes'            => '300x250,300x600',
 										'responsive-sizes' => [
 											'desktop'      => [ [ 300, 250 ], [ 300, 600 ] ],
@@ -103,7 +109,7 @@ wp_enqueue_style( 'bumblebee-style-homepage', get_stylesheet_directory_uri() . '
 						bumblebee_render_ad(
 							uniqid( 'ad' ),
 							[
-								'slot-name'        => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+								'slot-name'        => $slot_name,
 								'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
 								'responsive-sizes' => [
 									'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
@@ -119,5 +125,23 @@ wp_enqueue_style( 'bumblebee-style-homepage', get_stylesheet_directory_uri() . '
 
 			<?php endwhile; ?>
 		<?php endif; ?>
+
+		<div class="postarticle_ad">
+			<?php
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name'        => 'postarticle',
+					'sizes'            => '970x550,970x250,970x90,728x90,3x3,300x250',
+					'responsive-sizes' => [
+						'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+						'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
+						'desktop'      => [ [ 728, 90 ], [ 640, 360 ], [ 3, 3 ], [ 300, 250 ] ],
+						'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 3, 3 ], [ 300, 250 ] ],
+					],
+				]
+			);
+			?>
+		</div>
 	</main>
 <?php get_footer(); ?>
