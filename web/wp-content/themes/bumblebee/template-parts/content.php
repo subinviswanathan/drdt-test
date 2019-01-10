@@ -17,7 +17,7 @@
 	</div>
 	<div class="pure-u-sm-1 pure-u-md-14-24 pure-u-lg-14-24 pure-u-xl-14-24">
 		<div class="post-content">
-			<h2 class="post-title"> <?php echo get_the_title(); ?> </h2>
+			<h2 class="post-title"> <?php echo esc_html( get_the_title() ); ?> </h2>
 			<div class="pure-g social-share-mobile hide-on-desktop">
 				<div class="pure-u-sm-1 social-share-wrapper">
 					<div class="pure-menu pure-menu-horizontal">
