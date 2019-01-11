@@ -1,0 +1,193 @@
+.single-post {
+	.site-container {
+		margin: 0 auto;
+		max-width: 1260px;
+		padding-top: 100px;
+		z-index: -1;
+
+		article h3 {
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 40px;
+		}
+
+		#primary {
+			float: left;
+			margin-left: 90px;
+			padding-right: 80px;
+			width: 760px;
+
+			.entry-content {
+				p {
+					a {
+						border-bottom: 1px solid;
+						color: $color__black;
+						text-decoration: none;
+					}
+				}
+			}
+
+			.entry-header {
+				.dek h2 {
+					font-size: 22px;
+					font-weight: 500;
+					line-height: 32px;
+					margin-bottom: 35px;
+				}
+			}
+
+			.entry-title {
+				font: {
+					family: $font__h1;
+					size: 46px;
+					weight: 700;
+				};
+				line-height: 56px;
+				margin-bottom: 20px;
+			}
+
+			.entry-meta {
+				.posted-on {
+					display: none;
+				}
+
+				.byline {
+					a {
+						color: #0a4e9b;
+						font: {
+							size: 18px;
+							style: italic;
+						};
+					}
+				}
+			}
+		}
+
+		// Single Post Sidebar
+		#secondary {
+			float: left;
+			width: 330px;
+		}
+		.article-sidebar {
+			display: flex;
+			justify-content: center;
+		}
+	}
+}
+
+/* This is for content single */
+@media only screen and (max-width: 567px) {
+	.text-center {
+		text-align : center;
+	}
+	.hide-on-mobile {
+		display : none;
+	}
+	.post-content {
+		letter-spacing: normal;
+		width: 85%;
+		margin: 1.5em auto;
+		padding: 1em;
+	}
+}
+
+@media only screen and (min-width: 568px) and (max-width: 768px) {
+	.text-center {
+		text-align : center;
+	}
+	.hide-on-mobile {
+		display : none;
+	}
+	.post-content {
+		letter-spacing: normal;
+		width: 85%;
+		margin: 1.5em auto;
+		padding: 1em;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.post-content {
+		margin-right: 1em;
+	}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+	.post-content {
+		margin-right: 1em;
+	}
+    .article-sidebar,
+    .sidebar-ad-wrapper {
+      display :flex;
+
+    }
+	.article-sidebar-scroll-ad {
+		position: sticky;
+        top: 2.8em;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+    .article-sidebar,
+    .sidebar-ad-wrapper {
+      display :flex;
+    }
+	.article-sidebar-scroll-ad {
+		position: sticky;
+        top: 2.8em;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.text-center {
+		text-align : center;
+	}
+
+	.hide-on-desktop {
+		display : none;
+	}
+
+	.single-post-page .site-container {
+		max-width  : $size__site-max-width;
+		margin : 0 auto;
+	}
+
+	.pre-article-ad {
+		margin-bottom : 2em;
+	}
+
+	.nl-signup-link a {
+		text-decoration : none;
+		color           : #ffc10e;
+	}
+
+	.nl-signup-link h4 {
+		display : inline-flex;
+	}
+
+	.nl-right-arrow {
+		width       : 30px;
+		height      : 30px;
+		margin-top  : -5px;
+		margin-left : -5px;
+	}
+
+	.pre-article-ad div {
+		margin : 0 auto;
+	}
+
+	.opening-content {
+		margin-bottom : 2em;
+	}
+
+	.post-content {
+		padding    : 1em 1.5em;
+	}
+
+	.sidebar img {
+		display: inline-flex;
+	}
+}
+
+
+

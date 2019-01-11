@@ -1,4 +1,6 @@
 @import "colors";
 @import "typography";
 @import "structure";
-@import "columns";
+
+$back-arrow: url('images/menu-arrow-light.svg') center no-repeat;
+$back-arrow-opacity: 1;
