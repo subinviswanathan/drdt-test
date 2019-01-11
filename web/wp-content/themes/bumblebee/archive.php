@@ -27,9 +27,7 @@ get_header();
 		);
 		?>
 	</section>
-	<?php
-	if ( have_posts() ) :
-	?>
+	<?php if ( have_posts() ) : ?>
 		<section class="archive-content">
 			<div class="archive-headings">
 				<div class="breadcrumbs">
@@ -61,13 +59,13 @@ get_header();
 			<section class="archive-content">
 				<div class="pure-g recipes">
 					<?php for ( $i = 0; $i < 8; $i++ ) : ?>
-					<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
-					<?php the_post(); ?>
-					<?php get_template_part( 'template-parts/archive/content', 'grid' ); ?>
-					<?php if ( 3 === $i ) { ?>
-					</div><div class="pure-g recipes">
-					<?php } ?>
-					<?php endif; ?>
+						<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
+							<?php the_post(); ?>
+							<?php get_template_part( 'template-parts/archive/content', 'grid' ); ?>
+							<?php if ( 3 === $i ) : ?>
+								</div><div class="pure-g recipes">
+							<?php endif; ?>
+						<?php endif; ?>
 					<?php endfor; ?>
 				</div>
 			</section>

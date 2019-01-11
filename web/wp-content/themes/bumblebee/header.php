@@ -99,7 +99,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			)
 		);
 	}
-			?>
+	?>
 			<div class="search-form mobile-hide">
 				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
 					<fieldset>

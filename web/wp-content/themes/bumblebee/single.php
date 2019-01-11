@@ -44,7 +44,7 @@ get_header();
 			get_template_part( 'template-parts/content', 'post' );
 		endwhile;
 	endif;
-?>
+	?>
 	<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile article-sidebar">
 		<div class="sidebar-ad-wrapper text-center">
 			<aside class="sidebar">

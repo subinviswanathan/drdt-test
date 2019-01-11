@@ -70,11 +70,11 @@ wp_enqueue_style( 'bumblebee-style-homepage', get_stylesheet_directory_uri() . '
 						<section class="pure-u-1 pure-u-sm-3-4 homepage-article">
 							<div class="pure-g recipes">
 								<?php for ( $i = 0; $i < 6; $i++ ) : ?>
-								<?php the_post(); ?>
-								<?php get_template_part( 'template-parts/content', 'grid' ); ?>
-								<?php if ( 2 === $i ) { ?>
-							</div><div class="pure-g recipes">
-								<?php } ?>
+									<?php the_post(); ?>
+									<?php get_template_part( 'template-parts/content', 'grid' ); ?>
+									<?php if ( 2 === $i ) : ?>
+										</div><div class="pure-g recipes">
+									<?php endif; ?>
 								<?php endfor; ?>
 							</div>
 						</section>
