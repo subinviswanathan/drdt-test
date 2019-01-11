@@ -1,7 +1,7 @@
 {
     "current_theme": "bumblebee",
     "rocket_lazyload_options": "a:1:{s:6:\"images\";s:1:\"1\";}",
-    "theme_mods_bumblebee": "a:4:{i:0;b:0;s:18:\"nav_menu_locations\";a:0:{}s:18:\"custom_css_post_id\";i:-1;s:11:\"custom_logo\";i:96470;}",
+    "theme_mods_bumblebee": "a:5:{i:0;b:0;s:18:\"nav_menu_locations\";a:5:{s:21:\"v2-footer-brand-links\";i:10748;s:22:\"v2-footer-global-links\";i:10750;s:20:\"v2-footer-site-links\";i:10753;s:22:\"v2-footer-social-links\";i:10757;s:14:\"hamburger-menu\";i:8;}s:18:\"custom_css_post_id\";i:-1;s:12:\"header_image\";s:13:\"remove-header\";s:11:\"custom_logo\";i:96463;}",
     "theme_switched": "",
     ".label": "Theme Settings"
 }
