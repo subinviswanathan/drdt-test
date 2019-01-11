@@ -13,7 +13,7 @@
 	</div>
 	<div class="pure-u-sm-1 pure-u-md-14-24 pure-u-lg-14-24 pure-u-xl-14-24">
 		<div class="post-content">
-			<h1 class="post-title"> <?php echo get_the_title(); ?> </h1>
+			<h1 class="post-title"> <?php echo esc_html( get_the_title() ); ?> </h1>
 			<div class="pure-g social-menu-mobile">
 						<?php get_template_part( 'template-parts/social-share', 'none' ); ?>
 			</div>
