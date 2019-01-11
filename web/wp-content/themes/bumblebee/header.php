@@ -23,6 +23,9 @@
 <body <?php body_class(); ?>
 <a class="skip-link screen-reader-text" href="#content"></a>
 <header class="header">
+	<div id="gpt-postcribe">
+
+	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-mobile desktop-hide">
 			<div class="hamburger">

@@ -1,4 +1,4 @@
-/* global tmbi_ad_data */
+/* global tmbi_ad_data postscribe */
 /*eslint no-console: "error"*/
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
@@ -15,8 +15,9 @@ function TMBI_Ad_Stack( ) {
 		gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
 		postScribe.src = (useSSL ? 'https:' : 'http:') + '//cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js';
 		var node =document.getElementsByTagName('script')[0];
-		node.parentNode.insertBefore(gads, node);
-		//node.parentNode.insertBefore(postScribe, node);
+		//node.parentNode.insertBefore(gads, node);
+		window.nodePostScribe = node;
+		node.parentNode.insertBefore(postScribe, node);
 	})();
 
 	/**
@@ -108,10 +109,10 @@ function TMBI_Ad_Stack( ) {
 	};
 }
 var ad_stack = new TMBI_Ad_Stack();
-document.addEventListener('DOMContentLoaded', function() {
-	ad_stack.init();
-});
 
 window.addEventListener('load', function() {
-	ad_stack.fetch_and_render_all();
+	postscribe('#gpt-postcribe','<script src="https://www.googletagservices.com/tag/js/gpt.js"></script>',function () {
+		ad_stack.init();
+		ad_stack.fetch_and_render_all();
+	});
 });
