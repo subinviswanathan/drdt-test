@@ -1,4 +1,5 @@
-/* global tmbi_ad_data */
+/* global tmbi_ad_data postscribe */
+/*eslint no-console: "error"*/
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 function TMBI_Ad_Stack( ) {
@@ -6,13 +7,17 @@ function TMBI_Ad_Stack( ) {
 
 	// Add GPT code.
 	(function() {
-		var gads = document.createElement('script');
+		var gads = document.createElement('script'),
+			postScribe = document.createElement('script');
 		gads.async = true;
 		gads.type = 'text/javascript';
 		var useSSL = 'https:' == document.location.protocol;
 		gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+		postScribe.src = (useSSL ? 'https:' : 'http:') + '//cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js';
 		var node =document.getElementsByTagName('script')[0];
-		node.parentNode.insertBefore(gads, node);
+		//node.parentNode.insertBefore(gads, node);
+		window.nodePostScribe = node;
+		node.parentNode.insertBefore(postScribe, node);
 	})();
 
 	/**
@@ -98,13 +103,16 @@ function TMBI_Ad_Stack( ) {
 	self.fetch_and_render_all = function() {
 		var ads = document.getElementsByClassName('ad');
 		for (var i = 0; i < ads.length; i++) {
+			//postscribe('#'+ ads[i].id,'', self.fetch_and_render( ads[i].id, ads[i].dataset ));
 			self.fetch_and_render( ads[i].id, ads[i].dataset );
 		}
 	};
 }
-
 var ad_stack = new TMBI_Ad_Stack();
-document.addEventListener('DOMContentLoaded', function() {
-	ad_stack.init();
-	ad_stack.fetch_and_render_all();
+
+window.addEventListener('load', function() {
+	postscribe('#gpt-postcribe','<script src="https://www.googletagservices.com/tag/js/gpt.js"></script>',function () {
+		ad_stack.init();
+		ad_stack.fetch_and_render_all();
+	});
 });
