@@ -21,7 +21,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>
+<body <?php body_class(); ?>>
 <a class="skip-link screen-reader-text" href="#content"></a>
 <header class="header">
 	<div id="gpt-postcribe">
