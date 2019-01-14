@@ -29,7 +29,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-wrapper desktop-hide">
-			<?php echo get_hamburger_markup(); ?>
+			<?php get_hamburger_markup(); ?>
 			<ul class="pure-menu-list ">
 				<li class="pure-menu-item pure-menu-has-children">
 					<div class="menu-wrapper">
@@ -56,7 +56,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	<nav class="main-navigation">
 		<div class="pure-menu pure-menu-horizontal">
 			<div class="hamburger-wrapper mobile-hide">
-				<?php echo get_hamburger_markup(); ?>
+				<?php get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
 					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
 						<?php
@@ -96,8 +96,9 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 
 <?php
 
-/** Getting hamburger markup.
- * **/
+/**
+ *  Getting hamburger markup
+ */
 function get_hamburger_markup() {
 	$hamburger  = '<div class="hamburger">';
 	$hamburger .= '<div class="hamburger-menu"></div>';
@@ -106,11 +107,12 @@ function get_hamburger_markup() {
 	$hamburger .= '</div>';
 	$hamburger .= '<div class="hamburger-close hide-ham-sign">';
 	$hamburger .= '</div>';
-	return $hamburger;
+	echo wp_kses_post( $hamburger );
 }
 
-/** Getting hamburger menu markup.
- * **/
+/**
+ *  Getting hamburger menu markup
+ */
 function get_hamburger_menu_markup() {
 	if ( has_nav_menu( 'hamburger-menu' ) ) {
 		$menu = wp_nav_menu(
