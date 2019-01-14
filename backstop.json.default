@@ -16,9 +16,6 @@
       "label": "Homepage",
       "url": "",
       "referenceUrl": "",
-      "removeSelectors": [
-        ".ad"
-      ],
       "selectors": [
         "document"
       ],
