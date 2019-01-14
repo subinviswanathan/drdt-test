@@ -32,7 +32,6 @@ defaults: &defaults
     #======================================================================================================================================
     # See set-up-globals.sh for more environment variables
 
-    NOTIFY: 'scripts/github/add-commit-comment {project} {sha} {site} {env} {dashboard-url} {site-url}'
     ADMIN_USERNAME: admin
     BUILD_TOOLS_VERSION: dev-master
     TERM: dumb
