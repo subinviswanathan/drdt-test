@@ -29,26 +29,12 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-wrapper desktop-hide">
-			<div class="hamburger">
-				<div class="hamburger-menu"></div>
-				<div class="hamburger-menu"></div>
-				<div class="hamburger-menu"></div>
-			</div>
-			<div class="hamburger-close hide-ham-sign">
-
-			</div>
+			<?php echo get_hamburger_markup(); ?>
 			<ul class="pure-menu-list ">
 				<li class="pure-menu-item pure-menu-has-children">
 					<div class="menu-wrapper">
 					<?php
-					if ( has_nav_menu( 'hamburger-menu' ) ) {
-						wp_nav_menu(
-							array(
-								'theme_location' => 'hamburger-menu',
-								'menu_class'     => 'pure-menu-children hamburger-menu-items',
-							)
-						);
-					}
+					get_hamburger_menu_markup();
 					?>
 					</div>
 				</li>
@@ -70,25 +56,11 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	<nav class="main-navigation">
 		<div class="pure-menu pure-menu-horizontal">
 			<div class="hamburger-wrapper mobile-hide">
-				<div class="hamburger">
-					<div class="hamburger-menu"></div>
-					<div class="hamburger-menu"></div>
-					<div class="hamburger-menu"></div>
-				</div>
-				<div class="hamburger-close hide-ham-sign">
-
-				</div>
+				<?php echo get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
 					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
 						<?php
-						if ( has_nav_menu( 'hamburger-menu' ) ) {
-							wp_nav_menu(
-								array(
-									'theme_location' => 'hamburger-menu',
-									'menu_class'     => 'pure-menu-children hamburger-menu-items',
-								)
-							);
-						}
+						get_hamburger_menu_markup();
 						?>
 					</li>
 				</ul>
@@ -121,3 +93,32 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 </div>
 <!-- #site-navigation -->
+
+<?php
+
+/** Getting hamburger markup.
+ * **/
+function get_hamburger_markup() {
+	$hamburger  = '<div class="hamburger">';
+	$hamburger .= '<div class="hamburger-menu"></div>';
+	$hamburger .= '<div class="hamburger-menu"></div>';
+	$hamburger .= '<div class="hamburger-menu"></div>';
+	$hamburger .= '</div>';
+	$hamburger .= '<div class="hamburger-close hide-ham-sign">';
+	$hamburger .= '</div>';
+	return $hamburger;
+}
+
+/** Getting hamburger menu markup.
+ * **/
+function get_hamburger_menu_markup() {
+	if ( has_nav_menu( 'hamburger-menu' ) ) {
+		$menu = wp_nav_menu(
+			array(
+				'theme_location' => 'hamburger-menu',
+				'menu_class'     => 'pure-menu-children hamburger-menu-items',
+			)
+		);
+	};
+}
+?>
