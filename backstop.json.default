@@ -20,8 +20,9 @@
         ".ad"
       ],
       "selectors": [
-        "body"
+        "document"
       ],
+      "delay": 1500,
       "readyEvent": null,
       "misMatchThreshold" : 0.1
     }
