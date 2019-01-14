@@ -46,7 +46,7 @@ site_url="https://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io"
 # @todo: Add Pantheon Dashboard URL
 body="${action} staging environment for ${TERMINUS_ENV}."
 if [ -n "$site_url" ] ; then
-    body+="Here are some useful links:\n\n[WordPress Admin](${site_url}/wp/wp-admin)\n\n"
+    body+=" Here are some useful links:\n\n[WordPress Admin](${site_url}/wp/wp-admin)\n\n"
 
     key_pages=$(cat key_pages.json)
     page_labels=(`echo $key_pages | jq '.[].label'`)
