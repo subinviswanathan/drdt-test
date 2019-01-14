@@ -58,7 +58,7 @@ fi
 
 PR_NUMBER=${CI_PULL_REQUEST##*/}
 GITHUB_API_URL="https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-curl -s -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
+curl -s -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$body\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
 
 printf "$body\n"
 
