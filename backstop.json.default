@@ -17,7 +17,7 @@
       "url": "",
       "referenceUrl": "",
       "removeSelectors": [
-        '.ad'
+        ".ad"
       ],
       "selectors": [
         "body"
