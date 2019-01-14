@@ -40,7 +40,7 @@ if [ ! -f backstop.json ]; then
 	# Create Backstop config file with dynamic URLs
 	echo -e "\nCreating backstop.js config file..."
 	#cat backstop.json.default | jq ".scenarios[0].url = \"$LIVE_SITE_URL\" | .scenarios[0].referenceUrl = \"$MULTIDEV_SITE_URL\" " > backstop.json
-	jq -n '$template | $template.scenarios = ($keypages | map($template.scenarios[0] + . | .referenceUrl = .url | .referenceUrl = "$LIVE_SITE_URL/"+.referenceUrl+"?variant=noads" | .url = "$MULTIDEV_SITE_URL/"+.url+"?variant=noads" ))' --argfile template backstop.json.default --argfile keypages key_pages.json > backstop.json
+	jq -n '$template | $template.scenarios = ($keypages | map($template.scenarios[0] + . | .referenceUrl = .url | .referenceUrl = "'"$LIVE_SITE_URL"'/"+.referenceUrl+"?variant=noads" | .url = "'"$MULTIDEV_SITE_URL"'/"+.url+"?variant=noads" ))' --argfile template backstop.json.default --argfile keypages key_pages.json > backstop.json
 fi
 
 # Backstop visual regression
