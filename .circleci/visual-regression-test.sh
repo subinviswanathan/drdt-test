@@ -39,7 +39,8 @@ curl -I "$LIVE_SITE_URL" >/dev/null
 if [ ! -f backstop.json ]; then
 	# Create Backstop config file with dynamic URLs
 	echo -e "\nCreating backstop.js config file..."
-	cat backstop.json.default | jq ".scenarios[0].url = \"$LIVE_SITE_URL\" | .scenarios[0].referenceUrl = \"$MULTIDEV_SITE_URL\" " > backstop.json
+	#cat backstop.json.default | jq ".scenarios[0].url = \"$LIVE_SITE_URL\" | .scenarios[0].referenceUrl = \"$MULTIDEV_SITE_URL\" " > backstop.json
+	jq -n '$template | $template.scenarios = ($keypages | map($template.scenarios[0] + . | .referenceUrl = .url | .referenceUrl = "$LIVE_SITE_URL/"+.referenceUrl+"?variant=noads" | .url = "$MULTIDEV_SITE_URL/"+.url+"?variant=noads" ))' --argfile template backstop.json.default --argfile keypages key_pages.json > backstop.json
 fi
 
 # Backstop visual regression
@@ -56,11 +57,6 @@ echo "${VISUAL_REGRESSION_RESULTS}"
 echo -e "\nRsyincing backstop_data files to $CIRCLE_ARTIFACTS_DIR..."
 rsync -rlvz backstop_data $CIRCLE_ARTIFACTS_DIR
 
-DIFF_IMAGE=$(find ./backstop_data -type f -name "*.png" | grep diff | grep desktop | head -n 1)
-if [ ! -f $DIFF_IMAGE ]; then
-	echo -e "\nDiff image file $DIFF_IMAGE not found!"
-fi
-DIFF_IMAGE_URL="$CIRCLE_ARTIFACTS_URL/$DIFF_IMAGE"
 DIFF_REPORT="$CIRCLE_ARTIFACTS_DIR/backstop_data/html_report/index.html"
 if [ ! -f $DIFF_REPORT ]; then
 	echo -e "\nDiff report file $DIFF_REPORT not found!"
@@ -68,16 +64,15 @@ if [ ! -f $DIFF_REPORT ]; then
 fi
 DIFF_REPORT_URL="$CIRCLE_ARTIFACTS_URL/backstop_data/html_report/index.html"
 
-REPORT_LINK="[![Visual report]($DIFF_IMAGE_URL)]($DIFF_REPORT_URL)"
+REPORT_LINK="\n\nView the [full visual regression test report]($DIFF_REPORT_URL)"
 
 if [[ ${VISUAL_REGRESSION_RESULTS} == *"Mismatch errors found"* ]]
 then
 	# visual regression failed
-	echo -e "\nVisual regression test failed!"
-	PR_MESSAGE="Visual regression test failed! $REPORT_LINK"
+	echo -e "\nThere are visual regressions!"
+	PR_MESSAGE="There are visual regressions! $REPORT_LINK"
 else
 	# visual regression passed
-	REPORT_LINK="\n\nView the [visual regression test report]($DIFF_REPORT_URL)"
 	echo -e "\n\nVisual regression test passed!"
 	PR_MESSAGE="Visual regression test passed! $REPORT_LINK"
 fi
