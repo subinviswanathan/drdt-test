@@ -96,7 +96,8 @@ for ((b=0;b<${#BRANCHES[@]};++b)); do
 		fi
 
 		# Keep track of the results
-		LIGHTHOUSE_SCORE=$(cat $LIGHTHOUSE_JSON_REPORT | jq '( .categories.performance.score | tonumber ) * 100 | floor')
+		# @todo: Lighthouse on CI is running an older version. This will fail with newer formats of the JSON report
+		LIGHTHOUSE_SCORE=$(cat $LIGHTHOUSE_JSON_REPORT | jq ' .score | tonumber | floor')
 		RESULTS["$BRANCH-$PAGE_SLUG-SCORE"]=$LIGHTHOUSE_SCORE
 		RESULTS["$BRANCH-$PAGE_SLUG-HTML_REPORT"]="$CIRCLE_ARTIFACTS_URL/$LIGHTHOUSE_HTML_REPORT"
 		RESULTS["$BRANCH-$PAGE_SLUG-JSON_REPORT"]="$CIRCLE_ARTIFACTS_URL/$LIGHTHOUSE_JSON_REPORT"
@@ -120,15 +121,15 @@ printf '%s\n' "${RESULTS[@]}"
 
 # Table header
 THEAD=""
-THEADL1="|Page/Branch|"
-THEADL2="|---"
+THEADL1="| Page/Branch "
+THEADL2="| --- "
 for ((b=0;b<${#BRANCHES[@]};++b)); do
 	BRANCH=${BRANCHES[b]}
-	THEADL1+="|${BRANCH}"
-	THEADL2+="|---:"
+	THEADL1+="| ${BRANCH} "
+	THEADL2+="| ---: "
 done
-THEADL1+="|Result|"
-THEADL2+="|:---:|"
+THEADL1+="| Result |"
+THEADL2+="| :---: |"
 THEAD="${THEADL1}\n${THEADL2}\n"
 
 PASSES=1
