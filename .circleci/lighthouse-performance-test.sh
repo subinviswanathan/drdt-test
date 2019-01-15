@@ -139,13 +139,13 @@ TBODY="";
 for ((i=0;i<${#PAGE_URLS[@]};++i)); do
 	PAGE_NAME=${PAGE_LABELS[i]//\"}
 	PAGE_SLUG=`slugify ${PAGE_NAME}`
-	TBODY+="|${PAGE_NAME}";
+	TBODY+="| ${PAGE_NAME} ";
 
 	for ((b=0;b<${#BRANCHES[@]};++b)); do
 		BRANCH=${BRANCHES[b]}
 		SCORE=${RESULTS[$BRANCH-$PAGE_SLUG-SCORE]}
 		REPORT_URL=${RESULTS[$BRANCH-$PAGE_SLUG-HTML_REPORT]}
-		TBODY+="|[${SCORE}](${REPORT_URL})";
+		TBODY+="| [${SCORE}](${REPORT_URL}) ";
 		if [[ ${BRANCH} == "master" ]]; then
 			MASTER_SCORE=$SCORE
 		else
@@ -156,9 +156,9 @@ for ((i=0;i<${#PAGE_URLS[@]};++i)); do
 	ACCEPTABLE_SCORE=$((MASTER_SCORE-THRESHOLD))
 	if [ $PR_SCORE -lt $ACCEPTABLE_SCORE ]; then
 		PASSES=0
-		TBODY+="|✘|"
+		TBODY+="| ✘ |"
 	else
-		TBODY+="|✔|"
+		TBODY+="| ✔ |"
 	fi
 
 	TBODY+="\n"
