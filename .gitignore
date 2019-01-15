@@ -52,10 +52,12 @@ web/wp-content/plugins/*
 web/wp-content/themes/*
 # Don't ignore our custom theme, part of this repo...
 !web/wp-content/themes/bumblebee/
-# ... but ignore the build artifacts
+# ... but ignore the build artifacts...
 web/wp-content/themes/bumblebee/*.css
 web/wp-content/themes/bumblebee/**/*.css
 web/wp-content/themes/bumblebee/js/src
+# ... making sure third party CSS stays in place
+!web/wp-content/themes/bumblebee/styles/**/*.css
 
 !web/private/
 web/private/*
