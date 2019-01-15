@@ -65,7 +65,7 @@ for ((b=0;b<${#BRANCHES[@]};++b)); do
 		LIGHTHOUSE_HTML_REPORT="$LIGHTHOUSE_RESULTS_DIR/lighthouse.report.html"
 		LIGHTHOUSE_RESULTS_JSON="$LIGHTHOUSE_RESULTS_DIR/lighthouse.results.json"
 
-		TEST_URL="$LIGHTHOUSE_URL/$PAGE_URL"
+		TEST_URL="$LIGHTHOUSE_URL/$PAGE_URL?variant=noads"
 
 		echo -e "\nTesting $PAGE_NAME on $BRANCH branch (${TEST_URL})"
 
@@ -173,6 +173,7 @@ else
 	PR_MESSAGE="⚠ Frontend performance tests failed!\n\n"
 fi
 PR_MESSAGE+="Full Lighthouse performance results:\n\n${THEAD}${TBODY}"
+PR_MESSAGE+="\n\n(**Note: Tests are against the _NOADS_ version of the pages!**)"
 curl -s -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$PR_MESSAGE\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
 
 if [ $PASSES -eq 1 ]; then
