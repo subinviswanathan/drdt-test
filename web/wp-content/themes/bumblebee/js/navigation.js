@@ -107,12 +107,15 @@
 } )();
 (function($){
 	var menu = $('.hamburger');
+	var menu_container;
 	menu.on('click', function() {
-		$('.pure-menu-children.hamburger-menu-items').css('display', 'block').css('left', '0');
+		menu_container = get_menu_container();
+		menu_container.find($('.pure-menu-children.hamburger-menu-items')).css('display', 'block').css('left', '0');
 		$('.hamburger').toggleClass('hide-ham-sign');
 		$('.hamburger-close').toggleClass('hide-ham-sign');
-		if( ! $('.menu-hamburger-menu-container').hasClass('slinky-menu')) {
-			$('.menu-hamburger-menu-container').slinky({
+
+		if( ! menu_container.hasClass('slinky-menu')) {
+			menu_container.slinky({
 				title: true,
 				resize: true,
 				speed: 400,
@@ -122,9 +125,19 @@
 
 	var close_menu = $('.hamburger-close');
 	close_menu.on('click', function() {
-		$('.pure-menu-children.hamburger-menu-items').css('display', 'none');
+		menu_container = get_menu_container();
+		menu_container.find($('.pure-menu-children.hamburger-menu-items')).css('display', 'none');
 		$('.hamburger').toggleClass('hide-ham-sign');
 		$('.hamburger-close').toggleClass('hide-ham-sign');
 	});
+
+	function get_menu_container(){
+		if( window.innerWidth <= 567) {
+			menu_container = $('.hamburger-wrapper.desktop-hide .menu-hamburger-menu-container');
+		} else {
+			menu_container = $('.hamburger-wrapper.mobile-hide .menu-hamburger-menu-container');
+		}
+		return menu_container;
+	}
 	/* global jQuery */
 })(jQuery);

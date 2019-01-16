@@ -38,6 +38,7 @@
     width      : 100%;
     height     : 60px;
     display    : flex;
+    z-index    : 1 ;
 
     .menu-desktop-focus-menu-container {
       ul {
@@ -357,19 +358,6 @@
           font-size : 16px;
         }
       }
-    }
-  }
-}
-
-@media screen and (min-width: 568px){
-  .header {
-    .slinky-menu {
-      li ul.active {
-        left : 0;
-      }
-    }
-    .menu-hamburger-menu-container {
-      min-height: 300px;
     }
   }
 }
