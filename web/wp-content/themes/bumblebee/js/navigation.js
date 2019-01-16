@@ -106,6 +106,10 @@
 	}( container ) );
 } )();
 (function($){
+	var mobile_width = 567;
+
+	window.innerWidth <= mobile_width ? $('.hamburger-wrapper.desktop-hide').css('display', 'flex') : $('.hamburger-wrapper.mobile-hide').css('display', 'flex');
+
 	var menu = $('.hamburger');
 	menu.on('click', function() {
 		var menu_wrapper = get_menu_wrapper();
@@ -133,7 +137,7 @@
 
 	function get_menu_wrapper(){
 		var menu_wrapper;
-		if( window.innerWidth <= 567) {
+		if( window.innerWidth <= mobile_width) {
 			menu_wrapper = $('.hamburger-wrapper.desktop-hide .pure-menu-item');
 		} else {
 			menu_wrapper = $('.hamburger-wrapper.mobile-hide .pure-menu-item');
