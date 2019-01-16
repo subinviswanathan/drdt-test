@@ -32,11 +32,6 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			<?php get_hamburger_markup(); ?>
 			<ul class="pure-menu-list ">
 				<li class="pure-menu-item pure-menu-has-children">
-					<div class="menu-wrapper">
-					<?php
-					get_hamburger_menu_markup();
-					?>
-					</div>
 				</li>
 			</ul>
 		</div>
@@ -59,9 +54,6 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				<?php get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
 					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
-						<?php
-						get_hamburger_menu_markup();
-						?>
 					</li>
 				</ul>
 			</div>
@@ -108,19 +100,5 @@ function get_hamburger_markup() {
 	$hamburger .= '<div class="hamburger-close hide-ham-sign">';
 	$hamburger .= '</div>';
 	echo wp_kses_post( $hamburger );
-}
-
-/**
- *  Getting hamburger menu markup
- */
-function get_hamburger_menu_markup() {
-	if ( has_nav_menu( 'hamburger-menu' ) ) {
-		$menu = wp_nav_menu(
-			array(
-				'theme_location' => 'hamburger-menu',
-				'menu_class'     => 'pure-menu-children hamburger-menu-items',
-			)
-		);
-	};
 }
 ?>
