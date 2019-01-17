@@ -31,7 +31,7 @@ gulp.task('sass:watch', function () {
 gulp.task('saas:component',['clean:saas'], function () {
 	return es.merge(component.map(function (item) {
 		return gulp.src('./sass/' + item + '.scss')
-			.pipe(sass().on('error', sass.logError))
+			.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 			.pipe(gulp.dest('./'));
 	}));
 });
