@@ -54,13 +54,15 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				</li>
 			</ul>
 		</div>
-		<a href="/" class="pure-u-1-5 header-logo"></a>
+		<a href="/" class="pure-u-1-5 logo">
+			<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-logo.svg" alt="Construction Pro Tips Logo" style="width:208px"></img>
+		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
 		<div class="pure-u-1-2 newsletter-signup-header mobile-hide">
 			<a class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
-				<img class="subscribe-logo initial loaded" alt="Subscribe" src="http://cpt.test.rda.net/wp-content/uploads/sites/9/2018/10/cpt-newsletter-header.png" data-was-processed="true">
+				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
 			</a>
 		</div>
 		<div class="search-mobile desktop-hide">
@@ -106,7 +108,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			<div class="search-form mobile-hide">
 				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
 					<fieldset>
-						<input type="text" placeholder="Serach">
+						<input type="text" placeholder="Search">
 						<button class="search-button"></button>
 					</fieldset>
 				</form>
