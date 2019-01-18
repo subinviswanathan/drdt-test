@@ -6,6 +6,15 @@
     .content {
       margin: 0 80px;
 
+      .entry-content {
+        p {
+          a {
+            color: #000;
+            border-bottom: 1px solid;
+          }
+        }
+      }
+
       img.size-medium {
         width: 300px;
         height: auto;
