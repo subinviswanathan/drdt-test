@@ -7,7 +7,7 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-archive', get_stylesheet_directory_uri() . '/archive.css', [ 'pure-css', 'pure-css-grids' ], '1.0.2' );
+wp_enqueue_style( 'bumblebee-style-archive', get_stylesheet_directory_uri() . '/archive.css', [ 'bumblebee-style' ], '1.0.2' );
 
 get_header();
 ?>
