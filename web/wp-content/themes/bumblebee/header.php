@@ -9,7 +9,6 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/header.css', [ 'pure-css', 'pure-css-grids' ], '1.0.2' );
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -19,6 +18,9 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<style type="text/css">
+		<?php require get_stylesheet_directory() . '/header.css'; ?>
+	</style>
 </head>
 
 <body <?php body_class(); ?>>
