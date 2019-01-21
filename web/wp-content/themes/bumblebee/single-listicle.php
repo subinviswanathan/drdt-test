@@ -19,7 +19,7 @@ $category = get_the_category();
 $category = $category[0];
 ?>
 <main class="listicle-page">
-    <section class="advertisement">
+	<section class="advertisement">
 		<?php
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
@@ -40,8 +40,8 @@ $category = $category[0];
 		);
 
 		?>
-    </section>
-    <section class="content-wrapper pure-g">
+	</section>
+	<section class="content-wrapper pure-g">
 		<?php
 		$data         = listicle_data();
 		$card_data    = $data[0];
@@ -50,34 +50,34 @@ $category = $category[0];
 		$section_num  = 1;
 		?>
 		<?php for ( $j = 1; $j <= $total_cards; $j += 3 ) : ?>
-            <section class="content pure-g">
-                <section class="social-menu-desktop pure-u-lg-2-24">
+			<section class="content pure-g">
+				<section class="social-menu-desktop pure-u-lg-2-24">
 					<?php
-					if( $j == 1) {
-                        get_template_part( 'template-parts/social-share', 'none' );
+					if ( 1 === $j ) {
+						get_template_part( 'template-parts/social-share', 'none' );
 					}
 					?>
-                </section>
-                <section class=" pure-u-1 pure-u-lg-14-24">
+				</section>
+				<section class=" pure-u-1 pure-u-lg-14-24">
 					<?php
-					if( $j == 1 ) {
+					if ( 1 === $j ) {
 						?>
-                        <div class="contentbarheader">
-                            <a href="#" class="post-category-label"><?php echo esc_attr( $category->name ); ?></a>
-                            <h1 class="entry-title"><?php echo esc_html( get_the_title() ); ?></h1>
-                            <div class="byline">
-                                <img src="http://cpt.test.rda.net/wp-content/uploads/sites/9/2018/10/Blue-Makeup-MAC-1200x675.jpg" class="author-image" alt="img"></img>
-                                <span class="author-name">Amrita</span>
-                            </div>
-                            <section class="social-menu-mobile">
+						<div class="contentbarheader">
+							<a href="#" class="post-category-label"><?php echo esc_attr( $category->name ); ?></a>
+							<h1 class="entry-title"><?php echo esc_html( get_the_title() ); ?></h1>
+							<div class="byline">
+								<img src="http://cpt.test.rda.net/wp-content/uploads/sites/9/2018/10/Blue-Makeup-MAC-1200x675.jpg" class="author-image" alt="img"></img>
+								<span class="author-name">Amrita</span>
+							</div>
+							<section class="social-menu-mobile">
 								<?php get_template_part( 'template-parts/social-share', 'none' ); ?>
-                            </section>
-                            <div class="dek"><?php the_excerpt(); ?></div>
-                        </div>
+							</section>
+							<div class="dek"><?php the_excerpt(); ?></div>
+						</div>
 						<?php
 					}
 					?>
-                    <div class="contentbar">
+					<div class="contentbar">
 						<?php
 						for ( $i = 0; $i < 3; $i++ ) :
 							if ( ( $current_card ) <= ( $total_cards ) ) :
@@ -88,24 +88,24 @@ $category = $category[0];
 								$card_heading = $card_content[3];
 								$card_brief   = $card_content[4];
 								?>
-                                <div class="listicle-card">
+								<div class="listicle-card">
 									<?php echo wp_kses_post( $card_content[0] ); ?>
-                                    <div class="card-number">
-                                        <span class="current-page-count"><?php echo wp_kses_post( $current_card ) . ' '; ?></span><span class="total-page-count"><?php echo '/ ' . wp_kses_post( $all_cards ); ?></span>
-                                    </div>
-                                    <div class="card-content">
+									<div class="card-number">
+										<span class="current-page-count"><?php echo wp_kses_post( $current_card ) . ' '; ?></span><span class="total-page-count"><?php echo '/ ' . wp_kses_post( $all_cards ); ?></span>
+									</div>
+									<div class="card-content">
 										<?php echo wp_kses_post( $card_heading ); ?>
-                                        <p class="content"><?php echo wp_kses_post( $card_brief ); ?></p>
-                                    </div>
-                                </div>
+										<p class="content"><?php echo wp_kses_post( $card_brief ); ?></p>
+									</div>
+								</div>
 								<?php
 								$current_card++;
 							endif;
 						endfor;
 						?>
-                    </div>
-                </section>
-                <section class="sidebar pure-u-1 pure-u-lg-8-24">
+					</div>
+				</section>
+				<section class="sidebar pure-u-1 pure-u-lg-8-24">
 					<?php
 					$slot_name  = 'scroll';
 					$slot_sizes = [ [ 300, 1050 ], [ 300, 600 ], [ 300, 250 ], [ 160, 600 ] ];
@@ -127,10 +127,10 @@ $category = $category[0];
 						]
 					);
 					?>
-                </section>
-            </section>
+				</section>
+			</section>
 			<?php if ( ( $current_card ) <= ( $total_cards ) ) : ?>
-                <section class="full-width-ad">
+				<section class="full-width-ad">
 					<?php
 					bumblebee_render_ad(
 						uniqid( 'ad' ),
@@ -146,11 +146,11 @@ $category = $category[0];
 						]
 					);
 					?>
-                </section>
+				</section>
 			<?php endif; ?>
 			<?php $section_num++; ?>
 		<?php endfor; ?>
-        <div class="postarticle_ad">
+		<div class="postarticle_ad">
 			<?php
 			bumblebee_render_ad(
 				uniqid( 'ad' ),
@@ -166,7 +166,7 @@ $category = $category[0];
 				]
 			);
 			?>
-        </div>
+		</div>
 </main>
 <?php
 get_footer();
