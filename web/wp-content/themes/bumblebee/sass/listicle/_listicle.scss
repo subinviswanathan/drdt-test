@@ -4,6 +4,16 @@
   .content {
     max-width: $size__site-max-width;
     margin: 0 auto;
+    z-index: 2;
+  }
+
+  .social-menu-desktop {
+    position: relative;
+
+    .social-menu {
+      position: absolute;
+      top: 300px;
+    }
   }
 
   .contentbar, .contentbarheader {
@@ -96,7 +106,7 @@
 
       li {
         display: inline-block;
-        margin-right : 1.6em;
+        margin: 20px;
       }
     }
   }

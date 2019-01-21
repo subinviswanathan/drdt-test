@@ -51,7 +51,7 @@ $category = $category[0];
 		?>
 		<?php for ( $j = 1; $j <= $total_cards; $j += 3 ) : ?>
             <section class="content pure-g">
-                <section class="social-share-bar-desktop pure-u-lg-2-24">
+                <section class="social-menu-desktop pure-u-lg-2-24">
 					<?php
 					if( $j == 1) {
                         get_template_part( 'template-parts/social-share', 'none' );
