@@ -31,7 +31,7 @@
 	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-wrapper desktop-hide">
-			<div class="hamburger">
+			<div class="hamburger">header-logo
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>

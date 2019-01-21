@@ -7,11 +7,12 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-article', get_stylesheet_directory_uri() . '/article.css', [ 'bumblebee-style-footer' ], '1.0.2' );
-
 get_header();
 ?>
 
+<style type="text/css">
+	<?php require get_stylesheet_directory() . '/article.css'; ?>
+</style>
 <div class="site-container">
 	<main class="site-content">
 		<div class="pure-g pre-article-ad text-center">

@@ -9,15 +9,16 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/footer.css', [], '1.0.2' );
-
 ?>
+<style type="text/css">
+	<?php require get_stylesheet_directory() . '/footer.css'; ?>
+</style>
 <footer class="footer">
 	<div class="container">
 <div class="pure-g">
 			<div class="pure-u-1 desktop-hide-footer newsletter">
 				<h5 class="newsletter-cta-description">Sign-up for posts to your inbox</h5>
-				<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.png"></img>
+				<?php echo apply_filters( 'a3_lazy_load_images', '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/diyu-header-sticky.png"></img>' ); // phpcs:ignore WordPress.Security.EscapeOutput  ?>
 			</div>
 		</div>
 		<!--<div class="pure-g border-bottom-mobile"></div>-->
@@ -27,7 +28,7 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 					<div class="pure-g">
 						<div class="pure-u-lg-5-12">
 							<div class="ipad-hide">
-								<a href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"></a>
+							<a href="#"><?php echo apply_filters( 'a3_lazy_load_images', '<img src="' . esc_url( site_url() ) . '"></img>' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
 								<?php
 								if ( has_nav_menu( 'v2-footer-social-links' ) ) {
 									wp_nav_menu(
@@ -103,7 +104,7 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 				</div>
 			</div>
 			<div class="pure-u-5-12 newsletter-desktop mobile-hide-footer">
-				<a href=""><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.png"></img></a>
+			<a href="#"><?php echo apply_filters( 'a3_lazy_load_images', '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/diyu-header-sticky.png"></img>' );    //phpcs:ignore WordPress.Security.EscapeOutput ?></a>
 			</div>
 		</div>
 	</div>
@@ -111,5 +112,8 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 
 <?php wp_footer(); ?>
 
+<script>
+	document.body.className = document.body.className.replace("no-js","");
+</script>
 </body>
 </html>
