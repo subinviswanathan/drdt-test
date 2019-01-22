@@ -23,7 +23,7 @@
 
   .header-logo {
     height              : 107px;
-    background          : url(wp-content/themes/bumblebee/images/cpt-header-logo.png) no-repeat;
+    background          : url(./images/cpt-header-logo.png) no-repeat;
     background-size     : contain;
     background-position : 55%;
     margin-left: 20px;
@@ -160,7 +160,7 @@
   }
 
   .search-button {
-    background-image    : url(wp-content/themes/bumblebee/images/search-icon-light.svg);
+    background-image    : url(./images/search-icon-light.svg);
     background-size     : 18px 18px;
     background-repeat   : no-repeat;
     background-position : 50%;
@@ -296,7 +296,7 @@
 
     .search-mobile {
       .search-button {
-        background-image : url(wp-content/themes/bumblebee/images/search-icon.svg);
+        background-image : url(./images/search-icon.svg);
       }
     }
 

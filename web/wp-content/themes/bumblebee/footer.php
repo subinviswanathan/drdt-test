@@ -18,7 +18,7 @@
 <div class="pure-g">
 			<div class="pure-u-1 desktop-hide-footer newsletter">
 				<h5 class="newsletter-cta-description">Sign-up for posts to your inbox</h5>
-				<?php echo apply_filters( 'a3_lazy_load_images', '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/diyu-header-sticky.png"></img>' ); // phpcs:ignore WordPress.Security.EscapeOutput  ?>
+					<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.png"></img>
 			</div>
 		</div>
 		<!--<div class="pure-g border-bottom-mobile"></div>-->
@@ -28,7 +28,7 @@
 					<div class="pure-g">
 						<div class="pure-u-lg-5-12">
 							<div class="ipad-hide">
-							<a href="#"><?php echo apply_filters( 'a3_lazy_load_images', '<img src="' . esc_url( site_url() ) . '"></img>' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
+								<a href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"></a>
 								<?php
 								if ( has_nav_menu( 'v2-footer-social-links' ) ) {
 									wp_nav_menu(
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 			<div class="pure-u-5-12 newsletter-desktop mobile-hide-footer">
-			<a href="#"><?php echo apply_filters( 'a3_lazy_load_images', '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/diyu-header-sticky.png"></img>' );    //phpcs:ignore WordPress.Security.EscapeOutput ?></a>
+				<a href=""><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.png"></img></a>
 			</div>
 		</div>
 	</div>
