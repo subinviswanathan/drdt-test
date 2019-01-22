@@ -109,7 +109,7 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 
 					<div class="newsletter-signup-content-widget__subscribe-link">
 						<a href="">
-							<img src="<<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-logo-yellow.png"; ?>">
+							<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-logo-yellow.png ?>">
 						</a>
 
 					</div>
