@@ -1,7 +1,7 @@
 .single-post {
 	.site-container {
 		margin: 0 auto;
-		max-width: 1260px;
+		max-width: $size__site-max-width;
 		padding-top: 100px;
 
 		article h3 {
@@ -52,7 +52,7 @@
 
 				.byline {
 					a {
-						color: #0a4e9b;
+						color: $color__blue;
 						font: {
 							size: 18px;
 							style: italic;
@@ -157,7 +157,7 @@
 
 	.nl-signup-link a {
 		text-decoration : none;
-		color           : #ffc10e;
+		color           : $color__accent;
 	}
 
 	.nl-signup-link h4 {

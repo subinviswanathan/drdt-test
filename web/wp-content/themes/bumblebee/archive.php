@@ -53,6 +53,17 @@ get_header();
 				?>
 			</ul>
 		</section>
+		<section class="full-width-ad">
+			<?php
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+					'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+				]
+			);
+			?>
+		</section>
 		<?php $section_num = 0; ?>
 		<?php while ( have_posts() ) : ?>
 			<?php $section_num++; ?>

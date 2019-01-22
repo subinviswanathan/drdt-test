@@ -18,7 +18,7 @@
 
   .contentbar, .contentbarheader {
     margin: 0 20px;
-    background: #ffffff;
+    background: $color__white;
   }
 
   .post-category-label {
@@ -40,7 +40,7 @@
       }
 
       .author-name {
-        color: #0a4e9b;
+        color: $color__blue;
         font-style: italic;
       }
 
@@ -71,7 +71,7 @@
     }
 
     .card-number {
-      background: #fff;
+      background: $color__white;
       padding: 8px 12px;
       left: 0;
       position: absolute;
