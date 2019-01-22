@@ -109,7 +109,7 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 	</div>
 </footer>
 
-<footer class="footer" style="background-color: #424242;">
+<footer class="footer">
 	<div class="container">
 		<div class="pure-g">
 			<div class="pure-u-1 pure-u-md-3-5 left-foot">
