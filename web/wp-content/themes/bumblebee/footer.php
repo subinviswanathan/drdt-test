@@ -120,8 +120,8 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 						wp_nav_menu(
 							array(
 								'theme_location' => 'v2-footer-social-links',
-								'menu_class' => 'footer-social-links',
-								'container'  => false,
+								'menu_class'     => 'footer-social-links',
+								'container'      => false,
 							)
 						);
 					}
@@ -133,8 +133,8 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 						wp_nav_menu(
 							array(
 								'theme_location' => 'v2-footer-site-links',
-								'menu_class' => 'footer-site-links',
-								'container'  => false,
+								'menu_class'     => 'footer-site-links',
+								'container'      => false,
 							)
 						);
 					}
@@ -166,7 +166,7 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 						);
 					}
 					?>
-					<div class="copyright">&copy; <?php echo date( 'Y' ); ?> <?php echo esc_html( __( 'Home Service Publications, Inc', 'tmbi-theme-v3' ) ); ?></div>
+					<div class="copyright">&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( __( 'Home Service Publications, Inc', 'tmbi-theme-v3' ) ); ?></div>
 				</div>
 			</div>
 			<div class="pure-u-1 pure-u-md-2-5 right-foot">
