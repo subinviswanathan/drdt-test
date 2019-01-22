@@ -336,6 +336,9 @@
       background-color : #000000;
     }
   }
+  .newsletter-sign-below-header.hide-on-mobile {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) and  (max-width: 1023px){
