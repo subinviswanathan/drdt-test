@@ -103,7 +103,17 @@ wp_enqueue_style( 'bumblebee-style-footer', get_stylesheet_directory_uri() . '/f
 				</div>
 			</div>
 			<div class="pure-u-md-1-2 pure-u-lg-5-12 newsletter-desktop mobile-hide-footer">
-				<a href=""><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.png"></img></a>
+				<div class="newsletter-signup-content-widget__footer">
+
+					<div class="newsletter-signup-content-widget__tagline">DIY UNIVERSITY Online Courses</div>
+
+					<div class="newsletter-signup-content-widget__subscribe-link">
+						<a href="">
+							<img src="<<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-logo-yellow.png"; ?>">
+						</a>
+
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

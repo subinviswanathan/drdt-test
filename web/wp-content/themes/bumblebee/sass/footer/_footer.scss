@@ -47,6 +47,14 @@
 	.newsletter-cta-description {
 		padding: 20px 0;
 		font-weight: bold;
+		&:after {
+			border-bottom: 1px solid $color__grey;
+			content: "";
+			display: block;
+			margin: 0 auto;
+			padding-top: 20px;
+			width: 45px;
+		}
 	}
 
 	.newsletter form {
@@ -148,10 +156,21 @@
 	}
 
 	.newsletter-desktop {
-		padding-top: 50px;
+		padding-top: 30px;
 		text-align: center;
-		img {
+		.newsletter-signup-content-widget__footer {
+			display: flex;
 			max-width: 300px;
+			margin: 0 auto;
+
+			.newsletter-signup-content-widget__subscribe-link {
+				img {
+					max-width: 53px;
+					padding-left: 40px;
+					margin-left: 20px;
+					border-left: 2px solid $color__grey;
+				}
+			}
 		}
 	}
 	.footer-logo {
@@ -218,6 +237,20 @@
 			border-bottom: 8px solid hsla(80,2%,61%,.2);
 			padding: 30px 20px;
 		}
+
+		.footer-brand-links ul, .footer-global-links {
+			padding: 0 10px;
+		}
+
+		.footer-brand-links {
+			p {
+				margin-bottom: 0;
+			}
+
+			ul.footer-brand-links {
+				margin-top: 0;
+			}
+		}
 	}
 }
 
@@ -239,6 +272,10 @@
 		.footer-brand-links {
 			ul li {
 				padding: 0;
+			}
+
+			& > * {
+				margin: 0 auto;
 			}
 		}
 	}
