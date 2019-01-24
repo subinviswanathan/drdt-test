@@ -59,7 +59,7 @@ terminus -n wp $TERMINUS_SITE.$TERMINUS_ENV -- cli version
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --strict "$@"
 
 # Restore the backup made before testing
-terminus -n backup:restore $TERMINUS_SITE.$TERMINUS_ENV --element=database --yes
+terminus -n backup:restore $TERMINUS_SITE.$TERMINUS_ENV --element=database
 
 # Reset WordPress user name
 export ADMIN_USERNAME=$WORDPRESS_USER_NAME

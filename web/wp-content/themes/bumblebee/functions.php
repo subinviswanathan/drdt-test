@@ -365,7 +365,6 @@ function wp_standard_deregister_scripts() {
 	wp_deregister_script( 'wp-embed' );
 	wp_deregister_script( 'bumblebee-skip-link-focus-fix' );
 	wp_dequeue_style( 'jquery-lazyloadxt-spinner-css' );
-	// wp_deregister_script( 'bumblebee-navigation' ).
 }
 add_action( 'wp_footer', 'wp_standard_deregister_scripts' );
 
