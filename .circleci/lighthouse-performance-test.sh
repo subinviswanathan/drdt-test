@@ -81,7 +81,7 @@ for ((b=0;b<${#BRANCHES[@]};++b)); do
 		CIRCLE_ARTIFACTS_URL="$CIRCLE_BUILD_URL/artifacts/$CIRCLE_NODE_INDEX/$CIRCLE_ARTIFACTS"
 
 		# Run the Lighthouse test
-		lighthouse --perf --save-artifacts --output json --output html --output-path ${LIGHTHOUSE_REPORT_NAME} --chrome-flags="--headless --disable-gpu --no-sandbox" ${TEST_URL}
+		lighthouse --disable-device-emulation --perf --save-artifacts --output json --output html --output-path ${LIGHTHOUSE_REPORT_NAME} --chrome-flags="--headless --disable-gpu --no-sandbox" ${TEST_URL}
 
 		# Check for HTML report file
 		if [ ! -f $LIGHTHOUSE_HTML_REPORT ]; then

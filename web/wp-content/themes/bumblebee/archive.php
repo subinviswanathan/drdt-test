@@ -7,10 +7,12 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-archive', get_stylesheet_directory_uri() . '/archive.css', [], '1.0.2' );
-
 get_header();
 ?>
+
+<style type="text/css">
+	<?php require get_stylesheet_directory() . '/archive.css'; ?>
+</style>
 <main class="archive-page">
 	<section class="advertisement">
 		<?php
