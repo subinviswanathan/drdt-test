@@ -27,7 +27,8 @@
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
     "wpackagist-plugin/wp-redis": "0.7.0",
-    "wpackagist-plugin/a3-lazy-load":"1.9.2"
+    "wpackagist-plugin/a3-lazy-load":"1.9.2",
+    "wpackagist-plugin/co-authors-plus":"3.3.1"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",
@@ -88,7 +89,7 @@
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "code-sniff": [
-      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/*,web/wp-content/plugins/wp-*,web/wp-content/plugins/wpmudev-*,web/wp-content/plugins/regenerate-thumbnails,./web/wp-content/plugins/pantheon*,./web/wp-content/plugins/a3*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
+      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/*,web/wp-content/plugins/wp-*,web/wp-content/plugins/wpmudev-*,web/wp-content/plugins/regenerate-thumbnails,./web/wp-content/plugins/pantheon*,./web/wp-content/plugins/a3*,./web/wp-content/plugins/co-authors-plus*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"

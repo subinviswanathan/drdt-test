@@ -1,5 +1,6 @@
 .home-page {
 	position: relative;
+	z-index: 0;
 
 	h5 {
 		margin: 10px auto;
@@ -36,7 +37,7 @@
 
 		.read-more {
 			padding: 10px 20px;
-			background: #ffc10e;
+			background: $color__accent;
 		}
 	}
 
@@ -59,7 +60,7 @@
 		margin: 5px;
 		box-shadow: 0 2px 7px 0 hsla(0,0%,57%,.35);
 		height: 100%;
-		background: #ffffff;
+		background: $color__white;
 
 		img{
 			width: 100%;

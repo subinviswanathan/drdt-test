@@ -1,8 +1,9 @@
 .single-post {
 	.site-container {
 		margin: 0 auto;
-		max-width: 1260px;
+		max-width: $size__site-max-width;
 		padding-top: 100px;
+		z-index: 0;
 
 		article h3 {
 			font-size: 30px;
@@ -52,7 +53,7 @@
 
 				.byline {
 					a {
-						color: #0a4e9b;
+						color: $color__blue;
 						font: {
 							size: 18px;
 							style: italic;
@@ -70,6 +71,25 @@
 		.article-sidebar {
 			display: flex;
 			justify-content: center;
+		}
+
+		.post-content {
+			a {
+				color: $color__black;
+				border-bottom: 1px solid;
+			}
+		}
+
+		@import '../byline/byline';
+
+		.social-share.social-menu-desktop {
+			position: relative;
+			.social-menu {
+				position: absolute;
+				top: 300px;
+				margin: 0 auto;
+				width: 100%;
+			}
 		}
 	}
 }
@@ -157,7 +177,7 @@
 
 	.nl-signup-link a {
 		text-decoration : none;
-		color           : #ffc10e;
+		color           : $color__accent;
 	}
 
 	.nl-signup-link h4 {

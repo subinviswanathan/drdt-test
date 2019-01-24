@@ -1,45 +1,31 @@
 .listicle-page {
   position: relative;
+  z-index: 0;
 
   .content {
     max-width: $size__site-max-width;
     margin: 0 auto;
+    z-index: 2;
+  }
+
+  .social-menu-desktop {
+    position: relative;
+
+    .social-menu {
+      position: absolute;
+      top: 300px;
+    }
   }
 
   .contentbar, .contentbarheader {
     margin: 0 20px;
-    background: #ffffff;
+    background: $color__white;
   }
 
-  .post-category-label {
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
+
 
   .contentbarheader {
-    .byline {
-      .author-image {
-        border-radius: 50%;
-        height: 50px;
-        min-height: 0;
-        min-width: 0;
-        width: 50px;
-        float: left;
-      }
-
-      .author-name {
-        color: #0a4e9b;
-        font-style: italic;
-      }
-
-      &:after {
-        clear: both;
-        display: table;
-        content:"";
-      }
-    }
+    @import '../byline/byline';
 
     .dek {
       padding-bottom: 20px;
@@ -61,7 +47,7 @@
     }
 
     .card-number {
-      background: #fff;
+      background: $color__white;
       padding: 8px 12px;
       left: 0;
       position: absolute;
@@ -96,7 +82,7 @@
 
       li {
         display: inline-block;
-        margin-right : 1.6em;
+        margin: 20px;
       }
     }
   }
