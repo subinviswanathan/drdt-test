@@ -12,9 +12,11 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-homepage', get_stylesheet_directory_uri() . '/homepage.css', [], '1.0.2' );
 ?>
 <?php get_header(); ?>
+	<style type="text/css">
+		<?php require get_stylesheet_directory() . '/homepage.css'; ?>
+	</style>
 	<main class="home-page">
 
 		<section class="advertisement">

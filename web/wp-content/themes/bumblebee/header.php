@@ -29,7 +29,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-wrapper desktop-hide">
-			<div class="hamburger">
+			<div class="hamburger">header-logo
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
