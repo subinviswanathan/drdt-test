@@ -2,7 +2,6 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var es = require('event-stream');
 var eslint = require('gulp-eslint');
 //var minify = require('gulp-minify');
 //var sourcemaps = require('gulp-sourcemaps');
@@ -29,11 +28,11 @@ gulp.task('sass:watch', function () {
 
 // create a css per feature
 gulp.task('saas:component', ['clean:saas', 'sass'], function () {
-	return es.merge(component.map(function (item) {
+	return component.map(function (item) {
 		return gulp.src('./sass/' + item + '.scss')
 			.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 			.pipe(gulp.dest('./'));
-	}));
+	});
 });
 
 gulp.task('clean:saas', function () {
@@ -55,13 +54,13 @@ gulp.task('js:linting', function () {
 });
 
 gulp.task('js:task', ['js:linting', 'clean:scripts'], function () {
-	return es.merge(bundles.map(function (item) {
+	return bundles.map(function (item) {
 		return gulp.src(item)
 		//.pipe(sourcemaps.init())
 			.pipe(uglify())
 			//.pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest('./js/src'));
-	}));
+	});
 });
 
 gulp.task('clean:scripts', function () {
