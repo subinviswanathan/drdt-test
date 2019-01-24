@@ -29,7 +29,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-wrapper desktop-hide">
-			<div class="hamburger">
+			<div class="hamburger">header-logo
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
 				<div class="hamburger-menu"></div>
@@ -116,7 +116,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 </header>
 
 <div class="pure-g newsletter-sign-below-header hide-on-mobile">
-	<div class="pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 nl-signup-link text-center">
+	<div class="pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 nl-signup-link">
 		<a href="#"><h4>Sign Up for Our Newsletters <img class="nl-right-arrow" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/chevron-right-solid.svg"/></h4></a>
 	</div>
 </div>

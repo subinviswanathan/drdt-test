@@ -7,10 +7,12 @@
  * @package bumblebee
  */
 
-wp_enqueue_style( 'bumblebee-style-archive', get_stylesheet_directory_uri() . '/archive.css', [], '1.0.2' );
-
 get_header();
 ?>
+
+<style type="text/css">
+	<?php require get_stylesheet_directory() . '/archive.css'; ?>
+</style>
 <main class="archive-page">
 	<section class="advertisement">
 		<?php
@@ -52,6 +54,17 @@ get_header();
 					endwhile;
 				?>
 			</ul>
+		</section>
+		<section class="full-width-ad">
+			<?php
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+					'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+				]
+			);
+			?>
 		</section>
 		<?php $section_num = 0; ?>
 		<?php while ( have_posts() ) : ?>
