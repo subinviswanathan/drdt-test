@@ -1,7 +1,7 @@
 .single-post {
 	.site-container {
 		margin: 0 auto;
-		max-width: 1260px;
+		max-width: $size__site-max-width;
 		padding-top: 100px;
 		z-index: 0;
 
@@ -53,7 +53,7 @@
 
 				.byline {
 					a {
-						color: #0a4e9b;
+						color: $color__blue;
 						font: {
 							size: 18px;
 							style: italic;
@@ -71,6 +71,48 @@
 		.article-sidebar {
 			display: flex;
 			justify-content: center;
+		}
+
+		.post-content {
+			a {
+				color: $color__black;
+				border-bottom: 1px solid;
+			}
+		}
+
+		.byline {
+			.author-image {
+				border-radius: 50%;
+				height: 50px;
+				min-height: 0;
+				min-width: 0;
+				width: 50px;
+				float: left;
+			}
+
+			.author-name {
+				color: #0a4e9b;
+				font-style: italic;
+				line-height: 50px;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			&:after {
+				clear: both;
+				display: table;
+				content:"";
+			}
+		}
+		.social-share.social-menu-desktop {
+			position: relative;
+			.social-menu {
+				position: absolute;
+				top: 300px;
+				margin: 0 auto;
+				width: 100%;
+			}
 		}
 	}
 }
@@ -158,7 +200,7 @@
 
 	.nl-signup-link a {
 		text-decoration : none;
-		color           : #ffc10e;
+		color           : $color__accent;
 	}
 
 	.nl-signup-link h4 {

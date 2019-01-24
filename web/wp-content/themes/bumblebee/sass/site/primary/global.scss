@@ -1,5 +1,5 @@
 *{
-  font-family: OpenSans, Lato,Arial,Helvetica,sans-serif;
+  font-family: "Open Sans", Lato, Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: 29px;
   color: #444444;
@@ -21,31 +21,31 @@ h1, h2, h3, h4, h5 {
   }
 }
 
-h1, h1 a {
+h1, h1 * {
   font-family: Lato,Open Sans,Arial,Helvetica,sans-serif;
   font-size: 46px;
   line-height: 56px;
   margin: 0;
 }
 
-h2, h2 a {
+h2, h2 * {
   font-size: 38px;
   line-height: 48px;
   font-family: AmboyBlack, Lato,Open Sans,Arial,Helvetica,sans-serif;
 }
 
-h3, h3 a{
+h3, h3 * {
   font-size: 30px;
   line-height: 40px;
 }
 
-h4, h4 a {
+h4, h4 * {
   font-family: Open Sans,Arial,Helvetica,sans-serif;
   font-size: 24px;
   line-height: 25px;
 }
 
-h5, h5 a {
+h5, h5 * {
   font-size: 20px;
   line-height: 25px;
 }
@@ -142,6 +142,15 @@ img {
   text-align: center;
 }
 
+.post-category-label {
+  border-bottom: none !important;
+  color: $color__link !important;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 @media only screen and (max-width: 567px) {
   .social-menu-mobile {
     display: block;
@@ -152,7 +161,7 @@ img {
   }
 
   .social-menu-mobile li a {
-    box-shadow    : 0 1px 3px #7e7e7e;
+    box-shadow    : 0 1px 3px $color__box-shadow;
     border-radius : 50%;
     padding       : 0.9em 0.8em 0.8em 0.8em;
     text-align    : center;
@@ -165,7 +174,7 @@ img {
   }
   .social-menu-mobile li {
     display : inline-block;
-    margin-right : 1.6em;
+    margin: 20px;;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1279px) {
