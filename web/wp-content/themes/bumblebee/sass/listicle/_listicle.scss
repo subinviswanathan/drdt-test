@@ -1,5 +1,6 @@
 .listicle-page {
   position: relative;
+  z-index: 0;
 
   .content {
     max-width: $size__site-max-width;

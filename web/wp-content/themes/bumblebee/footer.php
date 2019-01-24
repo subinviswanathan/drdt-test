@@ -121,6 +121,25 @@
 </footer>
 
 <?php wp_footer(); ?>
+<?php
+
+/**
+ *  Getting hamburger menu markup
+ */
+function get_hamburger_menu_markup() {
+	if ( has_nav_menu( 'hamburger-menu' ) ) {
+		$menu = wp_nav_menu(
+			array(
+				'theme_location' => 'hamburger-menu',
+				'menu_class'     => 'pure-menu-children hamburger-menu-items',
+			)
+		);
+	};
+}
+
+get_hamburger_menu_markup();
+
+?>
 
 <script>
 	document.body.className = document.body.className.replace("no-js","");

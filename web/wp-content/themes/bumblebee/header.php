@@ -29,67 +29,28 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 	<div class="content-wrapper">
 		<div class="hamburger-wrapper desktop-hide">
-			<div class="hamburger">header-logo
-				<div class="hamburger-menu"></div>
-				<div class="hamburger-menu"></div>
-				<div class="hamburger-menu"></div>
-			</div>
-			<div class="hamburger-close hide-ham-sign">
-
-			</div>
+			<?php get_hamburger_markup(); ?>
 			<ul class="pure-menu-list ">
 				<li class="pure-menu-item pure-menu-has-children">
-					<div class="menu-wrapper">
-					<?php
-					if ( has_nav_menu( 'hamburger-menu' ) ) {
-						wp_nav_menu(
-							array(
-								'theme_location' => 'hamburger-menu',
-								'menu_class'     => 'pure-menu-children hamburger-menu-items',
-							)
-						);
-					}
-					?>
-					</div>
 				</li>
 			</ul>
 		</div>
 		<a href="/" class="pure-u-1-5 header-logo"></a>
-
-		<div class="pure-u-1-4 mobile-hide">
+		<div class="search-mobile desktop-hide">
+			<button class="search-button"></button>
 		</div>
-		<div class="pure-u-1-2 newsletter-signup-header mobile-hide">
+		<div class="pure-u-4-5 newsletter-signup-header mobile-hide">
 			<a class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
 				<img class="subscribe-logo initial loaded" alt="Subscribe" src="http://cpt.test.rda.net/wp-content/uploads/sites/9/2018/10/cpt-newsletter-header.png" data-was-processed="true">
 			</a>
-		</div>
-		<div class="search-mobile desktop-hide">
-			<button class="search-button"></button>
 		</div>
 	</div>
 	<nav class="main-navigation">
 		<div class="pure-menu pure-menu-horizontal">
 			<div class="hamburger-wrapper mobile-hide">
-				<div class="hamburger">
-					<div class="hamburger-menu"></div>
-					<div class="hamburger-menu"></div>
-					<div class="hamburger-menu"></div>
-				</div>
-				<div class="hamburger-close hide-ham-sign">
-
-				</div>
+				<?php get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
 					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
-						<?php
-						if ( has_nav_menu( 'hamburger-menu' ) ) {
-							wp_nav_menu(
-								array(
-									'theme_location' => 'hamburger-menu',
-									'menu_class'     => 'pure-menu-children hamburger-menu-items',
-								)
-							);
-						}
-						?>
 					</li>
 				</ul>
 			</div>
@@ -121,3 +82,20 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</div>
 </div>
 <!-- #site-navigation -->
+
+<?php
+
+/**
+ *  Getting hamburger markup
+ */
+function get_hamburger_markup() {
+	$hamburger  = '<div class="hamburger">';
+	$hamburger .= '<div class="hamburger-menu"></div>';
+	$hamburger .= '<div class="hamburger-menu"></div>';
+	$hamburger .= '<div class="hamburger-menu"></div>';
+	$hamburger .= '</div>';
+	$hamburger .= '<div class="hamburger-close hide-ham-sign">';
+	$hamburger .= '</div>';
+	echo wp_kses_post( $hamburger );
+}
+?>
