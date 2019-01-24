@@ -17,12 +17,9 @@ $category = $category[0];
 		<div class="post-content">
 			<a href="#"class="post-category-label"><?php echo esc_attr( $category->name ); ?></a>
 			<h1 class="post-title"> <?php echo esc_html( get_the_title() ); ?> </h1>
-			<div class="byline">
-				<img src="http://cpt.test.rda.net/wp-content/uploads/sites/9/2018/10/Blue-Makeup-MAC-1200x675.jpg" class="author-image" alt="img"></img>
-				<span class="author-name">Amrita</span>
-			</div>
+			<?php bumblebee_posted_by(); ?>
 			<div class="pure-g social-menu-mobile">
-						<?php get_template_part( 'template-parts/social-share', 'none' ); ?>
+				<?php get_template_part( 'template-parts/social-share', 'none' ); ?>
 			</div>
 			<div class="post-body">
 				<?php the_content(); ?>

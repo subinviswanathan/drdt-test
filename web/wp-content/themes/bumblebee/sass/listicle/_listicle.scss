@@ -24,27 +24,7 @@
 
 
   .contentbarheader {
-    .byline {
-      .author-image {
-        border-radius: 50%;
-        height: 50px;
-        min-height: 0;
-        min-width: 0;
-        width: 50px;
-        float: left;
-      }
-
-      .author-name {
-        color: $color__blue;
-        font-style: italic;
-      }
-
-      &:after {
-        clear: both;
-        display: table;
-        content:"";
-      }
-    }
+    @import '../byline/byline';
 
     .dek {
       padding-bottom: 20px;

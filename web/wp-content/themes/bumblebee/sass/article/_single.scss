@@ -79,31 +79,8 @@
 			}
 		}
 
-		.byline {
-			.author-image {
-				border-radius: 50%;
-				height: 50px;
-				min-height: 0;
-				min-width: 0;
-				width: 50px;
-				float: left;
-			}
+		@import '../byline/byline';
 
-			.author-name {
-				color: #0a4e9b;
-				font-style: italic;
-				line-height: 50px;
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-
-			&:after {
-				clear: both;
-				display: table;
-				content:"";
-			}
-		}
 		.social-share.social-menu-desktop {
 			position: relative;
 			.social-menu {
