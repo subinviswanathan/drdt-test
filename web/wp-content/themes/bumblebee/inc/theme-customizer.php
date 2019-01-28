@@ -14,8 +14,8 @@ function bumblebee_get_font_url() {
 	$font_url = '';
 
 	/*
-	 Translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language.
-	*/
+	Translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language.
+	 */
 	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'bumblebee' ) ) {
 		$subsets = 'latin,latin-ext';
 
@@ -39,7 +39,7 @@ function bumblebee_get_font_url() {
 /**
  * Sanitize custom fonts
  *
- * @param $input font options
+ * @param string $input font options
  */
 function bumblebee_sanitize_fonts( $input ) {
 	$valid = array(
@@ -80,7 +80,7 @@ function bumblebee_customizer_get_default_accent_color() {
 /**
  * Putting it all together
  *
- * @param $mce_css editor styles
+ * @param string $mce_css editor styles
  */
 function bumblebee_mce_css( $mce_css ) {
 	$font_url = bumblebee_get_font_url();
