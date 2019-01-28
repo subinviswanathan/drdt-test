@@ -1,5 +1,15 @@
 <?php
+/**
+ * Bumblebee customizer options
+ *
+ * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
+ *
+ * @package bumblebee
+ */
 
+/**
+ * Custom fonts
+ */
 function bumblebee_get_font_url() {
 	$font_url = '';
 
@@ -26,7 +36,9 @@ function bumblebee_get_font_url() {
 
 	return $font_url;
 }
-
+/**
+ * Sanitize custom fonts
+ */
 function bumblebee_sanitize_fonts( $input ) {
 	$valid = array(
 		'Open Sans'        => 'Open Sans',
@@ -47,16 +59,25 @@ function bumblebee_sanitize_fonts( $input ) {
 }
 
 add_action( 'wp_enqueue_scripts', 'bumblebee_enqueue_scripts_styles' );
+/**
+ * Enqueue scripts
+ */
 function bumblebee_enqueue_scripts_styles() {
 	$font_url = bumblebee_get_font_url();
 	if ( ! empty( $font_url ) ) {
-		wp_enqueue_style( 'bumblebee-fonts', esc_url_raw( $font_url ), array(), null ); }
+		wp_enqueue_style( 'bumblebee-fonts', esc_url_raw( $font_url ), array(), '1.0.0' ); }
 }
 
+/**
+ * Default customizer color
+ */
 function bumblebee_customizer_get_default_accent_color() {
 	return '#ffffff';
 }
 
+/**
+ * Putting it all together
+ */
 function bumblebee_mce_css( $mce_css ) {
 	$font_url = bumblebee_get_font_url();
 
@@ -72,6 +93,9 @@ function bumblebee_mce_css( $mce_css ) {
 }
 add_filter( 'mce_css', 'bumblebee_mce_css' );
 
+/**
+ * Customizer options
+ */
 function bumblebee_custom_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting(
@@ -212,7 +236,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bumblebee_menu_fonts',
 		array(
-			'default' => 'Open Sans',
+			'default'           => 'Open Sans',
 			'sanitize_callback' => 'bumblebee_sanitize_fonts',
 		)
 	);
@@ -242,7 +266,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bumblebee_fonts',
 		array(
-			'default' => 'Open Sans',
+			'default'           => 'Open Sans',
 			'sanitize_callback' => 'bumblebee_sanitize_fonts',
 		)
 	);
@@ -272,7 +296,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bumblebee_body_fonts',
 		array(
-			'default' => 'Open Sans',
+			'default'           => 'Open Sans',
 			'sanitize_callback' => 'bumblebee_sanitize_fonts',
 		)
 	);
@@ -301,6 +325,9 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'bumblebee_custom_customize_register' );
 
+/**
+ * Custom styles into head
+ */
 function bumblebee_add_customizer_styles() {
 
 	$accent_hover_color  = get_theme_mod( 'bumblebee_accent_hover_color' );
@@ -317,43 +344,42 @@ function bumblebee_add_customizer_styles() {
 	<style>
 		.main-navigation,
 		.newsletter-sign-below-header {
-			font-family: "<?php echo esc_html_e( $font_menu_option ); ?>" !important;
+			font-family: "<?php echo esc_html( $font_menu_option ); ?>" !important;
 		}
 
 		.header .main-navigation {
-			background: <?php echo esc_html_e( $nav_bg_color ); ?>;
-
+			background: <?php echo esc_html( $nav_bg_color ); ?>;
 		}
 
 		.header .main-navigation .menu-desktop-focus-menu-container ul li a,
 		.header .menu-text {
-			color: <?php esc_html_e( $nav_text_color ); ?>;
+			color: <?php esc_html( $nav_text_color ); ?>;
 		}
 
 		.header .hamburger-menu {
-			background-color: <?php esc_html_e( $nav_text_color ); ?>;
+			background-color: <?php esc_html( $nav_text_color ); ?>;
 		}
 
 		main {
-			font-family: "<?php esc_html_e( $font_body_option ); ?>" !important;
+			font-family: "<?php esc_html( $font_body_option ); ?>" !important;
 		}
 
 		h1, h2, h3, h4, h5, h6 {
-			font-family: "<?php esc_html_e( $font_heading_option ); ?>" !important;
+			font-family: "<?php esc_html( $font_heading_option ); ?>" !important;
 		}
 
 		main.site-content {
-			color: <?php esc_html_e( $font_default_color ); ?>;
+			color: <?php esc_html( $font_default_color ); ?>;
 		}
 
 		a,
 		.read-more {
-			color: <?php esc_html_e( $accent_hover_color ); ?>;
+			color: <?php esc_html( $accent_hover_color ); ?>;
 		}
 
 		.single-post .site-container .post-content a {
-			color: <?php esc_html_e( $accent_hover_color ); ?> !important;
-			border-bottom: 1px solid <?php esc_html_e( $accent_hover_color ); ?> !important;
+			color: <?php esc_html( $accent_hover_color ); ?> !important;
+			border-bottom: 1px solid <?php esc_html( $accent_hover_color ); ?> !important;
 		}
 
 		.post-category-label {
@@ -361,11 +387,11 @@ function bumblebee_add_customizer_styles() {
 		}
 
 		.footer {
-			background: <?php esc_html_e( $footer_bg_color ); ?> !important;
+			background: <?php esc_html( $footer_bg_color ); ?> !important;
 		}
 
 		.footer ul li a {
-			color: <?php esc_html_e( $footer_text_color ); ?> !important;
+			color: <?php esc_html( $footer_text_color ); ?> !important;
 		}
 	</style>
 
