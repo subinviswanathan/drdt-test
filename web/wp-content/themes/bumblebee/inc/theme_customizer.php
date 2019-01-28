@@ -1,5 +1,5 @@
 <?php
-// Custom Fonts
+
 function bumblebee_get_font_url() {
 	$font_url = '';
 
@@ -9,9 +9,6 @@ function bumblebee_get_font_url() {
 	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'bumblebee' ) ) {
 		$subsets = 'latin,latin-ext';
 
-		/*
-		 translators: To add an additional Open Sans character subset specific to your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate into your own language.
-		*/
 		$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)', 'bumblebee' );
 
 		if ( 'cyrillic' == $subset ) {
@@ -20,8 +17,7 @@ function bumblebee_get_font_url() {
 				$subsets .= ',vietnamese'; }
 
 			$font_option = str_replace( ' ', '+', get_theme_mod( 'bumblebee_fonts', 'Open Sans' ) );
-
-			$query_args = array(
+			$query_args  = array(
 				'family' => $font_option . ':400italic,700italic,400,700',
 				'subset' => $subsets,
 			);
@@ -50,7 +46,6 @@ function bumblebee_sanitize_fonts( $input ) {
 	}
 }
 
-// Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'bumblebee_enqueue_scripts_styles' );
 function bumblebee_enqueue_scripts_styles() {
 	$font_url = bumblebee_get_font_url();
@@ -58,12 +53,10 @@ function bumblebee_enqueue_scripts_styles() {
 		wp_enqueue_style( 'bumblebee-fonts', esc_url_raw( $font_url ), array(), null ); }
 }
 
-// Default Customizer Color
 function bumblebee_customizer_get_default_accent_color() {
 	return '#ffffff';
 }
 
-// Filter TinyMCE CSS path to include Google Fonts.
 function bumblebee_mce_css( $mce_css ) {
 	$font_url = bumblebee_get_font_url();
 
@@ -81,9 +74,6 @@ add_filter( 'mce_css', 'bumblebee_mce_css' );
 
 function bumblebee_custom_customize_register( $wp_customize ) {
 
-	/* Define Custom Controls */
-
-	// Color Picker
 	$wp_customize->add_setting(
 		'bumblebee_default_color',
 		array(
@@ -210,7 +200,6 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Custom Font Options
 	$wp_customize->add_section(
 		'bumblebee_fonts',
 		array(
@@ -220,7 +209,6 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Menu Fonts
 	$wp_customize->add_setting(
 		'bumblebee_menu_fonts',
 		array(
@@ -251,7 +239,6 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Headings Fonts
 	$wp_customize->add_setting(
 		'bumblebee_fonts',
 		array(
@@ -282,7 +269,6 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Body Fonts
 	$wp_customize->add_setting(
 		'bumblebee_body_fonts',
 		array(
@@ -315,68 +301,59 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'bumblebee_custom_customize_register' );
 
-/* Output Custom Colors */
 function bumblebee_add_customizer_styles() {
 
-	/* Define Color */
-	$accent_hover_color = get_theme_mod( 'bumblebee_accent_hover_color' );
-	$nav_bg_color       = get_theme_mod( 'bumblebee_nav_bg_color' );
-	$nav_text_color     = get_theme_mod( 'bumblebee_nav_color' );
-	$footer_bg_color    = get_theme_mod( 'bumblebee_footer_bg_color' );
-	$footer_text_color  = get_theme_mod( 'bumblebee_footer_text_color' );
-
-	// Default (Interior Pages) Font Color
-	$font_default_color = get_theme_mod( 'bumblebee_default_color' );
-
-	// Font Options
+	$accent_hover_color  = get_theme_mod( 'bumblebee_accent_hover_color' );
+	$nav_bg_color        = get_theme_mod( 'bumblebee_nav_bg_color' );
+	$nav_text_color      = get_theme_mod( 'bumblebee_nav_color' );
+	$footer_bg_color     = get_theme_mod( 'bumblebee_footer_bg_color' );
+	$footer_text_color   = get_theme_mod( 'bumblebee_footer_text_color' );
+	$font_default_color  = get_theme_mod( 'bumblebee_default_color' );
 	$font_menu_option    = get_theme_mod( 'bumblebee_menu_fonts' );
 	$font_heading_option = get_theme_mod( 'bumblebee_fonts' );
 	$font_body_option    = get_theme_mod( 'bumblebee_body_fonts' );
 
-	// Add CSS
 	?>
 	<style>
-		/* Custom Font Dropdown */
 		.main-navigation,
 		.newsletter-sign-below-header {
-			font-family: "<?php echo $font_menu_option; ?>" !important;
+			font-family: "<?php echo esc_html_e( $font_menu_option ); ?>" !important;
 		}
 
-		/* Nav BG Color*/
 		.header .main-navigation {
-			background: <?php echo $nav_bg_color; ?>;
+			background: <?php echo esc_html_e( $nav_bg_color ); ?>;
+
 		}
 
-		/* Nav Text Color*/
 		.header .main-navigation .menu-desktop-focus-menu-container ul li a,
 		.header .menu-text {
-			color: <?php echo $nav_text_color; ?>;
+			color: <?php esc_html_e( $nav_text_color ); ?>;
 		}
 
 		.header .hamburger-menu {
-			background-color: <?php echo $nav_text_color; ?>;
+			background-color: <?php esc_html_e( $nav_text_color ); ?>;
 		}
 
 		main {
-			font-family: "<?php echo $font_body_option; ?>" !important;
+			font-family: "<?php esc_html_e( $font_body_option ); ?>" !important;
 		}
 
 		h1, h2, h3, h4, h5, h6 {
-			font-family: "<?php echo $font_heading_option; ?>" !important;
+			font-family: "<?php esc_html_e( $font_heading_option ); ?>" !important;
 		}
 
 		main.site-content {
-			color: <?php echo $font_default_color; ?>;
+			color: <?php esc_html_e( $font_default_color ); ?>;
 		}
 
 		a,
 		.read-more {
-			color: <?php echo $accent_hover_color; ?>;
+			color: <?php esc_html_e( $accent_hover_color ); ?>;
 		}
 
 		.single-post .site-container .post-content a {
-			color: <?php echo $accent_hover_color; ?> !important;
-			border-bottom: 1px solid <?php echo $accent_hover_color; ?> !important;
+			color: <?php esc_html_e( $accent_hover_color ); ?> !important;
+			border-bottom: 1px solid <?php esc_html_e( $accent_hover_color ); ?> !important;
 		}
 
 		.post-category-label {
@@ -384,11 +361,11 @@ function bumblebee_add_customizer_styles() {
 		}
 
 		.footer {
-			background: <?php echo $footer_bg_color; ?> !important;
+			background: <?php esc_html_e( $footer_bg_color ); ?> !important;
 		}
 
 		.footer ul li a {
-			color: <?php echo $footer_text_color; ?> !important;
+			color: <?php esc_html_e( $footer_text_color ); ?> !important;
 		}
 	</style>
 
