@@ -414,9 +414,11 @@ function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
 
 /**
  * Enable SVG upload
+ *
+ * @param array $existing_mimes for SVG upload.
  */
-add_filter( 'upload_mimes', 'enable_svg_upload' );
 function enable_svg_upload( $existing_mimes = array() ) {
 	$existing_mimes['svg'] = 'image/svg+xml';
 	return $existing_mimes;
 }
+add_filter( 'upload_mimes', 'enable_svg_upload' );

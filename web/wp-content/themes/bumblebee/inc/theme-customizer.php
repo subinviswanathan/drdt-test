@@ -345,10 +345,10 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			$wp_customize,
 			'bumblebee_header_logo',
 			array(
-				'title'      => __( 'Header Logo', 'bumblebee' ),
-				'label'      => __( 'Upload a header logo', 'bumblebee' ),
-				'section'    => 'bumblebee_logos',
-				'settings'   => 'bumblebee_header_logo',
+				'title'    => __( 'Header Logo', 'bumblebee' ),
+				'label'    => __( 'Upload a header logo', 'bumblebee' ),
+				'section'  => 'bumblebee_logos',
+				'settings' => 'bumblebee_header_logo',
 			)
 		)
 	);
@@ -373,10 +373,10 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			$wp_customize,
 			'bumblebee_footer_logo',
 			array(
-				'title'      => __( 'Footer Logo', 'bumblebee' ),
-				'label'      => __( 'Upload a footer logo', 'bumblebee' ),
-				'section'    => 'bumblebee_logos',
-				'settings'   => 'bumblebee_footer_logo',
+				'title'    => __( 'Footer Logo', 'bumblebee' ),
+				'label'    => __( 'Upload a footer logo', 'bumblebee' ),
+				'section'  => 'bumblebee_logos',
+				'settings' => 'bumblebee_footer_logo',
 			)
 		)
 	);
