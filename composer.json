@@ -29,6 +29,7 @@
     "wpackagist-plugin/radio-buttons-for-taxonomies": "^1.8",
     "wpackagist-plugin/redirection": "^3.7",
     "wpackagist-plugin/regenerate-thumbnails": "^3.0",
+    "wpackagist-plugin/user-switching": "^1.4",
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
     "wpackagist-plugin/wp-redis": "0.7.0"
