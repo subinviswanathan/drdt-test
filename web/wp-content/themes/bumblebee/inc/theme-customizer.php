@@ -39,7 +39,7 @@ function bumblebee_get_font_url() {
 /**
  * Sanitize custom fonts
  *
- * @param string $input font options
+ * @param string $input font options.
  */
 function bumblebee_sanitize_fonts( $input ) {
 	$valid = array(
@@ -80,7 +80,7 @@ function bumblebee_customizer_get_default_accent_color() {
 /**
  * Putting it all together
  *
- * @param string $mce_css editor styles
+ * @param string $mce_css editor styles.
  */
 function bumblebee_mce_css( $mce_css ) {
 	$font_url = bumblebee_get_font_url();

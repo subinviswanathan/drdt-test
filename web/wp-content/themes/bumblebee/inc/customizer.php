@@ -4,7 +4,12 @@
  *
  * @package bumblebee
  */
+
+/**
+ * Custom Customizations for bumblebee
+ */
 require 'theme-customizer.php';
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
