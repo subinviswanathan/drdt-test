@@ -3,28 +3,28 @@
 function bumblebee_get_font_url() {
 	$font_url = '';
 
-	/* translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language.
+	/*
+	 translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language.
 	*/
 	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'bumblebee' ) ) {
 		$subsets = 'latin,latin-ext';
 
-		/* translators: To add an additional Open Sans character subset specific to your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate into your own language.
+		/*
+		 translators: To add an additional Open Sans character subset specific to your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not translate into your own language.
 		*/
 		$subset = _x( 'no-subset', 'Open Sans font: add new subset (greek, cyrillic, vietnamese)', 'bumblebee' );
 
 		if ( 'cyrillic' == $subset ) {
-			$subsets .= ',cyrillic,cyrillic-ext'; }
-		elseif ( 'greek' == $subset ) {
-			$subsets .= ',greek,greek-ext'; }
-		elseif ( 'vietnamese' == $subset ) {
-			$subsets .= ',vietnamese'; }
+			$subsets .= ',cyrillic,cyrillic-ext'; } elseif ( 'greek' == $subset ) {
+			$subsets .= ',greek,greek-ext'; } elseif ( 'vietnamese' == $subset ) {
+				$subsets .= ',vietnamese'; }
 
-		$font_option = str_replace( ' ', '+', get_theme_mod( 'bumblebee_fonts', 'Open Sans' ) );
+			$font_option = str_replace( ' ', '+', get_theme_mod( 'bumblebee_fonts', 'Open Sans' ) );
 
-		$query_args = array(
-			'family' => $font_option.':400italic,700italic,400,700',
-			'subset' => $subsets,
-		);
+			$query_args = array(
+				'family' => $font_option . ':400italic,700italic,400,700',
+				'subset' => $subsets,
+			);
 		$font_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 	}
 
@@ -211,20 +211,23 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	);
 
 	// Custom Font Options
-	$wp_customize->add_section('bumblebee_fonts' , array(
-		'title'       => __( 'Font Options', 'bumblebee' ),
-		'description' => __( 'Change the Heading & Body Fonts' ),
-		'priority'    => 33,
-	));
+	$wp_customize->add_section(
+		'bumblebee_fonts',
+		array(
+			'title'       => __( 'Font Options', 'bumblebee' ),
+			'description' => __( 'Change the Heading & Body Fonts' ),
+			'priority'    => 33,
+		)
+	);
 
 	// Menu Fonts
 	$wp_customize->add_setting(
 		'bumblebee_menu_fonts',
 		array(
-	'default' => 'Open Sans',
+			'default' => 'Open Sans',
 			'sanitize_callback' => 'bumblebee_sanitize_fonts',
-			)
-		);
+		)
+	);
 
 	$wp_customize->add_control(
 		new WP_Customize_Control(
@@ -252,10 +255,10 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bumblebee_fonts',
 		array(
-	'default' => 'Open Sans',
+			'default' => 'Open Sans',
 			'sanitize_callback' => 'bumblebee_sanitize_fonts',
-			)
-		);
+		)
+	);
 
 	$wp_customize->add_control(
 		new WP_Customize_Control(
@@ -283,10 +286,10 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'bumblebee_body_fonts',
 		array(
-	'default' => 'Open Sans',
+			'default' => 'Open Sans',
 			'sanitize_callback' => 'bumblebee_sanitize_fonts',
-			)
-		);
+		)
+	);
 
 	$wp_customize->add_control(
 		new WP_Customize_Control(
@@ -322,7 +325,7 @@ function bumblebee_add_customizer_styles() {
 	$footer_bg_color    = get_theme_mod( 'bumblebee_footer_bg_color' );
 	$footer_text_color  = get_theme_mod( 'bumblebee_footer_text_color' );
 
-	//Default (Interior Pages) Font Color
+	// Default (Interior Pages) Font Color
 	$font_default_color = get_theme_mod( 'bumblebee_default_color' );
 
 	// Font Options
@@ -389,5 +392,6 @@ function bumblebee_add_customizer_styles() {
 		}
 	</style>
 
-<?php }
+	<?php
+}
 add_action( 'wp_head', 'bumblebee_add_customizer_styles' );
