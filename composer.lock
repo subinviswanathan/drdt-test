@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8b640e4aea11a55fb1b74a8619a3957",
+    "content-hash": "4e6b21781bb64d393c45e4940d764844",
     "packages": [
         {
             "name": "composer/installers",
@@ -472,6 +472,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/radio-buttons-for-taxonomies/"
+        },
+        {
+            "name": "wpackagist-plugin/redirection",
+            "version": "3.7.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/redirection/",
+                "reference": "tags/3.7.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/redirection.3.7.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/redirection/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
