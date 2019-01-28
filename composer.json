@@ -27,6 +27,7 @@
     "wpackagist-plugin/members": "2.1.0",
     "wpackagist-plugin/pantheon-advanced-page-cache": "*",
     "wpackagist-plugin/radio-buttons-for-taxonomies": "^1.8",
+    "wpackagist-plugin/redirection": "^3.7",
     "wpackagist-plugin/regenerate-thumbnails": "^3.0",
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
