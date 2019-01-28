@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e711275b33a10265441727cfaf412653",
+    "content-hash": "d8b640e4aea11a55fb1b74a8619a3957",
     "packages": [
         {
             "name": "composer/installers",
@@ -452,6 +452,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/pantheon-advanced-page-cache/"
+        },
+        {
+            "name": "wpackagist-plugin/radio-buttons-for-taxonomies",
+            "version": "1.8.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/radio-buttons-for-taxonomies/",
+                "reference": "tags/1.8.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/radio-buttons-for-taxonomies.1.8.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/radio-buttons-for-taxonomies/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
@@ -2781,12 +2801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "d155baccb43ba2542941fbcba258b85ce7786419"
+                "reference": "db876706aacd4ffbd1c253358d19a651e50e65c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d155baccb43ba2542941fbcba258b85ce7786419",
-                "reference": "d155baccb43ba2542941fbcba258b85ce7786419",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/db876706aacd4ffbd1c253358d19a651e50e65c2",
+                "reference": "db876706aacd4ffbd1c253358d19a651e50e65c2",
                 "shasum": ""
             },
             "conflict": {
@@ -2977,7 +2997,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-01-15T19:39:37+00:00"
+            "time": "2019-01-22T18:37:22+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
