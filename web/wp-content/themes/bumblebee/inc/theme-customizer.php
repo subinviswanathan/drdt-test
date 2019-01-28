@@ -328,6 +328,71 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			)
 		)
 	);
+
+	$wp_customize->add_section(
+		'bumblebee_logos',
+		array(
+			'title'       => __( 'Custom Logos', 'bumblebee' ),
+			'description' => __( 'Add custom logos' ),
+			'priority'    => 32,
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_header_logo' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_header_logo',
+			array(
+				'title'      => __( 'Header Logo', 'bumblebee' ),
+				'label'      => __( 'Upload a header logo', 'bumblebee' ),
+				'section'    => 'bumblebee_logos',
+				'settings'   => 'bumblebee_header_logo',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_header_logo_width' );
+
+	$wp_customize->add_control(
+		'bumblebee_header_logo_width',
+		array(
+			'type'        => 'text',
+			'section'     => 'bumblebee_logos',
+			'label'       => __( 'Header Logo Width' ),
+			'description' => __( 'Enter only numbers, i.e: 200' ),
+			'settings'    => 'bumblebee_header_logo_width',
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_footer_logo' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_footer_logo',
+			array(
+				'title'      => __( 'Footer Logo', 'bumblebee' ),
+				'label'      => __( 'Upload a footer logo', 'bumblebee' ),
+				'section'    => 'bumblebee_logos',
+				'settings'   => 'bumblebee_footer_logo',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_footer_logo_width' );
+
+	$wp_customize->add_control(
+		'bumblebee_footer_logo_width',
+		array(
+			'type'        => 'text',
+			'section'     => 'bumblebee_logos',
+			'label'       => __( 'Footer Logo Width' ),
+			'description' => __( 'Enter only numbers, i.e: 100' ),
+			'settings'    => 'bumblebee_footer_logo_width',
+		)
+	);
 }
 add_action( 'customize_register', 'bumblebee_custom_customize_register' );
 

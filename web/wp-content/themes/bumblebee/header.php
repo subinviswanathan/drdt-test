@@ -36,7 +36,8 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			</ul>
 		</div>
 		<a href="/" class="pure-u-1-5 logo">
-			<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-logo.svg" alt="Construction Pro Tips Logo" style="width:208px"></img>
+			<img src="<?php echo get_theme_mod( 'bumblebee_header_logo' ); ?>" alt="" style="width:<?php echo get_theme_mod( 'bumblebee_header_logo_width' ); ?>px"></img>
+			
 		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
