@@ -18,7 +18,7 @@
 		<div class="pure-g">
 			<div class="pure-u-1 pure-u-md-3-5 left-foot">
 				<div class="ipad-hide logo-socials">
-					<a href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-footer-logo.svg" width="100px" alt="Construction Pro Tips Square Logo"></img></a>
+					<a href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"><img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_logo' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_logo_width' ) ); ?>px"></img></a>
 					<?php
 					if ( has_nav_menu( 'v2-footer-social-links' ) ) {
 						wp_nav_menu(
