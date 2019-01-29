@@ -13,9 +13,9 @@
 			</a>
 			<div class="pure-u-sm-3-5">
 				<div class="hero-text">
-					<?php the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
+					<?php the_title( '<h3 class="entry-title"><a data-analytics-metrics=\'{"link_name":"' . get_the_title() . '","link_module":"content navigation","link_pos":"marquee"}\' href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
 					<div class="hero-excerpt"><?php the_excerpt(); ?> </div>
-					<a href="<?php echo esc_url( get_permalink() ); ?> " class="read-more">read more</a>
+					<a data-analytics-metrics='{"link_name":"<?php echo get_the_title(); ?>","link_module":"content navigation","link_pos":"marquee"}' href="<?php echo esc_url( get_permalink() ); ?> " class="read-more">read more</a>
 				</div>
 			</div>
 		</div>
