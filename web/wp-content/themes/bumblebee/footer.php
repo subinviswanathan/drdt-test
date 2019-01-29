@@ -18,7 +18,7 @@
 		<div class="pure-g">
 			<div class="pure-u-1 pure-u-md-3-5 left-foot">
 				<div class="ipad-hide logo-socials">
-					<a href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-footer-logo.svg" width="100px" alt="Construction Pro Tips Square Logo"></img></a>
+					<a data-analytics-metrics='{"link_name":"footer logo","link_module":"navigation","link_pos":"footer"}' href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-footer-logo.svg" width="100px" alt="Construction Pro Tips Square Logo"></img></a>
 					<?php
 					if ( has_nav_menu( 'v2-footer-social-links' ) ) {
 						wp_nav_menu(
@@ -76,13 +76,13 @@
 			<div class="pure-u-1 pure-u-md-2-5 right-foot">
 				<div class="newsletter">
 					<h3 class="">Sign Up For Our Newsletter</h3>
-					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post">
+					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post" data-analytics-metrics='{"link_name":"newsletter signup","link_module":"newsletter signup","link_pos":"footer"}'>
 						<input type="text" id="email" placeholder="Email Address"></input>
 						<button type="submit" id="subscribe">Sign Up</button>
 					</form>
 				</div>
 				<div class="diyu-logo">
-					<a href="https://www.mydiyuniversity.com/" target="_blank" rel="noopener noreferrer">
+					<a href="https://www.mydiyuniversity.com/" data-analytics-metrics='{"link_name":"Subscribe link","link_module":"footer","link_pos":"magazine subscription"}' target="_blank" rel="noopener noreferrer">
 						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.svg" width="300px" alt="DIY University Logo"></img>
 					</a>
 				</div>
