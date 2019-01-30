@@ -67,11 +67,11 @@
 		flex-wrap: wrap;
 		font-size: 26px;
 		margin: 40px 0;
-		width: 210px;
+		width: 180px;
 
 		li {
 			display: inline-block;
-			margin-right: 20px;
+			margin: 0 20px 24px 0;
 			text-indent: -9999px;
 			
 			a {
@@ -87,15 +87,23 @@
 		}
 
 		.facebook-icon {
-			background-image: url(images/facebook-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/facebook-icon.svg');
 		}
 
 		.instagram-icon {
-			background-image: url(images/instagram-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/instagram-icon.svg');
 		}
 
 		.pinterest-icon {
-			background-image: url(images/pinterest-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/pinterest-icon.svg');
+		}
+
+		.youtube-icon {
+			background-image: url('<?php echo get_template_directory(); ?>/images/youtube-icon.svg');
+		}
+
+		.twitter-icon {
+			background-image: url('<?php echo get_template_directory(); ?>/images/twitter-icon.svg');
 		}
 	}
 

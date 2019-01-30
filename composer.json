@@ -12,6 +12,22 @@
     {
       "type": "vcs",
       "url": "https://github.com/pantheon-systems/wordpress-composer"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "yoast/wordpress-seo-premium",
+        "version": "9.5",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://yoast.com/app/uploads/2019/01/wordpress-seo-premium-9.5.zip"
+        }
+      }
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Automattic/Co-Authors-Plus"
     }
   ],
   "require": {
@@ -23,7 +39,7 @@
     "vlucas/phpdotenv": "2.*",
     "wpackagist-plugin/a3-lazy-load": "1.9.2",
     "wpackagist-plugin/autoptimize": "^2.4",
-    "wpackagist-plugin/co-authors-plus": "3.3.1",
+    "automattic/co-authors-plus": "dev-master",
     "wpackagist-plugin/customize-snapshots": "^0.7.0",
     "wpackagist-plugin/easyazon": "^4.0",
     "wpackagist-plugin/lh-hsts": "^1.24",
@@ -35,7 +51,8 @@
     "wpackagist-plugin/user-switching": "^1.4",
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
-    "wpackagist-plugin/wp-redis": "0.7.0"
+    "wpackagist-plugin/wp-redis": "0.7.0",
+    "yoast/wordpress-seo-premium": "^9.5"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",
@@ -96,7 +113,7 @@
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "code-sniff": [
-      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/*,web/wp-content/plugins/wp-*,web/wp-content/plugins/wpmudev-*,web/wp-content/plugins/regenerate-thumbnails,./web/wp-content/plugins/pantheon*,./web/wp-content/plugins/a3*,./web/wp-content/plugins/co-authors-plus*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
+      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/a3-lazy-load/*,./web/wp-content/plugins/autoptimize/*,./web/wp-content/plugins/co-authors-plus/*,./web/wp-content/plugins/customize-snapshots/*,./web/wp-content/plugins/easyazon/*,./web/wp-content/plugins/lh-hsts/*,./web/wp-content/plugins/members/*,./web/wp-content/plugins/pantheon-advanced-page-cache/*,./web/wp-content/plugins/radio-buttons-for-taxonomies/*,./web/wp-content/plugins/redirection/*,./web/wp-content/plugins/regenerate-thumbnails/*,./web/wp-content/plugins/user-switching/*,./web/wp-content/plugins/wordpress-seo-premium/*,./web/wp-content/plugins/wp-cfm/*,./web/wp-content/plugins/wpmudev-updates/*,./web/wp-content/plugins/wp-native-php-sessions/*,./web/wp-content/plugins/wp-redis/*,./web/wp-content/plugins/wp-smush-pro/*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"
