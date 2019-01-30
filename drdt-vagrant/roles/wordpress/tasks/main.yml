@@ -1,10 +1,4 @@
 ---
-#- name: Clone repo on the remote
-#  git:
-#    repo: https://BenoitRichard1212:b03ee824a8b8351b316ab29e2a74f12eee5dc8dc@github.com/fariasf/drdt-test  
-#    version: master
-#    dest: /vagrant/drdt-test
-#    force: yes
 - name: Execute dos2unix on several files
   shell: find . -type f -print0 | xargs -0 dos2unix
   args:
