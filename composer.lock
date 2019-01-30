@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cca0ffa9507795f80531298e91fb63c9",
+    "content-hash": "691dcec1c24de66e46fd08b321c3f014",
     "packages": [
         {
             "name": "composer/installers",
@@ -372,6 +372,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/a3-lazy-load/"
+        },
+        {
+            "name": "wpackagist-plugin/autoptimize",
+            "version": "2.4.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/autoptimize/",
+                "reference": "tags/2.4.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/autoptimize.2.4.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/autoptimize/"
         },
         {
             "name": "wpackagist-plugin/co-authors-plus",
