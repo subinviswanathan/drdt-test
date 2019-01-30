@@ -83,7 +83,7 @@
 				</div>
 				<div class="diyu-logo">
 					<a href="https://www.mydiyuniversity.com/" target="_blank" rel="noopener noreferrer">
-						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.svg" width="300px" alt="DIY University Logo"></img>
+						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.svg" width="300px" alt=""></img>
 					</a>
 				</div>
 			</div>

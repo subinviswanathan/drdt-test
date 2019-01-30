@@ -418,17 +418,27 @@ function bumblebee_add_customizer_styles() {
 			font-family: "<?php echo esc_html( $font_menu_option ); ?>" !important;
 		}
 
-		.header .main-navigation {
+		.header .main-navigation,
+		.header .pure-menu-list ul {
 			background: <?php echo esc_html( $nav_bg_color ); ?>;
 		}
 
+		.header .pure-menu-list ul {
+			z-index: 1;
+		}
+
 		.header .main-navigation .menu-desktop-focus-menu-container ul li a,
-		.header .menu-text {
+		.header .menu-text,
+		.header .pure-menu-list ul li a span {
 			color: <?php echo esc_html( $nav_text_color ); ?>;
 		}
 
 		.header .hamburger-menu {
 			background-color: <?php echo esc_html( $nav_text_color ); ?>;
+		}
+
+		.header .pure-menu-list ul li:not(:last-child) {
+			border-bottom: 2px dotted <?php echo esc_html( $nav_text_color ); ?>;
 		}
 
 		main {
@@ -461,7 +471,8 @@ function bumblebee_add_customizer_styles() {
 			background: <?php echo esc_html( $footer_bg_color ); ?> !important;
 		}
 
-		.footer ul li a {
+		.footer ul li a,
+		.footer .footer-brand-links-container ul.footer-brand-links li:not(:last-child):after {
 			color: <?php echo esc_html( $footer_text_color ); ?> !important;
 		}
 	</style>
