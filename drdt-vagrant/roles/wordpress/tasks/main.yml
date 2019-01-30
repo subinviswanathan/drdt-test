@@ -68,14 +68,10 @@
   ignore_errors: yes
   when: npm_install.failed is defined
 
-  #- name: npm rebuild node-sass
-     #command: npm rebuild node-sass --no-bin-links --no-optional
-    #args:
-    #  chdir: '{{ item }}'
-    #with_items:
-   # - '{{ project_path }}'
-    #- '{{ project_path }}/externals/wp-forms-api'
-   # - '{{ project_path }}/web/app/themes/rdnap'
+- name: npm rebuild node-sass
+  command: npm rebuild node-sass --force --unsafe-perm
+  args:
+    chdir: /vagrant/web/wp/wp-content/themes/bumblebee
 
 #- name: Symlink gulp into /usr/local/bin
   #file:
