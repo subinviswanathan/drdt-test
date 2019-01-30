@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "691dcec1c24de66e46fd08b321c3f014",
+    "content-hash": "d1668ba77b878e7c678ef496b9258525",
     "packages": [
         {
             "name": "composer/installers",
@@ -412,6 +412,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/co-authors-plus/"
+        },
+        {
+            "name": "wpackagist-plugin/customize-snapshots",
+            "version": "0.7.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/customize-snapshots/",
+                "reference": "tags/0.7.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/customize-snapshots.0.7.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/customize-snapshots/"
         },
         {
             "name": "wpackagist-plugin/easyazon",
