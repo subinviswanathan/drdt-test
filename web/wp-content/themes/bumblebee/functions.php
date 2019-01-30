@@ -205,6 +205,11 @@ require get_template_directory() . '/inc/ads.php';
  */
 require get_template_directory() . '/inc/ads-global-targeting.php';
 
+/**
+ * Load menu tagging through walker
+ */
+require get_template_directory() . '/inc/menu-walker-tagging.php';
+
 
 register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );
 register_nav_menu( 'v2-footer-social-links', 'V2 Footer Social Links' );
