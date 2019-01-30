@@ -423,6 +423,10 @@ function bumblebee_add_customizer_styles() {
 			background: <?php echo esc_html( $nav_bg_color ); ?>;
 		}
 
+		.header .pure-menu-list ul {
+			z-index: 1;
+		}
+
 		.header .main-navigation .menu-desktop-focus-menu-container ul li a,
 		.header .menu-text,
 		.header .pure-menu-list ul li a span {

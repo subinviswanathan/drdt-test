@@ -125,7 +125,7 @@
 		var menu_wrapper = get_menu_wrapper();
 		var drop_down_menu = jQuery('.menu-hamburger-menu-container');
 		drop_down_menu.appendTo(menu_wrapper);
-		$('.pure-menu-children.hamburger-menu-items').css('display', 'block').css('left', '0').css('z-index', '1000');
+		$('.pure-menu-children.hamburger-menu-items').css('display', 'block').css('left', '0');
 		$('.hamburger').toggleClass('hide-ham-sign');
 		$('.hamburger-close').toggleClass('hide-ham-sign');
 
