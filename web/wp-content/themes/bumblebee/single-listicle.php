@@ -14,8 +14,6 @@
 require_once 'functions.listicle.php';
 
 get_header();
-$category = get_the_category();
-$category = $category[0];
 ?>
 <style type="text/css">
 	<?php require get_stylesheet_directory() . '/listicle.css'; ?>
@@ -61,11 +59,19 @@ $category = $category[0];
 					?>
 				</section>
 				<section class=" pure-u-1 pure-u-lg-14-24">
-					<?php
-					if ( 1 === $j ) {
-						?>
+					<?php if ( 1 === $j ) { ?>
 						<div class="contentbarheader">
-							<a href="#" class="post-category-label"><?php echo esc_attr( $category->name ); ?></a>
+							<?php
+							$category = get_the_category();
+							if ( ! empty( $category[0] ) ) {
+								$category = $category[0];
+								$category_name = $category->name;
+								$category_link = get_category_link( $category->term_id );
+							}
+							?>
+							<a href="<?php echo esc_url( $category_link ); ?>" class="post-category-label">
+								<?php echo esc_attr( $category->name ); ?>
+							</a>
 							<h1 class="entry-title"><?php echo esc_html( get_the_title() ); ?></h1>
 							<?php bumblebee_posted_by(); ?>
 							<section class="social-menu-mobile">
