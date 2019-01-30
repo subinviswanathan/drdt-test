@@ -24,6 +24,10 @@
           "url": "https://yoast.com/app/uploads/2019/01/wordpress-seo-premium-9.5.zip"
         }
       }
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Automattic/Co-Authors-Plus"
     }
   ],
   "require": {
@@ -35,7 +39,7 @@
     "vlucas/phpdotenv": "2.*",
     "wpackagist-plugin/a3-lazy-load": "1.9.2",
     "wpackagist-plugin/autoptimize": "^2.4",
-    "wpackagist-plugin/co-authors-plus": "3.3.1",
+    "automattic/co-authors-plus": "dev-master",
     "wpackagist-plugin/customize-snapshots": "^0.7.0",
     "wpackagist-plugin/easyazon": "^4.0",
     "wpackagist-plugin/lh-hsts": "^1.24",
