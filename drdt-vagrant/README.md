@@ -1,3 +1,6 @@
+NOTE : On Windows the "wp-content" folder will be copied in place instead of symlinked for now. This is a workaround.
+       Will eventually get symlink working on Windows environnement.
+
 This is the DRDT Vagrant Box.
 
 Will serve as a base box for the DRDT project.
