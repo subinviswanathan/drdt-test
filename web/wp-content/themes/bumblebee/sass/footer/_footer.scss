@@ -87,23 +87,23 @@
 		}
 
 		.facebook-icon {
-			background-image: url(wp-content/themes/bumblebee/images/facebook-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/facebook-icon.svg');
 		}
 
 		.instagram-icon {
-			background-image: url(wp-content/themes/bumblebee/images/instagram-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/instagram-icon.svg');
 		}
 
 		.pinterest-icon {
-			background-image: url(wp-content/themes/bumblebee/images/pinterest-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/pinterest-icon.svg');
 		}
 
 		.youtube-icon {
-			background-image: url(wp-content/themes/bumblebee/images/youtube-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/youtube-icon.svg');
 		}
 
 		.twitter-icon {
-			background-image: url(wp-content/themes/bumblebee/images/twitter-icon.svg);
+			background-image: url('<?php echo get_template_directory(); ?>/images/twitter-icon.svg');
 		}
 	}
 
