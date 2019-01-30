@@ -33,11 +33,35 @@ if ! TERMINUS_DOES_MULTIDEV_EXIST ${TERMINUS_ENV}
 then
     terminus env:wake -n "$TERMINUS_SITE.dev"
     terminus build:env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --clone-content --yes
+    action="Created new"
 else
     terminus build:env:push -n "$TERMINUS_SITE.$TERMINUS_ENV" --yes
+    action="Updated"
 fi
 
 terminus secrets:set -n "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file='github-secrets.json' --clear --skip-if-empty
+
+# Add a PR message every time code gets deployed
+site_url="https://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io"
+# @todo: Add Pantheon Dashboard URL
+body="${action} staging environment for ${TERMINUS_ENV}."
+if [ -n "$site_url" ] ; then
+    body+=" Here are some useful links:\n\n[WordPress Admin](${site_url}/wp/wp-admin)\n\n"
+
+    key_pages=$(cat key_pages.json)
+    page_labels=(`echo $key_pages | jq '.[].label'`)
+    page_urls=(`echo $key_pages | jq '.[].url'`)
+    for ((i=0;i<${#page_urls[@]};++i)); do
+        body+="[${page_labels[i]//\"}](${site_url}/${page_urls[i]//\"})\n"
+    done
+fi
+
+PR_NUMBER=${CI_PULL_REQUEST##*/}
+GITHUB_API_URL="https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+curl -s -i -u "$GIT_USERNAME:$GITHUB_TOKEN" -d "{\"body\": \"$body\"}" $GITHUB_API_URL/issues/$PR_NUMBER/comments
+
+printf "$body\n"
+
 
 # Cleanup old multidevs
 terminus build:env:delete:pr -n "$TERMINUS_SITE" --yes

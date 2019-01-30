@@ -9,6 +9,10 @@
 
 get_header();
 ?>
+
+<style type="text/css">
+	<?php require get_stylesheet_directory() . '/archive.css'; ?>
+</style>
 <main class="archive-page">
 	<section class="advertisement">
 		<?php
@@ -25,9 +29,7 @@ get_header();
 		);
 		?>
 	</section>
-	<?php
-	if ( have_posts() ) :
-	?>
+	<?php if ( have_posts() ) : ?>
 		<section class="archive-content">
 			<div class="archive-headings">
 				<div class="breadcrumbs">
@@ -53,19 +55,30 @@ get_header();
 				?>
 			</ul>
 		</section>
+		<section class="full-width-ad">
+			<?php
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
+					'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+				]
+			);
+			?>
+		</section>
 		<?php $section_num = 0; ?>
 		<?php while ( have_posts() ) : ?>
 			<?php $section_num++; ?>
 			<section class="archive-content">
 				<div class="pure-g recipes">
 					<?php for ( $i = 0; $i < 8; $i++ ) : ?>
-					<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
-					<?php the_post(); ?>
-					<?php get_template_part( 'template-parts/archive/content', 'grid' ); ?>
-					<?php if ( 3 === $i ) { ?>
-					</div><div class="pure-g recipes">
-					<?php } ?>
-					<?php endif; ?>
+						<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
+							<?php the_post(); ?>
+							<?php get_template_part( 'template-parts/archive/content', 'grid' ); ?>
+							<?php if ( 3 === $i ) : ?>
+								</div><div class="pure-g recipes">
+							<?php endif; ?>
+						<?php endif; ?>
 					<?php endfor; ?>
 				</div>
 			</section>

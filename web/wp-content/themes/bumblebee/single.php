@@ -10,6 +10,9 @@
 get_header();
 ?>
 
+<style type="text/css">
+	<?php require get_stylesheet_directory() . '/article.css'; ?>
+</style>
 <div class="site-container">
 	<main class="site-content">
 		<div class="pure-g pre-article-ad text-center">
@@ -42,7 +45,7 @@ get_header();
 			get_template_part( 'template-parts/content', 'post' );
 		endwhile;
 	endif;
-?>
+	?>
 	<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile article-sidebar">
 		<div class="sidebar-ad-wrapper text-center">
 			<aside class="sidebar">

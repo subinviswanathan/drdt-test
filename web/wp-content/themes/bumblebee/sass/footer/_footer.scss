@@ -1,0 +1,378 @@
+.footer {
+	background: $color__background-footer;
+	padding-bottom: 40px;
+	position: relative;
+	text-align: center;
+
+	.left-foot {
+		border-right: 8px solid rgba(156, 158, 154, 0.2);
+		margin-right: -8px;
+		order: 1;
+	}
+
+	.right-foot {
+		order: 2;
+	}
+
+	* {
+		color: $color__text-footer;
+	}
+
+	h3 {
+		font-size: 32px;
+	}
+
+	h5 {
+		font-size: 20px;
+	}
+
+	a {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.container {
+		max-width: $size__site-max-width;
+		margin: 0 auto;
+	}
+
+	ul {
+		padding-left: 0;
+		list-style-type: none;
+		margin-left: 0;
+
+		li {
+			a {
+				color: $color__text-footer;
+			}
+		}
+	}
+
+	.logo-socials {
+		display: block;
+		float: left;
+		margin-right: 80px;
+		width: 220px;
+	}
+
+	.footer-logo {
+		display: inline-block;
+		height: 100px;
+		width: 100px;
+	}
+
+	.footer-social-links {
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 26px;
+		margin: 40px 0;
+		width: 210px;
+
+		li {
+			display: inline-block;
+			margin-right: 20px;
+			text-indent: -9999px;
+			
+			a {
+				display: block;
+				background-repeat: no-repeat;
+				width: 28px;
+				height: 28px;
+				&:hover {
+					cursor: pointer;
+					opacity: .6;
+				}
+			}
+		}
+
+		.facebook-icon {
+			background-image: url(images/facebook-icon.svg);
+		}
+
+		.instagram-icon {
+			background-image: url(images/instagram-icon.svg);
+		}
+
+		.pinterest-icon {
+			background-image: url(images/pinterest-icon.svg);
+		}
+	}
+
+	.site-links {
+		display: flex;
+
+		ul {
+			columns: 2;
+			-webkit-columns: 2;
+			-moz-columns: 2;
+			flex-direction: column;
+			flex-wrap: wrap;
+			margin-bottom: 10px;
+			margin-top: 0;
+			padding-left: 0;
+
+			li {
+				display: inline-block;
+				font-size: 16px;
+				list-style-type: none;
+				padding: 10px;
+			}
+		}
+	}
+
+	.footer-brand-links-container {
+		float: left;
+		margin: 20px 0;
+
+		p {
+			display: inline-block;
+			font-size: 14px;
+			font-weight: 700;
+			margin-right: 15px;
+			text-transform: uppercase;
+		}
+
+		ul.footer-brand-links {
+			color: #ffc10e;
+			display: inline-block;
+
+			li {
+				display: inline-block;
+				padding: 5px;
+
+				a {
+					color: #ffc10e;
+					font-size: 12px;
+				}
+
+				&:not(:last-child):after {
+					color: #ffc10e;
+					content: " | ";
+					display: inline-block;
+					font-size: 14px;
+					margin-left: 10px;
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	.footer-global-links {
+		li {
+			display: inline-block;
+
+			a {
+				font-size: 12px;
+			}
+
+			&:not(:last-child):after {
+				color: $color__text-footer;
+				content: " | ";
+				display: inline-block;
+				font-size: 14px;
+				margin-left: 5px;
+			}
+
+			a {
+				font-size: 12px;
+			}
+
+			&.privacy-policy {
+				a {
+					color: $color__link-privacy-policy-footer;
+				}
+			}
+		}
+	}
+
+	.copyright {
+		font-size: 12px;
+	}
+
+	.newsletter-desktop {
+		text-align: center;
+		
+		a {
+			display: block;
+			margin: 0 auto;
+			width: 300px;
+		}
+	}
+
+	.newsletter {
+		margin: 20px 20px 0 34px;
+	}
+
+	.newsletter-cta-description {
+		padding: 20px 0;
+		font-weight: bold;
+	}
+
+	.newsletter form {
+		display: flex;
+
+		input {
+			border-radius: 0;
+			font-size: 20px;
+			padding: 10px;
+			width: 70%;
+		}
+
+		button {
+			background-color: #ffc10e;
+			border: 0;
+			color: #000;
+			font-size: 17px;
+			padding: 0;
+			text-transform: uppercase;
+			width: 30%;
+		}
+	}
+
+	.diyu-logo {
+		margin-top: 40px;
+		a {
+			display: block;
+			margin: 0 auto;
+			width: 300px;
+
+			@media screen and (min-width:568px) and (max-width:767px) {
+				width: 200px;
+			}
+		}
+	}
+}
+/*ipad + screens */
+@media screen and (min-width: 568px) {
+	.footer {
+		padding-top: 40px;
+		text-align: left;
+
+		.container {
+			padding: 20px;
+		}
+
+		.desktop-hide-footer {
+			display: none !important;
+		}
+
+		.newsletter {
+
+			h4 {
+				margin-top: 0;
+			}
+
+			form {
+				button {
+					width: 35%;
+				}
+			}
+		}
+
+		.footer-left-top {
+			padding-bottom: 20px;
+		}
+
+		.border-right {
+			border-right: 8px solid hsla(80,2%,61%,.2);
+		}
+	}
+}
+
+@media screen and (max-width: 567px) {
+	.footer {
+
+		.left-foot {
+			border-right: none;
+			margin-right: 0;
+			order: 2;
+		}
+
+		.right-foot {
+			order: 1;
+		}
+
+		.mobile-hide-footer {
+			display: none !important;
+		}
+
+		.site-links {
+			border-top: 8px solid rgba(156, 158, 154, 0.2);
+			border-bottom: 8px solid rgba(156, 158, 154, 0.2);
+			padding: 30px 20px;
+		}
+
+		.footer-brand-links ul, .footer-global-links {
+			padding: 0 10px;
+		}
+
+		.footer-brand-links {
+			p {
+				margin-bottom: 0;
+			}
+
+			ul.footer-brand-links {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1023px) {
+	.footer {
+		.ipad-hide {
+			display: none;
+		}
+		.site-links {
+			ul {
+				li {
+					padding: 10px 30px 10px 0;
+				}
+			}
+		}
+		.footer-brand-links-container {
+			p {
+				display: block;
+				margin: 0;
+			}
+			ul.footer-brand-links {
+				margin: 0;
+
+				li {
+					padding: 5px 5px 5px 0;
+				}
+			}
+		}
+		.diyu-logo {
+			a {
+				width: 240px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 568px) and (max-width: 767px) {
+	.footer {
+
+		.left-foot {
+			border-right: none;
+			margin-right: 0;
+			order: 2;
+		}
+
+		.right-foot {
+			order: 1;
+		}
+		.newsletter-desktop img {
+			max-width: 200px;
+		}
+		.site-links {
+			ul {
+				li {
+					padding: 10px 100px 10px 0;
+				}
+			}
+		}
+	}
+}

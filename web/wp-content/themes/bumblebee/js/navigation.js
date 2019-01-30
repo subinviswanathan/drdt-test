@@ -105,3 +105,66 @@
 		}
 	}( container ) );
 } )();
+(function($){
+	var mobile_width = 767;
+	var mobile_inner_width = 480;
+
+	//showing hamburger icon and 'MENU' text (only if JS is available)
+	show_menu_icon();
+
+	//reloading the page for mobiles with height more than 767px on orientation change
+	var isMobile = /iPhone|Android/i.test(navigator.userAgent);
+	if( isMobile && ( window.innerHeight > mobile_width || window.innerWidth > mobile_inner_width ) ) {
+		$(window).on('orientationchange', function() {
+			location.reload();
+		});
+	}
+
+	var menu = $('.hamburger');
+	menu.on('click', function() {
+		var menu_wrapper = get_menu_wrapper();
+		var drop_down_menu = jQuery('.menu-hamburger-menu-container');
+		drop_down_menu.appendTo(menu_wrapper);
+		$('.pure-menu-children.hamburger-menu-items').css('display', 'block').css('left', '0');
+		$('.hamburger').toggleClass('hide-ham-sign');
+		$('.hamburger-close').toggleClass('hide-ham-sign');
+
+		if( ! $('.menu-hamburger-menu-container').hasClass('slinky-menu')) {
+			$('.menu-hamburger-menu-container').slinky({
+				title: true,
+				resize: true,
+				speed: 400,
+			});
+		}
+	});
+
+	var close_menu = $('.hamburger-close');
+	close_menu.on('click', function() {
+		$('.pure-menu-children.hamburger-menu-items').css('display', 'none');
+		$('.hamburger').toggleClass('hide-ham-sign');
+		$('.hamburger-close').toggleClass('hide-ham-sign');
+	});
+
+	function get_menu_wrapper(){
+		var menu_wrapper;
+		if( window.innerWidth <= mobile_width) {
+			menu_wrapper = $('.hamburger-wrapper.desktop-hide .pure-menu-item');
+		} else {
+			menu_wrapper = $('.hamburger-wrapper.mobile-hide .pure-menu-item');
+		}
+		return menu_wrapper;
+	}
+
+	function show_menu_icon(){
+		var menu_wrapper_mobile = $('.hamburger-wrapper.desktop-hide');
+		var menu_wrapper_desktop = $('.hamburger-wrapper.mobile-hide');
+		if( window.innerWidth <= mobile_width) {
+			menu_wrapper_mobile.css('display', 'flex');
+			menu_wrapper_desktop.css('display', 'none');
+		} else {
+			menu_wrapper_desktop.css('display', 'flex');
+			menu_wrapper_mobile.css('display', 'none');
+		}
+	}
+	/* global jQuery */
+})(jQuery);

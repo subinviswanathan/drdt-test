@@ -38,13 +38,27 @@ web/wp-content/*
 !web/wp-content/mu-plugins/
 web/wp-content/mu-plugins/*
 !web/wp-content/mu-plugins/alter-wpcfm-config-path.php
+
+
+# Ignore third party plugins (managed with Composer)
 !web/wp-content/plugins/
 web/wp-content/plugins/*
+# Don't ignore premium plugins not available via composer (@todo: track them in a private repo)
 !web/wp-content/plugins/wpmudev-updates/
 !web/wp-content/plugins/wp-smush-pro/
+
+# Ignore third party themes (managed with Composer)
 !web/wp-content/themes
 web/wp-content/themes/*
+# Don't ignore our custom theme, part of this repo...
 !web/wp-content/themes/bumblebee/
+# ... but ignore the build artifacts...
+web/wp-content/themes/bumblebee/*.css
+web/wp-content/themes/bumblebee/**/*.css
+web/wp-content/themes/bumblebee/js/src
+# ... making sure third party CSS stays in place
+!web/wp-content/themes/bumblebee/styles/**/*.css
+
 !web/private/
 web/private/*
 !web/private/config/

@@ -16,7 +16,7 @@ This repository provides a local WordPress development environment and a CI/CD w
 
 ## Local Development
 
-Local environment is provided by [Lando](https://docs.devwithlando.io/). Other development environments are not officially supported. 
+Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagrant machine is also available.
 
 ### First-time setup
 * Install [Lando](https://docs.devwithlando.io/) if not already installed
@@ -61,6 +61,17 @@ If you want to set up your own deployment pipeline, you will need to add the fol
 
 * If you're using your own Pantheon account, edit `.lando.yml` and update `name`, `site` and `id` to match those of your Pantheon site
     - You will also need to edit the node proxy if you wish to access BrowserSync at a different URL
+
+## Contributing
+Every pull request has to pass a set of automated tests in order to be merged:
+
+* Coding Standards: We're using the official [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards) for custom PHP files
+* Features: All tests defined in tests/features must pass
+* Frontend Performance: Pages in `key_pages.json` will be tested (with `?variant=noads`) for frontend performance using Lighthouse, on every pushed commit. Tests are compared against the current `master` branch (`dev` environment), and overall performance score must not drop beyond 5 points. In case a feature NEEDS to be merged anyways, a Product Owner will sign off on the PR.
+* Visual Regressions: These checks won't block a PR from being merged, but will be highlighted as part of the tests results. If there are visual regressions, QA or PO must sign off on the PR. All pages from `key_pages.json` will be tested using the `?variant=noads` URL.
+
+## Note about key_pages.json
+This file contains an Array of Objects, each object composed by a `label` and an `url` - The label is a friendly identifier for a sample page and must be a single word. The URL is relative, and must not start with the `/` character (it's added automatically). Pages tracked here will be used for Visual Regression and Frontend Performance tests on every build, so the more pages the slower the build.
 
 ## Credits
 This repository is a fork of https://github.com/ataylorme/Advanced-WordPress-on-Pantheon

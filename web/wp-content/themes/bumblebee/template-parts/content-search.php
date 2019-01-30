@@ -15,10 +15,10 @@
 
 	<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-	<?php
-	bumblebee_posted_on();
-	bumblebee_posted_by();
-	?>
+			<?php
+			bumblebee_posted_on();
+			bumblebee_posted_by();
+			?>
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 	</header><!-- .entry-header -->

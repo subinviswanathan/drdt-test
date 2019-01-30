@@ -21,10 +21,18 @@
     "roots/wp-password-bcrypt": "^1.0.0",
     "rvtraveller/qs-composer-installer": "^1.1",
     "vlucas/phpdotenv": "2.*",
+    "wpackagist-plugin/a3-lazy-load": "1.9.2",
+    "wpackagist-plugin/autoptimize": "^2.4",
+    "wpackagist-plugin/co-authors-plus": "3.3.1",
+    "wpackagist-plugin/customize-snapshots": "^0.7.0",
+    "wpackagist-plugin/easyazon": "^4.0",
     "wpackagist-plugin/lh-hsts": "^1.24",
+    "wpackagist-plugin/members": "2.1.0",
     "wpackagist-plugin/pantheon-advanced-page-cache": "*",
+    "wpackagist-plugin/radio-buttons-for-taxonomies": "^1.8",
+    "wpackagist-plugin/redirection": "^3.7",
     "wpackagist-plugin/regenerate-thumbnails": "^3.0",
-    "wpackagist-plugin/rocket-lazy-load": "1.4.9",
+    "wpackagist-plugin/user-switching": "^1.4",
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
     "wpackagist-plugin/wp-redis": "0.7.0"
@@ -38,7 +46,7 @@
     "paulgibbs/behat-wordpress-extension": "3.*",
     "phpunit/phpunit": "~6.5.4",
     "roave/security-advisories": "dev-master",
-    "squizlabs/php_codesniffer": "3.2.2",
+    "squizlabs/php_codesniffer": "3.4.*",
     "wp-coding-standards/wpcs": "dev-master"
   },
   "config": {
@@ -88,7 +96,7 @@
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "code-sniff": [
-      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/*,web/wp-content/plugins/wp-*,web/wp-content/plugins/wpmudev-*,web/wp-content/plugins/regenerate-thumbnails,./web/wp-content/plugins/pantheon*,./web/wp-content/plugins/rocket*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
+      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/lh-hsts/*,web/wp-content/plugins/wp-*,web/wp-content/plugins/wpmudev-*,web/wp-content/plugins/regenerate-thumbnails,./web/wp-content/plugins/pantheon*,./web/wp-content/plugins/a3*,./web/wp-content/plugins/co-authors-plus*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"
