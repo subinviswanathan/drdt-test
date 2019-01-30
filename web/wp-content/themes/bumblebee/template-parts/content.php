@@ -16,7 +16,7 @@
 			<?php
 			$category = get_the_category();
 			if ( ! empty( $category[0] ) ) {
-				$category = $category[0];
+				$category      = $category[0];
 				$category_name = $category->name;
 				$category_link = get_category_link( $category->term_id );
 			}

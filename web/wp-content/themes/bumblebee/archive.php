@@ -33,8 +33,8 @@ get_header();
 		<section class="archive-content">
 			<div class="archive-headings">
 				<div class="breadcrumbs">
-				<?php if ( function_exists('yoast_breadcrumb') ): ?>
-					<?php yoast_breadcrumb( '<p id="breadcrumbs">','</p>' ); ?>
+				<?php if ( function_exists( 'yoast_breadcrumb' ) ) : ?>
+					<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
 				<?php endif; ?>
 				</div>
 				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
