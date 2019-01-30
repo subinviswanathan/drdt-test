@@ -5,6 +5,10 @@
 #    version: master
 #    dest: /vagrant/drdt-test
 #    force: yes
+- name: Execute dos2unix on several files
+  shell: dos2unix cleanup-composer
+  args:
+    chdir: "/vagrant/scripts/composer"
 
 - name: Install Composer's dependencies
   composer:
@@ -16,6 +20,13 @@
     src: /vagrant/web/wp-content  
     path: /vagrant/web/wp/wp-content
     state: link
+  ignore_errors: yes
+  register: symlink_wpcontent
+
+- name: Copy wp-content to right repo.
+  command: cp -r /vagrant/web/wp-content  /vagrant/web/wp/
+  ignore_errors: yes
+  when: symlink_wpcontent.failed is defined
 
 - name: Create database for WordPress
   mysql_db:
@@ -88,6 +99,11 @@
 - name: Modify the file permissions
   become: yes
   command: find /vagrant/web/wp -type f -exec chmod 644 {} \;
+
+- name: install gulp
+  apt:
+    name: gulp
+    state: latest
 
 - name: run Gulp tasks
   command: gulp
