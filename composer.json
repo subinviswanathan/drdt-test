@@ -12,6 +12,18 @@
     {
       "type": "vcs",
       "url": "https://github.com/pantheon-systems/wordpress-composer"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "yoast/wordpress-seo-premium",
+        "version": "9.5",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://yoast.com/app/uploads/2019/01/wordpress-seo-premium-9.5.zip"
+        }
+      }
     }
   ],
   "require": {
@@ -35,7 +47,8 @@
     "wpackagist-plugin/user-switching": "^1.4",
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
-    "wpackagist-plugin/wp-redis": "0.7.0"
+    "wpackagist-plugin/wp-redis": "0.7.0",
+    "yoast/wordpress-seo-premium": "^9.5"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",

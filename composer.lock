@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1668ba77b878e7c678ef496b9258525",
+    "content-hash": "e5e75561d913fc040c0226f362873e98",
     "packages": [
         {
             "name": "composer/installers",
@@ -652,6 +652,17 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-redis/"
+        },
+        {
+            "name": "yoast/wordpress-seo-premium",
+            "version": "9.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://yoast.com/app/uploads/2019/01/wordpress-seo-premium-9.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
         }
     ],
     "packages-dev": [
