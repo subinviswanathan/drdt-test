@@ -116,6 +116,12 @@ define( 'WP_HOME', $site_url );
 define( 'WP_SITEURL', $site_url . 'wp/' );
 
 /**
+ * Configure Autoptimize to store cache in uploads (writable) folder
+ */
+define( 'AUTOPTIMIZE_CACHE_CHILD_DIR', '/uploads/autoptimize/' );
+
+
+/**
  * Define keys
  */
 define( 'AUTH_KEY', getenv( 'AUTH_KEY' ) );
