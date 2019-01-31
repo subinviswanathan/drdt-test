@@ -1,6 +1,21 @@
 # DRDT
 
 ## Purpose
+
+The main goal of the DRDT project is "to develop a performance-oriented website that’s fast, stable, scalable and low-maintenance". Here are the details of those four attributes:
+
+**Fast** - Website needs to be fast both in the frontend and in the backend. Things should be as fast as possible for ALL the stakeholders (visitors, product owners, QA, dev, etc).
+
+**Stable** - What's working should keep working, not break by accident.
+
+**Scalable** - Project must be able to scale vertically (adding new features to existing sites) and horizontally (applying a subset of the existing features to new sites) with minimal effort.
+
+**Low-maintenance** - Control of the product should be in hands of its owners. Developers' role is to enable POs to achieve their goals, not to block them. Reduce dev involvement over time.
+
+Incidentally, the resulting website should match www.constructionprotips.com in terms of look and feel, and functionality. 
+
+---
+
 This repository provides a local WordPress development environment and a CI/CD workflow with the following features:
 * Automatic deployments to [Pantheon](https://pantheon.io) (with one environment per Pull Request using Multidev)
 * Local development environment with [Lando](https://docs.devwithlando.io/)
