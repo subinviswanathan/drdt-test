@@ -1,5 +1,4 @@
-NOTE : On Windows the "wp-content" folder will be copied in place instead of symlinked for now. This is a workaround.
-       Will eventually get symlink working on Windows environnement.
+NOTE : On Windows, "cmd" needs to be run with admin privileges.
 
 This is the DRDT Vagrant Box.
 
@@ -85,15 +84,12 @@ ___________________
 
 	Automatic Database download if not present in the folder.
 
-	npm run gulp failed task (only npm install runs for the moment)
-
 	Script to extract a copy of current working DB to local machine.
 
 	Better Redis default configuration.
 
 	Nginx installation.
 	
-
 If you have any questions, request or suggestion, I will be pleased to take a look a them :) just send us a request at :
 devops@tmbi.com
 
