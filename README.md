@@ -16,7 +16,8 @@ This repository provides a local WordPress development environment and a CI/CD w
 
 ## Local Development
 
-Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagrant machine is also available.
+Local environment is provided by [Lando](https://docs.devwithlando.io/). It requires Linux with kernel 4.x or higher, macOS 10.11 (El Capitan) or newest, or Windows 10 Pro+.
+If your system doesn't meet the minimum requirements, a Vagrant machine is also available. Take a look at [the README](drdt-vagrant/README.md), and instead of prefixing the commands here with `lando`, run them inside the VM.
 
 ### First-time setup
 * Install [Lando](https://docs.devwithlando.io/) if not already installed
