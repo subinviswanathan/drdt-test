@@ -47,6 +47,8 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/wpmudev-updates/
 !web/wp-content/plugins/wp-smush-pro/
 
+!web/wp-content/plugins/tmbi-adobe-dtm/
+
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes
 web/wp-content/themes/*
