@@ -80,7 +80,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 
 <div class="pure-g newsletter-sign-below-header hide-on-mobile">
 	<div class="pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 nl-signup-link">
-		<a href="<?php echo get_theme_mod( 'bumblebee_banner_url' ); ?>"><h4><?php echo get_theme_mod( 'bumblebee_banner_text' ); ?> <img class="nl-right-arrow" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/chevron-right-solid.svg"/></h4></a>
+		<a href="<?php echo esc_url( get_theme_mod( 'bumblebee_banner_url' ) ); ?>"><h4><?php echo esc_url( get_theme_mod( 'bumblebee_banner_text' ) ); ?> <img class="nl-right-arrow" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/chevron-right-solid.svg"/></h4></a>
 	</div>
 </div>
 <!-- #site-navigation -->
