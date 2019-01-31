@@ -32,9 +32,12 @@ If your system doesn't meet the minimum requirements, a Vagrant machine is also 
 
 ### Directory structure
 The project structure is similar [Bedrock](https://roots.io/bedrock/)'s. You'll find WordPress source files in the `web` directory.
+
 Main theme directory is in `web/wp-content/themes/bumblebee`.
+
 Third party plugins should be installed using Composer (and [WordPress Packagist](https://wpackagist.org/)).
-** Note: ** At the moment, all plugins in `wp-content/plugins` will go through PHPCS. See https://github.com/fariasf/contrib-custom-plugins to separate Custom from Contrib (WIP).
+
+**Note:** At the moment, all plugins in `wp-content/plugins` will go through PHPCS, and are manually added to the ignored folders for PHPCS. If you can automate this, please send a Pull Request!
 
 ### Updates and file changes
 * `lando composer update` will need to be ran after any changes to `composer.json`
