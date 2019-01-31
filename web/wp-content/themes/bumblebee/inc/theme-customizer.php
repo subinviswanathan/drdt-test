@@ -633,6 +633,15 @@ function bumblebee_add_customizer_styles() {
 		.more:hover {
 			background: <?php echo esc_html( $button_bg_hover_color ); ?>;
 		}
+
+		.footer .newsletter form button {
+			background-color: <?php echo esc_html( $button_bg_color ); ?>;
+			color: <?php echo esc_html( $button_text_color ); ?>;
+		}
+
+		.footer .newsletter form button:hover {
+			background-color: <?php echo esc_html( $button_bg_hover_color ); ?>;
+		}
 	</style>
 
 	<?php
