@@ -27,7 +27,7 @@ __________________
 
 	Redis cache server.
 
-	1 ) Add 192.168.205.11 drdt.constructionprotips.com in your /etc/hosts file.
+	1 ) Add "192.168.205.11 drdt.constructionprotips.com" in your /etc/hosts file.
 
 	2 ) Latest version of Vagrant is required in order to setup the private network with ubuntu 18.04.
 
