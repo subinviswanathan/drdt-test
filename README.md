@@ -16,7 +16,8 @@ This repository provides a local WordPress development environment and a CI/CD w
 
 ## Local Development
 
-Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagrant machine is also available.
+Local environment is provided by [Lando](https://docs.devwithlando.io/). It requires Linux with kernel 4.x or higher, macOS 10.11 (El Capitan) or newest, or Windows 10 Pro+.
+If your system doesn't meet the minimum requirements, a Vagrant machine is also available. Take a look at [the README](drdt-vagrant/README.md), and instead of prefixing the commands here with `lando`, run them inside the VM.
 
 ### First-time setup
 * Install [Lando](https://docs.devwithlando.io/) if not already installed
@@ -31,9 +32,12 @@ Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagra
 
 ### Directory structure
 The project structure is similar [Bedrock](https://roots.io/bedrock/)'s. You'll find WordPress source files in the `web` directory.
+
 Main theme directory is in `web/wp-content/themes/bumblebee`.
+
 Third party plugins should be installed using Composer (and [WordPress Packagist](https://wpackagist.org/)).
-** Note: ** At the moment, all plugins in `wp-content/plugins` will go through PHPCS. See https://github.com/fariasf/contrib-custom-plugins to separate Custom from Contrib (WIP).
+
+**Note:** At the moment, all plugins in `wp-content/plugins` will go through PHPCS, and are manually added to the ignored folders for PHPCS. If you can automate this, please send a Pull Request!
 
 ### Updates and file changes
 * `lando composer update` will need to be ran after any changes to `composer.json`
