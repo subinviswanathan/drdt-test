@@ -342,7 +342,14 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_setting( 'bumblebee_banner_text' );
+	$wp_customize->add_setting(
+		'bumblebee_banner_text',
+		array(
+			'capability'        => 'edit_theme_options',
+			'default'           => 'Sign Up For Our Nesletters',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
 
 	$wp_customize->add_control(
 		'bumblebee_banner_text',
@@ -375,7 +382,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			'type'        => 'url',
 			'section'     => 'bumblebee_post_nav_banner',
 			'label'       => __( 'Banner Link URL' ),
-			'description' => __( 'Add the complete URL' ),
+			'description' => __( 'Add the URL' ),
 			'input_attrs' => array(
 				'placeholder' => __( 'https://www.tmbi.com' ),
 			),
@@ -576,8 +583,10 @@ function bumblebee_add_customizer_styles() {
 			border-bottom: 2px dotted <?php echo esc_html( $nav_text_color ); ?>;
 		}
 
-		.newsletter-sign-below-header.hide-on-mobile .nl-signup-link h4 {
+		.newsletter-sign-below-header.hide-on-mobile .nl-signup-link h4,
+		.newsletter-sign-below-header.hide-on-mobile .nl-signup-link h4 .nl-right-arrow {
 			color: <?php echo esc_html( $banner_text_color ); ?>;
+			fill: <?php echo esc_html( $banner_text_color ); ?>;
 		}
 
 		main {
