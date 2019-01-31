@@ -37,7 +37,8 @@
 
 		.read-more {
 			padding: 10px 20px;
-			background: $color__accent;
+			text-transform: uppercase;
+			transition: background .3s;
 		}
 	}
 

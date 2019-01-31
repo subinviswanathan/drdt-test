@@ -45,6 +45,7 @@ function bumblebee_sanitize_fonts( $input ) {
 	$valid = array(
 		'Open Sans'        => 'Open Sans',
 		'Cormorant'        => 'Cormorant',
+		'Lato'             => 'Lato',
 		'Playfair Display' => 'Playfair Display',
 		'Roboto Slab'      => 'Roboto Slab',
 		'Raleway'          => 'Raleway',
@@ -259,6 +260,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 				'choices'  => array(
 					'Open Sans'        => 'Open Sans',
 					'Cormorant'        => 'Cormorant',
+					'Lato'             => 'Lato',
 					'Playfair Display' => 'Playfair Display',
 					'Roboto Slab'      => 'Roboto Slab',
 					'Raleway'          => 'Raleway',
@@ -289,6 +291,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 				'choices'  => array(
 					'Open Sans'        => 'Open Sans',
 					'Cormorant'        => 'Cormorant',
+					'Lato'             => 'Lato',
 					'Playfair Display' => 'Playfair Display',
 					'Roboto Slab'      => 'Roboto Slab',
 					'Raleway'          => 'Raleway',
@@ -319,12 +322,76 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 				'choices'  => array(
 					'Open Sans'        => 'Open Sans',
 					'Cormorant'        => 'Cormorant',
+					'Lato'             => 'Lato',
 					'Playfair Display' => 'Playfair Display',
 					'Roboto Slab'      => 'Roboto Slab',
 					'Raleway'          => 'Raleway',
 					'Titillium Web'    => 'Titillium Web',
 					'Ubuntu'           => 'Ubuntu',
 				),
+			)
+		)
+	);
+
+	$wp_customize->add_section(
+		'bumblebee_post_nav_banner',
+		array(
+			'title'       => __( 'Under Nav Banner', 'bumblebee' ),
+			'description' => __( 'Customize the banner, under the main navigation' ),
+			'priority'    => 31,
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_banner_text' );
+
+	$wp_customize->add_control(
+		'bumblebee_banner_text',
+		array(
+			'type'        => 'text',
+			'section'     => 'bumblebee_post_nav_banner',
+			'label'       => __( 'Banner Text' ),
+			'description' => __( 'Enter the text here, i.e: Sign Up For Newsletters' ),
+			'settings'    => 'bumblebee_banner_text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_banner_text_color',
+		array(
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_banner_url',
+		array(
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_banner_url',
+		array(
+			'type'        => 'url',
+			'section'     => 'bumblebee_post_nav_banner',
+			'label'       => __( 'Banner Link URL' ),
+			'description' => __( 'Add the complete URL' ),
+			'input_attrs' => array(
+				'placeholder' => __( 'https://www.tmbi.com' ),
+			),
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bumblebee_banner_text_color',
+			array(
+				'description' => __( 'Change the color if the banner text' ),
+				'label'       => __( 'Banner Text Color' ),
+				'section'     => 'bumblebee_post_nav_banner',
+				'settings'    => 'bumblebee_banner_text_color',
+				'priority'    => '77',
 			)
 		)
 	);
@@ -353,12 +420,17 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_setting( 'bumblebee_header_logo_width' );
+	$wp_customize->add_setting(
+		'bumblebee_header_logo_width',
+		array(
+			'sanitize_callback' => 'absint',
+		)
+	);
 
 	$wp_customize->add_control(
 		'bumblebee_header_logo_width',
 		array(
-			'type'        => 'text',
+			'type'        => 'number',
 			'section'     => 'bumblebee_logos',
 			'label'       => __( 'Header Logo Width' ),
 			'description' => __( 'Enter only numbers, i.e: 200' ),
@@ -381,16 +453,75 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_setting( 'bumblebee_footer_logo_width' );
+	$wp_customize->add_setting(
+		'bumblebee_footer_logo_width',
+		array(
+			'sanitize_callback' => 'absint',
+		)
+	);
 
 	$wp_customize->add_control(
 		'bumblebee_footer_logo_width',
 		array(
-			'type'        => 'text',
+			'type'        => 'number',
 			'section'     => 'bumblebee_logos',
 			'label'       => __( 'Footer Logo Width' ),
 			'description' => __( 'Enter only numbers, i.e: 100' ),
 			'settings'    => 'bumblebee_footer_logo_width',
+		)
+	);
+
+	$wp_customize->add_section(
+		'bumblebee_buttons',
+		array(
+			'title'       => __( 'Buttons', 'bumblebee' ),
+			'description' => __( 'Customize the button colors' ),
+			'priority'    => 35,
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_button_bg_color' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bumblebee_button_bg_color',
+			array(
+				'label'    => __( 'Button BG Color' ),
+				'section'  => 'bumblebee_buttons',
+				'settings' => 'bumblebee_button_bg_color',
+				'priority' => '77',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_button_bg_color_hover' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bumblebee_button_bg_color_hover',
+			array(
+				'label'    => __( 'Button BG Hover Color' ),
+				'section'  => 'bumblebee_buttons',
+				'settings' => 'bumblebee_button_bg_color_hover',
+				'priority' => '77',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_button_text_color' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bumblebee_button_text_color',
+			array(
+				'label'    => __( 'Button Text Color' ),
+				'section'  => 'bumblebee_buttons',
+				'settings' => 'bumblebee_button_text_color',
+				'priority' => '77',
+			)
 		)
 	);
 }
@@ -401,15 +532,19 @@ add_action( 'customize_register', 'bumblebee_custom_customize_register' );
  */
 function bumblebee_add_customizer_styles() {
 
-	$accent_hover_color  = get_theme_mod( 'bumblebee_accent_hover_color' );
-	$nav_bg_color        = get_theme_mod( 'bumblebee_nav_bg_color' );
-	$nav_text_color      = get_theme_mod( 'bumblebee_nav_color' );
-	$footer_bg_color     = get_theme_mod( 'bumblebee_footer_bg_color' );
-	$footer_text_color   = get_theme_mod( 'bumblebee_footer_text_color' );
-	$font_default_color  = get_theme_mod( 'bumblebee_default_color' );
-	$font_menu_option    = get_theme_mod( 'bumblebee_menu_fonts' );
-	$font_heading_option = get_theme_mod( 'bumblebee_fonts' );
-	$font_body_option    = get_theme_mod( 'bumblebee_body_fonts' );
+	$accent_hover_color    = get_theme_mod( 'bumblebee_accent_hover_color' );
+	$nav_bg_color          = get_theme_mod( 'bumblebee_nav_bg_color' );
+	$nav_text_color        = get_theme_mod( 'bumblebee_nav_color' );
+	$banner_text_color     = get_theme_mod( 'bumblebee_banner_text_color' );
+	$footer_bg_color       = get_theme_mod( 'bumblebee_footer_bg_color' );
+	$footer_text_color     = get_theme_mod( 'bumblebee_footer_text_color' );
+	$font_default_color    = get_theme_mod( 'bumblebee_default_color' );
+	$font_menu_option      = get_theme_mod( 'bumblebee_menu_fonts' );
+	$font_heading_option   = get_theme_mod( 'bumblebee_fonts' );
+	$font_body_option      = get_theme_mod( 'bumblebee_body_fonts' );
+	$button_bg_color       = get_theme_mod( 'bumblebee_button_bg_color' );
+	$button_bg_hover_color = get_theme_mod( 'bumblebee_button_bg_color_hover' );
+	$button_text_color     = get_theme_mod( 'bumblebee_button_text_color' );
 
 	?>
 	<style>
@@ -441,6 +576,10 @@ function bumblebee_add_customizer_styles() {
 			border-bottom: 2px dotted <?php echo esc_html( $nav_text_color ); ?>;
 		}
 
+		.newsletter-sign-below-header.hide-on-mobile .nl-signup-link h4 {
+			color: <?php echo esc_html( $banner_text_color ); ?>;
+		}
+
 		main {
 			font-family: "<?php echo esc_html( $font_body_option ); ?>" !important;
 		}
@@ -453,12 +592,11 @@ function bumblebee_add_customizer_styles() {
 			color: <?php echo esc_html( $font_default_color ); ?>;
 		}
 
-		a,
-		.read-more {
+		a {
 			color: <?php echo esc_html( $accent_hover_color ); ?>;
 		}
 
-		.single-post .site-container .post-content a {
+		.post-content a {
 			color: <?php echo esc_html( $accent_hover_color ); ?> !important;
 			border-bottom: 1px solid <?php echo esc_html( $accent_hover_color ); ?> !important;
 		}
@@ -474,6 +612,17 @@ function bumblebee_add_customizer_styles() {
 		.footer ul li a,
 		.footer .footer-brand-links-container ul.footer-brand-links li:not(:last-child):after {
 			color: <?php echo esc_html( $footer_text_color ); ?> !important;
+		}
+
+		.read-more,
+		.more {
+			background: <?php echo esc_html( $button_bg_color ); ?>;
+			color: <?php echo esc_html( $button_text_color ); ?>;
+		}
+
+		.read-more:hover,
+		.more:hover {
+			background: <?php echo esc_html( $button_bg_hover_color ); ?>;
 		}
 	</style>
 
