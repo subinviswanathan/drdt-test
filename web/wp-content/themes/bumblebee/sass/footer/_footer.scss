@@ -228,12 +228,11 @@
 		}
 
 		button {
-			background-color: #ffc10e;
 			border: 0;
-			color: #000;
 			font-size: 17px;
 			padding: 0;
 			text-transform: uppercase;
+			transition: background .3s;
 			width: 30%;
 		}
 	}
