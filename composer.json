@@ -39,8 +39,43 @@
       }
     },
     {
-      "type": "vcs",
-      "url": "https://github.com/Automattic/Co-Authors-Plus"
+      "type": "package",
+      "package": {
+        "name": "ReadersDigest/wp-migrate-db-pro",
+        "version": "1.8.1",
+        "type": "wordpress-plugin",
+        "source": {
+          "url": "https://github.com/ReadersDigest/wp-migrate-db-pro",
+          "type": "git",
+    	  "reference": "1.8.1"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ReadersDigest/wp-migrate-db-pro-cli",
+        "version": "1.3.2",
+        "type": "wordpress-plugin",
+        "source": {
+          "url": "https://github.com/ReadersDigest/wp-migrate-db-pro-cli",
+          "type": "git",
+    	  "reference": "1.3.2"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ReadersDigest/wp-migrate-db-pro-media-files",
+        "version": "1.4.9",
+        "type": "wordpress-plugin",
+        "source": {
+          "url": "https://github.com/ReadersDigest/wp-migrate-db-pro-media-files",
+          "type": "git",
+    	  "reference": "1.4.9"
+        }
+      }
     }
   ],
   "require": {
@@ -66,7 +101,10 @@
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
     "wpackagist-plugin/wp-redis": "0.7.0",
     "yoast/wordpress-seo-premium": "^9.5",
-    "wpwhitesecurity/wp-security-audit-log": "^3.3.0.2"
+    "wpwhitesecurity/wp-security-audit-log": "^3.3.0.2",
+    "ReadersDigest/wp-migrate-db-pro": "~1.8",
+    "ReadersDigest/wp-migrate-db-pro-cli": "~1.3.1",
+    "ReadersDigest/wp-migrate-db-pro-media-files": "~1.4.8"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",
