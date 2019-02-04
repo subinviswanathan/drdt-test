@@ -75,7 +75,7 @@
 			</div>
 			<div class="pure-u-1 pure-u-md-2-5 right-foot">
 				<div class="newsletter">
-					<h3 class="">Sign Up For Our Newsletter</h3>
+					<h3><?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_heading_text' ) ); ?></h3>
 					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post">
 						<input type="text" id="email" placeholder="Email Address"></input>
 						<button type="submit" id="subscribe">Sign Up</button>
@@ -83,7 +83,7 @@
 				</div>
 				<div class="diyu-logo">
 					<a href="https://www.mydiyuniversity.com/" target="_blank" rel="noopener noreferrer">
-						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.svg" width="300px" alt=""></img>
+						<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image_width' ) ); ?>px"></img>
 					</a>
 				</div>
 			</div>

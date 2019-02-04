@@ -346,7 +346,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		'bumblebee_banner_text',
 		array(
 			'capability'        => 'edit_theme_options',
-			'default'           => 'Sign Up For Our Nesletters',
+			'default'           => 'Sign Up For Our Newsletters',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -531,6 +531,85 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			)
 		)
 	);
+
+	$wp_customize->add_section(
+		'bumblebee_footer_nl',
+		array(
+			'title'       => __( 'Footer Newsletter', 'bumblebee' ),
+			'description' => __( 'Customize what the newsletter section should look like' ),
+			'priority'    => 40,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_footer_nl_heading_text',
+		array(
+			'capability'        => 'edit_theme_options',
+			'default'           => 'Sign Up For Our Newsletters',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_footer_nl_heading_text',
+		array(
+			'type'        => 'text',
+			'section'     => 'bumblebee_footer_nl',
+			'label'       => __( 'Newsletter Heading Text' ),
+			'description' => __( 'Enter the text here, i.e: Sign Up For Newsletters' ),
+			'settings'    => 'bumblebee_footer_nl_heading_text',
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_footer_nl_heading_text_color' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bumblebee_footer_nl_heading_text_color',
+			array(
+				'label'    => __( 'Newsletter Heading Text Color' ),
+				'section'  => 'bumblebee_footer_nl',
+				'settings' => 'bumblebee_footer_nl_heading_text_color',
+				'priority' => '10',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_footer_nl_subscribe_image' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_footer_nl_subscribe_image',
+			array(
+				'title'    => __( 'Newsletter Image', 'bumblebee' ),
+				'label'    => __( 'Add the "Subscribe to Newsletter" Image', 'bumblebee' ),
+				'section'  => 'bumblebee_footer_nl',
+				'settings' => 'bumblebee_footer_nl_subscribe_image',
+				'priority' => '20',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_footer_nl_subscribe_image_width',
+		array(
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_footer_nl_subscribe_image_width',
+		array(
+			'type'        => 'number',
+			'section'     => 'bumblebee_footer_nl',
+			'label'       => __( 'Newsletter Image Width' ),
+			'description' => __( 'Enter only numbers, i.e: 300' ),
+			'settings'    => 'bumblebee_footer_nl_subscribe_image_width',
+			'priority'    => '30',
+		)
+	);
 }
 add_action( 'customize_register', 'bumblebee_custom_customize_register' );
 
@@ -545,6 +624,7 @@ function bumblebee_add_customizer_styles() {
 	$banner_text_color     = get_theme_mod( 'bumblebee_banner_text_color' );
 	$footer_bg_color       = get_theme_mod( 'bumblebee_footer_bg_color' );
 	$footer_text_color     = get_theme_mod( 'bumblebee_footer_text_color' );
+	$footer_nl_text_color  = get_theme_mod( 'bumblebee_footer_nl_heading_text_color' );
 	$font_default_color    = get_theme_mod( 'bumblebee_default_color' );
 	$font_menu_option      = get_theme_mod( 'bumblebee_menu_fonts' );
 	$font_heading_option   = get_theme_mod( 'bumblebee_fonts' );
@@ -632,6 +712,10 @@ function bumblebee_add_customizer_styles() {
 		.read-more:hover,
 		.more:hover {
 			background: <?php echo esc_html( $button_bg_hover_color ); ?>;
+		}
+
+		footer .newsletter h3 {
+			color: <?php echo esc_html( $footer_nl_text_color ); ?>;
 		}
 
 		.footer .newsletter form button {
