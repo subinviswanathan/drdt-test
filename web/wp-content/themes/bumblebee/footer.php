@@ -103,6 +103,7 @@ function get_hamburger_menu_markup() {
 			array(
 				'theme_location' => 'hamburger-menu',
 				'menu_class'     => 'pure-menu-children hamburger-menu-items',
+				'menu_id'        => 'menu',
 			)
 		);
 	};
@@ -114,6 +115,9 @@ get_hamburger_menu_markup();
 
 <script>
 	document.body.className = document.body.className.replace("no-js","");
+	function toggleMenu() {
+		document.getElementById('menu').classList.toggle('hamburger');
+	}
 </script>
 </body>
 </html>

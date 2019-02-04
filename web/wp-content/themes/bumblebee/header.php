@@ -52,7 +52,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			<div class="hamburger-wrapper mobile-hide">
 				<?php get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
-					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
+					<li class="pure-menu-item menu-text pure-menu-has-children"><a href="#menu" onclick="toggleMenu();">MENU</a>
 					</li>
 				</ul>
 			</div>

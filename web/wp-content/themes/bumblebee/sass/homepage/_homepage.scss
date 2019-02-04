@@ -77,26 +77,44 @@
 @media screen and (max-width: 567px) {
 	.home-page {
 		.hero-container {
-			margin : 5px 15px 10px;
+			margin: 5px 15px 10px;
 			.hero-text {
-				padding : 0 10px;
+				padding: 0 10px;
 			}
 		}
 
 		.single-item.single-recipe {
-			margin : 15px;
+			margin: 15px;
 		}
 
 		.featured-container {
-			flex : 1 0 calc(80% - 10px);
+			flex: 1 0 calc(80% - 10px);
 		}
 
 		.featured-posts {
-			overflow-x : scroll;
+			overflow-x: scroll;
 		}
 
 		.sidebar {
-			display : none;
+			display: none;
+		}
+	}
+}
+
+.no-js {
+	.menu-hamburger-menu-container {
+		float: left;
+		width: 120px;
+
+		#menu {
+			display: block;
+			position: relative;
+			width: 1000px;
+		}
+		
+		.menu-item-has-children {
+			float: left;
+			width: 250px;
 		}
 	}
 }

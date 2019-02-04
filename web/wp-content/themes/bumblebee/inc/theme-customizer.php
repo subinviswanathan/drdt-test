@@ -672,6 +672,7 @@ function bumblebee_add_customizer_styles() {
 
 		.header .main-navigation .menu-desktop-focus-menu-container ul li a,
 		.header .menu-text,
+		.header .menu-text a,
 		.header .pure-menu-list ul li a span {
 			color: <?php echo esc_html( $nav_text_color ); ?>;
 		}
