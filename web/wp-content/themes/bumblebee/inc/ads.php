@@ -5,7 +5,7 @@
  * @package bumblebee
  */
 
-wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/src/ad-stack.js', [], '1.0.0', true );
+wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack.js', [], '1.0.0', true );
 
 /**
  * Renders an ad placeholder
@@ -80,7 +80,9 @@ function bumblebee_ad_options_to_attributes( $ad_options ) {
  */
 function bumblebee_add_slot_name_prefix( $ad_options ) {
 	// @todo: make this filterable and read proper tokens for ad unit 2, 3 and 4.
-	$ad_options['slot-name'] = '/6178/fhm_desktop/homepage/homepage/' . $ad_options['slot-name'];
+	$ad_unit_path_2 = apply_filters( 'ad_unit_path_2', 'homepage' );
+	$ad_unit_path_3 = apply_filters( 'ad_unit_path_3', 'homepage' );
+	$ad_options['slot-name'] = '/' . $ad_unit_path_2 . '/' . $ad_unit_path_3 . '/' . $ad_options['slot-name'];
 	return $ad_options;
 }
 add_filter( 'ad_options', 'bumblebee_add_slot_name_prefix', 10, 1 );

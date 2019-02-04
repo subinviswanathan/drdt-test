@@ -1,4 +1,4 @@
-/* global tmbi_ad_data postscribe */
+/* global tmbi_ad_data postscribe ads_global_targeting*/
 /*eslint no-console: "error"*/
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
@@ -45,14 +45,21 @@ function TMBI_Ad_Stack( ) {
 		}
 	}
 
+	var breakpoints = {
+		large_screen: 1024,
+		desktop: 769,
+		tablet: 481,
+		mobile: 0
+	};
+
 	/*get the current browser width*/
 	function getCurrentBreakPoint() {
 		var viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		if (viewport_width > 1024) {
+		if (viewport_width > breakpoints.large_screen) {
 			return 'large_screen';
-		} else if (viewport_width < 481) {
+		} else if (viewport_width < breakpoints.tablet) {
 			return 'mobile';
-		} else if (viewport_width > 768) {
+		} else if (viewport_width > breakpoints.desktop) {
 			return 'desktop';
 		} else {
 			return 'tablet';
@@ -70,10 +77,10 @@ function TMBI_Ad_Stack( ) {
 				renderMarginPercent: 200,  // Render slots within 2 viewports.
 				mobileScaling: 2.0  // Double the above values on mobile.
 			});
-			//global targeting params
-			var global_targeting = typeof tmbi_ad_data !== 'undefined' &&  tmbi_ad_data || {};
+			ads_global_targeting['refer'] = document.referrer;
+			ads_global_targeting['random'] = Math.ceil(Math.random() * 100);
 			var the_ad = googletag.pubads();
-			adSetTargeting(global_targeting, the_ad);
+			adSetTargeting(ads_global_targeting, the_ad);
 			// SRA
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
@@ -83,11 +90,11 @@ function TMBI_Ad_Stack( ) {
 	// Render a single ad.
 	self.fetch_and_render = function( ad_id, options ){
 		googletag.cmd.push(function () {
-			//var sizes = sizes_str_to_array(options.adSizes),
 			var device = getCurrentBreakPoint(),
 				responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
 			if (responsiveSize && responsiveSize[device]) {
-				var the_ad = googletag.defineSlot(options.adSlotName, responsiveSize[device], ad_id);
+				var slot = '/' + ads_global_targeting['property'] + '/' + ads_global_targeting['siteId'] + '_' + (device === 'mobile' ? 'mobile' : 'desktop') + options.adSlotName;
+				var the_ad = googletag.defineSlot(slot, responsiveSize[device], ad_id);
 				var targeting = JSON.parse(options.adTargeting || '{}');
 				adSetTargeting(targeting, the_ad);
 				the_ad.addService(googletag.pubads());
@@ -103,7 +110,6 @@ function TMBI_Ad_Stack( ) {
 	self.fetch_and_render_all = function() {
 		var ads = document.getElementsByClassName('ad');
 		for (var i = 0; i < ads.length; i++) {
-			//postscribe('#'+ ads[i].id,'', self.fetch_and_render( ads[i].id, ads[i].dataset ));
 			self.fetch_and_render( ads[i].id, ads[i].dataset );
 		}
 	};
@@ -112,6 +118,8 @@ var ad_stack = new TMBI_Ad_Stack();
 
 window.addEventListener('load', function() {
 	postscribe('#gpt-postcribe','<script src="https://www.googletagservices.com/tag/js/gpt.js"></script>',function () {
+		//global targeting params
+		window.ads_global_targeting = typeof tmbi_ad_data !== 'undefined' &&  tmbi_ad_data || {};
 		ad_stack.init();
 		ad_stack.fetch_and_render_all();
 	});
