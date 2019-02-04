@@ -66,8 +66,8 @@ jQuery( document ).ready(function($) {
     //TOH Related Changes
     var login_status = 'false';
 	var userData = {"profile" : { "profileInfo" : {}}}
-    if ( cookie.get( 'ID' ) !== undefined ) {
-        login_id = cookie.get( 'ID' );
+    if ( getCookie( 'ID' ) !== undefined ) {
+        login_id = getCookie( 'ID' );
         login_status = 'true';
         userData["profile"]["profileInfo"]["profileID"] = login_id;
 
@@ -88,6 +88,7 @@ jQuery( document ).ready(function($) {
 		if ( $( this ).is( "form" ) ) {
 			return true;
 		}
+		console.log('im here');
 		adobe_data_analytics( $( this ) );
 	});
 
@@ -252,6 +253,22 @@ jQuery( document ).ready(function($) {
 			data = data.replace( search, replace );
 			attr.attr('data-analytics-metrics', data);
 		}
+	}
+
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
 	}
 
 });

@@ -146,7 +146,6 @@ function dtm_get_pagename( $pagename_array = array() ) {
 }
 
 function dtm_get_toh_wordpress_content_id( $post_type, $post_id ) {
-	$content_id = apply_filters( 'dtm_wordpress_content_id', '' );
 	//$accepted_post_type = array( 'article', 'listicle', 'recipe' );
 	//$post_type          = self::get_post_type( $post_type );
 	//if ( WP_Base::is_toh() ) {
@@ -154,7 +153,9 @@ function dtm_get_toh_wordpress_content_id( $post_type, $post_id ) {
 	//		return ( $post_id );
 	//	}
 	//}
-	return ( '' );
+	$content_id = apply_filters( 'dtm_wordpress_content_id', '' );
+
+	return $content_id;
 }
 
 /*
@@ -177,6 +178,8 @@ function dtm_get_post_id( $post_type, $post_id ) {
 	//		return get_post_meta( $post_id, 'rms_legacy_id', true );
 	//	}
 	//}
-	return ( $post_id );
+	$post_id = apply_filters( 'dtm_wordpress_content_id', $post_id );
+
+	return $post_id;
 }
 
