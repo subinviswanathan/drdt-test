@@ -19,23 +19,16 @@ class ADTM_AMP {
 
 		$variables = RD_Adobe_DTM::rd_amp_vars();
 
-		if ( self::is_collection() || self::is_listicle() ) {
-			$variables['optional']['c4']   = 'content/index';
-			$variables['page_type']['v28'] = 'amp pages listicle';
-			$variables['page_type']['c23'] = 'amp pages listicle';
+		$pages_post_type = get_post_type();
+		if ( get_post_type() === 'listicle' || get_post_type() === 'collection' ) {
+			$variables['optional']['c4'] = 'content/index';
+
+			$pages_post_type = 'listicle';
 		}
-		if ( self::is_post() ) {
-			$variables['page_type']['v28'] = 'amp pages article';
-			$variables['page_type']['c23'] = 'amp pages article';
-		}
-		if ( self::is_recipe() ) {
-			$variables['page_type']['v28'] = 'amp pages recipe';
-			$variables['page_type']['c23'] = 'amp pages recipe';
-		}
-		if ( self::is_project() ) {
-			$variables['page_type']['v28'] = 'amp pages project';
-			$variables['page_type']['c23'] = 'amp pages project';
-		}
+
+		$variables['page_type']['v28'] = 'amp pages ' . $pages_post_type;
+		$variables['page_type']['c23'] = 'amp pages ' . $pages_post_type;
+
 		$basic_vars_string    = RD_Adobe_DTM::get_vars_implode( $variables['basic'] );
 		$optional_vars_string = RD_Adobe_DTM::get_vars_implode( $variables['optional'] );
 		$page_type_string     = RD_Adobe_DTM::get_vars_implode( $variables['page_type'] );

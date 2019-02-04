@@ -145,7 +145,16 @@ function dtm_get_pagename( $pagename_array = array() ) {
 	}
 }
 
-function dtm_get_toh_wordpress_content_id( $post_type, $post_id ) {
+function dtm_get_site_section() {
+	$query_string = $_SERVER['REQUEST_URI'];
+	$query_array  = explode( '/', $query_string );
+	if ( $query_array ) {
+		return ( $query_array[1] );
+	}
+	return( null );
+}
+
+function dtm_get_wordpress_content_id( $post_type, $post_id ) {
 	//$accepted_post_type = array( 'article', 'listicle', 'recipe' );
 	//$post_type          = self::get_post_type( $post_type );
 	//if ( WP_Base::is_toh() ) {
