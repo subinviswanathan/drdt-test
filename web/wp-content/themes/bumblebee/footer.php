@@ -109,7 +109,9 @@ function get_hamburger_menu_markup() {
 	};
 }
 
+echo '<div class="accessibility-menu">';
 get_hamburger_menu_markup();
+echo '</div>';
 
 ?>
 

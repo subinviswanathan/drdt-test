@@ -102,20 +102,32 @@
 }
 
 .no-js {
-	.menu-hamburger-menu-container {
-		float: left;
-		width: 120px;
+	.header .hamburger,
+	.header .hamburger-close {
+		display: none;
+	}
 
-		#menu {
-			display: block;
-			position: relative;
-			width: 1000px;
-		}
-		
-		.menu-item-has-children {
+	.accessibility-menu {
+		display: block;
+		float: left;
+		width: 100%;
+
+		.menu-hamburger-menu-container {
 			float: left;
-			width: 250px;
+			width: 120px;
+
+			#menu {
+				display: block;
+				position: relative;
+				width: 1000px;
+			}
+
+			.menu-item-has-children {
+				float: left;
+				width: 250px;
+			}
 		}
 	}
+	
 }
 

@@ -716,7 +716,9 @@ function bumblebee_add_customizer_styles() {
 			border-bottom: none !important;
 		}
 
-		.footer {
+		.footer,
+		.no-js .accessibility-menu,
+		.no-js .accessibility-menu .menu-hamburger-menu-container #menu {
 			background: <?php echo esc_html( $footer_bg_color ); ?> !important;
 		}
 
