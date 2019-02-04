@@ -1,3 +1,5 @@
+NOTE : On Windows, "cmd" needs to be run with admin privileges.
+
 This is the DRDT Vagrant Box.
 
 Will serve as a base box for the DRDT project.
@@ -25,7 +27,7 @@ __________________
 
 	Redis cache server.
 
-	1 ) Add 192.168.205.11 drdt.constructionprotips.com in your /etc/hosts file.
+	1 ) Add "192.168.205.11 drdt.constructionprotips.com" in your /etc/hosts file.
 
 	2 ) Latest version of Vagrant is required in order to setup the private network with ubuntu 18.04.
 
@@ -82,15 +84,12 @@ ___________________
 
 	Automatic Database download if not present in the folder.
 
-	npm run gulp failed task (only npm install runs for the moment)
-
 	Script to extract a copy of current working DB to local machine.
 
 	Better Redis default configuration.
 
 	Nginx installation.
 	
-
 If you have any questions, request or suggestion, I will be pleased to take a look a them :) just send us a request at :
 devops@tmbi.com
 

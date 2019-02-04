@@ -88,7 +88,7 @@ if ( ! function_exists( 'bumblebee_setup' ) ) :
 			'custom-logo',
 			array(
 				'height'      => 250,
-				'width'       => 250,
+				'width'       => 600,
 				'flex-width'  => true,
 				'flex-height' => true,
 			)
@@ -416,3 +416,14 @@ function disable_emojis_remove_dns_prefetch( $urls, $relation_type ) {
 	}
 	return $urls;
 }
+
+/**
+ * Enable SVG upload
+ *
+ * @param array $existing_mimes for SVG upload.
+ */
+function enable_svg_upload( $existing_mimes = array() ) {
+	$existing_mimes['svg'] = 'image/svg+xml';
+	return $existing_mimes;
+}
+add_filter( 'upload_mimes', 'enable_svg_upload' );

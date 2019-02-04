@@ -33,18 +33,16 @@ get_header();
 		<section class="archive-content">
 			<div class="archive-headings">
 				<div class="breadcrumbs">
-					<a href="#">JOBSITE TIPS</a> > <a href="#">BUSINESS</a>
+				<?php if ( function_exists( 'yoast_breadcrumb' ) ) : ?>
+					<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
+				<?php endif; ?>
 				</div>
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
+				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+				<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 			</div>
 
-			<?php
-			the_post();
-			get_template_part( 'template-parts/archive/content', 'hero' );
-			?>
+			<?php the_post(); ?>
+			<?php get_template_part( 'template-parts/archive/content', 'hero' ); ?>
 			<ul class="featured-posts">
 				<?php
 				$i = 0;

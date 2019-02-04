@@ -23,7 +23,10 @@ Vagrant.configure("2") do |local|
     ansible.limit = "all"
   local.vm.provision :shell, :inline => "
     cd /vagrant/web/wp
-    wp rewrite structure --allow-root '/%category%/%postname%/'"
+    wp rewrite structure --allow-root '/%category%/%postname%/'
+    cd /vagrant/drdt-vagrant/
+    ./install_testing_assets.sh
+    ./start_chrome.sh"
   end
   #config.vm.provider :virtualbox do |vb|
   #  vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

@@ -1,6 +1,21 @@
 # DRDT
 
 ## Purpose
+
+The main goal of the DRDT project is "to develop a performance-oriented website that’s fast, stable, scalable and low-maintenance". Here are the details of those four attributes:
+
+**Fast** - Website needs to be fast both in the frontend and in the backend. Things should be as fast as possible for ALL the stakeholders (visitors, product owners, QA, dev, etc).
+
+**Stable** - What's working should keep working, not break by accident.
+
+**Scalable** - Project must be able to scale vertically (adding new features to existing sites) and horizontally (applying a subset of the existing features to new sites) with minimal effort.
+
+**Low-maintenance** - Control of the product should be in hands of its owners. Developers' role is to enable POs to achieve their goals, not to block them. Reduce dev involvement over time.
+
+Incidentally, the resulting website should match www.constructionprotips.com in terms of look and feel, and functionality. 
+
+---
+
 This repository provides a local WordPress development environment and a CI/CD workflow with the following features:
 * Automatic deployments to [Pantheon](https://pantheon.io) (with one environment per Pull Request using Multidev)
 * Local development environment with [Lando](https://docs.devwithlando.io/)
@@ -16,7 +31,8 @@ This repository provides a local WordPress development environment and a CI/CD w
 
 ## Local Development
 
-Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagrant machine is also available.
+Local environment is provided by [Lando](https://docs.devwithlando.io/). It requires Linux with kernel 4.x or higher, macOS 10.11 (El Capitan) or newest, or Windows 10 Pro+.
+If your system doesn't meet the minimum requirements, a Vagrant machine is also available. Take a look at [the README](drdt-vagrant/README.md), and instead of prefixing the commands here with `lando`, run them inside the VM.
 
 ### First-time setup
 * Install [Lando](https://docs.devwithlando.io/) if not already installed
@@ -31,9 +47,12 @@ Local environment is provided by [Lando](https://docs.devwithlando.io/). A Vagra
 
 ### Directory structure
 The project structure is similar [Bedrock](https://roots.io/bedrock/)'s. You'll find WordPress source files in the `web` directory.
+
 Main theme directory is in `web/wp-content/themes/bumblebee`.
+
 Third party plugins should be installed using Composer (and [WordPress Packagist](https://wpackagist.org/)).
-** Note: ** At the moment, all plugins in `wp-content/plugins` will go through PHPCS. See https://github.com/fariasf/contrib-custom-plugins to separate Custom from Contrib (WIP).
+
+**Note:** At the moment, all plugins in `wp-content/plugins` will go through PHPCS, and are manually added to the ignored folders for PHPCS. If you can automate this, please send a Pull Request!
 
 ### Updates and file changes
 * `lando composer update` will need to be ran after any changes to `composer.json`
