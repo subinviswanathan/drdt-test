@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5a41c57737e3e0cf3e2594aa95c1965",
+    "content-hash": "1064719b073d9189ec83292dbc23802d",
     "packages": [
         {
             "name": "ReadersDigest/advanced-custom-fields-pro",
@@ -38,11 +38,11 @@
         },
         {
             "name": "ReadersDigest/wp-migrate-db-pro-media-files",
-            "version": "1.4.9",
+            "version": "1.4.12",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ReadersDigest/wp-migrate-db-pro-media-files",
-                "reference": "1.4.9"
+                "url": "https://github.com/ReadersDigest/drdt-wp-migrate-db-pro-media-files",
+                "reference": "v1.4.12"
             },
             "type": "wordpress-plugin"
         },
