@@ -87,7 +87,7 @@ class RD_Adobe_DTM {
 			$this->build_data_layer();
 		}
 
-		$parsed_array = self::parse_data_layer_config( $this->data_layer );
+		//$parsed_array = self::parse_data_layer_config( $this->data_layer );
 
 		$parsed_array = apply_filters( 'dtm_data_layer', array() );
 

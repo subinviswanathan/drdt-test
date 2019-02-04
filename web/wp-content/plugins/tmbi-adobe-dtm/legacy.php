@@ -157,3 +157,26 @@ function dtm_get_toh_wordpress_content_id( $post_type, $post_id ) {
 	return ( '' );
 }
 
+/*
+ * if it is toh and article/listicle this will return empty
+ *
+ * @param string $post_type
+ * @param int $post_id
+ *
+ * @return int/empty $post_id
+ */
+function dtm_get_post_id( $post_type, $post_id ) {
+	//$accepted_post_type = array( 'article', 'listicle' );
+	//$post_type          = self::get_post_type( $post_type );
+	//if ( WP_Base::is_toh() ) {
+	//	if ( in_array( $post_type, $accepted_post_type ) ) {
+	//		return ( '' );
+	//	}
+	//
+	//	if ( WP_Base::is_recipe() ) {
+	//		return get_post_meta( $post_id, 'rms_legacy_id', true );
+	//	}
+	//}
+	return ( $post_id );
+}
+

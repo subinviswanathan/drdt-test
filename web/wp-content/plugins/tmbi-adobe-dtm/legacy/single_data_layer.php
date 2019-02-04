@@ -33,26 +33,27 @@ function dtm_add_single_data( $data_layer ) {
 		$data_layer['page.category.subsubCategory'] = $categories['subsubcategory'];
 		$data_layer['page.category.pageType']       = dtm_get_categories( $post->ID ); // at page 5.
 		$data_layer['page.content.contentName']     = $post->post_title;
-		$data_layer['page.content.contentID']       = self::get_post_id( $post->post_type, $post->ID );
+		$data_layer['page.content.contentID']       = dtm_get_post_id( $post->post_type, $post->ID );
 		$data_layer['page.content.wpContentID']     = dtm_get_toh_wordpress_content_id( $post->post_type, $post->ID );
-		$data_layer['page.content.contentType']     = self::get_post_type( $post->post_type );
+		$data_layer['page.content.contentType']     = dtm_get_post_type( $post->post_type );
 		$data_layer['page.content.category']        = dtm_get_categories( $post->ID );
 		$data_layer['page.content.tags']            = dtm_get_tags( $post->ID );
 		$data_layer['page.content.contentCost']     = dtm_get_content_cost( $post->ID );
 		$data_layer['page.content.publishedDate']   = dtm_get_original_published_date( $post->ID ); // at page 15.
 		$data_layer['page.content.modifiedDate']    = get_the_modified_date( 'Y-m-d' ); // at page 15.
-		// @todo: Remove Image_Credits_DTM class
+		// @todo: Remove Image_Credits_DTM class.
 		$data_layer['page.content.image.licensorName'] = Image_Credits_DTM::get_image_licensor_name( $post->ID );
 		$data_layer['page.content.image.credits']      = Image_Credits_DTM::get_image_credits( $post->ID );
-		$data_layer['page.content.author']        = dtm_get_author_name( $post->post_author );
-		$data_layer['page.content.authorRole']    = dtm_get_author_roles( $post->post_author );
+		$data_layer['page.content.author']             = dtm_get_author_name( $post->post_author );
+		$data_layer['page.content.authorRole']         = dtm_get_author_roles( $post->post_author );
 
-		$data_layer['page.pageName']                = dtm_get_pagename( array(
-			dtm_get_nickname(),
-			$categories['subcategory'],
-			$categories['subsubcategory'],
-			dtm_get_post_type( $post->post_type ),
-			$post->post_title,
+		$data_layer['page.pageName'] = dtm_get_pagename(
+			array(
+				dtm_get_nickname(),
+				$categories['subcategory'],
+				$categories['subsubcategory'],
+				dtm_get_post_type( $post->post_type ),
+				$post->post_title,
 			)
 		);
 	}
