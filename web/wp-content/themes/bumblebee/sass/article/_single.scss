@@ -97,10 +97,10 @@
 /* This is for content single */
 @media only screen and (max-width: 567px) {
 	.text-center {
-		text-align : center;
+		text-align: center;
 	}
 	.hide-on-mobile {
-		display : none;
+		display: none;
 	}
 	.post-content {
 		letter-spacing: normal;
@@ -112,10 +112,10 @@
 
 @media only screen and (min-width: 568px) and (max-width: 768px) {
 	.text-center {
-		text-align : center;
+		text-align: center;
 	}
 	.hide-on-mobile {
-		display : none;
+		display: none;
 	}
 	.post-content {
 		letter-spacing: normal;
@@ -159,54 +159,51 @@
 
 @media only screen and (min-width: 768px) {
 	.text-center {
-		text-align : center;
+		text-align: center;
 	}
 
 	.hide-on-desktop {
-		display : none;
+		display: none;
 	}
 
 	.single-post-page .site-container {
-		max-width  : $size__site-max-width;
-		margin : 0 auto;
+		max-width: $size__site-max-width;
+		margin: 0 auto;
 	}
 
 	.pre-article-ad {
-		margin-bottom : 2em;
+		margin-bottom: 2em;
 	}
 
 	.nl-signup-link a {
-		text-decoration : none;
-		color           : $color__accent;
+		text-decoration: none;
+		color: $color__accent;
 	}
 
 	.nl-signup-link h4 {
-		display : inline-flex;
+		display: inline-flex;
 	}
 
 	.nl-right-arrow {
-		width       : 30px;
-		height      : 30px;
-		margin-top  : -5px;
-		margin-left : -5px;
+		width: 50px;
+		height: 24px;
+		margin-top: 1px;
+		margin-left: -5px;
 	}
 
 	.pre-article-ad div {
-		margin : 0 auto;
+		margin: 0 auto;
 	}
 
 	.opening-content {
-		margin-bottom : 2em;
+		margin-bottom: 2em;
 	}
 
 	.post-content {
-		padding    : 1em 1.5em;
+		padding: 1em 1.5em;
 	}
 
 	.sidebar img {
 		display: inline-flex;
 	}
 }
-
-
-

@@ -35,13 +35,13 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				</li>
 			</ul>
 		</div>
-		<a href="/" class="pure-u-1-5 logo">
+		<a href="/" class="pure-u-2-5 logo">
 			<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo_width' ) ); ?>px"></img>
 		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
-		<div class="pure-u-4-5 newsletter-signup-header mobile-hide">
+		<div class="pure-u-3-5 newsletter-signup-header mobile-hide">
 			<a class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
 				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
 			</a>
@@ -80,7 +80,12 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 
 <div class="pure-g newsletter-sign-below-header hide-on-mobile">
 	<div class="pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 nl-signup-link">
-		<a href="#"><h4>Sign Up for Our Newsletters <img class="nl-right-arrow" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/chevron-right-solid.svg"/></h4></a>
+		<a href="<?php echo esc_url( get_theme_mod( 'bumblebee_banner_url' ) ); ?>">
+			<h4><?php echo esc_html( get_theme_mod( 'bumblebee_banner_text' ) ); ?> 
+				<svg aria-hidden="true" data-prefix="fas" data-icon="chevron-right" class="nl-right-arrow svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+					<path fill="" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
+			</h4>
+		</a>
 	</div>
 </div>
 <!-- #site-navigation -->

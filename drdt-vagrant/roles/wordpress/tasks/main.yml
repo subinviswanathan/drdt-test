@@ -1,14 +1,8 @@
 ---
-#- name: Clone repo on the remote
-#  git:
-#    repo: https://BenoitRichard1212:b03ee824a8b8351b316ab29e2a74f12eee5dc8dc@github.com/fariasf/drdt-test  
-#    version: master
-#    dest: /vagrant/drdt-test
-#    force: yes
 - name: Execute dos2unix on several files
-  shell: dos2unix cleanup-composer
+  shell: find . -type f -print0 | xargs -0 dos2unix
   args:
-    chdir: "/vagrant/scripts/composer"
+      chdir: "/vagrant"
 
 - name: Install Composer's dependencies
   composer:
@@ -68,14 +62,10 @@
   ignore_errors: yes
   when: npm_install.failed is defined
 
-  #- name: npm rebuild node-sass
-     #command: npm rebuild node-sass --no-bin-links --no-optional
-    #args:
-    #  chdir: '{{ item }}'
-    #with_items:
-   # - '{{ project_path }}'
-    #- '{{ project_path }}/externals/wp-forms-api'
-   # - '{{ project_path }}/web/app/themes/rdnap'
+- name: npm rebuild node-sass
+  command: npm rebuild node-sass --force --unsafe-perm
+  args:
+    chdir: /vagrant/web/wp/wp-content/themes/bumblebee
 
 #- name: Symlink gulp into /usr/local/bin
   #file:
