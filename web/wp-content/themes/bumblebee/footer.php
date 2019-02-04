@@ -82,7 +82,7 @@
 					</form>
 				</div>
 				<div class="diyu-logo">
-					<a href="https://www.mydiyuniversity.com/" target="_blank" rel="noopener noreferrer">
+					<a href="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
 						<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image_width' ) ); ?>px"></img>
 					</a>
 				</div>

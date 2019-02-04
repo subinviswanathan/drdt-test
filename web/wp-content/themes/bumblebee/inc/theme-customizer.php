@@ -610,6 +610,27 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			'priority'    => '30',
 		)
 	);
+
+	$wp_customize->add_setting(
+		'bumblebee_footer_nl_subscribe_url',
+		array(
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_footer_nl_subscribe_url',
+		array(
+			'type'        => 'url',
+			'section'     => 'bumblebee_footer_nl',
+			'label'       => __( 'Newsletter Link URL' ),
+			'description' => __( 'Add the URL' ),
+			'priority'    => '35',
+			'input_attrs' => array(
+				'placeholder' => __( 'https://www.tmbi.com' ),
+			),
+		)
+	);
 }
 add_action( 'customize_register', 'bumblebee_custom_customize_register' );
 
