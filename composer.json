@@ -42,12 +42,12 @@
       "type": "package",
       "package": {
         "name": "ReadersDigest/wp-migrate-db-pro",
-        "version": "1.8.1",
+        "version": "1.9.2",
         "type": "wordpress-plugin",
         "source": {
-          "url": "https://github.com/ReadersDigest/wp-migrate-db-pro",
+          "url": "https://github.com/ReadersDigest/drdt-wp-migrate-db-pro",
           "type": "git",
-    	  "reference": "1.8.1"
+    	  "reference": "v1.9.2"
         }
       }
     },
@@ -55,12 +55,12 @@
       "type": "package",
       "package": {
         "name": "ReadersDigest/wp-migrate-db-pro-cli",
-        "version": "1.3.2",
+        "version": "1.3.4",
         "type": "wordpress-plugin",
         "source": {
-          "url": "https://github.com/ReadersDigest/wp-migrate-db-pro-cli",
+          "url": "https://github.com/ReadersDigest/drdt-wp-migrate-db-pro-cli",
           "type": "git",
-    	  "reference": "1.3.2"
+    	  "reference": "v1.3.4"
         }
       }
     },
@@ -68,12 +68,25 @@
       "type": "package",
       "package": {
         "name": "ReadersDigest/wp-migrate-db-pro-media-files",
-        "version": "1.4.9",
+        "version": "1.4.12",
         "type": "wordpress-plugin",
         "source": {
-          "url": "https://github.com/ReadersDigest/wp-migrate-db-pro-media-files",
+          "url": "https://github.com/ReadersDigest/drdt-wp-migrate-db-pro-media-files",
           "type": "git",
-    	  "reference": "1.4.9"
+    	  "reference": "v1.4.12"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ReadersDigest/advanced-custom-fields-pro",
+        "version": "5.7.10",
+        "type": "wordpress-plugin",
+        "source": {
+          "url": "https://github.com/ReadersDigest/drdt-advanced-custom-fields-pro",
+          "type": "git",
+    	  "reference": "v5.7.10"
         }
       }
     }
@@ -102,9 +115,10 @@
     "wpackagist-plugin/wp-redis": "0.7.0",
     "yoast/wordpress-seo-premium": "^9.5",
     "wpwhitesecurity/wp-security-audit-log": "^3.3.0.2",
-    "ReadersDigest/wp-migrate-db-pro": "~1.8",
-    "ReadersDigest/wp-migrate-db-pro-cli": "~1.3.1",
-    "ReadersDigest/wp-migrate-db-pro-media-files": "~1.4.8"
+    "ReadersDigest/wp-migrate-db-pro": "~1.9.2",
+    "ReadersDigest/wp-migrate-db-pro-cli": "~1.3.4",
+    "ReadersDigest/wp-migrate-db-pro-media-files": "~1.4.12",
+    "ReadersDigest/advanced-custom-fields-pro": "~5.7.10"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",
@@ -165,7 +179,7 @@
       "WordPressProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "code-sniff": [
-      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/a3-lazy-load/*,./web/wp-content/plugins/autoptimize/*,./web/wp-content/plugins/co-authors-plus/*,./web/wp-content/plugins/customize-snapshots/*,./web/wp-content/plugins/easyazon/*,./web/wp-content/plugins/lh-hsts/*,./web/wp-content/plugins/members/*,./web/wp-content/plugins/pantheon-advanced-page-cache/*,./web/wp-content/plugins/radio-buttons-for-taxonomies/*,./web/wp-content/plugins/redirection/*,./web/wp-content/plugins/regenerate-thumbnails/*,./web/wp-content/plugins/user-switching/*,./web/wp-content/plugins/wordpress-seo-premium/*,./web/wp-content/plugins/wp-cfm/*,./web/wp-content/plugins/wpmudev-updates/*,./web/wp-content/plugins/wp-native-php-sessions/*,./web/wp-content/plugins/wp-redis/*,./web/wp-content/plugins/wp-smush-pro/*,./web/wp-content/plugins/wp-security-audit-log/*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
+      "./vendor/bin/phpcs --standard=WordPress --extensions=php --runtime-set ignore_warnings_on_exit true --ignore=./web/wp-content/plugins/a3-lazy-load/*,./web/wp-content/plugins/advanced-custom-fields-pro/*,./web/wp-content/plugins/autoptimize/*,./web/wp-content/plugins/co-authors-plus/*,./web/wp-content/plugins/customize-snapshots/*,./web/wp-content/plugins/easyazon/*,./web/wp-content/plugins/lh-hsts/*,./web/wp-content/plugins/members/*,./web/wp-content/plugins/pantheon-advanced-page-cache/*,./web/wp-content/plugins/radio-buttons-for-taxonomies/*,./web/wp-content/plugins/redirection/*,./web/wp-content/plugins/regenerate-thumbnails/*,./web/wp-content/plugins/user-switching/*,./web/wp-content/plugins/wordpress-seo-premium/*,./web/wp-content/plugins/wp-cfm/*,./web/wp-content/plugins/wpmudev-updates/*,./web/wp-content/plugins/wp-native-php-sessions/*,./web/wp-content/plugins/wp-redis/*,./web/wp-content/plugins/wp-smush-pro/*,./web/wp-content/plugins/wp-security-audit-log/*,./web/wp-content/plugins/wp-migrate-db-pro*,./web/wp-content/mu-plugins,./web/wp-content/themes/tw*,./web/wp-content/uploads ./web/wp-content"
     ],
     "unit-test": [
       "./vendor/bin/phpunit tests/unit/*"
