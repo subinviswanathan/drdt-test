@@ -11,7 +11,7 @@ Text Domain: rd-adobe-dtm
 require_once 'legacy.php';
 
 require 'inc/rd-dtm-settings.php';
-require 'inc/image-credits-dtm.php';
+require 'inc/class-image-credits-dtm.php';
 require 'inc/adobe_dtm_utils.php';
 require 'inc/amp.php';
 
