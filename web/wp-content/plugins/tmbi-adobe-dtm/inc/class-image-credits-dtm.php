@@ -1,11 +1,13 @@
 <?php
-/*
- * User: jeysaravana
- * Date: 2018-01-12
- * Time: 11:29 PM
+/**
+ * Class Image_Credits_DTM
  */
-
 class Image_Credits_DTM {
+	/**
+	 * Store supported post-types
+	 *
+	 * @var array $supported_types
+	 */
 	public static $supported_types = array( 'listicle', 'slicklist', 'collection' );
 
 	public function __construct() {
