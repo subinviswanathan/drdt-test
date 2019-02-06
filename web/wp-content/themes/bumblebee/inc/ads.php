@@ -5,8 +5,6 @@
  * @package bumblebee
  */
 
-wp_register_script( 'ad-stack', get_template_directory_uri() . '/js/ad-stack.js', [], '1.0.0', true );
-
 /**
  * Renders an ad placeholder
  *
@@ -73,39 +71,3 @@ function bumblebee_ad_options_to_attributes( $ad_options ) {
 }
 
 
-/**
- * Prefix every ad slot name with the Ad Unit Path
- *
- * @param mixed[] $ad_options   Ad rendering options.
- */
-function bumblebee_add_slot_name_prefix( $ad_options ) {
-	// @todo: make this filterable and read proper tokens for ad unit 2, 3 and 4.
-	$ad_unit_path_2 = apply_filters( 'ad_unit_path_2', 'homepage' );
-	$ad_unit_path_3 = apply_filters( 'ad_unit_path_3', 'homepage' );
-	$ad_options['slot-name'] = '/' . $ad_unit_path_2 . '/' . $ad_unit_path_3 . '/' . $ad_options['slot-name'];
-	return $ad_options;
-}
-add_filter( 'ad_options', 'bumblebee_add_slot_name_prefix', 10, 1 );
-
-/**
- * Remove Ad Stack (for ?variant=noads).
- */
-function bumblebee_maybe_remove_ad_stack() {
-	$variant = get_query_var( 'variant' );
-	if ( 'noads' === $variant ) {
-		wp_dequeue_script( 'ad-stack' );
-	}
-}
-add_action( 'wp_footer', 'bumblebee_maybe_remove_ad_stack', 1 );
-
-/**
- * Adds the `variant` query var.
- *
- * @param array $vars List of query variables.
- * @see query_vars
- */
-function bumblebee_add_variant_query_var( $vars ) {
-	$vars[] .= 'variant';
-	return $vars;
-}
-add_filter( 'query_vars', 'bumblebee_add_variant_query_var' );

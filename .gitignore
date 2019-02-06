@@ -65,6 +65,9 @@ web/private/*
 !web/private/scripts/
 web/private/scripts/quicksilver
 
+# Don't ignore ad stack plugins
+!web/wp-content/plugins/ad-stack
+
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
 
