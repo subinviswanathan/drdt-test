@@ -12,6 +12,7 @@ class RD_DTM_Settings {
 	const NICKNAME_SLUG      = 'rd-dtm-nickname';
 	const AMP_SERVER_ACCOUNT = 'rd-dtm-amp-server';
 	const SETTING_NAME       = 'RD Adobe DTM';
+
 	private $options = array();
 
 	public function __construct() {
@@ -23,12 +24,13 @@ class RD_DTM_Settings {
 	}
 
 	public function rd_dtm_footer() {
-		$_dtm_tag  = PHP_EOL;
-		$_dtm_tag .= '<script type="text/javascript">' . PHP_EOL;
-		$_dtm_tag .= 'if(typeof _satellite !== "undefined"){' . PHP_EOL;
-		$_dtm_tag .= '  _satellite.pageBottom()' . PHP_EOL;
-		$_dtm_tag .= '}' . PHP_EOL;
-		$_dtm_tag .= '</script>' . PHP_EOL;
+		$_dtm_tag = <<<EOD
+<script type="text/javascript">
+if( typeof _satellite !== "undefined" ){
+	_satellite.pageBottom();
+}
+</script>
+EOD;
 
 		echo $_dtm_tag;
 	}
@@ -45,8 +47,8 @@ class RD_DTM_Settings {
 
 	public function show_dtm_admin_page() {
 
-		$this->options[self::RD_DTM_SLUG]   = get_option( self::RD_DTM_SLUG );
-		$this->options[self::NICKNAME_SLUG] = get_option( self::NICKNAME_SLUG );
+		$this->options[self::RD_DTM_SLUG]        = get_option( self::RD_DTM_SLUG );
+		$this->options[self::NICKNAME_SLUG]      = get_option( self::NICKNAME_SLUG );
 		$this->options[self::AMP_SERVER_ACCOUNT] = get_option( self::AMP_SERVER_ACCOUNT );
 
 		?>
@@ -118,7 +120,7 @@ class RD_DTM_Settings {
 	}
 
 	public function print_section_info() {
-		print('<p>Use this JS for Adobe DTM</p>' . PHP_EOL);
+		print( '<p>Use this JS for Adobe DTM</p>' . PHP_EOL );
 	}
 
 	public function dtm_code_callback() {
