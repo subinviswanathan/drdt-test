@@ -750,6 +750,13 @@ function bumblebee_add_customizer_styles() {
 		.footer .newsletter form button:hover {
 			background-color: <?php echo esc_html( $button_bg_hover_color ); ?>;
 		}
+
+		@media screen and (max-width: 767px) {
+			.header .hamburger-menu {
+				background-color: <?php echo esc_html( $nav_bg_color ); ?>;
+			}
+		}
+	}
 	</style>
 
 	<?php

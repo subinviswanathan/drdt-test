@@ -35,13 +35,13 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				</li>
 			</ul>
 		</div>
-		<a href="/" class="pure-u-2-5 logo">
+		<a href="/" class="pure-u-sm-1 pure-u-md-2-5 logo">
 			<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo_width' ) ); ?>px"></img>
 		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
-		<div class="pure-u-3-5 newsletter-signup-header mobile-hide">
+		<div class="pure-u-md-3-5 newsletter-signup-header mobile-hide">
 			<a class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
 				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
 			</a>
@@ -66,7 +66,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 		);
 	}
 	?>
-			<div class="search-form mobile-hide">
+			<div class="search-form">
 				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
 					<fieldset>
 						<input type="text" placeholder="Search">
