@@ -38,7 +38,7 @@ get_header();
 				'targeting'        => [
 					'pos'      => 'prearticle',
 					'location' => 'top',
-					'tf' => 'atf',
+					'tf'       => 'atf',
 				],
 				'responsive-sizes' => [
 					'mobile'       => [ [ 320, 50 ] ],
@@ -72,7 +72,7 @@ get_header();
 						'targeting'        => [
 							'pos'      => 'railtop',
 							'location' => 'rail',
-							'tf' => 'atf',
+							'tf'       => 'atf',
 						],
 						'responsive-sizes' => [
 							'mobile'       => [],
@@ -93,7 +93,7 @@ get_header();
 						'targeting'        => [
 							'pos'      => 'railmiddle',
 							'location' => 'rail',
-							'tf' => 'atf',
+							'tf'       => 'atf',
 						],
 						'responsive-sizes' => [
 							'mobile'       => [],
@@ -114,7 +114,7 @@ get_header();
 						'targeting'        => [
 							'pos'      => 'railscroll',
 							'location' => 'rail',
-							'tf' => 'btf',
+							'tf'       => 'btf',
 						],
 						'responsive-sizes' => [
 							'mobile'       => [],

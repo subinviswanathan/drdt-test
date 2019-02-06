@@ -41,7 +41,7 @@ add_filter(
 					'targeting'        => [
 						'pos'      => 'prearticle',
 						'location' => 'top',
-						'tf' => 'atf',
+						'tf'       => 'atf',
 					],
 					'responsive-sizes' => [
 						'mobile'       => [ [ 320, 50 ] ],
@@ -97,13 +97,13 @@ add_filter(
 							<aside class="sidebar">
 								<?php
 								$slot_name = 'scroll';
-								$tf_slot = 'btf';
+								$tf_slot   = 'btf';
 								if ( 1 === $section_num ) {
 									$slot_name = 'top';
-									$tf_slot = 'atf';
+									$tf_slot   = 'atf';
 								} elseif ( 2 === $section_num ) {
 									$slot_name = 'middle';
-									$tf_slot = 'atf';
+									$tf_slot   = 'atf';
 								}
 								bumblebee_render_ad(
 									uniqid( 'ad' ),
@@ -112,9 +112,9 @@ add_filter(
 										'responsive-sizes' => [
 											'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
 										],
-										'targeting' => [
-											'tf' => $tf_slot,
-											'pos' => 'rail' . $slot_name,
+										'targeting'        => [
+											'tf'       => $tf_slot,
+											'pos'      => 'rail' . $slot_name,
 											'location' => $slot_name,
 										],
 									]
@@ -137,9 +137,9 @@ add_filter(
 									'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 									'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 								],
-								'targeting' => [
-									'tf' => $tf_slot,
-									'pos' => $slot_name,
+								'targeting'        => [
+									'tf'       => $tf_slot,
+									'pos'      => $slot_name,
 									'location' => $slot_name,
 								],
 							]

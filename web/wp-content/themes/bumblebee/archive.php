@@ -33,11 +33,11 @@ get_header();
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
 			[
-				'slot-name' => 'prearticle',
-				'targeting' => [
+				'slot-name'        => 'prearticle',
+				'targeting'        => [
 					'pos'      => 'prearticle',
 					'location' => 'top',
-					'tf' => 'atf',
+					'tf'       => 'atf',
 				],
 				'responsive-sizes' => [
 					'mobile'       => [ [ 320, 50 ] ],
@@ -76,27 +76,27 @@ get_header();
 		<section class="full-width-ad">
 			<?php
 			$slot_name = 'scroll';
-			$tf_slot = 'btf';
+			$tf_slot   = 'btf';
 			if ( 1 === $section_num ) {
 				$slot_name = 'top';
-				$tf_slot = 'atf';
+				$tf_slot   = 'atf';
 			} elseif ( 2 === $section_num ) {
 				$slot_name = 'middle';
-				$tf_slot = 'atf';
+				$tf_slot   = 'atf';
 			}
 			bumblebee_render_ad(
 				uniqid( 'ad' ),
 				[
-					'slot-name' => $slot_name,
+					'slot-name'        => $slot_name,
 					'responsive-sizes' => [
 						'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
 						'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
 						'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 						'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 					],
-					'targeting' => [
-						'tf' => $tf_slot,
-						'pos' => $slot_name,
+					'targeting'        => [
+						'tf'       => $tf_slot,
+						'pos'      => $slot_name,
 						'location' => $slot_name,
 					],
 				]
@@ -122,27 +122,27 @@ get_header();
 			<section class="full-width-ad">
 				<?php
 				$slot_name = 'scroll';
-				$tf_slot = 'btf';
+				$tf_slot   = 'btf';
 				if ( 1 === $section_num ) {
 					$slot_name = 'top';
-					$tf_slot = 'atf';
+					$tf_slot   = 'atf';
 				} elseif ( 2 === $section_num ) {
 					$slot_name = 'middle';
-					$tf_slot = 'atf';
+					$tf_slot   = 'atf';
 				}
 				bumblebee_render_ad(
 					uniqid( 'ad' ),
 					[
-						'slot-name' => $slot_name,
+						'slot-name'        => $slot_name,
 						'responsive-sizes' => [
 							'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
 							'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
 							'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 							'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 						],
-						'targeting' => [
-							'tf' => $tf_slot,
-							'pos' => $slot_name,
+						'targeting'        => [
+							'tf'       => $tf_slot,
+							'pos'      => $slot_name,
 							'location' => $slot_name,
 						],
 					]
