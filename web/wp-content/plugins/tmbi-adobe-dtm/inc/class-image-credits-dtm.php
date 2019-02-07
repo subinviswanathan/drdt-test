@@ -50,10 +50,12 @@ class Image_Credits_DTM {
 			global $post;
 			$thumb_id = get_post_thumbnail_id( $post->ID );
 		}
+		$name    = get_post_meta( $thumb_id, '_image_licensor_name', true );
+		$credits = get_post_meta( $thumb_id, 'photographer_credit_name', true );
 
 		$img_credits_array = array(
-			'licensorName' => ( $name = get_post_meta( $thumb_id, '_image_licensor_name', true ) ) ? $name : $default_text,
-			'credits' => ( $credits = get_post_meta( $thumb_id, 'photographer_credit_name', true ) ) ? $credits : $default_text,
+			'licensorName' => ( $name ) ? $name : $default_text,
+			'credits' => ( $credits ) ? $credits : $default_text,
 		);
 		$json_string = 'data-image-analytics=\'' . json_encode( $img_credits_array ) . '\'';
 		return $json_string;
@@ -73,8 +75,10 @@ class Image_Credits_DTM {
 			$post_id = $post->ID;
 		}
 
-		if ( $image_id = get_post_thumbnail_id( $post_id ) ) {
-			if ( $lic_name = get_post_meta( $image_id, '_image_licensor_name', true ) ) {
+		$image_id = get_post_thumbnail_id( $post_id );
+		if ( $image_id ) {
+			$lic_name = get_post_meta( $image_id, '_image_licensor_name', true );
+			if ( $lic_name ) {
 				$licensor_name = $lic_name;
 			}
 		}
@@ -96,8 +100,10 @@ class Image_Credits_DTM {
 			$post_id = $post->ID;
 		}
 
-		if ( $image_id = get_post_thumbnail_id( $post_id ) ) {
-			if ( $cred_name = get_post_meta( $image_id, 'photographer_credit_name', true ) ) {
+		$image_id = get_post_thumbnail_id( $post_id );
+		if ( $image_id ) {
+			$cred_name = get_post_meta( $image_id, 'photographer_credit_name', true );
+			if ( $cred_name ) {
 				$credits_name = $cred_name;
 			}
 		}

@@ -1,8 +1,6 @@
 <?php
-/*
- * User: jeysaravana
- * Date: 2018-01-29
- * Time: 12:18 PM
+/**
+ * Save original publish date to post types
  */
 
 class Adobe_DTM_Utils {
@@ -29,6 +27,7 @@ class Adobe_DTM_Utils {
 	public function adtm_init() {
 		//add_action( 'transition_post_status', array( $this, 'post_status_transition' ), 10, 3 );
 		//get_post_types()
+		$this->registered_post_type = get_post_types();
 		add_action( 'publish_to_draft', array( $this, 'move_publish_to_draft' ) );
 		foreach ( $this->registered_post_type as $post_type ) {
 			add_action( 'publish_' . $post_type, array( $this, 'publishing_post' ), 10, 2 );
@@ -54,9 +53,8 @@ class Adobe_DTM_Utils {
 	 * @param WP_Post $post post object
 	 */
 	public function move_publish_to_draft( $post ) {
-		if (  in_array( $post->post_type, $this->registered_post_type )
+		if ( in_array( $post->post_type, $this->registered_post_type )
 			&& ! get_post_meta( $post->ID, self::PUBLISH_META_NAME, true )
-			&& in_array( $post->post_type, $this->registered_post_type )
 		) {
 
 			update_post_meta( $post->ID, self::PUBLISH_META_NAME, $post->post_date );
@@ -82,7 +80,8 @@ class Adobe_DTM_Utils {
 			return false;
 		}
 
-		if ( $original_pub_date = get_post_meta( $post_id, self::PUBLISH_META_NAME, true ) ) {
+		$original_pub_date = get_post_meta( $post_id, self::PUBLISH_META_NAME, true );
+		if ( $original_pub_date ) {
 			$date = date_create( $original_pub_date );
 			return date_format( $date, 'Y-m-d' );
 		}
