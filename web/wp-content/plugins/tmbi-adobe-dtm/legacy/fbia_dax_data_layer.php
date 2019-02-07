@@ -9,7 +9,7 @@
 add_filter( 'dtm_data_layer', 'dtm_add_fbia_dax_page_data' );
 function dtm_add_fbia_dax_page_data( $data_layer ) {
 	if ( is_page( 'fbia-dax' ) ) {
-		if ( ! empty( $_GET['contentId'] ) && $_GET['contentId'] > 0  ) {
+		if ( ! empty( $_GET['contentId'] ) && $_GET['contentId'] > 0 ) {
 			$content_id = intval( $_GET['contentId'] );
 			$post       = get_post( $content_id );
 			setup_postdata( $post );
@@ -26,7 +26,7 @@ function dtm_add_fbia_dax_page_data( $data_layer ) {
 			// @todo: Review and decouple.
 			// $this->set_source( $post->ID );
 			$source = apply_filters( 'dtm_data_layer_page_content_source', false );
-			if ( ! empty ( $source ) ) {
+			if ( ! empty( $source ) ) {
 				$data_layer['page.content.source'] = $source;
 			}
 
@@ -40,7 +40,7 @@ function dtm_add_fbia_dax_page_data( $data_layer ) {
 			// $this->set_magazine_issue( $post->ID );
 			$magazine_issue = apply_filters( 'dtm_data_layer_magazine_issue_data', false );
 			if ( ! empty( $magazine_issue ) ) {
-				$data_layer['page.content.magazineIssue'] = $magazineIssue;
+				$data_layer['page.content.magazineIssue'] = $magazine_issue;
 			}
 
 			$data_layer['page.category.pageType']       = dtm_get_categories( $post->ID ); // at page 5

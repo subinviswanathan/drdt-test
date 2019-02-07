@@ -18,7 +18,9 @@ function dtm_add_listicle_data( $data_layer ) {
 			$data_layer['page.content.slideShowMulti'] = true;
 		} else {
 			$data_layer['page.content.slideShowSingle'] = true;
-			$numpages = count( $content_pages = explode( '<!--nextpage-->', $post->post_content ) );
+
+			$content_pages = explode( '<!--nextpage-->', $post->post_content );
+			$numpages      = count( $content_pages );
 			if ( $numpages ) {
 				$data_layer['page.content.slideTotal']  = $numpages;
 			}

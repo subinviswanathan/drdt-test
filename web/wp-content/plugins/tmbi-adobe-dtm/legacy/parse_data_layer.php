@@ -8,29 +8,29 @@ add_filter( 'dtm_data_layer', 'adtm_parse_data_layer_config', 100 );
 function adtm_parse_data_layer_config( $config ) {
 
 	if ( is_array( $config ) && count( $config ) > 0 ) {
-		$dataLayer = array();
+		$data_layer = array();
 
 		foreach ( $config as $key => $value ) {
-			if ( isset( $dataLayer[$key] ) ) {
-				if ( is_array( $dataLayer[$key] ) && count( $dataLayer[$key] ) === count( $dataLayer[$key], COUNT_RECURSIVE ) ) {
-					$dataLayer[$key][] = $value;
+			if ( isset( $data_layer[$key] ) ) {
+				if ( is_array( $data_layer[$key] ) && count( $data_layer[$key] ) === count( $data_layer[$key], COUNT_RECURSIVE ) ) {
+					$data_layer[$key][] = $value;
 				} else {
-					$dataLayer[$key] = $value;
+					$data_layer[$key] = $value;
 				}
 			} else {
-				$dataLayer = array_merge_recursive( $dataLayer, adtm_create_element( $key, $value ) );
+				$data_layer = array_merge_recursive( $data_layer, adtm_create_element( $key, $value ) );
 			}
 		}
 	} else {
-		$dataLayer = $config;
+		$data_layer = $config;
 	}
-	return( $dataLayer );
+	return( $data_layer );
 }
 
 // recursive function to construct an object from dot-notation
 function adtm_create_element( $key, $value ) {
 	$element = array();
-	$key = ( string ) $key;
+	$key = (string) $key;
 	// if the key is a property
 	if ( strpos( $key, '.' ) !== false ) {
 		/**
@@ -48,9 +48,7 @@ function adtm_create_element( $key, $value ) {
 		if ( $sub_key !== '' && $list !== false ) {
 			$element[$list[0]] = adtm_create_element( $sub_key, $value );
 		}
-	}
-	// just normal key
-	else {
+	} else { // just normal key.
 		$element[$key] = $value;
 	}
 	return( $element );
