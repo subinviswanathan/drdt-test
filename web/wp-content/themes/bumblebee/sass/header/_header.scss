@@ -5,6 +5,35 @@
 		display: table;
 	}
 
+	.main-navigation.sticky {
+		.sticky-logo {
+			display: block;
+			transition: 200ms;
+		}
+	}
+
+	.main-navigation {
+		.sticky-logo {
+			display: none;
+		}
+	}
+
+	.sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+
+		.sticky-logo {
+			display: block;
+			margin: 4px 10px 0;
+
+			@media screen and (max-width: 767px) {
+				display: none;
+			}
+		}
+	}
+
 	.content-wrapper {
 		width: 100%;
 		margin: 10px auto;
@@ -30,7 +59,6 @@
 		clear: both;
 		display: block;
 		float: left;
-		position: sticky;
 		top: 0;
 		width: 100%;
 		height: 60px;
@@ -53,7 +81,6 @@
 					}
 				}
 			}
-
 		}
 
 		.pure-menu {
@@ -107,7 +134,7 @@
 			display: none;
 			background: $color__black;
 			list-style-type: none;
-			padding-left: 0;
+			padding: 10px 0;
 			width: 100%;
 
 			li {
@@ -184,6 +211,26 @@
 		fieldset {
 			margin-top: 4px;
 			padding: 5px 0 5px 0;
+		}
+	}
+}
+
+body.logged-in {
+	.sticky {
+		top: 32px;
+
+		@media screen and (max-width: 767px) {
+			top: 46px;
+		}
+	}
+}
+
+body.wp-customize {
+	.sticky {
+		top: 0;
+
+		@media screen and (max-width: 767px) {
+			top: 0;
 		}
 	}
 }

@@ -17,7 +17,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
 	<?php wp_head(); ?>
 </head>
 
@@ -55,6 +55,9 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 					<li class="pure-menu-item menu-text pure-menu-has-children"><a href="#menu" onclick="toggleMenu();">MENU</a>
 					</li>
 				</ul>
+				<a href="/" class="sticky-logo">
+					<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_sticky_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_sticky_logo_width' ) ); ?>px"></img>
+				</a>
 			</div>
 	<?php
 	if ( has_nav_menu( 'desktop-focus-menu' ) ) {

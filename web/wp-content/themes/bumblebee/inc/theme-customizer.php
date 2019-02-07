@@ -445,6 +445,39 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting( 'bumblebee_sticky_logo' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_sticky_logo',
+			array(
+				'title'    => __( 'Sticky Header Logo', 'bumblebee' ),
+				'label'    => __( 'Upload the logo for the sticky header', 'bumblebee' ),
+				'section'  => 'bumblebee_logos',
+				'settings' => 'bumblebee_sticky_logo',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_sticky_logo_width',
+		array(
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_header_logo_width',
+		array(
+			'type'        => 'number',
+			'section'     => 'bumblebee_logos',
+			'label'       => __( 'Sticky Logo Width' ),
+			'description' => __( 'Enter only numbers, i.e: 200' ),
+			'settings'    => 'bumblebee_sticky_logo_width',
+		)
+	);
+
 	$wp_customize->add_setting( 'bumblebee_footer_logo' );
 
 	$wp_customize->add_control(
