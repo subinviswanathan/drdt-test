@@ -88,7 +88,6 @@ jQuery( document ).ready(function($) {
 		if ( $( this ).is( "form" ) ) {
 			return true;
 		}
-		console.log('im here');
 		adobe_data_analytics( $( this ) );
 	});
 
@@ -96,97 +95,6 @@ jQuery( document ).ready(function($) {
 		adobe_data_analytics( $( this ) );
 	});
 
-	/* fireupDirectcallRule "slide click"  */
-	if ( digitalData.page.content.slideShowMulti === true && typeof ( _satellite ) != 'undefined' ) {
-
-		//setting up event50 to page load event.
-		_satellite.getToolsByType('sc')[0].events.push('event50');
-
-		digitalData.click = digitalData.click||{};
-
-		//toh recipe title
-		var recipe_title = $('#collection-wrapper').find('h4');
-		if ( recipe_title.length > 0 ) {
-			digitalData.click.slideShowRecipeTitle = recipe_title.text();
-			satellite_track('slideShowRecipeTitle');
-		}
-
-		var list_nav_top = $('#listicle-nav-top');
-		var card_count = parseInt(list_nav_top.find('.rd-card-count').text());
-
-		$('.js--next.js--listicle-nav').click(function (ev) {
-			var card_no = parseInt(list_nav_top.find('.rd-card-index').text());
-			var next_card = card_no + 1;
-			set_click_total_slideshows( card_no, card_count );
-			set_click_data( 'next', 'slideshows', 'header' );
-			if ( ev.isDefaultPrevented() ) {
-				next_card = card_no;
-			}
-			set_digitalData_slideshow_ad();
-
-			if( next_card < card_count ) {
-				satellite_track('slide click');
-			} else if( next_card === card_count) {
-				satellite_track('slide click completed');
-			}
-		} );
-		$('.js--prev.js--listicle-nav').click(function (ev) {
-			var card_no = parseInt(list_nav_top.find('.rd-card-index').text());
-			set_click_total_slideshows( card_no, card_count );
-			set_click_data( 'previous', 'slideshows', 'header' );
-			var prev_card = card_no;
-			if ( ev.isDefaultPrevented() ) {
-				prev_card = card_no + 1;
-			}
-			if( prev_card > 1 ) {
-				set_digitalData_slideshow_ad();
-				satellite_track('slide click');
-			}
-		} );
-
-		//fhm slideclick
-		$('.carousel.slide .right.carousel-control').click( function (e) {
-			set_digitalData_image_credits( $('div.active') );
-			var pages_arr = $('.paginate').text().split( ' of ' );
-			var current_card = parseInt(pages_arr[0]);
-			var next_card = current_card + 1;
-			var card_count = parseInt(pages_arr[1]);
-
-			set_click_total_slideshows( current_card, card_count );
-			set_click_data( 'next', 'slideshows', 'header' );
-
-			if( next_card < card_count ) {
-				if ( next_card % 4 === 0 ) {
-					set_digitalData_slideshow_ad();
-				}
-				satellite_track('slide click');
-			} else if( next_card === card_count) {
-				satellite_track('slide click completed');
-			}
-
-			if( current_card === card_count) {
-				satellite_track('slide click restart');
-			}
-		});
-
-		$('.carousel.slide .left.carousel-control').click( function (e) {
-			set_digitalData_image_credits( $('div.active') );
-			var pages_arr = $('.paginate').text().split( ' of ' );
-			var current_card = parseInt(pages_arr[0]);
-			var card_count = parseInt(pages_arr[1]);
-
-			set_click_total_slideshows( current_card, card_count );
-			set_click_data( 'previous', 'slideshows', 'header' );
-
-			if( current_card > 1 ) {
-				if ( ( current_card - 1 ) % 4 === 0 ) {
-					set_digitalData_slideshow_ad();
-					//satellite_track('slideshowadevent');
-				}
-				satellite_track('slide click');
-			}
-		});
-	}
 
 	//toh re circ nav click next
 	$('.single-recipe .recirc-item .owl-next').click(function() {
