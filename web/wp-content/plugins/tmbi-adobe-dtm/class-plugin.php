@@ -99,15 +99,16 @@ class RD_Adobe_DTM {
 	}
 
 
-
-	/*
-     * Google Accelerated Mobile Pages variables
+	/**
+	 * Google Accelerated Mobile Pages variables
+	 * @return array
 	 */
 	public static function rd_amp_vars() {
 		global $post;
 
 		$categories = dtm_get_sub_categories( $post->ID );
-		$pagename   = dtm_get_pagename( array(
+		$pagename   = dtm_get_pagename(
+			array(
 				dtm_get_nickname(),
 				$categories['subcategory'],
 				$categories['subsubcategory'],
@@ -141,7 +142,7 @@ class RD_Adobe_DTM {
 					'v20' => dtm_get_tags( $post->ID ),
 					'c47' => dtm_get_wordpress_content_id( $post->post_type, $post->ID ),
 					'c59' => dtm_get_wordpress_content_id( $post->post_type, $post->ID ),
-					)
+				)
 			),
 		);
 
@@ -156,12 +157,13 @@ class RD_Adobe_DTM {
 		return( $var_string );
 	}
 
-	/*
-     * event1 => default pageload event
-     * event32 => google amp view
-     * event41 => single page slideshow/listicle
-     * event42 => listicle event
-     * @returns string event
+	/**
+	 * event1 => default pageload event
+	 * event32 => google amp view
+	 * event41 => single page slideshow/listicle
+	 * event42 => listicle event
+	 *
+	 * @return string $event
 	 */
 	public static function get_events() {
 		$event = 'event1,event32';
@@ -174,7 +176,8 @@ class RD_Adobe_DTM {
 
 
 	public static function get_server_account() {
-		if ( ! $server_account = get_option( RD_DTM_Settings::AMP_SERVER_ACCOUNT ) ) {
+		$server_account = get_option( RD_DTM_Settings::AMP_SERVER_ACCOUNT );
+		if ( ! $server_account ) {
 			$server_account = 'tmbrandsdev';
 		}
 		return( $server_account );

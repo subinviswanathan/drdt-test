@@ -71,7 +71,7 @@ class ADTM_AMP {
 			$dom->loadHTML( $article_content );
 			libxml_use_internal_errors( false );
 			foreach ( $dom->getElementsByTagName( 'a' ) as $item ) {
-				$analytics_text = '<a data-vars-link-name="' . $item->nodeValue . '" data-vars-link-module="content recirculation" data-vars-link-position="embedded" href="' .$item->getAttribute( 'href' ). '" target="_blank">' .$item->nodeValue. '</a>';
+				$analytics_text = '<a data-vars-link-name="' . $item->nodeValue . '" data-vars-link-module="content recirculation" data-vars-link-position="embedded" href="' . $item->getAttribute( 'href' ) . '" target="_blank">' . $item->nodeValue . '</a>';
 				$article_content = str_replace( html_entity_decode( $dom->saveHTML( $item ) ), $analytics_text, html_entity_decode( $article_content ) );
 			}
 		}

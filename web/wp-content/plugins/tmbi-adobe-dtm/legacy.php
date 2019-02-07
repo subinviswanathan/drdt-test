@@ -96,7 +96,8 @@ function dtm_get_sub_categories( $post_id ) {
 
 		if ( ! empty( $primary_category ) ) {
 			$category_array['subcategory'] = htmlspecialchars_decode( $primary_category->name );
-			if ( $primary_category->parent > 0 && $parent_cat = get_category( $primary_category->parent ) ) {
+			$parent_cat = get_category( $primary_category->parent );
+			if ( $primary_category->parent > 0 && $parent_cat ) {
 				$category_array['subsubcategory'] = htmlspecialchars_decode( $parent_cat->name );
 			}
 		}
@@ -105,7 +106,8 @@ function dtm_get_sub_categories( $post_id ) {
 }
 
 function dtm_get_nickname() {
-	if ( ! $page_name = get_option( 'rd-dtm-nickname' ) ) {
+	$page_name = get_option( 'rd-dtm-nickname' );
+	if ( ! $page_name ) {
 		$page_name = get_bloginfo();
 	}
 	return( $page_name );
@@ -121,7 +123,8 @@ function dtm_get_original_published_date( $post_id = null ) {
 		return false;
 	}
 
-	if ( $original_pub_date = get_post_meta( $post_id, Adobe_DTM_Utils::PUBLISH_META_NAME, true ) ) {
+	$original_pub_date = get_post_meta( $post_id, Adobe_DTM_Utils::PUBLISH_META_NAME, true );
+	if ( $original_pub_date ) {
 		$date = date_create( $original_pub_date );
 		return date_format( $date, 'Y-m-d' );
 	}
