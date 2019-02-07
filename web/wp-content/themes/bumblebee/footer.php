@@ -114,12 +114,5 @@ get_hamburger_menu_markup();
 echo '</div>';
 
 ?>
-
-<script>
-	document.body.className = document.body.className.replace("no-js","");
-	function toggleMenu() {
-		document.getElementById('menu').classList.toggle('hamburger');
-	}
-</script>
 </body>
 </html>

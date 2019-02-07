@@ -149,14 +149,6 @@ function bumblebee_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bumblebee_scripts', 8 );
 
-add_filter(
-	'body_class',
-	function( $classes ) {
-		$classes[] = 'no-js';
-		return $classes;
-	}
-);
-
 /**
  * Navigation Script
  */

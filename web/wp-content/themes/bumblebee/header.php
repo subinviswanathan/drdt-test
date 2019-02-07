@@ -12,12 +12,13 @@
 wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/header.css', [], '1.0.2' );
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+	<script>var root = document.getElementsByTagName( 'html' )[0]; root.className = root.className.replace("no-js","");</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -51,7 +52,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			<div class="hamburger-wrapper mobile-hide">
 				<?php get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
-					<li class="pure-menu-item menu-text pure-menu-has-children"><a href="#menu" onclick="toggleMenu();">MENU</a>
+					<li class="pure-menu-item menu-text pure-menu-has-children"><a href="#menu" class="menu-toggle">MENU</a>
 					</li>
 				</ul>
 				<a href="/" class="sticky-logo">
@@ -105,7 +106,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
  *  Getting hamburger markup
  */
 function get_hamburger_markup() {
-	$hamburger  = '<div class="hamburger">';
+	$hamburger  = '<div class="hamburger menu-toggle">';
 	$hamburger .= '<div class="hamburger-menu"></div>';
 	$hamburger .= '<div class="hamburger-menu"></div>';
 	$hamburger .= '<div class="hamburger-menu"></div>';
