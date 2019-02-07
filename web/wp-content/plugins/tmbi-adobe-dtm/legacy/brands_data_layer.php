@@ -1,15 +1,15 @@
 <?php
 
-add_filter( 'dtm_data_layer_brands_data', 'dtm_get_brands_data' );
+add_filter( 'dtm_data_layer_brands_data', 'dtm_get_brands_data', 10, 2 );
 /*
  * Get the brand data from different plugins.
  *  - TMBI First Associated Taxonomy ( rd-tmbi-first-published )
  *  - TMBI Brand Attribution Manager ( tmbi-brand-attribution )
  * used get_first_published_brand filter for keep code in same location
  */
-function dtm_get_brands_data( $brands_data ) {
+function dtm_get_brands_data( $brands_data, $post_id ) {
 	if ( taxonomy_exists( 'tmbi_first_associated' ) ) {
-		$post             = get_post();
+		$post             = get_post( $post_id );
 		$brand_slug_array = apply_filters( 'get_first_published_brand', 'get_brand_data' );
 		if ( taxonomy_exists( 'brand' ) ) {
 			$brand_names = wp_get_object_terms( $post->ID, 'brand' );
@@ -19,6 +19,7 @@ function dtm_get_brands_data( $brands_data ) {
 		} elseif ( $brand_slug_array ) {
 			return ( $brand_slug_array['term_slug'] );
 		}
-		 return ( 'no brand' );
+
+		return ( 'no brand' );
 	}
 }

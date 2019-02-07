@@ -11,7 +11,7 @@ function dtm_get_magazine_issue_date( $post_id ) {
 	}
 }
 
-function dtm_magazine_issue_date( $magazine_issue_date, $post_id ) {
+function dtm_magazine_issue_date( $magazine_issue_data, $post_id ) {
 	$magazine_issue_date = dtm_get_magazine_issue_date( $post_id );
 	return $magazine_issue_date;
 }

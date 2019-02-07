@@ -6,7 +6,6 @@ require_once 'legacy/home_data_layer.php';
 require_once 'legacy/newsletter_data_layer.php';
 require_once 'legacy/source_data_layer.php';
 require_once 'legacy/magazine_issue_data_layer.php';
-require_once 'legacy/fbia_dax_data_layer.php';
 require_once 'legacy/listicle_data_layer.php';
 require_once 'legacy/single_data_layer.php';
 require_once 'legacy/archive_data_layer.php';
