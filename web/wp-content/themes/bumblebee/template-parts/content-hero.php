@@ -4,11 +4,13 @@
  * @package bumblebee
  */
 
+$home_hero_analytics = 'data-analytics-metrics=\'{"link_name":"' . get_the_title() . '","link_module":"content navigation","link_pos":"marquee"}\'';
+
 ?>
 <div class="pure-u-1 pure-u-sm-3-5">
 	<div class="hero-container ">
 		<div class="pure-g ">
-			<a class="pure-u-sm-2-5 hero-image">
+			<a <?php echo $home_hero_analytics; ?> class="pure-u-sm-2-5 hero-image">
 				<?php echo get_the_post_thumbnail( $post_id, 'homepage-featured-big', array( 'class' => 'pure-img' ) ); ?>
 			</a>
 			<div class="pure-u-sm-3-5">
