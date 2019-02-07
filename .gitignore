@@ -46,6 +46,8 @@ web/wp-content/plugins/*
 # Don't ignore premium plugins not available via composer (@todo: track them in a private repo)
 !web/wp-content/plugins/wpmudev-updates/
 !web/wp-content/plugins/wp-smush-pro/
+# Don't ignore our custom plugins (@todo: Publish them as a standalone project!)
+!web/wp-content/plugins/allow-iframes
 
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes
