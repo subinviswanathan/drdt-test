@@ -17,7 +17,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
 	<?php wp_head(); ?>
 </head>
 
@@ -35,13 +35,13 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				</li>
 			</ul>
 		</div>
-		<a href="/" class="pure-u-2-5 logo">
+		<a href="/" class="pure-u-sm-1 pure-u-md-2-5 logo">
 			<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo_width' ) ); ?>px"></img>
 		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
-		<div class="pure-u-3-5 newsletter-signup-header mobile-hide">
+		<div class="pure-u-md-3-5 newsletter-signup-header mobile-hide">
 			<a class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
 				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
 			</a>
@@ -52,9 +52,12 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			<div class="hamburger-wrapper mobile-hide">
 				<?php get_hamburger_markup(); ?>
 				<ul class="pure-menu-list ">
-					<li class="pure-menu-item menu-text pure-menu-has-children">MENU
+					<li class="pure-menu-item menu-text pure-menu-has-children"><a href="#menu" onclick="toggleMenu();">MENU</a>
 					</li>
 				</ul>
+				<a href="/" class="sticky-logo">
+					<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_sticky_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_sticky_logo_width' ) ); ?>px"></img>
+				</a>
 			</div>
 	<?php
 	if ( has_nav_menu( 'desktop-focus-menu' ) ) {
@@ -66,7 +69,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 		);
 	}
 	?>
-			<div class="search-form mobile-hide">
+			<div class="search-form">
 				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
 					<fieldset>
 						<input type="text" placeholder="Search">

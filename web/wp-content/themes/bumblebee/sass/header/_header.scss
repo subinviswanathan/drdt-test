@@ -5,6 +5,35 @@
 		display: table;
 	}
 
+	.main-navigation.sticky {
+		.sticky-logo {
+			display: block;
+			transition: 200ms;
+		}
+	}
+
+	.main-navigation {
+		.sticky-logo {
+			display: none;
+		}
+	}
+
+	.sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+
+		.sticky-logo {
+			display: block;
+			margin: 4px 10px 0;
+
+			@media screen and (max-width: 767px) {
+				display: none;
+			}
+		}
+	}
+
 	.content-wrapper {
 		width: 100%;
 		margin: 10px auto;
@@ -30,7 +59,6 @@
 		clear: both;
 		display: block;
 		float: left;
-		position: sticky;
 		top: 0;
 		width: 100%;
 		height: 60px;
@@ -53,7 +81,6 @@
 					}
 				}
 			}
-
 		}
 
 		.pure-menu {
@@ -74,13 +101,12 @@
 	.hamburger-menu {
 		width: 30px;
 		height: 2px;
-		background-color: #ffc10e;
 		margin: 6px 0;
 	}
 
 	.hamburger,
 	.hamburger-close {
-		padding: 10px 20px 0 20px;
+		padding: 15px 20px 0 20px;
 
 		&:hover {
 			cursor : pointer;
@@ -108,7 +134,7 @@
 			display: none;
 			background: $color__black;
 			list-style-type: none;
-			padding-left: 0;
+			padding: 10px 0;
 			width: 100%;
 
 			li {
@@ -185,6 +211,26 @@
 		fieldset {
 			margin-top: 4px;
 			padding: 5px 0 5px 0;
+		}
+	}
+}
+
+body.logged-in {
+	.sticky {
+		top: 32px;
+
+		@media screen and (max-width: 767px) {
+			top: 46px;
+		}
+	}
+}
+
+body.wp-customize {
+	.sticky {
+		top: 0;
+
+		@media screen and (max-width: 767px) {
+			top: 0;
 		}
 	}
 }
@@ -314,19 +360,133 @@
 	}
 }
 
-@media screen and (max-width: 567px) {
+@media (max-width: 768px) {
 	.header {
-		.main-navigation .menu-desktop-focus-menu-container {
-			ul {
-				li {
-					padding: 13px;
+		.search-form {
+			position: absolute;
+
+			form {
+				input[type=text] {
+					display: none;
+				}
+
+				button {
+					background-image: url(images/search-icon.svg);
+					position: absolute;
+					top: -46px;
+					right: -50px;
 				}
 			}
 		}
 
+		.hamburger-wrapper {
+			position: absolute;
+		}
+
 		.menu-hamburger-menu-container {
+			min-height: 300px;
+			right: 0;
+			top: 48px;
 			width: 100vw;
-			top: 97px;
+
+			ul#menu {
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+		}
+
+		.content-wrapper {
+			margin: 10px auto 0;
+		}
+
+		a.logo {
+			text-align: center;
+			margin: 0 auto;
+			max-width: 100px;
+			width: 100px;
+		}
+	}
+
+	.newsletter-sign-below-header.hide-on-mobile {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 567px) {
+	.header {
+
+		.search-form {
+			position: absolute;
+
+			form {
+				input[type=text] {
+					display: none;
+				}
+
+				button {
+					background-image: url(images/search-icon.svg);
+					position: absolute;
+					top: -46px;
+					right: -50px;
+				}
+			}
+		}
+
+		.content-wrapper {
+			margin: 10px auto 0;
+		}
+
+		a.logo {
+			text-align: center;
+			margin: 0 auto;
+			max-width: 100px;
+			width: 100px;
+		}
+
+		.main-navigation {
+			height: 46px;
+		}
+
+		.main-navigation .menu-desktop-focus-menu-container {
+			ul {
+				flex: 1;
+				padding: 0 10px;
+				overflow-x: auto;
+				white-space: nowrap;
+
+				li {
+					padding: 7px 14px;
+
+					a {
+						font-family: Open Sans,Arial,Helvetica,sans-serif;
+						font-size: 14px;
+						font-weight: 700;
+						letter-spacing: 1px;
+						text-transform: uppercase;
+						transition: color .3s;
+					}
+				}
+			}
+		}
+
+		.menu-desktop-focus-menu-container {
+			margin: 0 auto;
+		}
+
+		.hamburger-wrapper {
+			position: absolute;
+		}
+
+		.menu-hamburger-menu-container {
+			min-height: 300px;
+			right: 0;
+			top: 48px;
+			width: 100vw;
+
+			ul#menu {
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
 		}
 
 		.hamburger-close {
@@ -339,7 +499,14 @@
 		.hamburger-menu {
 			background-color: #000000;
 		}
+
+		.slinky-menu {
+			li ul.active {
+				left: 0;
+			}
+		}
 	}
+
 }
 
 @media screen and (min-width: 768px) and  (max-width: 1023px) {
@@ -357,24 +524,7 @@
 		#menu-desktop-focus-menu {
 			li {
 				padding: 8px;
-				a {
-					font-size: 16px;
-				}
 			}
-		}
-	}
-}
-
-@media screen and (min-width: 568px){
-	.header {
-		.slinky-menu {
-			li ul.active {
-				left : 0;
-			}
-		}
-
-		.menu-hamburger-menu-container {
-			min-height: 300px;
 		}
 	}
 }
