@@ -139,7 +139,7 @@ add_action( 'widgets_init', 'bumblebee_widgets_init' );
  */
 function bumblebee_scripts() {
 
-	wp_enqueue_style( 'bumblebee-style', get_stylesheet_directory_uri() . '/style_main.css', [], '1.0.2' );
+	wp_enqueue_style( 'bumblebee-style', get_stylesheet_directory_uri() . '/style.css', [], '1.0.2' );
 
 	wp_enqueue_script( 'bumblebee-skip-link-focus-fix', get_template_directory_uri() . '/js/src/skip-link-focus-fix.js', array(), '20151215', true );
 
