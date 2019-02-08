@@ -79,15 +79,15 @@
 			</div>
 			<div class="pure-u-1 pure-u-md-2-5 right-foot">
 				<div class="newsletter">
-					<h3 class="">Sign Up For Our Newsletter</h3>
-					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post" data-analytics-metrics='{"link_name":"newsletter signup","link_module":"newsletter signup","link_pos":"footer"}'>
+					<h3><?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_heading_text' ) ); ?></h3>
+					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post" data-analytics-metrics='{"link_name":"newsletter signup","link_module":"newsletter signup","link_pos":"footer"}' >
 						<input type="text" id="email" placeholder="Email Address"></input>
 						<button type="submit" id="subscribe">Sign Up</button>
 					</form>
 				</div>
 				<div class="diyu-logo">
-					<a href="https://www.mydiyuniversity.com/"  data-analytics-metrics='{"link_name":"Subscribe link","link_module":"footer","link_pos":"magazine subscription"}' target="_blank" rel="noopener noreferrer">
-						<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/diyu-header-sticky.svg" width="300px" alt=""></img>
+					<a data-analytics-metrics='{"link_name":"Subscribe link","link_module":"footer","link_pos":"magazine subscription"}' href="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
+						<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image_width' ) ); ?>px"></img>
 					</a>
 				</div>
 			</div>
@@ -108,17 +108,16 @@ function get_hamburger_menu_markup() {
 				'theme_location' => 'hamburger-menu',
 				'menu_class'     => 'pure-menu-children hamburger-menu-items',
 				'walker'         => new Main_Menu_Walker,
+				'menu_id'        => 'menu',
 			)
 		);
 	};
 }
 
+echo '<div class="accessibility-menu">';
 get_hamburger_menu_markup();
+echo '</div>';
 
 ?>
-
-<script>
-	document.body.className = document.body.className.replace("no-js","");
-</script>
 </body>
 </html>

@@ -120,30 +120,34 @@
 		});
 	}
 
-	var menu = $('.hamburger');
-	menu.on('click', function() {
-		var menu_wrapper = get_menu_wrapper();
-		var drop_down_menu = jQuery('.menu-hamburger-menu-container');
-		drop_down_menu.appendTo(menu_wrapper);
-		$('.pure-menu-children.hamburger-menu-items').css('display', 'block').css('left', '0');
-		$('.hamburger').toggleClass('hide-ham-sign');
-		$('.hamburger-close').toggleClass('hide-ham-sign');
 
-		if( ! $('.menu-hamburger-menu-container').hasClass('slinky-menu')) {
-			$('.menu-hamburger-menu-container').slinky({
-				title: true,
-				resize: true,
-				speed: 400,
-			});
+	var menu = $('.menu-toggle, .hamburger-close');
+	menu.on('click', function( e ) {
+		e.preventDefault();
+
+		var show = $('.pure-menu-children.hamburger-menu-items').css('display') !== 'block';
+
+		if ( show ) {
+			$('.pure-menu-children.hamburger-menu-items').css('display', 'block').css('left', '0');
+			$('.hamburger').toggleClass('hide-ham-sign');
+			$('.hamburger-close').toggleClass('hide-ham-sign');
+			var menu_wrapper = get_menu_wrapper();
+			var drop_down_menu = jQuery('.menu-hamburger-menu-container');
+			drop_down_menu.appendTo(menu_wrapper);
+			if( ! $('.menu-hamburger-menu-container').hasClass('slinky-menu')) {
+				$('.menu-hamburger-menu-container').slinky({
+					title: true,
+					resize: true,
+					speed: 400,
+				});
+			}
+		} else {
+			$('.pure-menu-children.hamburger-menu-items').css('display', 'none');
+			$('.hamburger').toggleClass('hide-ham-sign');
+			$('.hamburger-close').toggleClass('hide-ham-sign');
 		}
 	});
 
-	var close_menu = $('.hamburger-close');
-	close_menu.on('click', function() {
-		$('.pure-menu-children.hamburger-menu-items').css('display', 'none');
-		$('.hamburger').toggleClass('hide-ham-sign');
-		$('.hamburger-close').toggleClass('hide-ham-sign');
-	});
 
 	function get_menu_wrapper(){
 		var menu_wrapper;
@@ -166,5 +170,14 @@
 			menu_wrapper_mobile.css('display', 'none');
 		}
 	}
+
+	$(window).scroll(function() {
+		var scroll = $(window).scrollTop();
+		if (scroll >= 140) {
+			$('nav').addClass('sticky');
+		} else {
+			$('nav').removeClass('sticky');
+		}
+	});
 	/* global jQuery */
 })(jQuery);
