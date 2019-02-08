@@ -1,7 +1,13 @@
 <?php
+/**
+ * IX Header Bidder Settings
+ *
+ * @package     IX Header Bidder
+ *  This is for the settings page of header bidder.
+ */
 
 /**
- *  This is for the settings page of header bidder.
+ *  Class IX Header Bidder Settings.
  */
 class IX_Settings {
 	/**
@@ -91,6 +97,18 @@ class IX_Settings {
 	public function ix_header_bidder_url_callback() {
 		$option = isset( $this->script_url ) ? esc_attr( $this->script_url ) : '';
 
-		echo '<input type="text" id="' . self::IX_HEADER_BIDDER_SLUG . '" name="' . self::IX_HEADER_BIDDER_SLUG . '" value="' . $option . '" style="max-width:100%; width: 980px;" />';
+		$content = '<input type="text" id="' . self::IX_HEADER_BIDDER_SLUG . '" name="' . self::IX_HEADER_BIDDER_SLUG . '" value="' . $option . '" style="max-width:100%; width: 980px;" />';
+		echo wp_kses(
+			$content,
+			[
+				'input' => [
+					'id'    => [],
+					'name'  => [],
+					'value' => [],
+					'style' => [],
+				],
+			]
+		);
 	}
+
 }

@@ -16,7 +16,7 @@
  *
  * @file
  */
-require 'inc/ix-settings.php';
+require 'inc/class-ix-settings.php';
 
 /**
  *  Class Header Bidder.
