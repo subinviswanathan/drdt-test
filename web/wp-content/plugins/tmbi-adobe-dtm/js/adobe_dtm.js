@@ -17,19 +17,6 @@ var qs = (function() {
 	return query_strings;
 })();
 
-//Nelio A/B Testing
-if ( qs['nabt'] !== undefined ) {
-	//TODO setup adobe variables.
-	//for original => nabt = 0
-	//for alternatice => nabt = 1
-	var test_name = 'tohdesign:a_newdesign';
-	if ( qs['nabt'] === '1' ) {
-		test_name = 'tohdesign:b_currentdesign';
-	}
-	digitalData.ab = digitalData.ab||{};
-	digitalData.ab.testing = test_name; //qs['nabt']
-}
-
 jQuery( document ).ready(function($) {
 
 	if ( qs['ehid'] !== undefined ) {
@@ -42,30 +29,10 @@ jQuery( document ).ready(function($) {
 		digitalData.newsletter.ehid = localStorage.newsletter;
 	}
 
-	//RD Related changes
-	$("#more-from-category").find('a').each(function() {
-		replace_data_attr( $(this), 'main stage - list', 'more about' );
-	});
-	$('.menu-footer-social-container').find('a').each(function() {
-		replace_data_attr( $(this), 'follow us', 'footer' );
-	});
-
-	$('.page-unsubscribe .ninja-forms-form').submit(function() {
-		do_adobe_data_analytics( 'Save Preference', 'newsletter preferences', 'opt out page' );
-	});
-
-	$('.joke .read-more').on('click', function() {
-
-		var joke_block = $(this).closest('.joke');
-		if (typeof do_adobe_data_analytics === 'function') {
-			var name = joke_block.find('.entry-header .entry-title a').text();
-			do_adobe_data_analytics(name, 'content navigation', 'main content overlay');
-		}
-	});
 
     //TOH Related Changes
     var login_status = 'false';
-	var userData = {"profile" : { "profileInfo" : {}}}
+	var userData = {"profile" : { "profileInfo" : {}}};
     if ( getCookie( 'ID' ) !== undefined ) {
         login_id = getCookie( 'ID' );
         login_status = 'true';
@@ -74,13 +41,6 @@ jQuery( document ).ready(function($) {
     }
     userData["profile"]["profileInfo"]["profileStatus"] = login_status;
     digitalData.user = userData;
-
-	//FHM Related Changes
-	$('#genesis-sidebar-primary').find('.menu-social-profiles-container a').each(function() {
-		var social_profiles = $(this).attr('data-analytics-metrics');
-		social_profiles = social_profiles.replace('footer', 'right rail');
-		$(this).attr('data-analytics-metrics', social_profiles);
-	});
 
 	var $body = $("body");
 	$body.on("click", "[data-analytics-metrics]", function (e) {
@@ -94,74 +54,6 @@ jQuery( document ).ready(function($) {
 	$body.on("submit", "[data-analytics-metrics]", function () {
 		adobe_data_analytics( $( this ) );
 	});
-
-
-	//toh re circ nav click next
-	$('.single-recipe .recirc-item .owl-next').click(function() {
-		do_adobe_data_analytics( 'next', 'content engagement', 'more from taste of home' );
-	});
-
-	//toh re circ nav click prev
-	$('.single-recipe .recirc-item .owl-prev').click(function() {
-		do_adobe_data_analytics( 'previous', 'content engagement', 'more from taste of home' );
-	});
-
-	//Added for WPDT-6535 & WPDT-6643
-	//home page first slider
-	$('.tmbi_hp_first_slider .owl-nav .owl-prev').click(function() {
-		var slider_title = $('#tmbi_hp_first_slider h3').html();
-		do_adobe_data_analytics( 'previous', 'content navigation', 'carousel: ' + slider_title );
-	});
-
-	$('.tmbi_hp_first_slider .owl-nav .owl-next').click(function() {
-		var slider_title = $('#tmbi_hp_first_slider h3').html();
-		do_adobe_data_analytics( 'next', 'content navigation', 'carousel: ' + slider_title );
-	});
-
-	//home page second slider
-	$('.tmbi_hp_slider_second .owl-nav .owl-prev').click(function() {
-		var slider_title = $('#tmbi_hp_slider_second h3').html();
-		do_adobe_data_analytics( 'previous', 'content navigation', 'carousel: ' + slider_title );
-	});
-
-	$('.tmbi_hp_slider_second .owl-nav .owl-next').click(function() {
-		var slider_title = $('#tmbi_hp_slider_second h3').html();
-		do_adobe_data_analytics( 'next', 'content navigation', 'carousel: ' + slider_title );
-	});
-
-	//home page third slider
-	$('.tmbi_hp_slider_third .owl-nav .owl-prev').click(function() {
-		var slider_title = $('#tmbi_hp_slider_third h3').html();
-		do_adobe_data_analytics( 'previous', 'content navigation', 'carousel: ' + slider_title );
-	});
-
-	$('.tmbi_hp_slider_third .owl-nav .owl-next').click(function() {
-		var slider_title = $('#tmbi_hp_slider_third h3').html();
-		do_adobe_data_analytics( 'next', 'content navigation', 'carousel: ' + slider_title );
-	});
-
-	//fhm re circ nav click next
-	$('.single-project .recirc-item .owl-next').click(function() {
-		do_adobe_data_analytics( 'next', 'content recirculation', 'similar projects' );
-	});
-
-	//fhm re circ nav click prev
-	$('.single-project .recirc-item .owl-prev').click(function() {
-		do_adobe_data_analytics( 'previous', 'content recirculation', 'similar projects' );
-	});
-
-	$('article.post .entry-content a').click(function() {
-		do_adobe_data_analytics( $(this).html(), 'content recirculation', 'embedded' );
-	});
-
-
-	function replace_data_attr( attr, search, replace ) {
-		if ( attr.attr('data-analytics-metrics') !== undefined ) {
-			var data = attr.attr('data-analytics-metrics');
-			data = data.replace( search, replace );
-			attr.attr('data-analytics-metrics', data);
-		}
-	}
 
 	function getCookie(cname) {
 		var name = cname + "=";
