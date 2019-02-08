@@ -4,7 +4,7 @@
  * @package bumblebee
  */
 
-$archive_hero_analytics = 'data-analytics-metrics=\'{"link_name":"' . get_the_title() . '","link_module":"content navigation","link_pos":"carousel"}\'';
+$archive_hero_analytics = 'data-analytics-metrics=\'{"name":"' . get_the_title() . '","module":"content navigation","position":"carousel"}\'';
 
 
 ?>

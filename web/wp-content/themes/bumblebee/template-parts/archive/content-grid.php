@@ -4,7 +4,7 @@
  * @package bumblebee
  */
 
-$archive_grid_analytics = 'data-analytics-metrics=\'{"link_name":"' . get_the_title() . '","link_module":"content navigation","link_pos":"individual content well"}\'';
+$archive_grid_analytics = 'data-analytics-metrics=\'{"name":"' . get_the_title() . '","module":"content navigation","position":"individual content well"}\'';
 
 
 ?>

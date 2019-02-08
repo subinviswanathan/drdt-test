@@ -1,6 +1,3 @@
-/**
- * Created by jeysaravana on 2017-01-11.
- */
 
 var qs = (function() {
 	query_string_url = window.location.search.substr(1).split('&');
@@ -20,11 +17,11 @@ var qs = (function() {
 jQuery( document ).ready(function($) {
 
 	if ( qs['ehid'] !== undefined ) {
-		localStorage.newsletter 	= qs['ehid'];
-		digitalData.newsletter      = digitalData.newsletter||{};
+		localStorage.newsletter = qs['ehid'];
+		digitalData.newsletter  = digitalData.newsletter||{};
 		digitalData.newsletter.ehid = qs['ehid'];
 	}
-	if ( typeof( localStorage.newsletter ) != 'undefined' && typeof qs['ehid'] == 'undefined' ){
+	if ( typeof( localStorage.newsletter ) !== 'undefined' && typeof qs['ehid'] === 'undefined' ){
 		digitalData.newsletter      = digitalData.newsletter||{};
 		digitalData.newsletter.ehid = localStorage.newsletter;
 	}
@@ -127,28 +124,14 @@ function do_collection_analytics( $currentTarget, $container ) {
 function do_adobe_data_analytics( name, module, position ) {
 	var data = {};
 	data['attr'] = function( att_name ) {
-		return '{"link_name":"' + name + '", "link_module":"' + module + '", "link_pos":"' + position + '"}';
+		return '{"name":"' + name + '", "module":"' + module + '", "position":"' + position + '"}';
 	};
 	adobe_data_analytics( data );
 }
 
 function adobe_data_analytics( data ) {
 	if ( data.attr('data-analytics-metrics') !== undefined ) {
-		var dataString;
-		digitalData.click = {};
-		dataString = data.attr('data-analytics-metrics');
-		dataString = dataString.replace('link_name', 'name');
-		dataString = dataString.replace('link_module', 'module');
-		dataString = dataString.replace('link_pos', 'position');
-		digitalData.click = JSON.parse(dataString);
-
-		//Prevent link click not trigger on new slideshow next previous
-		if ( digitalData.page.theme === 'tmbi-theme-v3'
-			&& digitalData.click.module === 'slideshows'
-			&& ( digitalData.click.name === 'next' || digitalData.click.name === 'previous' )
-		) {
-			return;
-		}
+		digitalData.click = JSON.parse(data.attr('data-analytics-metrics'));
 		satellite_track("link click");
 	}
 }

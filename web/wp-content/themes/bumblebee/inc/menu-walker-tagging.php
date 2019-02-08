@@ -45,7 +45,7 @@ class Footer_Nav_Walker extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url ) .'"' : '';
 
-		$attributes_array = array( 'link_name' => esc_attr( $item->title ),'link_module' => 'footer','link_pos' => 'navigation' );
+		$attributes_array = array( 'name' => esc_attr( $item->title ),'module' => 'footer','position' => 'navigation' );
 		$json_attributes  = json_encode( $attributes_array );
 		$attributes      .= ' data-analytics-metrics=\''.$json_attributes.'\'';
 
@@ -83,7 +83,7 @@ class TMBI_Social_Profiles extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
 
 		$title            = self::get_social_profile_names( $item->title );
-		$attributes_array = array( 'link_name' => esc_attr( $title ),'link_module' => 'footer','link_pos' => 'follow us' );
+		$attributes_array = array( 'name' => esc_attr( $title ),'module' => 'footer','position' => 'follow us' );
 		$json_attributes  = json_encode( $attributes_array );
 		$attributes      .= ' data-analytics-metrics=\''.$json_attributes.'\'';
 		$attributes      .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) .'"' : '';
@@ -140,7 +140,7 @@ class V2_Footer_Links extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) .'"' : '';
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
 
-		$attributes_array = array( 'link_name' => esc_attr( $item->title ),'link_module' => 'navigation','link_pos' => 'footer' );
+		$attributes_array = array( 'name' => esc_attr( $item->title ),'module' => 'navigation','position' => 'footer' );
 		$json_attributes = json_encode( $attributes_array );
 		$attributes .= ' data-analytics-metrics=\''.$json_attributes.'\'';
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) .'"' : '';
@@ -172,7 +172,7 @@ class Menu_Links extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) .'"' : '';
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
 
-		$attributes_array = array( 'link_name' => esc_attr( $item->title ),'link_module' => 'header','link_pos' => 'main navigation' );
+		$attributes_array = array( 'name' => esc_attr( $item->title ),'module' => 'header','position' => 'main navigation' );
 		$json_attributes = json_encode( $attributes_array );
 		$attributes .= ' data-analytics-metrics=\''.$json_attributes.'\'';
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) .'"' : '';
@@ -204,7 +204,7 @@ class Desktop_Upper_Menu extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) .'"' : '';
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
 
-		$attributes_array = array( 'link_name' => esc_attr( $item->title ),'link_module' => 'header','link_pos' => 'secondary navigation' );
+		$attributes_array = array( 'name' => esc_attr( $item->title ),'module' => 'header','position' => 'secondary navigation' );
 		$json_attributes = json_encode( $attributes_array );
 		$attributes .= ' data-analytics-metrics=\''.$json_attributes.'\'';
 
@@ -259,7 +259,7 @@ class Logged_In_Menu extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) .'"' : '';
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) .'"' : '';
 
-		$attributes_array = array( 'link_name' => esc_attr( $item->title ),'link_module' => 'header','link_pos' => 'secondary navigation' );
+		$attributes_array = array( 'name' => esc_attr( $item->title ),'module' => 'header','position' => 'secondary navigation' );
 		$json_attributes = json_encode( $attributes_array );
 		$attributes .= ' data-analytics-metrics=\''.$json_attributes.'\'';
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) .'"' : '';
@@ -291,7 +291,7 @@ class Main_Menu_Walker extends Walker_Nav_Menu {
 		$this->previous_title[$depth] = $item->title;
 
 		$title            = implode( ':', array_slice( $this->previous_title, 0, $depth + 1 ) );
-		$attributes_array = array( 'link_name' => esc_attr( $title ), 'link_module' => $link_module, 'link_pos' => $link_position );
+		$attributes_array = array( 'name' => esc_attr( $title ), 'module' => $link_module, 'position' => $link_position );
 		$json_attributes  = json_encode( $attributes_array );
 
 		$indent      = ( $depth ) ? str_repeat( "\t", $depth ) : '';

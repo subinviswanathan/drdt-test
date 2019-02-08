@@ -121,7 +121,7 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 
 		$analytics = '';
 		if ( $position && $module ) {
-			$analytics = 'data-analytics-metrics=\'{"link_name":"' . get_the_title() . '","link_module":"' . $module . '","link_pos":"' . $position . '"}\'';
+			$analytics = 'data-analytics-metrics=\'{"name":"' . get_the_title() . '","module":"' . $module . '","position":"' . $position . '"}\'';
 		}
 		?>
 		<?php if ( is_singular() ) : ?>

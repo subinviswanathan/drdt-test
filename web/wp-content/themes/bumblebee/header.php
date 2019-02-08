@@ -35,14 +35,14 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				</li>
 			</ul>
 		</div>
-		<a data-analytics-metrics='{"link_name":"home logo","link_module":"header","link_pos":"secondary navigation"}' href="/" class="pure-u-sm-1 pure-u-md-2-5 logo">
+		<a data-analytics-metrics='{"name":"home logo","module":"header","position":"secondary navigation"}' href="/" class="pure-u-sm-1 pure-u-md-2-5 logo">
 			<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo_width' ) ); ?>px"></img>
 		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
 		<div class="pure-u-md-3-5 newsletter-signup-header mobile-hide">
-			<a data-analytics-metrics='{"link_name":"subscribe","link_module":"header","link_pos":"secondary navigation"}' class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
+			<a data-analytics-metrics='{"name":"subscribe","module":"header","position":"secondary navigation"}' class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
 				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
 			</a>
 		</div>
@@ -87,7 +87,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 <?php if ( ! empty( $bumblebee_banner_text ) ) : ?>
 	<div class="pure-g newsletter-sign-below-header hide-on-mobile">
 		<div class="pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 nl-signup-link">
-			<a data-analytics-metrics='{"link_name":"<?php echo esc_url( get_theme_mod( 'bumblebee_banner_url' ) ); ?>","link_module":"header","link_pos":"internal promotion"}' href="<?php echo esc_url( $bumblebee_banner_url ); ?>">
+			<a data-analytics-metrics='{"name":"<?php echo esc_url( get_theme_mod( 'bumblebee_banner_url' ) ); ?>","module":"header","position":"internal promotion"}' href="<?php echo esc_url( $bumblebee_banner_url ); ?>">
 				<h4>
 					<?php echo esc_html( $bumblebee_banner_text ); ?>
 					<svg aria-hidden="true" data-prefix="fas" data-icon="chevron-right" class="nl-right-arrow svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
