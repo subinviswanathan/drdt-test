@@ -12,6 +12,7 @@ require_once( 'legacy/wp-forms-api/wp-forms-api.php');
 require_once( 'legacy/wp-cpt-base/wp-cpt-base.php' );
 
 include_once 'inc/marquee-functions.php';
+include_once 'inc/post-type.php';
 
 class RD_Marquee extends WP_CPT_Base {
 	const post_type = 'marquee';
@@ -27,21 +28,6 @@ class RD_Marquee extends WP_CPT_Base {
 
 	// Form name for Nonce and fields
 	const form_name = 'marquee-fields';
-
-	var $label_singular = 'Marquee';
-	var $label_plural = 'Marquees';
-
-	var $post_type_args = array(
-		'description' => 'A custom post type for Marquees.',
-		'rewrite' => false,
-		'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
-		'public' => true,
-		'show_ui' => true,
-		'publicly_queryable' => true,
-		'exclude_from_search' => true,
-		'capability_type' => 'marquee',
-		'taxonomies' => array( 'category', 'post_tag' ),
-	);
 
 	var $meta_forms = array(
 		'marquee_options' => array(
