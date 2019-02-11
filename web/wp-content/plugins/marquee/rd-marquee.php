@@ -8,11 +8,10 @@ Author URI: http://www.oomphinc.com
 Text Domain: rdnap
 */
 
-require_once( 'legacy/wp-forms-api/wp-forms-api.php');
-require_once( 'legacy/wp-cpt-base/wp-cpt-base.php' );
-
-include_once 'inc/post-type.php';
-include_once 'inc/metaboxes.php';
+require_once 'legacy/wp-forms-api/wp-forms-api.php';
+require_once 'legacy/wp-cpt-base/wp-cpt-base.php';
+require_once 'inc/post-type.php';
+require_once 'inc/metaboxes.php';
 
 /**
  * get marquee content
@@ -20,16 +19,16 @@ include_once 'inc/metaboxes.php';
  */
 function marquee_get_post( $marquee_post, $slot = false ) {
 	$args = array(
-		'post_type' => 'marquee',
+		'post_type'      => 'marquee',
 		'posts_per_page' => 1,
-		'post_status' => 'publish',
-		'orderby' => 'modified',
+		'post_status'    => 'publish',
+		'orderby'        => 'modified',
 	);
 
 	if ( is_home() ) {
 		$key = '_marquee_featured';
 		if ( $slot > 1 ) {
-			$key = . $slot;
+			$key .= '_' . $slot;
 		}
 		$args['meta_query'] = array(
 			array(
@@ -45,14 +44,14 @@ function marquee_get_post( $marquee_post, $slot = false ) {
 		return false;
 	}
 
-	$marquee_post = get_posts( $args )
+	$marquee_post = get_posts( $args );
 	if ( ! empty( $marquee_post[0] ) ) {
 		return $marquee_post[0];
 	}
 
 	return false;
 }
-add_filter( 'get_marquee_content' , 'marquee_get_post', 10, 2 );
+add_filter( 'get_marquee_content', 'marquee_get_post', 10, 2 );
 
 /**
  * Get a single marquee post.
