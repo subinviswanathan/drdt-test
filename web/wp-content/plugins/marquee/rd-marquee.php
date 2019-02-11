@@ -18,12 +18,7 @@ include_once 'inc/metaboxes.php';
  * get marquee content
  * @return \WP_Post|bool
  */
-public static function marquee_get_content( $marquee_post, $slot = false ) {
-	if ( $slot == 1 ) {
-		$key = '_marquee_featured';
-	} else {
-		$key = '_marquee_featured_' . $slot;
-	}
+function marquee_get_post( $marquee_post, $slot = false ) {
 	$args = array(
 		'post_type' => 'marquee',
 		'posts_per_page' => 1,
@@ -32,31 +27,39 @@ public static function marquee_get_content( $marquee_post, $slot = false ) {
 	);
 
 	if ( is_home() ) {
-
+		$key = '_marquee_featured';
+		if ( $slot > 1 ) {
+			$key = . $slot;
+		}
 		$args['meta_query'] = array(
 			array(
 				'key'     => $key,
 				'compare' => 'EXISTS',
 			),
 		);
-
 	} elseif ( is_category() ) {
-
 		$args['cat'] = get_queried_object_id();
-
 	} elseif ( is_tag() ) {
-
 		$args['tag_id'] = get_queried_object_id();
-
 	} else {
-
 		return false;
 	}
-	if ( $marquee_post = get_posts( $args ) ) {
+
+	$marquee_post = get_posts( $args )
+	if ( ! empty( $marquee_post[0] ) ) {
 		return $marquee_post[0];
 	}
 
 	return false;
 }
+add_filter( 'get_marquee_content' , 'marquee_get_post', 10, 2 );
 
-add_filter( 'get_marquee_content' , 'marquee_get_content', 10, 2 );
+/**
+ * Get a single marquee post.
+ *
+ * @param bool|int $slot The slot number.
+ * @return \WP_Post|bool
+ */
+function get_marquee_post( $slot = false ) {
+	return apply_filters( 'get_marquee_content', false, $slot );
+}
