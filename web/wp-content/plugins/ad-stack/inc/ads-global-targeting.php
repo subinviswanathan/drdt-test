@@ -32,15 +32,29 @@ function ads_global_targeting_parameters() {
 	$url_part = $unslash_url;
 
 	$g_targeting = array(
-		'property' => '6178',
-		'siteId'   => 'cpt',
-		'pageType' => $page_type,
-		'urlPath'  => $url_part,
-		'keyWords' => get_post_tags(),
-		'category' => $top_level_categories,
-		'topic'    => $sub_categories,
+		'property'   => '6178',
+		'siteId'     => 'cpt',
+		'pageType'   => $page_type,
+		'urlPath'    => $url_part,
+		'keyWords'   => get_post_tags(),
+		'category'   => $top_level_categories,
+		'topic'      => $sub_categories,
+		'breakpoint' => get_breakpoints(),
 	);
 	printf( PHP_EOL . '<script type="text/javascript"> var tmbi_ad_data = %s </script>' . PHP_EOL, wp_json_encode( $g_targeting ) );
+}
+
+/**
+ * Breakpoints defined for devices.
+ */
+function get_breakpoints() {
+	$breakpoints = array(
+		'large_screen' => 1024,
+		'desktop'      => 769,
+		'tablet'       => 481,
+		'mobile'       => 0,
+	);
+	return apply_filters( 'get_current_breakpoints', $breakpoints );
 }
 
 /**

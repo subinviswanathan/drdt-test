@@ -26,13 +26,13 @@ class AdStack {
 	const VERSION = '1.0.0';
 
 	/**
-	 *  Constructor.
+	 *  Init.
 	 */
-	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
-		add_filter( 'ad_options', array( $this, 'bumblebee_add_slot_name_prefix' ), 10, 1 );
-		add_filter( 'query_vars', array( $this, 'bumblebee_add_variant_query_var' ) );
-		add_action( 'wp_footer', array( $this, 'bumblebee_maybe_remove_ad_stack' ), 1 );
+	public static function init() {
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register_scripts' ) );
+		add_filter( 'ad_options', array( __CLASS__, 'bumblebee_add_slot_name_prefix' ), 10, 1 );
+		add_filter( 'query_vars', array( __CLASS__, 'bumblebee_add_variant_query_var' ) );
+		add_action( 'wp_footer', array( __CLASS__, 'bumblebee_maybe_remove_ad_stack' ), 1 );
 	}
 
 
@@ -144,4 +144,4 @@ class AdStack {
 	}
 
 }
-$adstack = new AdStack();
+add_action( 'init', array( 'AdStack', 'init' ) );
