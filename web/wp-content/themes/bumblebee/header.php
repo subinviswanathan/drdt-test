@@ -65,7 +65,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			array(
 				'theme_location' => 'desktop-focus-menu',
 				'menu_class'     => 'focus-menu',
-				'walker'         => new Menu_Links,
+				'walker'         => new Menu_Links(),
 			)
 		);
 	}

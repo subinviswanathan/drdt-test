@@ -26,7 +26,7 @@
 								'theme_location' => 'v2-footer-social-links',
 								'menu_class'     => 'footer-social-links',
 								'container'      => false,
-								'walker'         => new TMBI_Social_Profiles,
+								'walker'         => new TMBI_Social_Profiles(),
 							)
 						);
 					}
@@ -40,7 +40,7 @@
 								'theme_location' => 'v2-footer-site-links',
 								'menu_class'     => 'footer-site-links',
 								'container'      => false,
-								'walker'         => new Footer_Nav_Walker,
+								'walker'         => new Footer_Nav_Walker(),
 							)
 						);
 					}
@@ -56,7 +56,7 @@
 									'theme_location' => 'v2-footer-brand-links',
 									'menu_class'     => 'footer-brand-links',
 									'container'      => false,
-									'walker'         => new V2_Footer_Links,
+									'walker'         => new V2_Footer_Links(),
 								)
 							);
 						}
@@ -69,7 +69,7 @@
 								'theme_location' => 'v2-footer-global-links',
 								'menu_class'     => 'footer-global-links',
 								'container'      => false,
-								'walker'         => new Menu_Links,
+								'walker'         => new Menu_Links(),
 							)
 						);
 					}
@@ -107,7 +107,7 @@ function get_hamburger_menu_markup() {
 			array(
 				'theme_location' => 'hamburger-menu',
 				'menu_class'     => 'pure-menu-children hamburger-menu-items',
-				'walker'         => new Main_Menu_Walker,
+				'walker'         => new Main_Menu_Walker(),
 				'menu_id'        => 'menu',
 			)
 		);
