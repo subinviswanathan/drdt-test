@@ -45,34 +45,5 @@ class Marquee_Functions {
 
 		return false;
 	}
-
-	/**
-	 * get actual post of marquee content
-	 * @param $marquee_post
-	 *
-	 * @return mixed
-	 */
-	public static function get_actual_post( $marquee_post ) {
-		$support_post_type = array( 'post', 'listicle', 'collection', 'project' );
-
-		$content_id_meta = get_post_meta( $marquee_post, '_marquee_content_id', true );
-
-		if ( $content_id_meta ) {
-			$actual_post = get_post( $content_id_meta );
-		} else {
-			$marquee_permalink = get_permalink( $marquee_post->ID );
-			$parsed_url = parse_url( $marquee_permalink );
-
-			$path = $parsed_url['path'];
-			$path = explode( '?', $path )[0];
-			$path = trim( $path, '/' );
-			$path = preg_replace( '~(\/\d+$)~', '', $path );
-			$path = preg_replace( '~(\/view-all$)~', '', $path );
-			$parse_path = explode( '/', $path );
-			$path = end( $parse_path );
-			$actual_post = get_page_by_path( $path, OBJECT, $support_post_type );
-		}
-		return $actual_post;
-	}
 }
 add_filter( 'get_marquee_content' , array( 'Marquee_Functions', 'get_marquee_content' ) );
