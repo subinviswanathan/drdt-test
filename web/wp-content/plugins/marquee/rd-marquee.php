@@ -74,8 +74,8 @@ class RD_Marquee extends WP_CPT_Base {
 	);
 
 	function init() {
-		add_filter( 'parse_query', array( $this, 'featured_filter' ) );
-		add_action( 'restrict_manage_posts', array( $this, 'featured_filter_view' ) );
+		// add_filter( 'parse_query', array( $this, 'featured_filter' ) );
+		// add_action( 'restrict_manage_posts', array( $this, 'featured_filter_view' ) );
 		// add_action( 'init', array( $this, 'add_marquee_override_support' ) );
 		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
 	}
