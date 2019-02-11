@@ -21,7 +21,7 @@ require 'inc/ads-global-targeting.php';
 /**
  *  Class Ad Stack.
  */
-class AdStack {
+class Ad_Stack {
 
 	const VERSION = '1.0.0';
 
@@ -144,4 +144,4 @@ class AdStack {
 	}
 
 }
-add_action( 'init', array( 'AdStack', 'init' ) );
+add_action( 'init', array( 'Ad_Stack', 'init' ) );

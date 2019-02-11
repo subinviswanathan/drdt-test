@@ -1,6 +1,6 @@
-/* global tmbi_ad_data postscribe ads_global_targeting*/
+/* global tmbi_ad_data postscribe ads_global_targeting device_breakpoints*/
 /*eslint no-console: "error"*/
-var googletag = googletag || {};
+var googletag = googletag || {}, device;
 googletag.cmd = googletag.cmd || [];
 function TMBI_Ad_Stack( ) {
 	var self = this;
@@ -18,6 +18,7 @@ function TMBI_Ad_Stack( ) {
 		//node.parentNode.insertBefore(gads, node);
 		window.nodePostScribe = node;
 		node.parentNode.insertBefore(postScribe, node);
+		device = getCurrentBreakPoint();
 	})();
 
 	/**
@@ -45,15 +46,10 @@ function TMBI_Ad_Stack( ) {
 		}
 	}
 
-	var breakpoints = {
-		large_screen: 1024,
-		desktop: 769,
-		tablet: 481,
-		mobile: 0
-	};
 
 	/*get the current browser width*/
 	function getCurrentBreakPoint() {
+		var breakpoints = device_breakpoints && device_breakpoints['breakpoint'];
 		var viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 		if (viewport_width > breakpoints.large_screen) {
 			return 'large_screen';
@@ -90,8 +86,7 @@ function TMBI_Ad_Stack( ) {
 	// Render a single ad.
 	self.fetch_and_render = function( ad_id, options ){
 		googletag.cmd.push(function () {
-			var device = getCurrentBreakPoint(),
-				responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
+			var responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
 			if (responsiveSize && responsiveSize[device]) {
 				var slot = '/' + ads_global_targeting['property'] + '/' + ads_global_targeting['siteId'] + '_' + (device === 'mobile' ? 'mobile' : 'desktop') + options.adSlotName;
 				var the_ad = googletag.defineSlot(slot, responsiveSize[device], ad_id);

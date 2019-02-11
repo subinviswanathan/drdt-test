@@ -15,8 +15,8 @@
  *      string ['targeting'] Custom key-value pairs for targeting.
  */
 function bumblebee_render_ad( $id, $options ) {
-	if ( class_exists( 'AdStack' ) ) {
-		AdStack::bumblebee_render_ad( $id, $options );
+	if ( class_exists( 'Ad_Stack' ) ) {
+		Ad_Stack::bumblebee_render_ad( $id, $options );
 	}
 }
 

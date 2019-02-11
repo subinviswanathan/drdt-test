@@ -32,20 +32,23 @@ function ads_global_targeting_parameters() {
 	$url_part = $unslash_url;
 
 	$g_targeting = array(
-		'property'   => '6178',
-		'siteId'     => 'cpt',
-		'pageType'   => $page_type,
-		'urlPath'    => $url_part,
-		'keyWords'   => get_post_tags(),
-		'category'   => $top_level_categories,
-		'topic'      => $sub_categories,
+		'property' => '6178',
+		'siteId'   => 'cpt',
+		'pageType' => $page_type,
+		'urlPath'  => $url_part,
+		'keyWords' => get_post_tags(),
+		'category' => $top_level_categories,
+		'topic'    => $sub_categories,
+	);
+	$breakpoints = array(
 		'breakpoint' => get_breakpoints(),
 	);
 	printf( PHP_EOL . '<script type="text/javascript"> var tmbi_ad_data = %s </script>' . PHP_EOL, wp_json_encode( $g_targeting ) );
+	printf( PHP_EOL . '<script type="text/javascript"> var device_breakpoints = %s </script>' . PHP_EOL, wp_json_encode( $breakpoints ) );
 }
 
 /**
- * Breakpoints defined for devices.
+ * Breakpoints defined for devices. This should actually come from theme level
  */
 function get_breakpoints() {
 	$breakpoints = array(
