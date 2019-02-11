@@ -8,6 +8,12 @@ Author URI: http://www.oomphinc.com
 Text Domain: rdnap
 */
 
+require_once( 'legacy/000-singleton-base.php' );
+require_once( 'legacy/010-base-plugin.php' );
+require_once( 'legacy/015-wp-base.php' );
+require_once( 'legacy/wp-forms-api/wp-forms-api.php');
+require_once( 'legacy/wp-cpt-base/wp-cpt-base.php' );
+
 include_once 'inc/marquee-functions.php';
 
 class RD_Marquee extends WP_CPT_Base {
