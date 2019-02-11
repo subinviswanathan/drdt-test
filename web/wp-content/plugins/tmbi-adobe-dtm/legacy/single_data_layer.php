@@ -10,7 +10,7 @@ function dtm_add_single_data( $data_layer ) {
 	if ( is_single() ) {
 		global $post, $numpages;
 
-		if ( is_page( 'fbia-dax' ) && ! empty( $_GET['contentId'] ) && $_GET['contentId'] > 0  ) {
+		if ( is_page( 'fbia-dax' ) && ! empty( $_GET['contentId'] ) && $_GET['contentId'] > 0 ) {
 			$post = get_post( intval( $_GET['contentId'] ) );
 			setup_postdata( $post );
 
