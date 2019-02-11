@@ -1,49 +1,48 @@
 <?php
 
-class Marquee_Functions {
-	/**
-	 * get marquee content
-	 * @return \WP_Post|bool
-	 */
-	public static function get_marquee_content( $slot = false ) {
-		if ( $slot == 1 ) {
-			$key = '_marquee_featured';
-		} else {
-			$key = '_marquee_featured_' . $slot;
-		}
-		$args = array(
-			'post_type' => 'marquee',
-			'posts_per_page' => 1,
-			'post_status' => 'publish',
-			'orderby' => 'modified',
+/**
+ * get marquee content
+ * @return \WP_Post|bool
+ */
+public static function marquee_get_content( $marquee_post, $slot = false ) {
+	if ( $slot == 1 ) {
+		$key = '_marquee_featured';
+	} else {
+		$key = '_marquee_featured_' . $slot;
+	}
+	$args = array(
+		'post_type' => 'marquee',
+		'posts_per_page' => 1,
+		'post_status' => 'publish',
+		'orderby' => 'modified',
+	);
+
+	if ( is_home() ) {
+
+		$args['meta_query'] = array(
+			array(
+				'key'     => $key,
+				'compare' => 'EXISTS',
+			),
 		);
 
-		if ( is_home() ) {
+	} elseif ( is_category() ) {
 
-			$args['meta_query'] = array(
-				array(
-					'key'     => $key,
-					'compare' => 'EXISTS',
-				),
-			);
+		$args['cat'] = get_queried_object_id();
 
-		} elseif ( is_category() ) {
+	} elseif ( is_tag() ) {
 
-			$args['cat'] = get_queried_object_id();
+		$args['tag_id'] = get_queried_object_id();
 
-		} elseif ( is_tag() ) {
-
-			$args['tag_id'] = get_queried_object_id();
-
-		} else {
-
-			return false;
-		}
-		if ( $marquee_post = get_posts( $args ) ) {
-			return $marquee_post[0];
-		}
+	} else {
 
 		return false;
 	}
+	if ( $marquee_post = get_posts( $args ) ) {
+		return $marquee_post[0];
+	}
+
+	return false;
 }
-add_filter( 'get_marquee_content' , array( 'Marquee_Functions', 'get_marquee_content' ) );
+
+add_filter( 'get_marquee_content' , 'marquee_get_content', 10, 2 );
