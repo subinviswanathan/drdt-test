@@ -8,9 +8,6 @@ Author URI: http://www.oomphinc.com
 Text Domain: rdnap
 */
 
-require_once( 'legacy/000-singleton-base.php' );
-require_once( 'legacy/010-base-plugin.php' );
-require_once( 'legacy/015-wp-base.php' );
 require_once( 'legacy/wp-forms-api/wp-forms-api.php');
 require_once( 'legacy/wp-cpt-base/wp-cpt-base.php' );
 
@@ -93,7 +90,7 @@ class RD_Marquee extends WP_CPT_Base {
 	function init() {
 		add_filter( 'parse_query', array( $this, 'featured_filter' ) );
 		add_action( 'restrict_manage_posts', array( $this, 'featured_filter_view' ) );
-		add_action( 'init', array( $this, 'add_marquee_override_support' ) );
+		// add_action( 'init', array( $this, 'add_marquee_override_support' ) );
 		add_action( 'admin_enqueue_scripts' , array( $this, 'enqueue_scripts' ) );
 	}
 

@@ -1,16 +1,6 @@
 <?php
-/*
- * User: jeysaravana
- * Date: 2018-06-05
- * Time: 12:16 PM
- */
 
-class Marquee_Functions extends WP_Base {
-
-	public function __construct() {
-		add_filter( 'get_marquee_content' , array( __CLASS__, 'get_marquee_content' ) );
-	}
-
+class Marquee_Functions {
 	/**
 	 * get marquee content
 	 * @return \WP_Post|bool
@@ -85,5 +75,4 @@ class Marquee_Functions extends WP_Base {
 		return $actual_post;
 	}
 }
-
-$marquee_func = Marquee_Functions::get_instance();
+add_filter( 'get_marquee_content' , array( 'Marquee_Functions', 'get_marquee_content' ) );
