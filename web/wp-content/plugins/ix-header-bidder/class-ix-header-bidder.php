@@ -27,17 +27,16 @@ class IX_Header_Bidder {
 	 *
 	 * @var String
 	 */
-	private $script_url = '';
-	const VERSION       = '1.0.0';
+	private static $script_url = '';
+	const VERSION              = '1.0.0';
 
 	/**
 	 *  Constructor.
 	 */
-	public function __construct() {
-		$ix_settings      = new IX_Settings();
-		$this->script_url = $ix_settings->script_url;
-		if ( $this->script_url ) {
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+	public static function init() {
+		self::$script_url = IX_Settings::$script_url;
+		if ( self::$script_url ) {
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
 		}
 	}
 
@@ -45,8 +44,8 @@ class IX_Header_Bidder {
 	 *  Script enqueue.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'ix-header-bidder', $this->script_url, array(), self::VERSION, true );
+		wp_enqueue_script( 'ix-header-bidder', self::$script_url, array(), self::VERSION, true );
 	}
 }
 
-$ix_header = new IX_Header_Bidder();
+add_action( 'init', array( 'IX_Header_Bidder', 'init' ) );
