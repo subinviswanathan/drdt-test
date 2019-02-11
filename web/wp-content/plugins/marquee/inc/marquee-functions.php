@@ -12,7 +12,7 @@ class Marquee_Functions {
 			$key = '_marquee_featured_' . $slot;
 		}
 		$args = array(
-			'post_type' => RD_Marquee::post_type,
+			'post_type' => 'marquee',
 			'posts_per_page' => 1,
 			'post_status' => 'publish',
 			'orderby' => 'modified',
@@ -55,7 +55,7 @@ class Marquee_Functions {
 	public static function get_actual_post( $marquee_post ) {
 		$support_post_type = array( 'post', 'listicle', 'collection', 'project' );
 
-		$content_id_meta = get_post_meta( $marquee_post, RD_Marquee::CONTENT_ID_META, true );
+		$content_id_meta = get_post_meta( $marquee_post, '_marquee_content_id', true );
 
 		if ( $content_id_meta ) {
 			$actual_post = get_post( $content_id_meta );

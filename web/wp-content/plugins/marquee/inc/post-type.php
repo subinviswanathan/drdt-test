@@ -63,4 +63,16 @@ if ( ! function_exists('register_marquee_post_type') ) {
 		register_post_type( 'marquee', $args );
 	}
 	add_action( 'init', 'register_marquee_post_type', 0 );
+
+	/**
+	 * Use a different permalink when specified, or no link at all. Do this
+	 * because marquees are never supposed to have a permalink of their own.
+	 */
+	function marquee_get_permalink( $permalink, $post, $leavename, $sample ) {
+		if ( $post->post_type === 'marquee' ) {
+			$permalink = get_post_meta( $post->ID, '_marquee_link', true );
+		}
+		return $permalink;
+	}
+	add_filter( 'post_type_link', 'marquee_get_permalink', 10, 4 );
 }
