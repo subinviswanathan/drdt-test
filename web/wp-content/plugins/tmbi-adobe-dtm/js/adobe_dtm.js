@@ -83,43 +83,6 @@ function do_embedded_slide_click() {
 	}
 }
 
-//toh collection analytics start
-function do_collection_analytics( $currentTarget, $container ) {
-	var clicked_button = $currentTarget.children()[0].className;
-	var viewed_card    = $container.find( '.collection-pagination' ).text();
-	var slide_title    = $container.find( 'h4' ).text();
-	var current_card   = parseInt( viewed_card.split( ' of ' )[0] );
-	var total_cards    = parseInt( viewed_card.split( ' of ' )[1] );
-	var name;
-	digitalData.click  = digitalData.click||{};
-	digitalData.click.slideShowNumber      = viewed_card;
-	digitalData.click.slideShowRecipeTitle = slide_title;
-
-	if ( clicked_button === 'prev' ) {
-		name = 'previous';
-	} else if ( clicked_button === 'next' ) {
-		name = 'next';
-	}
-
-	set_click_data( name, 'slideshows', 'header' );
-	if ( clicked_button === 'next' ) {
-		if ( current_card === total_cards ) {
-			satellite_track('slide click restart');
-		}
-		if ( current_card === ( total_cards - 1 ) ) {
-			satellite_track('slide click completed');
-		}
-		if ( current_card < total_cards ) {
-			satellite_track('slide click');
-		}
-	}
-
-	//set this to get recipetitle
-	satellite_track('slideShowRecipeTitle');
-
-}
-//toh collection analytic end
-
 
 function do_adobe_data_analytics( name, module, position ) {
 	var data = {};
