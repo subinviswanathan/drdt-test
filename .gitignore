@@ -38,7 +38,7 @@ web/wp-content/*
 !web/wp-content/mu-plugins/
 web/wp-content/mu-plugins/*
 !web/wp-content/mu-plugins/alter-wpcfm-config-path.php
-
+!web/wp-content/mu-plugins/wp-forms-api*
 
 # Ignore third party plugins (managed with Composer)
 !web/wp-content/plugins/
