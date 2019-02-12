@@ -8,8 +8,23 @@ Author URI: http://www.oomphinc.com
 Text Domain: rdnap
 */
 
-require_once 'legacy/wp-forms-api/wp-forms-api.php';
-require_once 'legacy/wp-cpt-base/wp-cpt-base.php';
+// Explicitly declare dependencies
+if ( ! class_exists( 'WP_Forms_API' ) ) {
+	function marquee_metaboxes_missing_wp_forms_api_notice() {
+		$message = sprintf(
+			wp_kses(
+				/* translators: Link to https://github.com/oomphinc/WP-Forms-API */
+				__( 'The Marquee plugin requires the <a href="%s">WP Forms API</a> to work. Please install and activate it.', 'marquee' ),
+				array( 'a' => array( 'href' => array() ) )
+			),
+			esc_url( 'https://github.com/oomphinc/WP-Forms-API' )
+		);
+		printf( '<div class="notice notice-error"><p>%2$s</p></div>', $message );
+	}
+	add_action( 'admin_notices', 'marquee_metaboxes_missing_wp_forms_api_notice' );
+	return;
+}
+
 require_once 'inc/post-type.php';
 require_once 'inc/metaboxes.php';
 
