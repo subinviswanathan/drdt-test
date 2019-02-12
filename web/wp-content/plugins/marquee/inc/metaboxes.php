@@ -53,11 +53,7 @@ class Marquee_Metaboxes extends WP_CPT_Base {
 		),
 	);
 
-	public function init() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-	}
-
-	public function enqueue_scripts( $hook ) {
+	public static function admin_enqueue_scripts( $hook ) {
 		if ( 'post-new.php' === $hook || 'post.php' === $hook ) {
 			wp_register_script( self::HOMEPAGE_SLOT_SLUG, plugin_dir_url( __FILE__ ) . self::HOMEPAGE_SLOT_FILE, array( 'jquery' ), self::VERSION, true );
 			wp_enqueue_script( self::HOMEPAGE_SLOT_SLUG );
@@ -65,3 +61,5 @@ class Marquee_Metaboxes extends WP_CPT_Base {
 	}
 }
 Marquee_Metaboxes::instance();
+
+add_action( 'admin_enqueue_scripts', array( 'Marquee_Metaboxes', 'admin_enqueue_scripts' ) );
