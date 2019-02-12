@@ -1,5 +1,8 @@
 <?php
 /**
+ * Class Adobe_DTM_Utils
+ *
+ * This class provides Utilities functions for Adobe DTM options
  * Save original publish date to post types
  */
 

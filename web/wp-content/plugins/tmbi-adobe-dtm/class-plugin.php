@@ -13,7 +13,6 @@ require_once 'legacy.php';
 require 'inc/rd-dtm-settings.php';
 require 'inc/class-image-credits-dtm.php';
 require 'inc/adobe_dtm_utils.php';
-require 'inc/amp.php';
 
 class RD_Adobe_DTM {
 	const VERSION         = '2.0.0';
@@ -39,7 +38,6 @@ class RD_Adobe_DTM {
 			$this->adobe_dtm_slug = $rd_dtm_settings::RD_DTM_SLUG;
 		}
 		new Image_Credits_DTM();
-		new ADTM_AMP();
 
 		/*
 		 * Instantiate Adobe DTM utils class
