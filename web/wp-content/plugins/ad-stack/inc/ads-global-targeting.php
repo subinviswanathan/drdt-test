@@ -80,7 +80,7 @@ function ads_global_targeting_parameters() {
 		),
 		'breakpoint'       => get_breakpoints(),
 	);
-	printf( PHP_EOL . '<script type="text/javascript"> var tmbi_ad_data = %s </script>' . PHP_EOL, wp_json_encode( $g_targeting ) );
+	wp_localize_script( 'ad-stack', 'tmbi_ad_data', $g_targeting );
 }
 
 /**
