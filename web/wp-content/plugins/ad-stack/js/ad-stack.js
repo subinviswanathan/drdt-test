@@ -47,20 +47,6 @@ function TMBI_Ad_Stack( ) {
 	}
 
 
-	/*get the current browser width*/
-	function getCurrentBreakPoint() {
-		var breakpoints = device_breakpoints && device_breakpoints['breakpoint'];
-		var viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		if (viewport_width > breakpoints.large_screen) {
-			return 'large_screen';
-		} else if (viewport_width < breakpoints.tablet) {
-			return 'mobile';
-		} else if (viewport_width > breakpoints.desktop) {
-			return 'desktop';
-		} else {
-			return 'tablet';
-		}
-	}
 
 
 	// Initialize the ad stack.
@@ -78,6 +64,8 @@ function TMBI_Ad_Stack( ) {
 			var the_ad = googletag.pubads();
 			adSetTargeting(ads_global_targeting, the_ad);
 			// SRA
+			googletag.pubads().disableInitialLoad();
+			googletag.pubads().enableAsyncRendering();
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
 		});
@@ -89,11 +77,13 @@ function TMBI_Ad_Stack( ) {
 			var responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
 			if (responsiveSize && responsiveSize[device]) {
 				var slot = '/' + ads_global_targeting['property'] + '/' + ads_global_targeting['siteId'] + '_' + (device === 'mobile' ? 'mobile' : 'desktop') + options.adSlotName;
+				//var sizeMap = get_size_mapping_from_sizes_array(responsiveSize);
 				var the_ad = googletag.defineSlot(slot, responsiveSize[device], ad_id);
 				var targeting = JSON.parse(options.adTargeting || '{}');
 				adSetTargeting(targeting, the_ad);
 				the_ad.addService(googletag.pubads());
-				googletag.display(ad_id);
+				headerBidding(the_ad, {slotName : slot, size: responsiveSize[device]});
+				//refresh_ads(the_ad);
 			}
 		});
 	};
@@ -109,8 +99,83 @@ function TMBI_Ad_Stack( ) {
 		}
 	};
 }
+
+// dont load ad initially and refresh if we get any bids from other partners
+function refresh_ads(ad_elements) {
+
+	// make sure pubService is fully loaded before calling `refresh`
+	if (window.googletag && googletag.pubadsReady) {
+		console.log('Ad Stack', 'Fetching and rendering the ad(s)', ad_elements);
+		googletag.pubads().refresh([ad_elements], {changeCorrelator: false});
+	} else {
+		setTimeout(function () {
+			refresh_ads(ad_elements);
+		},2000);
+		console.log('Ad Stack', 'Pubads service not ready.So refresh the slot after 2 secs ', ad_elements);
+	}
+}
+
+/**
+ * Header Bidding
+ *
+ * We currently support A9 and Prebid.js running in parallel.
+ * Each of them has a thin wrapper to unify interfaces, with get_bids returning a Promise
+ * (that should not be rejected) and set_bids immediately applying their bids to DFP.
+ * See tmbi-amazon-a9.js and tmbi-prebid.js
+ */
+function headerBidding(ad_elements, arr_ads) {
+	var bidders = [];
+	if ( typeof Promise !== "undefined" && typeof wp !== 'undefined') {
+		bidders = wp.hooks.applyFilters( 'header_bidders', [], window.ads_global_targeting );
+	} else {
+		console.warn( 'Ad Stack', 'Browser does not support Promises! Can\'t run header bidders.' );
+	}
+	if ( bidders && bidders.length ) {
+		console.log( 'Ad Stack', 'Calling header bidders for lazy-loaded unit with slot_data', arr_ads );
+		Promise.all( bidders.map( function( bidder ) { return bidder.get_bids( arr_ads ); } ) ).then( function ( responses ) {
+			console.log( 'Ad Stack', 'Got response from header bidders', responses );
+			Promise.all( bidders.map( function( bidder ) { return bidder.set_bids( ad_elements ); } ) ).then( function()  {
+				refresh_ads( ad_elements );
+				bidders = null;
+			}).catch( function( errors ) {
+				console.error( 'Ad Stack', 'Error applying header bidders bids', errors )
+			});
+		} ).catch( function( errors ) {
+			console.error( 'Ad Stack', 'Error getting headder bidders bids', errors )
+		} );
+	} else {
+		console.log( 'Ad Stack', 'No header bidders available. Calling DFP directly' );
+		refresh_ads( ad_elements );
+	}
+}
+
+/*get the current browser width making more generic*/
+function getCurrentBreakPoint() {
+	var breakpoints = device_breakpoints && device_breakpoints['breakpoint'],
+		breakpoint_array = [], // This should hold all the breakpoint values
+		viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	for (var item in breakpoints) {
+		if (breakpoints.hasOwnProperty(item)) {
+			breakpoint_array.push([item, breakpoints[item]]);
+		}
+	}
+	breakpoint_array.push(['current_breakpoint', viewport_width]);// adding our viewport to the array
+	//sort the array based on width
+	breakpoint_array.sort(function (a, b) {
+		return a[1] - b[1];
+	});
+	var device_type = [];
+	breakpoint_array.forEach(function (value, index) {
+		if (value[0] === 'current_breakpoint') {
+			device_type = breakpoint_array[index - 1];
+		}
+	});
+	return device_type[0];
+}
+
 var ad_stack = new TMBI_Ad_Stack();
 
+// event callback on load
 window.addEventListener('load', function() {
 	postscribe('#gpt-postcribe','<script src="https://www.googletagservices.com/tag/js/gpt.js"></script>',function () {
 		//global targeting params
