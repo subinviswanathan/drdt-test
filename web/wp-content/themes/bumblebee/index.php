@@ -39,31 +39,35 @@
 				]
 			);
 			?>
-			</section>
+		</section>
 
-
-		<?php if ( have_posts() ) : ?>
+		<?php // @todo: This could be a widget. ?>
+		<?php if ( function_exists( 'get_marquee_post' ) ) : ?>
 			<section class="archive-content pure-g">
 				<?php
-				// @todo: Pick from a custom list of posts.
-				// Featured 1.
-				if ( have_posts() ) {
-					the_post();
+				// @todo: The templates should accept a $post argument to avoid overriding globals.
+				$post = get_marquee_post();
+				if ( $post ) {
+					setup_postdata( $post );
 					get_template_part( 'template-parts/content', 'hero' );
 				}
-				// Featured 2.
+
+				$post = get_marquee_post( 2 );
 				if ( have_posts() ) {
-					the_post();
+					setup_postdata( $post );
 					get_template_part( 'template-parts/content', 'featured' );
 				}
-				// Featured 3.
-				if ( have_posts() ) {
-					the_post();
+
+				$post = get_marquee_post( 3 );
+				if ( $post ) {
+					setup_postdata( $post );
 					get_template_part( 'template-parts/content', 'featured' );
 				}
 				?>
 			</section>
+		<?php endif; ?>
 
+		<?php if ( have_posts() ) : ?>
 			<?php $section_num = 0; ?>
 			<?php while ( have_posts() ) : ?>
 				<?php $section_num++; ?>
