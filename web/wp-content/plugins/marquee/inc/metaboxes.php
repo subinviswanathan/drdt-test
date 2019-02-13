@@ -1,12 +1,13 @@
 <?php
 
+// @todo: Class is used for namespacing only. Use namespaces.
 class Marquee_Metaboxes {
 	const LINK_META            = '_marquee_link';
 	const FEATURED_META        = '_marquee_featured';
-	const FEATURED_META_SLOT_2 = '_marquee_featured_2';
+	const FEATURED_META_SLOT_2 = '_marquee_featured_2'; // @todo: Use a single field like `weight` or `order` or `slot`.
 	const FEATURED_META_SLOT_3 = '_marquee_featured_3';
 	const CONTENT_ID_META      = '_marquee_content_id';
-	const HOMEPAGE_SLOT_SLUG   = 'homepage-marquee-slot-js';
+	const HOMEPAGE_SLOT_SLUG   = 'homepage-marquee-slot-js'; // @todo: Remove once there's a single field.
 	const HOMEPAGE_SLOT_FILE   = '../js/homepage_slot_selector.js';
 
 	public static $meta_forms = array(
@@ -79,7 +80,7 @@ class Marquee_Metaboxes {
 	}
 
 	/**
-	 * Add a nonce for saving all metadata
+	 * Add a nonce for saving all metadata.
 	 */
 	public function add_metabox_nonce() {
 		global $post;
@@ -88,6 +89,20 @@ class Marquee_Metaboxes {
 		}
 	}
 
+	/**
+	 * When form is submitted, verify the nonce from add_metabox_nonce is correct.
+	 */
+	private static function check_nonce() {
+		$nonce_key = 'marquee_meta_nonce';
+		if ( isset( $_POST[ $nonce_key ] ) && wp_verify_nonce( $_POST[ $nonce_key ], $nonce_key ) ) {
+			unset( $_POST[ $nonce_key ] );
+			return true;
+		}
+	}
+
+	/**
+	 * Store the form values as post_meta.
+	 */
 	public static function save_metaboxes_values( $post_id ) {
 		if ( ! self::check_nonce() ) {
 			return;
@@ -115,14 +130,9 @@ class Marquee_Metaboxes {
 		}
 	}
 
-	private static function check_nonce() {
-		$nonce_key = 'marquee_meta_nonce';
-		if ( isset( $_POST[ $nonce_key ] ) && wp_verify_nonce( $_POST[ $nonce_key ], $nonce_key ) ) {
-			unset( $_POST[ $nonce_key ] );
-			return true;
-		}
-	}
-
+	/**
+	 * Render the form using WP_Forms_API.
+	 */
 	public static function render_form( $post, $args ) {
 		$form   = $args['args'];
 		$post   = get_post( $post );

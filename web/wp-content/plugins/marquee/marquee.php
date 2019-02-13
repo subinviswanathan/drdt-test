@@ -1,14 +1,15 @@
 <?php
 /*
-Plugin Name: RD Marquee Post Type
+Plugin Name: Marquee
 Version: 0.2.3
-Description: Adds a custom post type for marquee posts.
-Author: Oomph, Inc.
-Author URI: http://www.oomphinc.com
-Text Domain: rdnap
+Description: Create marquees to highlight featured content.
+Author: Facundo Farias
+Author URI: https://facundofarias.com.ar
+Text Domain: marquee
 */
 
 // Explicitly declare dependencies
+// @todo: Remove dependency on WP_Forms_API.
 if ( ! class_exists( 'WP_Forms_API' ) ) {
 	function marquee_metaboxes_missing_wp_forms_api_notice() {
 		$message = sprintf(

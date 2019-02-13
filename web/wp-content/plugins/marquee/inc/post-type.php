@@ -70,6 +70,7 @@ if ( ! function_exists( 'register_marquee_post_type' ) ) {
 	 */
 	function marquee_get_permalink( $permalink, $post, $leavename, $sample ) {
 		if ( $post->post_type === 'marquee' ) {
+			// @todo: If Link is not defined, use Post ID?
 			$permalink = get_post_meta( $post->ID, '_marquee_link', true );
 		}
 		return $permalink;
