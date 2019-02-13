@@ -1,4 +1,4 @@
-/* global tmbi_ad_data postscribe ads_global_targeting device_breakpoints*/
+/* global tmbi_ad_data postscribe ads_global_targeting*/
 /*eslint no-console: "error"*/
 var googletag = googletag || {}, device;
 googletag.cmd = googletag.cmd || [];
@@ -151,7 +151,7 @@ function headerBidding(ad_elements, arr_ads) {
 
 /*get the current browser width making more generic*/
 function getCurrentBreakPoint() {
-	var breakpoints = device_breakpoints && device_breakpoints['breakpoint'],
+	var breakpoints = typeof tmbi_ad_data !== 'undefined' && tmbi_ad_data && tmbi_ad_data['breakpoint'],
 		breakpoint_array = [], // This should hold all the breakpoint values
 		viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	for (var item in breakpoints) {
@@ -179,7 +179,7 @@ var ad_stack = new TMBI_Ad_Stack();
 window.addEventListener('load', function() {
 	postscribe('#gpt-postcribe','<script src="https://www.googletagservices.com/tag/js/gpt.js"></script>',function () {
 		//global targeting params
-		window.ads_global_targeting = typeof tmbi_ad_data !== 'undefined' &&  tmbi_ad_data || {};
+		window.ads_global_targeting = typeof tmbi_ad_data !== 'undefined' && tmbi_ad_data && (tmbi_ad_data.global_targeting || {});
 		ad_stack.init();
 		ad_stack.fetch_and_render_all();
 	});
