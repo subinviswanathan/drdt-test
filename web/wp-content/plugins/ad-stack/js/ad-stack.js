@@ -77,13 +77,11 @@ function TMBI_Ad_Stack( ) {
 			var responsiveSize = options['adResponsiveSizes'] && JSON.parse(options['adResponsiveSizes'] || '{}');
 			if (responsiveSize && responsiveSize[device]) {
 				var slot = '/' + ads_global_targeting['property'] + '/' + ads_global_targeting['siteId'] + '_' + (device === 'mobile' ? 'mobile' : 'desktop') + options.adSlotName;
-				//var sizeMap = get_size_mapping_from_sizes_array(responsiveSize);
 				var the_ad = googletag.defineSlot(slot, responsiveSize[device], ad_id);
 				var targeting = JSON.parse(options.adTargeting || '{}');
 				adSetTargeting(targeting, the_ad);
 				the_ad.addService(googletag.pubads());
 				headerBidding(the_ad, {slotName : slot, size: responsiveSize[device]});
-				//refresh_ads(the_ad);
 			}
 		});
 	};
