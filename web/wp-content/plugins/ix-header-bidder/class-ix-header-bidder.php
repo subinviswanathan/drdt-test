@@ -37,6 +37,7 @@ class IX_Header_Bidder {
 		self::$script_url = IX_Settings::$script_url;
 		if ( self::$script_url ) {
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
+			add_action( 'wp_footer', array( __CLASS__, 'remove_ix_header_bidder' ), 1 );
 		}
 	}
 
@@ -45,6 +46,16 @@ class IX_Header_Bidder {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'ix-header-bidder', self::$script_url, array(), self::VERSION, true );
+	}
+
+	/**
+	 * Remove Header Bidder (for ?variant=noads).
+	 */
+	public static function remove_ix_header_bidder() {
+		$variant = get_query_var( 'variant' );
+		if ( 'noads' === $variant ) {
+			wp_dequeue_script( 'ix-header-bidder' );
+		}
 	}
 }
 
