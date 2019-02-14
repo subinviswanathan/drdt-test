@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1064719b073d9189ec83292dbc23802d",
+    "content-hash": "4f9b8b292a4163554e7c411b13e66212",
     "packages": [
         {
             "name": "ReadersDigest/advanced-custom-fields-pro",
@@ -613,6 +613,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/members/"
+        },
+        {
+            "name": "wpackagist-plugin/official-facebook-pixel",
+            "version": "1.7.24",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/official-facebook-pixel/",
+                "reference": "tags/1.7.24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/official-facebook-pixel.1.7.24.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/official-facebook-pixel/"
         },
         {
             "name": "wpackagist-plugin/pantheon-advanced-page-cache",

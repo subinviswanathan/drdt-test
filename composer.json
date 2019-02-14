@@ -93,6 +93,11 @@
   ],
   "require": {
     "php": ">=7.1",
+    "ReadersDigest/advanced-custom-fields-pro": "~5.7.10",
+    "ReadersDigest/wp-migrate-db-pro": "~1.9.2",
+    "ReadersDigest/wp-migrate-db-pro-cli": "~1.3.4",
+    "ReadersDigest/wp-migrate-db-pro-media-files": "~1.4.12",
+    "automattic/co-authors-plus": "dev-master",
     "composer/installers": "v1.5.0",
     "pantheon-systems/wordpress-composer": "4.*",
     "roots/wp-password-bcrypt": "^1.0.0",
@@ -100,11 +105,11 @@
     "vlucas/phpdotenv": "2.*",
     "wpackagist-plugin/a3-lazy-load": "1.9.2",
     "wpackagist-plugin/autoptimize": "^2.4",
-    "automattic/co-authors-plus": "dev-master",
     "wpackagist-plugin/customize-snapshots": "^0.7.0",
     "wpackagist-plugin/easyazon": "^4.0",
     "wpackagist-plugin/lh-hsts": "^1.24",
     "wpackagist-plugin/members": "2.1.0",
+    "wpackagist-plugin/official-facebook-pixel": "^1.7",
     "wpackagist-plugin/pantheon-advanced-page-cache": "*",
     "wpackagist-plugin/radio-buttons-for-taxonomies": "^1.8",
     "wpackagist-plugin/redirection": "^3.7",
@@ -113,12 +118,8 @@
     "wpackagist-plugin/wp-cfm": "1.5",
     "wpackagist-plugin/wp-native-php-sessions": "0.*",
     "wpackagist-plugin/wp-redis": "0.7.0",
-    "yoast/wordpress-seo-premium": "^9.5",
     "wpwhitesecurity/wp-security-audit-log": "^3.3.0.2",
-    "ReadersDigest/wp-migrate-db-pro": "~1.9.2",
-    "ReadersDigest/wp-migrate-db-pro-cli": "~1.3.4",
-    "ReadersDigest/wp-migrate-db-pro-media-files": "~1.4.12",
-    "ReadersDigest/advanced-custom-fields-pro": "~5.7.10"
+    "yoast/wordpress-seo-premium": "^9.5"
   },
   "require-dev": {
     "behat/mink-goutte-driver": "^1.2",
