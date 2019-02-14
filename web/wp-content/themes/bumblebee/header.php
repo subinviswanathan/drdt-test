@@ -10,10 +10,14 @@
  */
 
 wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/header.css', [], '1.0.2' );
+$fbid = get_theme_mod( 'fbid', false );
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
+	<?php if ( ! empty( $fbid ) ) : ?>
+		<meta property="fb:pages" content="<?php echo $fbid; ?>"/>
+	<?php endif; ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
