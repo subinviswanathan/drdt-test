@@ -7,6 +7,20 @@
  * @package bumblebee
  */
 
+add_filter(
+	'ad_unit_path_2',
+	function () {
+		return 'archive';
+	}
+);
+
+add_filter(
+	'ad_unit_path_3',
+	function () {
+		return 'category';
+	}
+);
+
 get_header();
 ?>
 
@@ -19,11 +33,17 @@ get_header();
 		bumblebee_render_ad(
 			uniqid( 'ad' ),
 			[
-				'slot-name' => 'prearticle',
-				'sizes'     => '970x250,970x90,728x90,3x3',
-				'targeting' => [
+				'slot-name'        => 'prearticle',
+				'targeting'        => [
 					'pos'      => 'prearticle',
 					'location' => 'top',
+					'tf'       => 'atf',
+				],
+				'responsive-sizes' => [
+					'mobile'       => [ [ 320, 50 ] ],
+					'tablet'       => [ [ 320, 50 ] ],
+					'desktop'      => [ [ 728, 90 ], [ 640, 360 ] ],
+					'large_screen' => [ [ 970, 250 ], [ 970, 90 ], [ 728, 90 ] ],
 				],
 			]
 		);
@@ -55,11 +75,30 @@ get_header();
 		</section>
 		<section class="full-width-ad">
 			<?php
+			$slot_name = 'scroll';
+			$tf_slot   = 'btf';
+			if ( 1 === $section_num ) {
+				$slot_name = 'top';
+				$tf_slot   = 'atf';
+			} elseif ( 2 === $section_num ) {
+				$slot_name = 'middle';
+				$tf_slot   = 'atf';
+			}
 			bumblebee_render_ad(
 				uniqid( 'ad' ),
 				[
-					'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-					'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+					'slot-name'        => $slot_name,
+					'responsive-sizes' => [
+						'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+						'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+						'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+						'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+					],
+					'targeting'        => [
+						'tf'       => $tf_slot,
+						'pos'      => $slot_name,
+						'location' => $slot_name,
+					],
 				]
 			);
 			?>
@@ -82,11 +121,30 @@ get_header();
 			</section>
 			<section class="full-width-ad">
 				<?php
+				$slot_name = 'scroll';
+				$tf_slot   = 'btf';
+				if ( 1 === $section_num ) {
+					$slot_name = 'top';
+					$tf_slot   = 'atf';
+				} elseif ( 2 === $section_num ) {
+					$slot_name = 'middle';
+					$tf_slot   = 'atf';
+				}
 				bumblebee_render_ad(
 					uniqid( 'ad' ),
 					[
-						'slot-name' => ( 1 === $section_num ? 'top' : 2 === $section_num ? 'middle' : 'scroll' ),
-						'sizes'     => '970x550,970x250,970x90,728x90,300x250,3x3',
+						'slot-name'        => $slot_name,
+						'responsive-sizes' => [
+							'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+							'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+							'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+							'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+						],
+						'targeting'        => [
+							'tf'       => $tf_slot,
+							'pos'      => $slot_name,
+							'location' => $slot_name,
+						],
 					]
 				);
 				?>
