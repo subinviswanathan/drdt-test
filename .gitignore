@@ -68,6 +68,7 @@ web/private/*
 !web/private/config/
 !web/private/scripts/
 web/private/scripts/quicksilver
+!web/wp-content/plugins/ix-header-bidder
 
 # Don't ignore ad stack plugins
 !web/wp-content/plugins/ad-stack
