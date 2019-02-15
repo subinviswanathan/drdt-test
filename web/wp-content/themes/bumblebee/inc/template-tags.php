@@ -114,9 +114,14 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 	 *
 	 * @param string $size The thumbnail size.
 	 */
-	function bumblebee_post_thumbnail( $size = 'medium' ) {
+	function bumblebee_post_thumbnail( $size = 'medium', $position = false, $module = false ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
+		}
+
+		$analytics = '';
+		if ( $position && $module ) {
+			$analytics = 'data-analytics-metrics=\'{"name":"' . get_the_title() . '","module":"' . $module . '","position":"' . $position . '"}\'';
 		}
 		?>
 		<?php if ( is_singular() ) : ?>
@@ -124,7 +129,7 @@ if ( ! function_exists( 'bumblebee_post_thumbnail' ) ) :
 				<?php the_post_thumbnail(); ?>
 			</div><!-- .post-thumbnail -->
 		<?php else : ?>
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a <?php echo $analytics; ?> class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 				the_post_thumbnail(
 					$size,

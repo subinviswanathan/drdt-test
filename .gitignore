@@ -49,6 +49,8 @@ web/wp-content/plugins/*
 # Don't ignore our custom plugins (@todo: Publish them as a standalone project!)
 !web/wp-content/plugins/allow-iframes
 
+!web/wp-content/plugins/tmbi-adobe-dtm/
+
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes
 web/wp-content/themes/*
