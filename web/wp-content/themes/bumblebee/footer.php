@@ -18,7 +18,7 @@
 		<div class="pure-g">
 			<div class="pure-u-1 pure-u-md-3-5 left-foot">
 				<div class="ipad-hide logo-socials">
-					<a href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"><img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_logo' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_logo_width' ) ); ?>px"></img></a>
+					<a data-analytics-metrics='{"name":"footer logo","module":"navigation","position":"footer"}' href=" <?php echo esc_url( site_url() ); ?> " class="footer-logo"><img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_logo' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_logo_width' ) ); ?>px"></img></a>
 					<?php
 					if ( has_nav_menu( 'v2-footer-social-links' ) ) {
 						wp_nav_menu(
@@ -26,6 +26,7 @@
 								'theme_location' => 'v2-footer-social-links',
 								'menu_class'     => 'footer-social-links',
 								'container'      => false,
+								'walker'         => new TMBI_Social_Profiles(),
 							)
 						);
 					}
@@ -39,6 +40,7 @@
 								'theme_location' => 'v2-footer-site-links',
 								'menu_class'     => 'footer-site-links',
 								'container'      => false,
+								'walker'         => new Footer_Nav_Walker(),
 							)
 						);
 					}
@@ -54,6 +56,7 @@
 									'theme_location' => 'v2-footer-brand-links',
 									'menu_class'     => 'footer-brand-links',
 									'container'      => false,
+									'walker'         => new V2_Footer_Links(),
 								)
 							);
 						}
@@ -66,6 +69,7 @@
 								'theme_location' => 'v2-footer-global-links',
 								'menu_class'     => 'footer-global-links',
 								'container'      => false,
+								'walker'         => new Menu_Links(),
 							)
 						);
 					}
@@ -76,13 +80,13 @@
 			<div class="pure-u-1 pure-u-md-2-5 right-foot">
 				<div class="newsletter">
 					<h3><?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_heading_text' ) ); ?></h3>
-					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post">
+					<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post" data-analytics-metrics='{"name":"newsletter signup","module":"newsletter signup","position":"footer"}' >
 						<input type="text" id="email" placeholder="Email Address"></input>
 						<button type="submit" id="subscribe">Sign Up</button>
 					</form>
 				</div>
 				<div class="diyu-logo">
-					<a href="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
+					<a data-analytics-metrics='{"name":"Subscribe link","module":"footer","position":"magazine subscription"}' href="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
 						<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image_width' ) ); ?>px"></img>
 					</a>
 				</div>
@@ -103,6 +107,7 @@ function get_hamburger_menu_markup() {
 			array(
 				'theme_location' => 'hamburger-menu',
 				'menu_class'     => 'pure-menu-children hamburger-menu-items',
+				'walker'         => new Main_Menu_Walker(),
 				'menu_id'        => 'menu',
 			)
 		);

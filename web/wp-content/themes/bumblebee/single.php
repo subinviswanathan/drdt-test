@@ -7,6 +7,19 @@
  * @package bumblebee
  */
 
+add_filter(
+	'ad_unit_path_2',
+	function () {
+		return 'article';
+	}
+);
+
+add_filter(
+	'ad_unit_path_3',
+	function () {
+		return 'article';
+	}
+);
 get_header();
 ?>
 
@@ -25,6 +38,7 @@ get_header();
 				'targeting'        => [
 					'pos'      => 'prearticle',
 					'location' => 'top',
+					'tf'       => 'atf',
 				],
 				'responsive-sizes' => [
 					'mobile'       => [ [ 320, 50 ] ],
@@ -55,15 +69,15 @@ get_header();
 					uniqid( 'ad' ),
 					[
 						'slot-name'        => 'railtop',
-						'sizes'            => '970x250,970x90,728x90,3x3',
 						'targeting'        => [
 							'pos'      => 'railtop',
 							'location' => 'rail',
+							'tf'       => 'atf',
 						],
 						'responsive-sizes' => [
 							'mobile'       => [],
 							'tablet'       => [],
-							'desktop'      => [ [ 300, 250 ] ],
+							'desktop'      => [],
 							'large_screen' => [ [ 300, 250 ] ],
 						],
 					]
@@ -76,16 +90,16 @@ get_header();
 					uniqid( 'ad' ),
 					[
 						'slot-name'        => 'railmiddle',
-						'sizes'            => '970x250,970x90,728x90,3x3',
 						'targeting'        => [
 							'pos'      => 'railmiddle',
 							'location' => 'rail',
+							'tf'       => 'atf',
 						],
 						'responsive-sizes' => [
 							'mobile'       => [],
 							'tablet'       => [],
 							'desktop'      => [],
-							'large_screen' => [ [ 160, 600 ], [ 300, 250 ], [ 300, 600 ] ],
+							'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
 						],
 					]
 				);
@@ -97,10 +111,10 @@ get_header();
 					uniqid( 'ad' ),
 					[
 						'slot-name'        => 'railscroll',
-						'sizes'            => '970x250,970x90,728x90,3x3',
 						'targeting'        => [
 							'pos'      => 'railscroll',
 							'location' => 'rail',
+							'tf'       => 'btf',
 						],
 						'responsive-sizes' => [
 							'mobile'       => [],
@@ -122,7 +136,6 @@ get_header();
 				uniqid( 'ad' ),
 				[
 					'slot-name'        => 'postarticle',
-					'sizes'            => '970x550,970x250,970x90,728x90,3x3,300x250',
 					'responsive-sizes' => [
 						'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
 						'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
