@@ -195,7 +195,6 @@ require get_template_directory() . '/inc/ads.php';
 /**
  * Global Targeting Parameters for DFP Ads.
  */
-require get_template_directory() . '/inc/ads-global-targeting.php';
 
 
 register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );
