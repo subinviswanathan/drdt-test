@@ -9,6 +9,7 @@
  */
 
 require_once 'taboola-widget.php';
+require_once 'settings.php';
 
 add_action( 'init', 'taboola_init' );
 
@@ -37,7 +38,8 @@ add_action( 'widgets_init', 'taboola_register_widget' );
  */
 function taboola_enqueue_scripts() {
 	wp_register_script( 'taboola_loader', plugin_dir_url( __FILE__ ) . 'js/taboola_loader.js', array( 'jquery' ), '1.0.0', true );
-	$taboola_publisher_id = get_option( 'taboola_publisher_id' ); // @todo: create options page to configure this value.
+	$tmbi_taboola_settings = get_option( 'tmbi_taboola_settings' );
+	$taboola_publisher_id  = ! empty( $tmbi_taboola_settings['taboola_publisher_id'] ) ? $tmbi_taboola_settings['taboola_publisher_id'] : '';
 	if ( empty( $taboola_publisher_id ) ) {
 		return;
 	}
