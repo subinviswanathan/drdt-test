@@ -22,11 +22,6 @@ class Taboola_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-		}
-
 		// All params are required.
 		$mode        = $instance['mode'];
 		$placement   = $instance['placement'];
@@ -35,16 +30,21 @@ class Taboola_Widget extends WP_Widget {
 			return;
 		}
 
+		echo $args['before_widget'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+		}
+
 		$div_id = uniqid( 'taboola' );
-		echo '<div id="' . $div_id . '"></div>';
 		?>
+		<div id="<?php echo esc_attr( $div_id ); ?>"></div>
 		<script type="text/javascript">
 			window._taboola = window._taboola || [];
 			_taboola.push({
-				'mode': '<?php echo $mode; ?>',
-				'placement': '<?php echo $placement; ?>',
-				'target_type': '<?php echo $target_type; ?>',
-				'container': '<?php echo $div_id; ?>'
+				'mode': '<?php echo esc_attr( $mode ); ?>',
+				'placement': '<?php echo esc_attr( $placement ); ?>',
+				'target_type': '<?php echo esc_attr( $target_type ); ?>',
+				'container': '<?php echo esc_attr( $div_id ); ?>'
 			});
 		</script>
 		<?php
