@@ -28,7 +28,10 @@ function taboola_init() {
  */
 function taboola_enqueue_scripts() {
 	wp_register_script( 'taboola_loader', plugin_dir_url( __FILE__ ) . 'js/taboola_loader.js', array( 'jquery' ), '1.0.0', true );
-	$taboola_publisher_id = 'readersdigest-buildconstructpros'; // @todo: make this an option.
+	$taboola_publisher_id = get_option( 'taboola_publisher_id' ); // @todo: create options page to configure this value.
+	if ( empty( $taboola_publisher_id ) ) {
+		return;
+	}
 	$taboola_widget_id = 'thumbnails-a'; // @todo: make this configurable per-widget.
 	wp_localize_script(
 		'taboola_loader',
