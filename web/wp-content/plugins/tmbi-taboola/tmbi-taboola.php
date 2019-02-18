@@ -37,7 +37,7 @@ add_action( 'widgets_init', 'taboola_register_widget' );
  * @todo: modules should be widgets.
  */
 function taboola_enqueue_scripts() {
-	wp_register_script( 'taboola_loader', plugin_dir_url( __FILE__ ) . 'js/taboola_loader.js', array( 'jquery' ), '1.0.0', true );
+	wp_register_script( 'taboola_loader', plugin_dir_url( __FILE__ ) . 'js/taboola_loader.js', array(), '1.0.0', true );
 	$tmbi_taboola_settings = get_option( 'tmbi_taboola_settings' );
 	$taboola_publisher_id  = ! empty( $tmbi_taboola_settings['taboola_publisher_id'] ) ? $tmbi_taboola_settings['taboola_publisher_id'] : '';
 	if ( empty( $taboola_publisher_id ) ) {

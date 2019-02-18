@@ -10,6 +10,6 @@ _taboola.push({article:'auto'});
 	document.getElementsByTagName('script')[0],
 	tmbi_taboola.script
 );
-jQuery(function($) {
+document.addEventListener("DOMContentLoaded", function(){
 	_taboola.push({flush: true});
 });
