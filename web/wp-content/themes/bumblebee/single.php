@@ -20,9 +20,9 @@ add_filter(
 		return 'article';
 	}
 );
-get_header();
 ?>
 
+<?php get_header(); ?>
 <style type="text/css">
 	<?php require get_stylesheet_directory() . '/article.css'; ?>
 </style>
@@ -51,84 +51,83 @@ get_header();
 		?>
 		</div>
 		<div class="pure-g opening-content">
-	<?php
-	if ( have_posts() ) :
-		/* Start the Loop */
-		while ( have_posts() ) :
-			the_post();
-			get_template_part( 'template-parts/content', 'post' );
-		endwhile;
-	endif;
-	?>
-	<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile article-sidebar">
-		<div class="sidebar-ad-wrapper text-center">
-			<aside class="sidebar">
-				<div class="article-sidebar-top-ad">
-				<?php
-				bumblebee_render_ad(
-					uniqid( 'ad' ),
-					[
-						'slot-name'        => 'railtop',
-						'targeting'        => [
-							'pos'      => 'railtop',
-							'location' => 'rail',
-							'tf'       => 'atf',
-						],
-						'responsive-sizes' => [
-							'mobile'       => [],
-							'tablet'       => [],
-							'desktop'      => [],
-							'large_screen' => [ [ 300, 250 ] ],
-						],
-					]
-				);
-				?>
-				</div>
-				<div class="article-sidebar-middle-ad">
-				<?php
-				bumblebee_render_ad(
-					uniqid( 'ad' ),
-					[
-						'slot-name'        => 'railmiddle',
-						'targeting'        => [
-							'pos'      => 'railmiddle',
-							'location' => 'rail',
-							'tf'       => 'atf',
-						],
-						'responsive-sizes' => [
-							'mobile'       => [],
-							'tablet'       => [],
-							'desktop'      => [],
-							'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
-						],
-					]
-				);
-				?>
-				</div>
-				<div class="article-sidebar-scroll-ad">
-				<?php
-				bumblebee_render_ad(
-					uniqid( 'ad' ),
-					[
-						'slot-name'        => 'railscroll',
-						'targeting'        => [
-							'pos'      => 'railscroll',
-							'location' => 'rail',
-							'tf'       => 'btf',
-						],
-						'responsive-sizes' => [
-							'mobile'       => [],
-							'tablet'       => [],
-							'desktop'      => [],
-							'large_screen' => [ [ 160, 600 ], [ 300, 250 ], [ 300, 600 ], [ 300, 1050 ] ],
-						],
-					]
-				);
-				?>
-				</div>
-			</aside>
-		</div>
-	</div>
+		<?php
+		if ( have_posts() ) :
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
+				get_template_part( 'template-parts/content', 'post' );
+			endwhile;
+		endif;
+		?>
+		<div class="pure-u-md-7-24 pure-u-lg-7-24 pure-u-xl-7-24 hide-on-mobile article-sidebar">
+			<div class="sidebar-ad-wrapper text-center">
+				<aside class="sidebar">
+					<div class="article-sidebar-top-ad">
+						<?php
+						bumblebee_render_ad(
+							uniqid( 'ad' ),
+							[
+								'slot-name'        => 'railtop',
+								'targeting'        => [
+									'pos'      => 'railtop',
+									'location' => 'rail',
+									'tf'       => 'atf',
+								],
+								'responsive-sizes' => [
+									'mobile'       => [],
+									'tablet'       => [],
+									'desktop'      => [],
+									'large_screen' => [ [ 300, 250 ] ],
+								],
+							]
+						);
+						?>
+					</div>
+					<div class="article-sidebar-middle-ad">
+						<?php
+						bumblebee_render_ad(
+							uniqid( 'ad' ),
+							[
+								'slot-name'        => 'railmiddle',
+								'targeting'        => [
+									'pos'      => 'railmiddle',
+									'location' => 'rail',
+									'tf'       => 'atf',
+								],
+								'responsive-sizes' => [
+									'mobile'       => [],
+									'tablet'       => [],
+									'desktop'      => [],
+									'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
+								],
+							]
+						);
+						?>
+					</div>
+					<div class="article-sidebar-scroll-ad">
+						<?php
+						bumblebee_render_ad(
+							uniqid( 'ad' ),
+							[
+								'slot-name'        => 'railscroll',
+								'targeting'        => [
+									'pos'      => 'railscroll',
+									'location' => 'rail',
+									'tf'       => 'btf',
+								],
+								'responsive-sizes' => [
+									'mobile'       => [],
+									'tablet'       => [],
+									'desktop'      => [],
+									'large_screen' => [ [ 160, 600 ], [ 300, 250 ], [ 300, 600 ], [ 300, 1050 ] ],
+								],
+							]
+						);
+						?>
+					</div>
+				</aside>
+			</div>
 		</div>
 		<div class="postarticle_ad">
 			<?php
@@ -148,7 +147,4 @@ get_header();
 		</div>
 	</main>
 </div>
-	<?php
-
-	get_footer();
-	?>
+<?php get_footer(); ?>
