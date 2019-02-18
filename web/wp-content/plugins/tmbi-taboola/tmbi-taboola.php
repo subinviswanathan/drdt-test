@@ -18,6 +18,10 @@ add_action( 'init', 'taboola_init' );
  */
 function taboola_init() {
 	add_action( 'wp_enqueue_scripts', 'taboola_enqueue_scripts', 10, 1 );
+	// From settings.php
+	if ( function_exists( 'taboola_add_plugin_page_settings_link' ) ) {
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'taboola_add_plugin_page_settings_link' );
+	}
 }
 
 /**

@@ -63,3 +63,8 @@ function tmbi_taboola_options_page() {
 	</form>
 	<?php
 }
+
+function taboola_add_plugin_page_settings_link( $links ) {
+	array_unshift( $links, '<a href="' . admin_url( 'options-general.php?page=tmbi_taboola' ) . '">' . __( 'Settings', 'taboola' ) . '</a>' );
+	return $links;
+}
