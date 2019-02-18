@@ -33,5 +33,6 @@
 				<?php the_content(); ?>
 			</div>
 		</div>
+		<div id="taboola-below-article-thumbnails"></div>
 	</div>
 </div>

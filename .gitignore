@@ -48,8 +48,10 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/wp-smush-pro/
 # Don't ignore our custom plugins (@todo: Publish them as a standalone project!)
 !web/wp-content/plugins/allow-iframes
-
-!web/wp-content/plugins/tmbi-adobe-dtm/
+!web/wp-content/plugins/ad-stack
+!web/wp-content/plugins/ix-header-bidder
+!web/wp-content/plugins/tmbi-adobe-dtm
+!web/wp-content/plugins/taboola
 
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes
@@ -68,10 +70,7 @@ web/private/*
 !web/private/config/
 !web/private/scripts/
 web/private/scripts/quicksilver
-!web/wp-content/plugins/ix-header-bidder
 
-# Don't ignore ad stack plugins
-!web/wp-content/plugins/ad-stack
 
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
