@@ -53,3 +53,18 @@ function taboola_enqueue_scripts() {
 	);
 	wp_enqueue_script( 'taboola_loader' );
 }
+
+add_action( 'wp_footer', 'taboola_remove_if_blocked', 1 );
+/**
+ * Remove Taboola if it's blocked via querystring param.
+ *
+ * @todo: decouple from this plugin.
+ * @todo: support for specific script blocking.
+ * @todo: don't print widget content if Taboola is blocked.
+ */
+function taboola_remove_if_blocked() {
+	$variant = get_query_var( 'variant' );
+	if ( 'noads' === $variant ) {
+		wp_dequeue_script( 'taboola_loader' );
+	}
+}
