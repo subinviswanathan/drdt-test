@@ -8,6 +8,7 @@
  * Text Domain: taboola
  */
 
+require_once 'taboola-widget.php';
 
 add_action( 'init', 'taboola_init' );
 
@@ -17,6 +18,14 @@ add_action( 'init', 'taboola_init' );
 function taboola_init() {
 	add_action( 'wp_enqueue_scripts', 'taboola_enqueue_scripts', 10, 1 );
 }
+
+/**
+ * Register a widget to display Taboola modules
+ */
+function taboola_register_widget() {
+	register_widget( 'Taboola_Widget' );
+}
+add_action( 'widgets_init', 'taboola_register_widget' );
 
 /**
  * Enqueue localized Taboola scripts
@@ -38,14 +47,6 @@ function taboola_enqueue_scripts() {
 		'tmbi_taboola',
 		array(
 			'script' => '//cdn.taboola.com/libtrc/' . $taboola_publisher_id . '/loader.js',
-			'modules' => array(
-				array(
-					'mode'        => 'thumbnails-a',
-					'container'   => 'taboola-below-article-thumbnails',
-					'placement'   => 'Below Article Thumbnails',
-					'target_type' => 'mix',
-				),
-			),
 		)
 	);
 	wp_enqueue_script( 'taboola_loader' );

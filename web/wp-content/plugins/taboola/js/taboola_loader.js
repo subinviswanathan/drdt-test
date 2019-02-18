@@ -11,8 +11,5 @@ _taboola.push({article:'auto'});
 	tmbi_taboola.script
 );
 jQuery(function($) {
-	$.each( tmbi_taboola.modules, function() {
-		_taboola.push(this);
-	});
 	_taboola.push({flush: true});
 });

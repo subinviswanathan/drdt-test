@@ -5,6 +5,7 @@
  */
 
 ?>
+
 <div class="pure-g opening-content">
 	<div class="pure-u-md-3-24 pure-u-lg-3-24 pure-u-xl-3-24 hide-on-mobile">
 		<div class="social-share social-menu-desktop">
@@ -33,6 +34,8 @@
 				<?php the_content(); ?>
 			</div>
 		</div>
-		<div id="taboola-below-article-thumbnails"></div>
+		<?php if ( is_active_sidebar( 'after-content' ) ) : ?>
+			<?php dynamic_sidebar( 'after-content' ); ?>
+		<?php endif; ?>
 	</div>
 </div>
