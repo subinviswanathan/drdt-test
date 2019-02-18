@@ -51,7 +51,7 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/ad-stack
 !web/wp-content/plugins/ix-header-bidder
 !web/wp-content/plugins/tmbi-adobe-dtm
-!web/wp-content/plugins/taboola
+!web/wp-content/plugins/tmbi-taboola
 
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes

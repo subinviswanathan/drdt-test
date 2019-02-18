@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Taboola
+ * Plugin Name: TMBI Taboola
  * Version: 1.0.0
  * Description: Integrate Taboola recirc modules
  * Author: Facundo Farias
