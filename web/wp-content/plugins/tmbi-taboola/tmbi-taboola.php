@@ -64,7 +64,15 @@ add_action( 'wp_footer', 'taboola_remove_if_blocked', 1 );
  */
 function taboola_remove_if_blocked() {
 	$variant = get_query_var( 'variant' );
-	if ( 'noads' === $variant ) {
+	$service = 'tb';
+	$blocked_services = [];
+	if ( ! empty( $_GET['blockService'] ) ) {
+		$blocked_services = is_array( $_GET['blockService'] ) ? $_GET['blockService'] : [ $_GET['blockService'] ];
+	}
+	if ( ! empty( $service ) && ! empty( $blocked_services ) ) {
+		$blocked = in_array( $service, $blocked_services );
+	}
+	if ( 'noads' === $variant || $blocked ) {
 		wp_dequeue_script( 'taboola_loader' );
 	}
 }
