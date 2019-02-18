@@ -143,6 +143,19 @@ function bumblebee_widgets_init() {
 			'after_title'   => '</h3>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Listicle - After content', 'bumblebee' ),
+			'id'            => 'listicle-after-content',    // ID should be LOWERCASE  ! ! !
+			'description'   => '',
+			'class'         => '',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		)
+	);
 }
 
 add_action( 'widgets_init', 'bumblebee_widgets_init' );

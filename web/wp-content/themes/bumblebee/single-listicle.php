@@ -179,6 +179,19 @@ get_header();
 			<?php endif; ?>
 			<?php $section_num++; ?>
 		<?php endfor; ?>
+		<section class="content pure-g">
+			<section class="social-menu-desktop pure-u-lg-2-24">&nbsp;</section>
+			<section class="pure-u-1 pure-u-lg-14-24">
+				<?php if ( is_active_sidebar( 'listicle-after-content' ) ) : ?>
+					<?php dynamic_sidebar( 'listicle-after-content' ); ?>
+				<?php endif; ?>
+			</section>
+			<section class="pure-u-1 pure-u-lg-8-24">
+				<?php if ( is_active_sidebar( 'listicle-after-content-right-rail' ) ) : ?>
+					<?php dynamic_sidebar( 'listicle-after-content-right-rail' ); ?>
+				<?php endif; ?>
+			</section>
+		</section>
 		<div class="postarticle_ad">
 			<?php
 			bumblebee_render_ad(
