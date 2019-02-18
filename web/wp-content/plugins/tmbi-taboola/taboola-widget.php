@@ -108,5 +108,14 @@ class Taboola_Widget extends WP_Widget {
 
 		return $instance;
 	}
+}
 
+add_action( 'customize_controls_print_styles', 'taboola_widget_add_custom_icon' );
+function taboola_widget_add_custom_icon() {
+	?>
+	<style type="text/css">
+	#available-widgets [class*=taboola] .widget-title:before{
+		content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1' width='20' height='20'%3E%3Cpath d='M5 4c-3 1-5 3-5 6s2 5 5 5l5-2c0-1 0-1 0 0l4 2c3 0 6-2 6-6 0-3-2-5-6-5l-4 2H9L6 4H5m1 3l1 3-2 2-1-3c0-1 0-2 2-2m9 0l1 2-1 3-2-2c0-2 1-3 2-3m3 8h-1a21 21 0 0 1-15 0l-1 2 1 1c5 2 10 3 15 1l1-1v-3' fill='%23144c93' fill-rule='evenodd'/%3E%3C/svg%3E");
+	}</style>
+	<?php
 }
