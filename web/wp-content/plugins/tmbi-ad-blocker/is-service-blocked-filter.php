@@ -40,6 +40,11 @@ function tmbi_ad_blocker_per_post( $blocked, $service, $post_id = false ) {
 		$post_id = get_the_ID();
 	}
 	if ( ! empty( $post_id ) ) {
+		$post_type = get_post_type( $post_id );
+		if ( ! post_type_supports( 'ad_blocker' ) ) {
+			return $blocked;
+		}
+
 		$blocked = $blocked || ( ! empty( get_post_meta( $post_id, 'block_' . $service, true ) ) );
 		// Support for old data schema
 		if ( $service === 'tb' ) {
