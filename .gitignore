@@ -38,7 +38,7 @@ web/wp-content/*
 !web/wp-content/mu-plugins/
 web/wp-content/mu-plugins/*
 !web/wp-content/mu-plugins/alter-wpcfm-config-path.php
-
+!web/wp-content/mu-plugins/wp-forms-api*
 
 # Ignore third party plugins (managed with Composer)
 !web/wp-content/plugins/
@@ -52,6 +52,7 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/ix-header-bidder
 !web/wp-content/plugins/tmbi-adobe-dtm
 !web/wp-content/plugins/tmbi-taboola
+!web/wp-content/plugins/marquee
 
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes
