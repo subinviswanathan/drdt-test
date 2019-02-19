@@ -18,7 +18,7 @@ Usage:
 From ad-related plugins, register the service like this to get CMS controls to block/unblock per-post:
 ```
 	add_filter( 'ad_services', function( $services ) {
-		$services['tb'] => 'Taboola';
+		$services['tb'] = 'Taboola';
 		return $services;
 	});
 ```
@@ -34,3 +34,12 @@ When enqueueing scripts or doing ad stuff, check like this:
 
 
 require_once( 'is-service-blocked-filter.php' );
+require_once( 'metabox.php' );
+
+// By default, support the ad_blocker system in the following post types
+add_action( 'init', 'tmbi_ad_blocker_support_default_post_types' );
+function tmbi_ad_blocker_support_default_post_types() {
+	add_post_type_support( 'post', 'ad_blocker' );
+	add_post_type_support( 'page', 'ad_blocker' );
+	add_post_type_support( 'listicle', 'ad_blocker' );
+}
