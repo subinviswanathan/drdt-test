@@ -4,11 +4,20 @@ function tmbi_ad_blocker_get_meta( $value ) {
 	global $post;
 
 	$field = get_post_meta( $post->ID, $value, true );
+	$response = false;
 	if ( ! empty( $field ) ) {
-		return is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
-	} else {
-		return false;
+		$response = is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
 	}
+
+	// Support legacy values
+	if ( ! $response && $value === 'block_tb' ) {
+		$response = ! empty( get_post_meta( $post_id, 'rd_taboola', true ) );
+	}
+	if ( ! $response && $value === 'block_nt' ) {
+		$response = ! empty( get_post_meta( $post_id, 'tmbi_nativo', true ) );
+	}
+
+	return $response;
 }
 
 function tmbi_ad_blocker_add_meta_box() {
