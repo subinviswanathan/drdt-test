@@ -67,16 +67,7 @@ add_action( 'wp_footer', 'taboola_remove_if_blocked', 1 );
  * @todo: don't print widget content if Taboola is blocked.
  */
 function taboola_remove_if_blocked() {
-	$variant = get_query_var( 'variant' );
-	$service = 'tb';
-	$blocked_services = [];
-	if ( ! empty( $_GET['blockService'] ) ) {
-		$blocked_services = is_array( $_GET['blockService'] ) ? $_GET['blockService'] : [ $_GET['blockService'] ];
-	}
-	if ( ! empty( $service ) && ! empty( $blocked_services ) ) {
-		$blocked = in_array( $service, $blocked_services );
-	}
-	if ( 'noads' === $variant || $blocked ) {
+	if ( apply_filters( 'is_service_blocked', false, 'tb' ) ) {
 		wp_dequeue_script( 'taboola_loader' );
 	}
 }
