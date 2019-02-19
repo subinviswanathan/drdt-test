@@ -41,7 +41,7 @@ function tmbi_ad_blocker_per_post( $blocked, $service, $post_id = false ) {
 	}
 	if ( ! empty( $post_id ) ) {
 		$post_type = get_post_type( $post_id );
-		if ( ! post_type_supports( 'ad_blocker' ) ) {
+		if ( ! post_type_supports( $post_type, 'ad_blocker' ) ) {
 			return $blocked;
 		}
 
