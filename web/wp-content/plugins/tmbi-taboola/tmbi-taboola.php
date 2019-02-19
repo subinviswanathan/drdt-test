@@ -22,6 +22,12 @@ function taboola_init() {
 	if ( function_exists( 'taboola_add_plugin_page_settings_link' ) ) {
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'taboola_add_plugin_page_settings_link' );
 	}
+	add_filter( 'ad_services', 'taboola_register_as_ad_service' );
+}
+
+function taboola_register_as_ad_service( $services ) {
+	$services['tb'] = 'Taboola';
+	return $services;
 }
 
 /**
