@@ -45,9 +45,10 @@ $fbid = get_theme_mod( 'fbid', false );
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
-		<div class="pure-u-md-3-5 newsletter-signup-header mobile-hide">
-			<a data-analytics-metrics='{"name":"subscribe","module":"header","position":"secondary navigation"}' class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
-				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
+		<div class="pure-u-sm-1 pure-u-md-2-5 logo"></div>
+		<div class="pure-u-md-1-5 newsletter-signup-header mobile-hide">
+			<a class="subscribe-header" target="_blank" rel="noopener" href="<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_url' ) ); ?>">
+				<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_image' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_width' ) ); ?>px"></img>
 			</a>
 		</div>
 	</div>
@@ -81,6 +82,11 @@ $fbid = get_theme_mod( 'fbid', false );
 						<button class="search-button"></button>
 					</fieldset>
 				</form>
+			</div>
+			<div class="sticky-nl-img">
+				<a class="subscribe-header" target="_blank" rel="noopener" href="<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_url' ) ); ?>">
+					<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_image_sticky' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_width' ) ); ?>px"></img>
+				</a>
 			</div>
 		</div>
 	</nav>

@@ -171,6 +171,7 @@
 		}
 	}
 
+	// Sticky Nav (Desktop)
 	$(window).scroll(function() {
 		var scroll = $(window).scrollTop();
 		if (scroll >= 140) {

@@ -328,7 +328,7 @@ class Main_Menu_Walker extends Walker_Nav_Menu {
 			$link_position = 'drop down navigation';
 		}
 
-		$this->previous_title[$depth] = $item->title;
+		$this->previous_title[ $depth ] = $item->title;
 
 		$title            = implode( ':', array_slice( $this->previous_title, 0, $depth + 1 ) );
 		$attributes_array = array(
