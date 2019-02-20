@@ -59,8 +59,7 @@ class Ad_Stack {
 	 * Remove Ad Stack (for ?variant=noads).
 	 */
 	public static function bumblebee_maybe_remove_ad_stack() {
-		$variant = get_query_var( 'variant' );
-		if ( 'noads' === $variant ) {
+		if ( apply_filters( 'is_service_blocked', false, 'dfp' ) ) {
 			wp_dequeue_script( 'ad-stack' );
 		}
 	}
