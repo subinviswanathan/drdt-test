@@ -1,0 +1,24 @@
+
+RD Adobe Digital Tag Management Plugin
+
+Change log:
+
+2017-02-09:
+  added condition check for empty Tags and empty Categories
+  modified in 'create_element' function to remove php notice (added array_key_exists)
+
+2017-03-24:
+  Modified pagename to prefix with site nick name https://readersdigest.atlassian.net/browse/WPDT-3923
+  added subcategory and subsubcategory
+
+
+
+2017-05-10:
+  Refactored old code and compined several codes WPDT-4047
+
+2017-05-20:
+  Added FHM slide click events WPDT-4047
+
+
+2017-08-28:
+  changed co-author names and roles logic WPDT-5126

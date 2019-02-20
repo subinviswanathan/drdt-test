@@ -20,7 +20,7 @@ var component = ['header', 'homepage', 'listicle', 'article', 'archive', 'page',
 
 sass.compiler = require('node-sass');
 
-var bundles = ['./js/ad-stack.js', './js/customizer.js', './js/navigation.js', './js/skip-link-focus-fix.js'];
+var bundles = ['./js/customizer.js', './js/navigation.js', './js/skip-link-focus-fix.js'];
 
 gulp.task('sass:watch', function () {
 	gulp.watch('./sass/**/*.scss', ['sass']);

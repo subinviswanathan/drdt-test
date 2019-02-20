@@ -130,6 +130,32 @@ function bumblebee_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'After content', 'bumblebee' ),
+			'id'            => 'after-content',    // ID should be LOWERCASE  ! ! !
+			'description'   => '',
+			'class'         => '',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Listicle - After content', 'bumblebee' ),
+			'id'            => 'listicle-after-content',    // ID should be LOWERCASE  ! ! !
+			'description'   => '',
+			'class'         => '',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		)
+	);
 }
 
 add_action( 'widgets_init', 'bumblebee_widgets_init' );
@@ -195,7 +221,11 @@ require get_template_directory() . '/inc/ads.php';
 /**
  * Global Targeting Parameters for DFP Ads.
  */
-require get_template_directory() . '/inc/ads-global-targeting.php';
+
+/**
+ * Load menu tagging through walker
+ */
+require get_template_directory() . '/inc/menu-walker-tagging.php';
 
 
 register_nav_menu( 'v2-footer-site-links', 'V2 Footer Site Links' );

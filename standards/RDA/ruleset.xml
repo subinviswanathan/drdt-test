@@ -10,6 +10,7 @@
 		<!-- This rule is foolish and breaks many legitimate uses -->
 		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped" />
 		<exclude name="WordPress.Files.FileName" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName" />
 		<exclude name="WordPress.WP.EnqueuedResources.NonEnqueuedScript" />
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines" />
 		<exclude name="Generic.Strings.UnnecessaryStringConcat.Found" />

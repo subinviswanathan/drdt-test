@@ -12,6 +12,19 @@
  * @package bumblebee
  */
 
+add_filter(
+	'ad_unit_path_2',
+	function () {
+		return 'homepage';
+	}
+);
+
+add_filter(
+	'ad_unit_path_3',
+	function () {
+		return 'homepage';
+	}
+);
 ?>
 <?php get_header(); ?>
 	<style type="text/css">
@@ -25,10 +38,10 @@
 				uniqid( 'ad' ),
 				[
 					'slot-name'        => 'prearticle',
-					'sizes'            => '970x250,970x90,728x90,3x3',
 					'targeting'        => [
 						'pos'      => 'prearticle',
 						'location' => 'top',
+						'tf'       => 'atf',
 					],
 					'responsive-sizes' => [
 						'mobile'       => [ [ 320, 50 ] ],
@@ -39,31 +52,35 @@
 				]
 			);
 			?>
-			</section>
+		</section>
 
-
-		<?php if ( have_posts() ) : ?>
+		<?php // @todo: This could be a widget. ?>
+		<?php if ( function_exists( 'get_marquee_post' ) ) : ?>
 			<section class="archive-content pure-g">
 				<?php
-				// @todo: Pick from a custom list of posts.
-				// Featured 1.
-				if ( have_posts() ) {
-					the_post();
+				// @todo: The templates should accept a $post argument to avoid overriding globals.
+				$post = get_marquee_post();
+				if ( $post ) {
+					setup_postdata( $post );
 					get_template_part( 'template-parts/content', 'hero' );
 				}
-				// Featured 2.
+
+				$post = get_marquee_post( 2 );
 				if ( have_posts() ) {
-					the_post();
+					setup_postdata( $post );
 					get_template_part( 'template-parts/content', 'featured' );
 				}
-				// Featured 3.
-				if ( have_posts() ) {
-					the_post();
+
+				$post = get_marquee_post( 3 );
+				if ( $post ) {
+					setup_postdata( $post );
 					get_template_part( 'template-parts/content', 'featured' );
 				}
 				?>
 			</section>
+		<?php endif; ?>
 
+		<?php if ( have_posts() ) : ?>
 			<?php $section_num = 0; ?>
 			<?php while ( have_posts() ) : ?>
 				<?php $section_num++; ?>
@@ -84,19 +101,25 @@
 							<aside class="sidebar">
 								<?php
 								$slot_name = 'scroll';
+								$tf_slot   = 'btf';
 								if ( 1 === $section_num ) {
 									$slot_name = 'top';
+									$tf_slot   = 'atf';
 								} elseif ( 2 === $section_num ) {
 									$slot_name = 'middle';
+									$tf_slot   = 'atf';
 								}
 								bumblebee_render_ad(
 									uniqid( 'ad' ),
 									[
 										'slot-name'        => 'rail' . $slot_name,
-										'sizes'            => '300x250,300x600',
 										'responsive-sizes' => [
-											'desktop'      => [ [ 300, 250 ], [ 300, 600 ] ],
 											'large_screen' => [ [ 300, 250 ], [ 300, 600 ] ],
+										],
+										'targeting'        => [
+											'tf'       => $tf_slot,
+											'pos'      => 'rail' . $slot_name,
+											'location' => $slot_name,
 										],
 									]
 								);
@@ -112,12 +135,16 @@
 							uniqid( 'ad' ),
 							[
 								'slot-name'        => $slot_name,
-								'sizes'            => '970x550,970x250,970x90,728x90,300x250,3x3',
 								'responsive-sizes' => [
 									'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
 									'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
 									'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
 									'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+								],
+								'targeting'        => [
+									'tf'       => $tf_slot,
+									'pos'      => $slot_name,
+									'location' => $slot_name,
 								],
 							]
 						);
@@ -134,7 +161,6 @@
 				uniqid( 'ad' ),
 				[
 					'slot-name'        => 'postarticle',
-					'sizes'            => '970x550,970x250,970x90,728x90,3x3,300x250',
 					'responsive-sizes' => [
 						'mobile'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],
 						'tablet'       => [ [ 320, 50 ], [ 300, 250 ], [ 3, 3 ] ],

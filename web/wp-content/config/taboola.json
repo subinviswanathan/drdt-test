@@ -1,0 +1,5 @@
+{
+    "tmbi_taboola_settings": "a:1:{s:20:\"taboola_publisher_id\";s:32:\"readersdigest-buildconstructpros\";}",
+    "widget_taboola_widget": "a:2:{i:3;a:4:{s:5:\"title\";s:0:\"\";s:4:\"mode\";s:12:\"thumbnails-a\";s:9:\"placement\";s:24:\"Below Article Thumbnails\";s:11:\"target_type\";s:3:\"mix\";}s:12:\"_multiwidget\";i:1;}",
+    ".label": "Taboola"
+}

@@ -10,10 +10,14 @@
  */
 
 wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/header.css', [], '1.0.2' );
+$fbid = get_theme_mod( 'fbid', false );
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
+	<?php if ( ! empty( $fbid ) ) : ?>
+		<meta property="fb:pages" content="<?php echo $fbid; ?>"/>
+	<?php endif; ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
@@ -35,14 +39,14 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 				</li>
 			</ul>
 		</div>
-		<a href="/" class="pure-u-sm-1 pure-u-md-2-5 logo">
+		<a data-analytics-metrics='{"name":"home logo","module":"header","position":"secondary navigation"}' href="/" class="pure-u-sm-1 pure-u-md-2-5 logo">
 			<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo' ) ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_header_logo_width' ) ); ?>px"></img>
 		</a>
 
 		<div class="pure-u-1-4 mobile-hide">
 		</div>
 		<div class="pure-u-md-3-5 newsletter-signup-header mobile-hide">
-			<a class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
+			<a data-analytics-metrics='{"name":"subscribe","module":"header","position":"secondary navigation"}' class="subscribe-header" target="_blank" rel="noopener" href="https://www.constructionprotips.com/newsletters/">
 				<img class="subscribe-logo initial loaded" alt="Subscribe" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/images/cpt-newsletter-header.svg" data-was-processed="true" style="width:180px">
 			</a>
 		</div>
@@ -65,6 +69,7 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 			array(
 				'theme_location' => 'desktop-focus-menu',
 				'menu_class'     => 'focus-menu',
+				'walker'         => new Menu_Links(),
 			)
 		);
 	}
@@ -81,13 +86,12 @@ wp_enqueue_style( 'bumblebee-style-header', get_stylesheet_directory_uri() . '/h
 	</nav>
 </header>
 
-
 <?php $bumblebee_banner_url = get_theme_mod( 'bumblebee_banner_url' ); ?>
 <?php $bumblebee_banner_text = get_theme_mod( 'bumblebee_banner_text' ); ?>
 <?php if ( ! empty( $bumblebee_banner_text ) ) : ?>
 	<div class="pure-g newsletter-sign-below-header hide-on-mobile">
 		<div class="pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 nl-signup-link">
-			<a href="<?php echo esc_url( $bumblebee_banner_url ); ?>">
+			<a data-analytics-metrics='{"name":"<?php echo esc_url( get_theme_mod( 'bumblebee_banner_url' ) ); ?>","module":"header","position":"internal promotion"}' href="<?php echo esc_url( $bumblebee_banner_url ); ?>">
 				<h4>
 					<?php echo esc_html( $bumblebee_banner_text ); ?>
 					<svg aria-hidden="true" data-prefix="fas" data-icon="chevron-right" class="nl-right-arrow svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">

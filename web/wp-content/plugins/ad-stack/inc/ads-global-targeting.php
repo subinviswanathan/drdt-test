@@ -7,8 +7,45 @@
  * @package bumblebee
  */
 
+/**
+ * Including file for the settings.
+ *
+ * @file
+ */
+require 'class-ad-stack-settings.php';
 add_action( 'wp_head', 'ads_global_targeting_parameters' );
 
+/**
+ * Built with an eye towards adding a setting page
+ *
+ * @return string
+ */
+function get_dfp_site_id() {
+	$ad_stack_options = get_option( 'ad_stack', false );
+	if ( ! empty( $ad_stack_options['dfp_site_id'] ) ) {
+		$dfp_site_id = $ad_stack_options['dfp_site_id'];
+	} else {
+		$dfp_site_id = 'cpt';
+	}
+	$dfp_site_id = apply_filters( 'dfp_site_id', $dfp_site_id );
+	return ( $dfp_site_id );
+}
+
+/**
+ * Built with an eye towards adding a setting page
+ *
+ * @return string
+ */
+function get_dfp_property() {
+	$ad_stack_options = get_option( 'ad_stack', false );
+	if ( ! empty( $ad_stack_options['dfp_property'] ) ) {
+		$dfp_property = $ad_stack_options['dfp_property'];
+	} else {
+		$dfp_property = '6178';
+	}
+	$dfp_property = apply_filters( 'dfp_property', $dfp_property );
+	return ( $dfp_property );
+}
 /**
  * Global Targeting Parameters for DFP ads.
  */
@@ -32,15 +69,31 @@ function ads_global_targeting_parameters() {
 	$url_part = $unslash_url;
 
 	$g_targeting = array(
-		'property' => '6178',
-		'siteId'   => 'cpt',
-		'pageType' => $page_type,
-		'urlPath'  => $url_part,
-		'keyWords' => get_post_tags(),
-		'category' => $top_level_categories,
-		'topic'    => $sub_categories,
+		'global_targeting' => array(
+			'property' => get_dfp_property(),
+			'siteId'   => get_dfp_site_id(),
+			'pageType' => $page_type,
+			'urlPath'  => $url_part,
+			'keyWords' => get_post_tags(),
+			'category' => $top_level_categories,
+			'topic'    => $sub_categories,
+		),
+		'breakpoint'       => get_breakpoints(),
 	);
-	printf( PHP_EOL . '<script type="text/javascript"> var tmbi_ad_data = %s </script>' . PHP_EOL, wp_json_encode( $g_targeting ) );
+	wp_localize_script( 'ad-stack', 'tmbi_ad_data', $g_targeting );
+}
+
+/**
+ * Breakpoints defined for devices. This should actually come from theme level
+ */
+function get_breakpoints() {
+	$breakpoints = array(
+		'large_screen' => 1024,
+		'desktop'      => 769,
+		'tablet'       => 481,
+		'mobile'       => 0,
+	);
+	return apply_filters( 'get_current_breakpoints', $breakpoints );
 }
 
 /**
