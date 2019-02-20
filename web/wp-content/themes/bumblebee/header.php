@@ -77,11 +77,19 @@ $fbid = get_theme_mod( 'fbid', false );
 	?>
 			<div class="search-form">
 				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
-					<fieldset>
-						<input type="text" placeholder="Search">
-						<button class="search-button"></button>
-					</fieldset>
+					<div id="search-form-wrapper">
+						<fieldset>
+							<input type="text" placeholder="Search">
+							<button class="search-button"></button>
+						</fieldset>
+						<div class="close-btn"></div>
+					</div>
+					
+					<div id="mob-search-toggle" class="mobile-search-toggle"></div>
 				</form>
+				<button class="sticky-search-button" id="search-toggle">
+					<span class="screen-reader-text">Toggle Search</span>
+				</button>
 			</div>
 			<div class="sticky-nl-img">
 				<a class="subscribe-header" target="_blank" rel="noopener" href="<?php echo esc_html( get_theme_mod( 'bumblebee_header_subscribe_url' ) ); ?>">
