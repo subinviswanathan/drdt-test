@@ -1,5 +1,5 @@
-if ( typeof( rd_bx ) != 'undefined' ) {
-    var bx_script_id = rd_bx.script_id;
+if ( typeof( tmbi_bx ) != 'undefined' ) {
+    var bx_script_id = tmbi_bx.script_id;
     (function (d) {
         var e = d.createElement('script');
         e.src = d.location.protocol + '//tag.bounceexchange.com/' + bx_script_id + '/i.js';
