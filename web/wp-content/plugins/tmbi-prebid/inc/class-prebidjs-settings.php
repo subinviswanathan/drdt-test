@@ -1,7 +1,23 @@
 <?php
+/**
+ * Prebid Settings
+ *
+ * @package     Prebid Settings
+ *  This is for the settings page of prebid.
+ */
 
+/**
+ *  Class PrebidJS Settings.
+ */
 class PrebidJS_Settings {
+
+	/**
+	 * This will have the value of the options
+	 *
+	 * @var String
+	 */
 	private static $options;
+
 	const PREBIDJS_SLUG = 'prebid_js';
 
 	/**

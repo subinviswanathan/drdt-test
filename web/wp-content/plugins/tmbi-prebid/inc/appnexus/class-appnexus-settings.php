@@ -1,6 +1,21 @@
 <?php
+/**
+ * AppNexus Settings
+ *
+ * @package     AppNexus Settings
+ *  This is for the settings page of appnexus.
+ */
 
-class PrebidJS_AppNexus_Settings {
+/**
+ *  Class AppNexus Settings.
+ */
+class AppNexus_Settings {
+
+	/**
+	 * This will have the value of the options
+	 *
+	 * @var String
+	 */
 	private static $options;
 
 	/**
@@ -49,4 +64,4 @@ class PrebidJS_AppNexus_Settings {
 	}
 
 }
-add_action( 'init', array( 'PrebidJS_AppNexus_Settings', 'init' ) );
+add_action( 'init', array( 'AppNexus_Settings', 'init' ) );

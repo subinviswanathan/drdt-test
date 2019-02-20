@@ -1,6 +1,21 @@
 <?php
+/**
+ * OpenX Settings
+ *
+ * @package     OpenX Settings
+ *  This is for the settings page of openx.
+ */
 
-class PrebidJS_OpenX_Settings {
+/**
+ *  Class OpenX Settings.
+ */
+class OpenX_Settings {
+
+	/**
+	 * This will have the value of the options
+	 *
+	 * @var String
+	 */
 	private static $options;
 
 	/**
@@ -52,4 +67,4 @@ class PrebidJS_OpenX_Settings {
 	}
 
 }
-add_action( 'init', array( 'PrebidJS_OpenX_Settings', 'init' ) );
+add_action( 'init', array( 'OpenX_Settings', 'init' ) );

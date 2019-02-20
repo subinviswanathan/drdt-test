@@ -1,6 +1,21 @@
 <?php
+/**
+ * Rubicon Settings
+ *
+ * @package     Rubicon Settings
+ *  This is for the settings page of rubicon.
+ */
 
-class PrebidJS_Rubicon_Settings {
+/**
+ *  Class Rubicon Settings.
+ */
+class Rubicon_Settings {
+
+	/**
+	 * This will have the value of the options
+	 *
+	 * @var String
+	 */
 	private static $options;
 
 	/**
@@ -105,4 +120,4 @@ class PrebidJS_Rubicon_Settings {
 	}
 
 }
-add_action( 'init', array( 'PrebidJS_Rubicon_Settings', 'init' ) );
+add_action( 'init', array( 'Rubicon_Settings', 'init' ) );
