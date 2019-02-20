@@ -32,7 +32,6 @@ When enqueueing scripts or doing ad stuff, check like this:
 * NOTE: For reliability, specially with CMS controls (that depend on is_single), checks should happen _after_ the `wp` hook. *
 */
 
-
 require_once( 'is-service-blocked-filter.php' );
 require_once( 'metabox.php' );
 
@@ -43,3 +42,16 @@ function tmbi_ad_blocker_support_default_post_types() {
 	add_post_type_support( 'page', 'ad_blocker' );
 	add_post_type_support( 'listicle', 'ad_blocker' );
 }
+
+
+/**
+ * Adds the `variant` query var.
+ *
+ * @param array $vars List of query variables.
+ * @see query_vars
+ */
+function register_variant_query_var( $vars ) {
+	$vars[] .= 'variant';
+	return $vars;
+}
+add_action( 'query_vars', 'register_variant_query_var' );
