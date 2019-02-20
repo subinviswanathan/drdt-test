@@ -15,23 +15,23 @@ class BX_Base {
 	const DEPENDS           = '';
 	static public $version;
 
-	public function set_version( $version ) {
+	public static function set_version( $version ) {
 		static::$version = $version;
 	}
 
-	public function render_bx_load_failure() {
+	public static function render_bx_load_failure() {
 		print( '<!-- bounce exchange script has failed to load -->' . PHP_EOL );
 	}
 
-	public function render_bx_is_blocked() {
+	public static function render_bx_is_blocked() {
 		print( '<!-- Bounce Exchange has been blocked -->' . PHP_EOL );
 	}
 
-	public function init() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+	public static function init() {
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
 	}
 
-	public function enqueue_scripts() {
+	public static function enqueue_scripts() {
 		wp_register_script(
 			static::LOADER_LABEL,
 			self::get_asset_url( static::LOADER_SCRIPT ),

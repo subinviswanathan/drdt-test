@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: TMBI Bounce Exchange
-Version: 1.2
+Version: 1.0.0
 Description: Adds the BX simple tag to the header <a href='https://readersdigest.atlassian.net/browse/WPDT-3669' target='_blank'>Read more at WPDT-3669 ...</a>
 Author: Santhosh Kumar MJ
 Text Domain: bounce-exchange
@@ -39,13 +39,11 @@ License URI: http://opensource.org/licenses/BSD-3-Clause
 
 require( 'inc/cpt-bx.php' );
 
-class BX_Controller extends BX_Base  {
+class BX_Controller  {
 	const VERSION     = '1.2';
 	public $bx;
 
 	public function __construct() {
-		$vb = new Variant_Base();
-		if ( ! $vb->is_ad_blocked() ) {
 			$this->bx_loader();
 			if ( $this->bx ) {
 				$this->bx->set_version( self::VERSION );
@@ -53,14 +51,9 @@ class BX_Controller extends BX_Base  {
 			} else {
 				$this->render_bx_load_failure();
 			}
-		} else {
-			$this->render_bx_is_blocked();
-		}
 	}
 
 	public function bx_loader() {
 		$this->bx = CPT_BX::get_instance();
 	}
 }
-
-$bxc = BX_Controller::get_instance();
