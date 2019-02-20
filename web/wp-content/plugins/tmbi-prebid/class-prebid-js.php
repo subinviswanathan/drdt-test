@@ -35,8 +35,8 @@ class Prebid_JS {
 	 *  Init.
 	 */
 	public static function init() {
-		add_action( 'wp_enqueue_scripts', array(__CLASS__, 'enqueue_scripts'), 10, 1 );
-		add_action( 'wp_footer', array(__CLASS__, 'remove_prebid_js'), 1 );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ), 10, 1 );
+		add_action( 'wp_footer', array( __CLASS__, 'remove_prebid_js' ), 1 );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class Prebid_JS {
 		wp_enqueue_script( 'wp-hooks-js', plugins_url( 'js/wp-js-hooks.js', __FILE__ ), array(), '1.0.0', true );
 		wp_enqueue_script( 'prebidjs', plugins_url( 'js/prebid.js', __FILE__ ), array(), '1.0.0', true );
 		$prebid_js_options = get_option( 'prebid_js', false );
-		wp_register_script( 'tmbi-prebidjs', plugins_url( 'js/tmbi-prebid.js', __FILE__ ), array('prebidjs', 'wp-hooks-js'), self::VERSION, true );
+		wp_register_script( 'tmbi-prebidjs', plugins_url( 'js/tmbi-prebid.js', __FILE__ ), array( 'prebidjs', 'wp-hooks-js' ), self::VERSION, true );
 		wp_localize_script( 'tmbi-prebidjs', 'prebid_conf', $prebid_js_options );
 		wp_enqueue_script( 'tmbi-prebidjs' );
 	}
@@ -65,4 +65,4 @@ class Prebid_JS {
 	}
 }
 
-add_action( 'init', array('Prebid_JS', 'init') );
+add_action( 'init', array( 'Prebid_JS', 'init' ) );
