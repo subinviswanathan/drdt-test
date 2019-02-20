@@ -69,13 +69,14 @@ class BX_Controller {
 	 */
 	public static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
+		add_action( 'wp_footer', array( __CLASS__, 'remove_bx_xchange' ), 1 );
 	}
 
 	/**
 	 *  Script enqueue.
 	 */
 	public static function enqueue_scripts() {
-		wp_register_script( static::LOADER_LABEL, plugin_dir_url( __FILE__ ) . self::LOADER_SCRIPT, array(), static::VERSION, true );
+		wp_register_script( self::LOADER_LABEL, plugin_dir_url( __FILE__ ) . self::LOADER_SCRIPT, array(), self::VERSION, true );
 		$ad_stack = get_option( 'ad_stack', false );
 		if ( $ad_stack['bx_xchange_script_id'] ) {
 			self::$script_id = $ad_stack['bx_xchange_script_id'];
@@ -85,8 +86,18 @@ class BX_Controller {
 		$localized_data = array(
 			'script_id' => self::$script_id,
 		);
-		wp_localize_script( static::LOADER_LABEL, static::LOCALIZED_LABEL, $localized_data );
-		wp_enqueue_script( static::LOADER_LABEL );
+		wp_localize_script( self::LOADER_LABEL, self::LOCALIZED_LABEL, $localized_data );
+		wp_enqueue_script( self::LOADER_LABEL );
+	}
+
+	/**
+	 * Remove Header Bidder (for ?variant=noads).
+	 */
+	public static function remove_bx_xchange() {
+		$variant = get_query_var( 'variant' );
+		if ( 'noads' === $variant ) {
+			wp_dequeue_script( self::LOADER_LABEL );
+		}
 	}
 }
 
