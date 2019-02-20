@@ -78,6 +78,7 @@ class BX_Controller {
 	public static function enqueue_scripts() {
 		wp_register_script( self::LOADER_LABEL, plugin_dir_url( __FILE__ ) . self::LOADER_SCRIPT, array(), self::VERSION, true );
 		$ad_stack = get_option( 'ad_stack', false );
+		// get the script id from ad stack settings.
 		if ( $ad_stack['bx_xchange_script_id'] ) {
 			self::$script_id = $ad_stack['bx_xchange_script_id'];
 		} else {
@@ -91,7 +92,7 @@ class BX_Controller {
 	}
 
 	/**
-	 * Remove Header Bidder (for ?variant=noads).
+	 * Remove Bounce Xchange (for ?variant=noads).
 	 */
 	public static function remove_bx_xchange() {
 		$variant = get_query_var( 'variant' );
