@@ -180,15 +180,16 @@ body.wp-customize {
 
 	.search-button {
 		background-image: url(images/search-icon-light.svg);
+		background-color: transparent;
 		background-size: 22px 25px;
 		background-repeat: no-repeat;
 		background-position: 50%;
-		width: 40px;
-		height: 40px;
-		background-color: transparent;
-		color: black;
-		vertical-align: middle;
 		border: none;
+		color: black;
+		height: 40px;
+		text-indent: -9999px;
+		vertical-align: middle;
+		width: 40px;
 	}
 
 	.search-form {

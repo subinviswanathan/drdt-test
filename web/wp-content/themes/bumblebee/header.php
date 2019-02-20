@@ -76,11 +76,11 @@ $fbid = get_theme_mod( 'fbid', false );
 	}
 	?>
 			<div class="search-form">
-				<form class="pure-form" action=" <?php echo esc_url( site_url() ); ?>/search/index ">
+				<form class="pure-form" id="searchform" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<div id="search-form-wrapper">
 						<fieldset>
-							<input type="text" placeholder="Search">
-							<button class="search-button"></button>
+							<input type="text" value="" name="s" id="s" placeholder="Search" />
+							<input type="submit" id="searchsubmit" class="search-button" value="Search" />
 						</fieldset>
 						<div class="close-btn"></div>
 					</div>
