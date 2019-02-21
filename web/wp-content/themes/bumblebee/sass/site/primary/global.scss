@@ -156,6 +156,53 @@ img {
 	text-transform: uppercase;
 }
 
+.in-content-nl-container {
+	background-color: #fff;
+	box-shadow: 0 0 8px 1px hsla(0,0%,53%,.25);
+	margin-bottom: 40px;
+	position: relative;
+	text-align: center;
+
+	.newsletter {
+		padding: 20px;
+		h3 {
+			font-family: "Lato", "Open Sans", Arial, Helvetica, sans-serif !important;
+			font-size: 32px;
+			font-weight: 700;
+			margin-bottom: 5px;
+		}
+	}
+
+	.newsletter form {
+		display: flex;
+		margin: 10px 10%;
+		max-width: 80%;
+
+		input {
+			border-radius: 0;
+			font-size: 20px;
+			padding: 10px;
+			width: 70%;
+		}
+
+		button {
+			background-color: #ffc10e;
+			border: 0;
+			color: #000;
+			font-size: 17px;
+			padding: 0;
+			text-transform: uppercase;
+			transition: background .3s;
+			width: 30%;
+		}
+	}
+
+	.diyu-logo {
+		background-color: #999;
+		padding: 20px;
+	}
+}
+
 @media only screen and (max-width: 567px) {
 	.social-menu-mobile {
 		display: block;
