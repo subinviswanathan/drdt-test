@@ -48,7 +48,7 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/wp-smush-pro/
 # Don't ignore our custom plugins (@todo: Publish them as a standalone project!)
 !web/wp-content/plugins/allow-iframes
-
+!web/wp-content/plugins/tmbi-bx
 !web/wp-content/plugins/tmbi-prebid
 !web/wp-content/plugins/ad-stack
 !web/wp-content/plugins/ix-header-bidder
