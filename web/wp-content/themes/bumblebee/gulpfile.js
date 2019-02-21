@@ -16,7 +16,7 @@ gulp.task('sass', function () {
 		.pipe(gulp.dest('./'));
 });
 
-var component = ['header', 'homepage', 'listicle', 'article', 'archive', 'page', 'footer'];
+var component = ['header', 'homepage', 'listicle', 'article', 'archive', 'page', 'footer', 'search'];
 
 sass.compiler = require('node-sass');
 

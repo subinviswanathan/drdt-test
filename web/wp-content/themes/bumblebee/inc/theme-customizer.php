@@ -8,6 +8,18 @@
  */
 
 /**
+ * Remove default customizer options
+ */
+function remove_customizer_options_sections() {
+	global $wp_customize;
+	$wp_customize->remove_section( 'title_tagline' );
+	$wp_customize->remove_section( 'header_image' );
+	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'static_front_page' );
+}
+add_action( 'customize_register', 'remove_customizer_options_sections', 20 );
+
+/**
  * Custom fonts
  */
 function bumblebee_get_font_url() {
@@ -407,8 +419,8 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		'bumblebee_logos',
 		array(
 			'title'       => __( 'Custom Logos', 'bumblebee' ),
-			'description' => __( 'Add custom logos' ),
-			'priority'    => 32,
+			'description' => __( 'Add custom logos for the Header & Footer' ),
+			'priority'    => 1,
 		)
 	);
 
@@ -468,12 +480,12 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'bumblebee_header_logo_width',
+		'bumblebee_sticky_logo_width',
 		array(
 			'type'        => 'number',
 			'section'     => 'bumblebee_logos',
 			'label'       => __( 'Sticky Logo Width' ),
-			'description' => __( 'Enter only numbers, i.e: 200' ),
+			'description' => __( 'Enter only numbers, i.e: 100' ),
 			'settings'    => 'bumblebee_sticky_logo_width',
 		)
 	);
@@ -508,6 +520,87 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			'label'       => __( 'Footer Logo Width' ),
 			'description' => __( 'Enter only numbers, i.e: 100' ),
 			'settings'    => 'bumblebee_footer_logo_width',
+		)
+	);
+
+	$wp_customize->add_section(
+		'bumblebee_header_nl',
+		array(
+			'title'       => __( 'Header Newsletter', 'bumblebee' ),
+			'description' => __( 'Header & Sticky Newsletter Images' ),
+			'priority'    => 5,
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_header_subscribe_image' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_header_subscribe_image',
+			array(
+				'title'    => __( 'Newsletter Image', 'bumblebee' ),
+				'label'    => __( 'Add the Newsletter Image', 'bumblebee' ),
+				'section'  => 'bumblebee_header_nl',
+				'settings' => 'bumblebee_header_subscribe_image',
+				'priority' => '20',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_header_subscribe_image_sticky' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_header_subscribe_image_sticky',
+			array(
+				'title'    => __( 'Newsletter Image (Sticky)', 'bumblebee' ),
+				'label'    => __( 'Add the Newsletter Image (Sticky)', 'bumblebee' ),
+				'section'  => 'bumblebee_header_nl',
+				'settings' => 'bumblebee_header_subscribe_image_sticky',
+				'priority' => '20',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_header_subscribe_width',
+		array(
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_header_subscribe_width',
+		array(
+			'type'        => 'number',
+			'section'     => 'bumblebee_header_nl',
+			'label'       => __( 'Newsletter Image Width' ),
+			'description' => __( 'Enter only numbers, i.e: 180' ),
+			'settings'    => 'bumblebee_header_subscribe_width',
+			'priority'    => '30',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bumblebee_header_subscribe_url',
+		array(
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'bumblebee_header_subscribe_url',
+		array(
+			'type'        => 'url',
+			'section'     => 'bumblebee_header_nl',
+			'label'       => __( 'Newsletter Link URL' ),
+			'description' => __( 'Add the URL' ),
+			'priority'    => '35',
+			'input_attrs' => array(
+				'placeholder' => __( 'https://www.tmbi.com' ),
+			),
 		)
 	);
 
