@@ -50,6 +50,7 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/allow-iframes
 
 !web/wp-content/plugins/tmbi-adobe-dtm/
+!web/wp-content/plugins/tmbi-video/
 
 # Ignore third party themes (managed with Composer)
 !web/wp-content/themes
