@@ -61,6 +61,74 @@
 		padding-left: 10px;
 		text-overflow: ellipsis;
 	}
+
+	.full-width-nl {
+		height: 450px;
+		margin: -75px 0;
+
+		.nl-container {
+			display: block;
+			margin: 0 auto ;
+			padding-top: 100px;
+			width: 740px;
+
+			.newsletter {
+				text-align: center;
+
+				h3 {
+					font-family: $font__h1;
+					font-size: 32px;
+					font-weight: 700;
+					margin-bottom: 25px;
+				}
+
+				form {
+					width: 100%;
+
+					input {
+						background-color: #fff;
+						border: 1px solid #ddd;
+						border-right: 0;
+						color: #333;
+						float: left;
+						font-family: $font__main;
+						font-size: 16px;
+						font-weight: 300;
+						padding: 14px 16px 13px;
+						width: 76%;
+					}
+
+					button {
+						background-color: #ffc10e;
+						color: #000;
+						font-family: $font__main;
+						float: left;
+						padding: 10px 15px;
+						text-transform: uppercase;
+						transition: background .3s;
+						width: 19%;
+					}
+				}
+			}
+
+			.diyu-logo {
+				margin-top: 100px;
+				text-align: center;
+			}
+		}
+	}
+
+	.pagination {
+		padding: 40px 0;
+		text-align: center;
+		width: 100%;
+
+		.page-numbers {
+			background: #000;
+			color: #fff;
+			padding: 10px;
+		}
+	}
 }
 
 @media screen and (max-width: 567px) {
