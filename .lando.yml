@@ -45,6 +45,7 @@ tooling:
     service: appserver
   wp:
     service: appserver
+    cmd: ./vendor/wp-cli/wp-cli/bin/wp
   composer-install:
     description: Install Composer dependencies
     cmd: ./bin/install-composer-dependencies.sh

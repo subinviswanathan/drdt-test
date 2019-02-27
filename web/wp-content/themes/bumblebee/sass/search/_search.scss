@@ -1,0 +1,53 @@
+.search {
+
+	main {
+		clear: both;
+		margin: 0 auto;
+		max-width: 1260px;
+		padding: 40px 15px;
+
+		header {
+			display: block;
+			overflow: hidden;
+			padding-top: .5em;
+
+			hr {
+				border: 0;
+				border-collapse: collapse;
+				border-top: 1px solid #ddd;
+				clear: both;
+				margin: 1em 0;
+			}
+		}
+
+		article {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+
+			> div {
+				width: calc(1/2*100% - (1 - 1/2)*10px);
+			}
+
+			.content-container {
+
+				.entry-header {
+					margin-top: 0;
+					padding-top: 0;
+				}
+
+				.cat-links {
+					display: block;
+
+					a {
+						color: #000;
+					}
+				}
+
+				.entry-title {
+					font-size: 30px;
+				}
+			}
+		}
+	}
+}

@@ -171,6 +171,7 @@
 		}
 	}
 
+	// Sticky Nav (Desktop)
 	$(window).scroll(function() {
 		var scroll = $(window).scrollTop();
 		if (scroll >= 140) {
@@ -179,5 +180,10 @@
 			$('nav').removeClass('sticky');
 		}
 	});
+
+	$('#search-toggle, .close-btn').on('click', function(){
+		$( '#search-form-wrapper' ).toggleClass( 'visible' );
+	});
+
 	/* global jQuery */
 })(jQuery);
