@@ -103,7 +103,7 @@ class Video_CPT_Setting {
 		global $post;
 
 		/**
-		 * Only add script to video admin area. Calling must included class Video_CPT.
+		 * Only add script to video admin area. class Video_CPT must be included.
 		 */
 		if ( isset( $post ) && $post->post_type === Video_CPT::LW_POST_TYPE ) {
 			wp_register_script(

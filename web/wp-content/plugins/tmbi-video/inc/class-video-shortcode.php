@@ -1,12 +1,13 @@
 <?php
-/*
- * User: jeysaravana
- * Date: 2019-02-21
- * Time: 4:54 PM
- */
 
+/**
+ * Class Video_Shortcode
+ */
 class Video_Shortcode {
 
+	/**
+	 * Video_Shortcode constructor.
+	 */
 	public function __construct() {
 		add_shortcode( 'rd-video', array( $this, 'video_shortcode' ) );
 	}

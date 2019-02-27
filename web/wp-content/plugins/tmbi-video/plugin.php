@@ -14,21 +14,20 @@ License URI: http://opensource.org/licenses/BSD-3-Clause
  */
 define( 'VIDEO_PLUGIN_VER', '2.0.0' );
 
-// Import Video CPT Class.
-require_once 'inc/class-video-cpt.php';
 
 /**
+ * Import Video CPT Class.
  * Register and initialize Video Post Type
  */
+require_once 'inc/class-video-cpt.php';
 new Video_CPT();
 
 
-// Add Video CPT Setting class.
-require_once 'inc/class-video-cpt-setting.php';
-
 /**
+ * Add Video CPT Setting class.
  * Additional helper setting for Video CPT
  */
+require_once 'inc/class-video-cpt-setting.php';
 new Video_CPT_Setting();
 
 
@@ -39,21 +38,19 @@ require_once 'inc/class-video-shortcode.php';
 new Video_Shortcode();
 
 
-// Add Video Secondary Player class.
-require_once 'inc/class-video-secondary-player.php';
-
 /**
+ * Add Video Secondary Player class.
  * Secondary Player settings
  */
+require_once 'inc/class-video-secondary-player.php';
 new Video_Secondary_Player();
 
 
-// Add Brightcove player class
-require_once 'inc/provider/class-tmbi-brightcove-player.php';
-
 /**
+ * Add Brightcove player class
  * Initialize Brightcove player
  */
+require_once 'inc/provider/class-tmbi-brightcove-player.php';
 new TMBI_Brightcove_Player();
 
 // Add Dailymotion player class.

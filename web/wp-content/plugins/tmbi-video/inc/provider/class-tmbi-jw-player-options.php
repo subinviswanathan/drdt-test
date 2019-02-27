@@ -208,6 +208,13 @@ class TMBI_JW_Player_Options {
 
 	}
 
+	/**
+	 * Sanitizing user input from video setting text fields.
+	 *
+	 * @param array $input
+	 *
+	 * @return array
+	 */
 	public function sanitized_input_array( $input ) {
 		$sanitized_value = array();
 
