@@ -96,6 +96,10 @@
 						font-weight: 300;
 						padding: 14px 16px 13px;
 						width: 76%;
+
+						@media screen and (max-width: 567px) {
+							width: 50%;
+						}
 					}
 
 					button {
@@ -107,6 +111,10 @@
 						text-transform: uppercase;
 						transition: background .3s;
 						width: 19%;
+
+						@media screen and (max-width: 567px) {
+							width: 40%;
+						}
 					}
 				}
 			}
@@ -115,6 +123,15 @@
 				margin-top: 100px;
 				text-align: center;
 			}
+
+			@media screen and (max-width: 567px) {
+				padding: 100px 20px 0;
+				width: 90%;
+			}
+		}
+		@media screen and (max-width: 567px) {
+			background-position: top left !important;
+			height: 500px;
 		}
 	}
 
@@ -127,6 +144,14 @@
 			background: #000;
 			color: #fff;
 			padding: 10px;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		.page-numbers.current {
+			background: #ffc10e;
 		}
 	}
 }

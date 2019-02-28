@@ -68,7 +68,7 @@ get_header();
 	$args = array(
 		'post_type'      => 'post',
 		'post_status'    => 'publish',
-		'posts_per_page' => 8,
+		'posts_per_page' => 28,
 		'paged'          => $paged,
 	);
 
@@ -79,16 +79,16 @@ get_header();
 	if ( have_posts() ) {
 		$intcounter = 0;
 
-		while ( have_posts() ) {
+		while ( $the_query->have_posts() ) {
 
-			the_post();
+			$the_query->the_post();
 			$intcounter++;
 
 			switch ( $intcounter ) {
 				case 1:
 					$i = 0;
-					while ( have_posts() && $i++ < 1 ) :
-						the_post();
+					while ( $the_query->have_posts() && $i++ < 1 ) :
+						$the_query->the_post();
 						get_template_part( 'template-parts/archive/content', 'hero' );
 					endwhile;
 
@@ -97,8 +97,8 @@ get_header();
 					?>
 					<ul class="featured-posts">
 						<?php
-						while ( have_posts() && $i++ <= 6 ) :
-							the_post();
+						while ( $the_query->have_posts() && $i++ <= 6 ) :
+							$the_query->the_post();
 							get_template_part( 'template-parts/archive/content', 'featured' );
 						endwhile;
 						?>
@@ -141,8 +141,8 @@ get_header();
 					break;
 				case 4:
 					echo '<div class="pure-g recipes">';
-					while ( have_posts() && $i++ <= 15 ) :
-						the_post();
+					while ( $the_query->have_posts() && $i++ <= 15 ) :
+						$the_query->the_post();
 						get_template_part( 'template-parts/archive/content', 'grid' );
 						endwhile;
 					echo '</div>';
@@ -183,8 +183,8 @@ get_header();
 					break;
 				case 6:
 					echo '<div class="pure-g recipes">';
-					while ( have_posts() && $i++ <= 25 ) :
-						the_post();
+					while ( $the_query->have_posts() && $i++ <= 26 ) :
+						$the_query->the_post();
 						get_template_part( 'template-parts/archive/content', 'grid' );
 						endwhile;
 					echo '</div>';
@@ -195,8 +195,8 @@ get_header();
 					break;
 				case 8:
 					echo '<section class="archive-content"><div class="pure-g recipes">';
-					while ( have_posts() && $i++ <= 28 ) :
-						the_post();
+					while ( $the_query->have_posts() && $i++ <= 28 ) :
+						$the_query->the_post();
 						get_template_part( 'template-parts/archive/content', 'grid' );
 						endwhile;
 					echo '</div>';
