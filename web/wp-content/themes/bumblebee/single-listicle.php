@@ -179,7 +179,7 @@ get_header();
 			<?php endif; ?>
 			<?php $section_num++; ?>
 		<?php endfor; ?>
-		<section class="content pure-g">
+		<section class="content pure-g" style="width: 100%;">
 			<section class="social-menu-desktop pure-u-lg-2-24">&nbsp;</section>
 			<section class="pure-u-1 pure-u-lg-14-24">
 				<?php if ( is_active_sidebar( 'listicle-after-content' ) ) : ?>
