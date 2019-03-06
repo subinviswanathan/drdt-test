@@ -159,9 +159,9 @@ get_header();
 			endwhile;
 			?>
 		</div>
-
-		<?php get_template_part( 'template-parts/archive/content', 'newsletter' ); ?>
-
+	</section>
+	<?php get_template_part( 'template-parts/archive/content', 'newsletter' ); ?>
+	<section class="archive-content">
 		<div class="pure-g recipes">
 			<?php
 			$i = 0;
