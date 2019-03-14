@@ -54,6 +54,7 @@ web/wp-content/plugins/*
 !web/wp-content/plugins/ix-header-bidder
 !web/wp-content/plugins/tmbi-adobe-dtm
 !web/wp-content/plugins/tmbi-taboola
+!web/wp-content/plugins/tmbi-comscore
 !web/wp-content/plugins/marquee
 !web/wp-content/plugins/tmbi-ad-blocker
 
