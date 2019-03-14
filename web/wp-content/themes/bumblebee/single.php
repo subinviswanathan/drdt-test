@@ -130,6 +130,13 @@ add_filter(
 					</aside>
 				</div>
 			</div>
+			<div class="pure-u-md-3-24 pure-u-lg-3-24 pure-u-xl-3-24 hide-on-mobile"></div>
+			<div class="pure-u-sm-1 pure-u-md-14-24 pure-u-lg-14-24 pure-u-xl-14-24">
+				<div class="in-content-nl-container">
+					<?php newsletter_module(); ?>
+				</div>
+			</div>
+			
 			<div class="postarticle_ad">
 				<?php
 				bumblebee_render_ad(

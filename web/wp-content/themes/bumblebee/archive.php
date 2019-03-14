@@ -49,31 +49,37 @@ get_header();
 		);
 		?>
 	</section>
-	<?php if ( have_posts() ) : ?>
-		<section class="archive-content">
-			<div class="archive-headings">
-				<div class="breadcrumbs">
-				<?php if ( function_exists( 'yoast_breadcrumb' ) ) : ?>
-					<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
-				<?php endif; ?>
-				</div>
-				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-				<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
+	<section class="archive-content">
+		<div class="archive-headings">
+			<div class="breadcrumbs">
+			<?php if ( function_exists( 'yoast_breadcrumb' ) ) : ?>
+				<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
+			<?php endif; ?>
 			</div>
+			<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+			<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
+		</div>
+	</section>
+	<section class="archive-content">
 
-			<?php the_post(); ?>
-			<?php get_template_part( 'template-parts/archive/content', 'hero' ); ?>
-			<ul class="featured-posts">
-				<?php
+		<?php
+			// Hero post
+		if ( have_posts() ) {
+			the_post();
+			get_template_part( 'template-parts/archive/content', 'hero' );
+		}
+		?>
+		<ul class="featured-posts">
+			<?php
+				// Row of 5 posts
 				$i = 0;
-				while ( have_posts() && $i++ < 5 ) :
-					the_post();
-					get_template_part( 'template-parts/archive/content', 'featured' );
-					endwhile;
-				?>
-			</ul>
-		</section>
-		<section class="full-width-ad">
+			while ( have_posts() && $i++ < 5 ) :
+				the_post();
+				get_template_part( 'template-parts/archive/content', 'featured' );
+				endwhile;
+			?>
+		</ul>
+		<section class="ad">
 			<?php
 			$slot_name = 'scroll';
 			$tf_slot   = 'btf';
@@ -103,54 +109,89 @@ get_header();
 			);
 			?>
 		</section>
-		<?php $section_num = 0; ?>
-		<?php while ( have_posts() ) : ?>
-			<?php $section_num++; ?>
-			<section class="archive-content">
-				<div class="pure-g recipes">
-					<?php for ( $i = 0; $i < 8; $i++ ) : ?>
-						<?php if ( ( $wp_query->current_post + 1 ) !== ( $wp_query->post_count ) ) : ?>
-							<?php the_post(); ?>
-							<?php get_template_part( 'template-parts/archive/content', 'grid' ); ?>
-							<?php if ( 3 === $i ) : ?>
-								</div><div class="pure-g recipes">
-							<?php endif; ?>
-						<?php endif; ?>
-					<?php endfor; ?>
-				</div>
-			</section>
-			<section class="full-width-ad">
-				<?php
-				$slot_name = 'scroll';
-				$tf_slot   = 'btf';
-				if ( 1 === $section_num ) {
-					$slot_name = 'top';
-					$tf_slot   = 'atf';
-				} elseif ( 2 === $section_num ) {
-					$slot_name = 'middle';
-					$tf_slot   = 'atf';
-				}
-				bumblebee_render_ad(
-					uniqid( 'ad' ),
-					[
-						'slot-name'        => $slot_name,
-						'responsive-sizes' => [
-							'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
-							'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
-							'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
-							'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
-						],
-						'targeting'        => [
-							'tf'       => $tf_slot,
-							'pos'      => $slot_name,
-							'location' => $slot_name,
-						],
-					]
-				);
-				?>
-			</section>
-		<?php endwhile; ?>
-	<?php endif; ?>
+		<div class="pure-g recipes">
+			<?php
+			$i = 0;
+			// Row of 8 posts
+			while ( have_posts() && $i++ < 8 ) :
+				the_post();
+				get_template_part( 'template-parts/archive/content', 'grid' );
+			endwhile;
+			?>
+		</div>
+		<section class="">
+			<?php
+			$slot_name = 'scroll';
+			$tf_slot   = 'btf';
+			if ( 1 === $section_num ) {
+				$slot_name = 'top';
+				$tf_slot   = 'atf';
+			} elseif ( 2 === $section_num ) {
+				$slot_name = 'middle';
+				$tf_slot   = 'atf';
+			}
+			bumblebee_render_ad(
+				uniqid( 'ad' ),
+				[
+					'slot-name'        => $slot_name,
+					'responsive-sizes' => [
+						'mobile'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+						'tablet'       => [ [ 300, 250 ], [ 320, 50 ], [ 3, 3 ] ],
+						'desktop'      => [ [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+						'large_screen' => [ [ 970, 550 ], [ 970, 250 ], [ 970, 90 ], [ 728, 90 ], [ 300, 250 ], [ 3, 3 ] ],
+					],
+					'targeting'        => [
+						'tf'       => $tf_slot,
+						'pos'      => $slot_name,
+						'location' => $slot_name,
+					],
+				]
+			);
+			?>
+		</section>
+		<div class="pure-g recipes">
+			<?php
+			$i = 0;
+			// Row of 8 posts
+			while ( have_posts() && $i++ < 8 ) :
+				the_post();
+				get_template_part( 'template-parts/archive/content', 'grid' );
+			endwhile;
+			?>
+		</div>
+	</section>
+	<?php get_template_part( 'template-parts/archive/content', 'newsletter' ); ?>
+	<section class="archive-content">
+		<div class="pure-g recipes">
+			<?php
+			$i = 0;
+			// Row of 8 posts
+			while ( have_posts() && $i++ < 4 ) :
+				the_post();
+				get_template_part( 'template-parts/archive/content', 'grid' );
+			endwhile;
+			?>
+		</div>
+
+		<div class="pagination">
+			<?php
+			global $wp_query;
+
+			$big = 999999999; // need an unlikely integer
+
+			echo paginate_links(
+				array(
+					'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'format'    => 'page/%#%',
+					'current'   => max( 1, get_query_var( 'paged' ) ),
+					'total'     => $wp_query->max_num_pages,
+					'prev_text' => __( '&laquo; Prev Page' ),
+					'next_text' => __( 'Next Page &raquo;' ),
+				)
+			);
+			?>
+		</div>
+	</section>
 </main>
 <?php
 get_footer();

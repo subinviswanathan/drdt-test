@@ -31,7 +31,6 @@ class Ad_Stack {
 	public static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register_scripts' ) );
 		add_filter( 'ad_options', array( __CLASS__, 'bumblebee_add_slot_name_prefix' ), 10, 1 );
-		add_filter( 'query_vars', array( __CLASS__, 'bumblebee_add_variant_query_var' ) );
 		add_action( 'wp_footer', array( __CLASS__, 'bumblebee_maybe_remove_ad_stack' ), 1 );
 	}
 
@@ -60,21 +59,9 @@ class Ad_Stack {
 	 * Remove Ad Stack (for ?variant=noads).
 	 */
 	public static function bumblebee_maybe_remove_ad_stack() {
-		$variant = get_query_var( 'variant' );
-		if ( 'noads' === $variant ) {
+		if ( apply_filters( 'is_service_blocked', false, 'dfp' ) ) {
 			wp_dequeue_script( 'ad-stack' );
 		}
-	}
-
-	/**
-	 * Adds the `variant` query var.
-	 *
-	 * @param array $vars List of query variables.
-	 * @see query_vars
-	 */
-	public static function bumblebee_add_variant_query_var( $vars ) {
-		$vars[] .= 'variant';
-		return $vars;
 	}
 
 	/**
