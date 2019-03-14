@@ -659,10 +659,10 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_section(
-		'bumblebee_footer_nl',
+		'bumblebee_nl',
 		array(
-			'title'       => __( 'Footer Newsletter', 'bumblebee' ),
-			'description' => __( 'Customize what the newsletter section should look like' ),
+			'title'       => __( 'Newsletters', 'bumblebee' ),
+			'description' => __( 'Customize what the newsletter sections should look like. Footer, In-Content and Full-Width Archive' ),
 			'priority'    => 40,
 		)
 	);
@@ -680,7 +680,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		'bumblebee_footer_nl_heading_text',
 		array(
 			'type'        => 'text',
-			'section'     => 'bumblebee_footer_nl',
+			'section'     => 'bumblebee_nl',
 			'label'       => __( 'Newsletter Heading Text' ),
 			'description' => __( 'Enter the text here, i.e: Sign Up For Newsletters' ),
 			'settings'    => 'bumblebee_footer_nl_heading_text',
@@ -695,7 +695,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			'bumblebee_footer_nl_heading_text_color',
 			array(
 				'label'    => __( 'Newsletter Heading Text Color' ),
-				'section'  => 'bumblebee_footer_nl',
+				'section'  => 'bumblebee_nl',
 				'settings' => 'bumblebee_footer_nl_heading_text_color',
 				'priority' => '10',
 			)
@@ -709,11 +709,11 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 			$wp_customize,
 			'bumblebee_footer_nl_subscribe_image',
 			array(
-				'title'    => __( 'Newsletter Image', 'bumblebee' ),
-				'label'    => __( 'Add the "Subscribe to Newsletter" Image', 'bumblebee' ),
-				'section'  => 'bumblebee_footer_nl',
-				'settings' => 'bumblebee_footer_nl_subscribe_image',
-				'priority' => '20',
+				'label'       => __( 'Newsletter Image', 'bumblebee' ),
+				'description' => __( 'Add the "Subscribe to Newsletter" Image', 'bumblebee' ),
+				'section'     => 'bumblebee_nl',
+				'settings'    => 'bumblebee_footer_nl_subscribe_image',
+				'priority'    => '20',
 			)
 		)
 	);
@@ -729,7 +729,7 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		'bumblebee_footer_nl_subscribe_image_width',
 		array(
 			'type'        => 'number',
-			'section'     => 'bumblebee_footer_nl',
+			'section'     => 'bumblebee_nl',
 			'label'       => __( 'Newsletter Image Width' ),
 			'description' => __( 'Enter only numbers, i.e: 300' ),
 			'settings'    => 'bumblebee_footer_nl_subscribe_image_width',
@@ -748,13 +748,45 @@ function bumblebee_custom_customize_register( $wp_customize ) {
 		'bumblebee_footer_nl_subscribe_url',
 		array(
 			'type'        => 'url',
-			'section'     => 'bumblebee_footer_nl',
+			'section'     => 'bumblebee_nl',
 			'label'       => __( 'Newsletter Link URL' ),
 			'description' => __( 'Add the URL' ),
 			'priority'    => '35',
 			'input_attrs' => array(
 				'placeholder' => __( 'https://www.tmbi.com' ),
 			),
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_archive_nl_bg_image' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'bumblebee_archive_nl_bg_image',
+			array(
+				'label'       => __( 'Newsletter Background Image', 'bumblebee' ),
+				'description' => __( 'Background Full Width Image (Archive/Hub Pages Only)', 'bumblebee' ),
+				'section'     => 'bumblebee_nl',
+				'settings'    => 'bumblebee_archive_nl_bg_image',
+				'priority'    => '40',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'bumblebee_in_content_nl_bg_color' );
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'bumblebee_in_content_nl_bg_color',
+			array(
+				'label'       => __( 'Footer BG Color' ),
+				'description' => __( 'Background Color (In-Content Pages/Posts Only)', 'bumblebee' ),
+				'section'     => 'bumblebee_nl',
+				'settings'    => 'bumblebee_in_content_nl_bg_color',
+				'priority'    => '45',
+			)
 		)
 	);
 }
@@ -765,20 +797,21 @@ add_action( 'customize_register', 'bumblebee_custom_customize_register' );
  */
 function bumblebee_add_customizer_styles() {
 
-	$accent_hover_color    = get_theme_mod( 'bumblebee_accent_hover_color' );
-	$nav_bg_color          = get_theme_mod( 'bumblebee_nav_bg_color' );
-	$nav_text_color        = get_theme_mod( 'bumblebee_nav_color' );
-	$banner_text_color     = get_theme_mod( 'bumblebee_banner_text_color' );
-	$footer_bg_color       = get_theme_mod( 'bumblebee_footer_bg_color' );
-	$footer_text_color     = get_theme_mod( 'bumblebee_footer_text_color' );
-	$footer_nl_text_color  = get_theme_mod( 'bumblebee_footer_nl_heading_text_color' );
-	$font_default_color    = get_theme_mod( 'bumblebee_default_color' );
-	$font_menu_option      = get_theme_mod( 'bumblebee_menu_fonts' );
-	$font_heading_option   = get_theme_mod( 'bumblebee_fonts' );
-	$font_body_option      = get_theme_mod( 'bumblebee_body_fonts' );
-	$button_bg_color       = get_theme_mod( 'bumblebee_button_bg_color' );
-	$button_bg_hover_color = get_theme_mod( 'bumblebee_button_bg_color_hover' );
-	$button_text_color     = get_theme_mod( 'bumblebee_button_text_color' );
+	$accent_hover_color     = get_theme_mod( 'bumblebee_accent_hover_color' );
+	$nav_bg_color           = get_theme_mod( 'bumblebee_nav_bg_color' );
+	$nav_text_color         = get_theme_mod( 'bumblebee_nav_color' );
+	$banner_text_color      = get_theme_mod( 'bumblebee_banner_text_color' );
+	$footer_bg_color        = get_theme_mod( 'bumblebee_footer_bg_color' );
+	$footer_text_color      = get_theme_mod( 'bumblebee_footer_text_color' );
+	$footer_nl_text_color   = get_theme_mod( 'bumblebee_footer_nl_heading_text_color' );
+	$in_content_nl_bg_color = get_theme_mod( 'bumblebee_in_content_nl_bg_color' );
+	$font_default_color     = get_theme_mod( 'bumblebee_default_color' );
+	$font_menu_option       = get_theme_mod( 'bumblebee_menu_fonts' );
+	$font_heading_option    = get_theme_mod( 'bumblebee_fonts' );
+	$font_body_option       = get_theme_mod( 'bumblebee_body_fonts' );
+	$button_bg_color        = get_theme_mod( 'bumblebee_button_bg_color' );
+	$button_bg_hover_color  = get_theme_mod( 'bumblebee_button_bg_color_hover' );
+	$button_text_color      = get_theme_mod( 'bumblebee_button_text_color' );
 
 	?>
 	<style>
@@ -875,6 +908,10 @@ function bumblebee_add_customizer_styles() {
 
 		.footer .newsletter form button:hover {
 			background-color: <?php echo esc_html( $button_bg_hover_color ); ?>;
+		}
+
+		.in-content-nl-container .diyu-logo {
+			background-color: <?php echo esc_html( $in_content_nl_bg_color ); ?>;
 		}
 
 		@media screen and (max-width: 767px) {

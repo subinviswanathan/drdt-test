@@ -444,3 +444,34 @@ function enable_svg_upload( $existing_mimes = array() ) {
 	return $existing_mimes;
 }
 add_filter( 'upload_mimes', 'enable_svg_upload' );
+
+/**
+ * Add In Content NL Module AFTER the_content
+ *
+ * @param  content $content Append NL to the_content
+ */
+function newsletter_after_the_content( $content ) {
+	$after = newsletter_module();
+	$content = $content . $after;
+
+	return $content;
+}
+
+/**
+ * Newsletter Module
+ */
+function newsletter_module() { ?>
+	<div class="newsletter">
+		<h3><?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_heading_text' ) ); ?></h3>
+		<form action="<?php echo esc_url( get_site_url() ); ?>/newslettersignuppage/" method="post" data-analytics-metrics='{"name":"newsletter signup","module":"newsletter signup","position":"footer"}' >
+			<input type="text" id="email" placeholder="Email Address"></input>
+			<button type="submit" id="subscribe">Sign Up</button>
+		</form>
+	</div>
+	<div class="diyu-logo">
+		<a data-analytics-metrics='{"name":"Subscribe link","module":"footer","position":"magazine subscription"}' href="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_url' ) ); ?>" target="_blank" rel="noopener noreferrer">
+			<img src="<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image' ) ); ?>" alt="" style="width:<?php echo esc_html( get_theme_mod( 'bumblebee_footer_nl_subscribe_image_width' ) ); ?>px"></img>
+		</a>
+	</div>
+	<?php
+}
